@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#FFFFFF</color>
+    <color name="secondary_color">#161615</color>
+    <color name="accent_color">#E82127</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_70">#B3000000</color>
+    <color name="black_80">#CC000000</color>
+    <color name="black">#000000</color>
+    <color name="primary_color_95">#F2FFFFFF</color>
+    <color name="secondary_color_20">#33161615</color>
+    <color name="primary_color_80">#CCFFFFFF</color>
+
+    <color name="grey_100">#F2F2F2</color>
+    <color name="grey_200">#E6E6E2</color>
+    <color name="grey_300">#C6C6C1</color>
+    <color name="grey_400">#B5B5AD</color>
+    <color name="grey_500">#787873</color>
+    <color name="grey_600">#54544F</color>
+    <color name="grey_700">#3E3E3C</color>
+
+    <color name="welcome_gradient">#33161615</color>
+
+    <color name="red_100">#FEF1F1</color>
+    <color name="red_200">#F4CDCE</color>
+    <color name="red_300">#F4B2B4</color>
+    <color name="red_400">#F0666A</color>
+    <color name="red_500">#B51217</color>
+    <color name="red_600">#6F0B0E</color>
+    <color name="red_700">#410608</color>
+
+    <color name="green_500">#0CAC0F</color>
+    <color name="green_600">#135D14</color>
+
+    <color name="yellow_400">#E4D31B</color>
+
+    <color name="facebook_button_color">#3578EA</color>
+    <color name="facebook_button_pressed_color">#2263D3</color>
+    <color name="facebook_button_disabled_color">#C1D5F8</color>
+    <color name="snack_bar_background_color">#E6161615</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

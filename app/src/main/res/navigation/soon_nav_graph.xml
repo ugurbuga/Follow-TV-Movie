@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/soon_nav_graph"
+    app:startDestination="@id/soonFragment">
+
+    <fragment
+        android:id="@+id/soonFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.soon.SoonFragment"
+        tools:layout="@layout/fragment_soon" />
+
+</navigation>

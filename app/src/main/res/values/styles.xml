@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash Screen Theme -->
+    <style name="SplashTheme" parent="Theme.FollowTvMovie">
+        <!--<item name="android:windowBackground">@drawable/splash_background</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="WelcomeTheme" parent="Theme.FollowTvMovie">
+        <!--<item name="android:windowBackground">@drawable/splash_background</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="FTMToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleCentered">true</item>
+        <item name="titleTextAppearance">@style/FTMToolbarTextStyle</item>
+        <item name="android:elevation">@dimen/margin_8</item>
+    </style>
+
+    <style name="FTMToolbarTextStyle" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+
+    <style name="FTMTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">0dp</item>
+        <item name="boxCornerRadiusTopStart">0dp</item>
+        <item name="boxStrokeColor">@color/selector_color_edit_text_border</item>
+        <item name="boxStrokeErrorColor">@color/red_400</item>
+        <item name="boxStrokeWidth">@dimen/width_1_5</item>
+        <item name="errorEnabled">false</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="errorTextColor">@color/red_400</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">@dimen/margin_16</item>
+        <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
+    </style>
+
+    <style name="FTMTextInputDropdownLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">0dp</item>
+        <item name="boxCornerRadiusTopStart">0dp</item>
+        <item name="boxStrokeColor">@color/selector_color_edit_text_border</item>
+        <item name="boxStrokeErrorColor">@color/red_400</item>
+        <item name="boxStrokeWidth">@dimen/width_1_5</item>
+        <item name="errorEnabled">false</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="errorTextColor">@color/red_400</item>
+        <item name="android:padding">0dp</item>
+        <!--<item name="endIconDrawable">@drawable/ic_right_24_icon</item>-->
+        <item name="android:layout_margin">@dimen/margin_16</item>
+        <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
+    </style>
+
+    <style name="ErrorTextAppearance">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMTextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:inputType">text</item>
+        <item name="android:padding">@dimen/padding_16</item>
+        <item name="android:textColorHint">@color/grey_500</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMButton" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="minHeight">@dimen/height_46</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="FTMSwitchView" parent="Widget.AppCompat.CompoundButton.Switch">
+
+    </style>
+
+    <style name="FTMRadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/selector_color_radio_button</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMCheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/ActiveIndicator</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationViewTextStyle</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationViewTextStyle</item>
+        <item name="itemTextColor">@color/selector_color_bottom_navigation_text</item>
+        <item name="itemIconTint">@color/selector_color_bottom_navigation_text</item>
+    </style>
+
+    <style name="ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/grey_200</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <!-- FTMText Styles -->
+
+    <style name="FTMText" parent="Widget.AppCompat.TextView">
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+
+    <style name="FTMText.Light">
+        <item name="android:fontFamily">@font/sofiapro_light</item>
+    </style>
+
+    <style name="FTMText.Regular">
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMText.SemiBold">
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+    </style>
+
+    <style name="FTMText.Light.13">
+        <item name="android:textSize">@dimen/text_size_13</item>
+    </style>
+
+    <style name="FTMText.Light.15">
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMText.Regular.9">
+        <item name="android:textSize">@dimen/text_size_9</item>
+    </style>
+
+    <style name="FTMText.Regular.11">
+        <item name="android:textSize">@dimen/text_size_11</item>
+    </style>
+
+    <style name="FTMText.Regular.12">
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <style name="FTMText.Regular.13">
+        <item name="android:textSize">@dimen/text_size_13</item>
+    </style>
+
+    <style name="FTMText.Regular.14">
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="FTMText.Regular.15">
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMText.Regular.17">
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="FTMText.SemiBold.11">
+        <item name="android:textSize">@dimen/text_size_11</item>
+    </style>
+
+    <style name="FTMText.SemiBold.13">
+        <item name="android:textSize">@dimen/text_size_13</item>
+    </style>
+
+    <style name="FTMText.SemiBold.15">
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMText.SemiBold.17">
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="FTMText.SemiBold.20">
+        <item name="android:textSize">@dimen/text_size_20</item>
+    </style>
+
+    <style name="FTMText.SemiBold.24">
+        <item name="android:textSize">@dimen/text_size_24</item>
+    </style>
+
+    <style name="FTMText.SemiBold.42">
+        <item name="android:textSize">@dimen/text_size_42</item>
+    </style>
+
+    <style name="FTMDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">
+            @style/FTMTitleStyle
+        </item>
+        <item name="materialAlertDialogBodyTextStyle">
+            @style/FTMMessageStyle
+        </item>
+        <item name="android:background">@color/primary_color</item>
+        <item name="fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+
+    </style>
+
+    <style name="FTMDialog.BothButtonRed">
+        <item name="buttonBarPositiveButtonStyle">@style/FTMPositiveButtonStyleRed</item>
+        <item name="buttonBarNegativeButtonStyle">@style/FTMNegativeButtonStyleRed</item>
+    </style>
+
+    <style name="FTMDialog.PositiveButtonRed">
+        <item name="buttonBarPositiveButtonStyle">@style/FTMPositiveButtonStyleRed</item>
+        <item name="buttonBarNegativeButtonStyle">@style/FTMNegativeButtonStyleGrey</item>
+    </style>
+
+    <style name="FTMDialog.NegativeButtonRed">
+        <item name="buttonBarPositiveButtonStyle">@style/FTMPositiveButtonStyleGrey</item>
+        <item name="buttonBarNegativeButtonStyle">@style/FTMNegativeButtonStyleRed</item>
+    </style>
+
+    <style name="FTMTitleStyle" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textAppearance">@style/TitleTextAppearance</item>
+        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="TitleTextAppearance" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+    </style>
+
+    <style name="FTMMessageStyle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textAppearance">@style/MessageTextAppearance</item>
+        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:textSize">@dimen/text_size_13</item>
+    </style>
+
+    <style name="MessageTextAppearance" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/sofiapro_regular</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="FTMNegativeButtonStyleRed" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMNegativeButtonStyleGrey" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/grey_600</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMPositiveButtonStyleRed" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMPositiveButtonStyleGrey" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/grey_600</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMNeutralButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="FTMHorizontalDivider">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/grey_200</item>
+        <item name="android:layout_height">@dimen/height_0_5</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="FTMVerticalDivider">
+        <item name="android:background">@color/grey_200</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">@dimen/width_0_5</item>
+    </style>
+
+    <style name="FTMToolbarMenuStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="fontFamily">@font/sofiapro_semibold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="FullScreenDialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:panelBackground">@color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">@color/secondary_color</item>
+        <item name="colorOnPrimary">@color/primary_color</item>
+        <item name="textInputStyle">@style/FTMTextInputLayout</item>
+        <item name="fontFamily">@font/sofiapro_regular</item>
+        <item name="android:fontFamily">@font/sofiapro_regular</item>
+    </style>
+
+    <style name="TabDesign" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+
+    </style>
+
+    <style name="FTMTabLayout">
+        <!--<item name="tabBackground">@drawable/background_tabs</item>-->
+        <item name="tabSelectedTextColor">@color/secondary_color</item>
+        <item name="tabTextAppearance">@style/TabDesign</item>
+        <item name="tabTextColor">@color/grey_600</item>
+        <item name="tabIndicatorColor">@color/grey_700</item>
+        <item name="tabIndicatorHeight">@dimen/height_2</item>
+
+    </style>
+
+    <style name="FTMProductSnackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
+    <style name="FTMCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/width_0</item>
+        <item name="strokeWidth">@dimen/width_0</item>
+        <item name="cardBackgroundColor">@color/primary_color</item>
+    </style>
+
+</resources>

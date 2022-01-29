@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FollowTvMovie" parent="BaseThemeFollowTvMovie" />
+
+    <style name="BaseThemeFollowTvMovie" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/secondary_color</item>
+        <item name="colorPrimaryVariant">@color/secondary_color</item>
+        <item name="colorOnPrimary">@color/secondary_color</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/secondary_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="ftmTextInputLayout">@style/FTMTextInputLayout</item>
+        <item name="ftmTextInputDropdownLayout">@style/FTMTextInputDropdownLayout</item>
+        <item name="ftmTextInputEditText">@style/FTMTextInputEditText</item>
+        <item name="ftmRadioButton">@style/FTMRadioButton</item>
+        <item name="ftmButton">@style/FTMButton</item>
+        <item name="ftmToolbar">@style/FTMToolbar</item>
+        <item name="actionMenuTextAppearance">@style/FTMToolbarMenuStyle</item>
+        <item name="ftmCheckBox">@style/FTMCheckBox</item>
+        <item name="ftmTextView">@style/FTMText.Regular.15</item>
+        <item name="snackbarStyle">@style/FTMProductSnackbar</item>
+        <item name="ftmSwitchView">@style/FTMSwitchView</item>
+        <item name="ftmCardView">@style/FTMCardView</item>
+        <item name="bottomNavigationStyle">@style/FTMBottomNavigationView</item>
+
+    </style>
+</resources>

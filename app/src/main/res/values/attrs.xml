@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FTMViews">
+        <attr name="ftmToolbar" format="reference" />
+        <attr name="ftmTextInputLayout" format="reference" />
+        <attr name="ftmTextInputDropdownLayout" format="reference" />
+        <attr name="ftmTextInputEditText" format="reference" />
+        <attr name="ftmRadioButton" format="reference" />
+        <attr name="ftmCheckBox" format="reference" />
+        <attr name="ftmTextView" format="reference" />
+        <attr name="ftmCardView" format="reference" />
+        <attr name="ftmSwitchView" format="reference" />
+        <attr name="ftmButton" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FTMToolbar">
+        <attr name="navigation_type" format="enum">
+            <enum name="none" value="0" />
+            <enum name="logo" value="1" />
+            <enum name="back_button" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>
