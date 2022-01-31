@@ -35,10 +35,6 @@
 
     <color name="yellow_400">#E4D31B</color>
 
-    <color name="facebook_button_color">#3578EA</color>
-    <color name="facebook_button_pressed_color">#2263D3</color>
-    <color name="facebook_button_disabled_color">#C1D5F8</color>
-    <color name="snack_bar_background_color">#E6161615</color>
     <color name="white">#FFFFFF</color>
 
 </resources>
