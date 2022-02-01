@@ -9,7 +9,7 @@ import retrofit2.Response
 import java.nio.charset.Charset
 
 @Parcelize
-data class ErrorBody(
+data class FTMErrorBody(
     var code: Int,
     @SerializedName("errors") val errors: List<ErrorResponse>? = null
 ) : Parcelable {
@@ -17,20 +17,20 @@ data class ErrorBody(
     companion object {
         const val UNKNOWN_ERROR = 0
         private val gson = Gson()
-        fun parseError(response: Response<*>?): ErrorBody? {
+        fun parseError(response: Response<*>?): FTMErrorBody? {
             return response?.let { res ->
                 res.errorBody()?.let {
                     try {
                         val error = cloneBuffer(it)
-                        var body: ErrorBody? = gson.fromJson(error, ErrorBody::class.java)
+                        var body: FTMErrorBody? = gson.fromJson(error, FTMErrorBody::class.java)
                         if (body == null) {
-                            body = ErrorBody(res.code())
+                            body = FTMErrorBody(res.code())
                         } else {
                             body.code = res.code()
                         }
                         body
                     } catch (ignored: Exception) {
-                        ErrorBody(res.code())
+                        FTMErrorBody(res.code())
                     }
                 }
             }

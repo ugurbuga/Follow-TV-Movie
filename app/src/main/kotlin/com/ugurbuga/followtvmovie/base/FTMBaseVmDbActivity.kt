@@ -21,8 +21,8 @@ import com.ugurbuga.followtvmovie.view.toolbar.FTMToolbar
 import com.ugurbuga.followtvmovie.view.toolbar.FTMToolbarType
 import java.util.*
 
-abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> :
-    BaseVmDbActivity<VM, DB>(), BaseView, OnLocaleChangedListener {
+abstract class FTMBaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> :
+    BaseVmDbActivity<VM, DB>(), FTMBaseView, OnLocaleChangedListener {
 
     private lateinit var baseViewBinding: ViewDataBinding
 
@@ -64,18 +64,18 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> :
         }
     }
 
-    override fun onViewEvent(baseViewEvent: BaseViewEvent) {
+    override fun onViewEvent(baseViewEvent: FTMBaseViewEvent) {
         when (baseViewEvent) {
 
-            is BaseViewEvent.ShowErrorMessage -> {
+            is FTMBaseViewEvent.ShowErrorMessage -> {
                 showErrorDialog(baseViewEvent.message, baseViewEvent.errorId)
             }
 
-            BaseViewEvent.DismissLoading -> {
+            FTMBaseViewEvent.DismissLoading -> {
                 dismissLoading()
             }
 
-            BaseViewEvent.ShowLoading -> {
+            FTMBaseViewEvent.ShowLoading -> {
                 showLoading()
             }
         }

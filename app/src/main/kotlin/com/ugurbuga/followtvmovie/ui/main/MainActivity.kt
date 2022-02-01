@@ -3,15 +3,15 @@ package com.ugurbuga.followtvmovie.ui.main
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.BaseVmDbActivity
+import com.ugurbuga.followtvmovie.base.FTMBaseVmDbActivity
 import com.ugurbuga.followtvmovie.databinding.ActivityMainBinding
 import com.ugurbuga.followtvmovie.view.toolbar.FTMToolbarType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
+class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
 
-    override fun getToolbarType() = FTMToolbarType.BaseToolbar
+    override fun getToolbarType() = FTMToolbarType.NoToolbar
 
     override fun getViewModel() = MainViewModel::class.java
 

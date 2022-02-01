@@ -3,19 +3,18 @@ package com.ugurbuga.followtvmovie.base
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.viewbinding.BuildConfig
+import com.ugurbuga.followtvmovie.base.base.BaseViewModel
 import com.ugurbuga.followtvmovie.common.Event
 import com.ugurbuga.followtvmovie.common.Status
-import com.ugurbuga.followtvmovie.view.loading.LoadingType
 
-abstract class BaseViewModel : ViewModel() {
+abstract class FTMBaseViewModel : BaseViewModel() {
 
-    private val _baseEvent = MutableLiveData<Event<BaseViewEvent>>()
-    val baseEvent: LiveData<Event<BaseViewEvent>> = _baseEvent
+    private val _baseEvent = MutableLiveData<Event<FTMBaseViewEvent>>()
+    val baseEvent: LiveData<Event<FTMBaseViewEvent>> = _baseEvent
 
-    private val _baseViewState = MutableLiveData<BaseViewState>()
-    val baseViewState: LiveData<BaseViewState> = _baseViewState
+    private val _baseViewState = MutableLiveData<FTMBaseViewState>()
+    val baseViewState: LiveData<FTMBaseViewState> = _baseViewState
 
     fun initStatusState(
         status: Status,
@@ -74,15 +73,15 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     private fun showLoading() {
-        _baseEvent.value = Event(BaseViewEvent.ShowLoading)
+        _baseEvent.value = Event(FTMBaseViewEvent.ShowLoading)
     }
 
     private fun dismissLoading() {
-        _baseEvent.value = Event(BaseViewEvent.DismissLoading)
+        _baseEvent.value = Event(FTMBaseViewEvent.DismissLoading)
     }
 
     private fun showErrorMessage(message: Any, errorId: Int? = null) {
         _baseEvent.value =
-            Event(BaseViewEvent.ShowErrorMessage(message, errorId))
+            Event(FTMBaseViewEvent.ShowErrorMessage(message, errorId))
     }
 }

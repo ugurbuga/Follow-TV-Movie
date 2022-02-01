@@ -1,9 +1,9 @@
-package com.ugurbuga.followtvmovie.repository.main
+package com.ugurbuga.followtvmovie.repository.tvshow
 
 import com.ugurbuga.followtvmovie.common.Resource
 import kotlinx.coroutines.flow.Flow
 
-interface MainRepository {
+interface TvShowRepository {
 
     fun getPopularTvShows(page: Int): Flow<Resource<Any>>
 }

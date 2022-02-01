@@ -1,8 +1,8 @@
 package com.ugurbuga.followtvmovie.base
 
-interface BaseView {
+interface FTMBaseView {
 
-    fun onViewEvent(baseViewEvent: BaseViewEvent)
+    fun onViewEvent(baseViewEvent: FTMBaseViewEvent)
 
     fun showErrorDialog(message: Any, errorId: Int? = null)
 

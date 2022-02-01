@@ -11,13 +11,13 @@ class GeneralErrorsHandler(
     throwable: Throwable
 ) {
 
-    var errorBody: ErrorBody? = null
+    var errorBody: FTMErrorBody? = null
 
     init {
         if (isNetworkError(throwable)) {
             onErrorMessage?.invoke(R.string.generic_error_message, 400)
         } else if (throwable is HttpException) {
-            errorBody = ErrorBody.parseError(throwable.response())
+            errorBody = FTMErrorBody.parseError(throwable.response())
             if (errorBody != null) {
                 handleError(errorBody!!)
             }
@@ -28,8 +28,8 @@ class GeneralErrorsHandler(
         }
     }
 
-    private fun handleError(errorBody: ErrorBody) {
-        if (errorBody.code != ErrorBody.UNKNOWN_ERROR) {
+    private fun handleError(errorBody: FTMErrorBody) {
+        if (errorBody.code != FTMErrorBody.UNKNOWN_ERROR) {
             var errorMessage: String? = null
             errorBody.errors?.forEach {
                 if (errorMessage == null) {

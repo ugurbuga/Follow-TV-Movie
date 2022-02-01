@@ -1,20 +1,19 @@
-package com.ugurbuga.followtvmovie.ui.soon
+package com.ugurbuga.followtvmovie.ui.tvshows
 
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
-import com.ugurbuga.followtvmovie.databinding.FragmentSoonBinding
+import com.ugurbuga.followtvmovie.databinding.FragmentTvShowsBinding
 import com.ugurbuga.followtvmovie.view.toolbar.ToolbarViewState
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class SoonFragment : FTMBaseVMFragment<SoonViewModel, FragmentSoonBinding>() {
+class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBinding>() {
 
     override fun getToolbarViewState() = ToolbarViewState.NoToolbar
 
-    override fun getResourceLayoutId() = R.layout.fragment_soon
+    override fun getResourceLayoutId() = R.layout.fragment_tv_shows
 
-    override fun getViewModel() = SoonViewModel::class.java
+    override fun getViewModel() = TvShowsViewModel::class.java
 
     override fun onInitDataBinding() {
 

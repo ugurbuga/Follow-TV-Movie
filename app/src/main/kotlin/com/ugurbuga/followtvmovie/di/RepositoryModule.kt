@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.di
 
-import com.ugurbuga.followtvmovie.repository.main.MainRepository
-import com.ugurbuga.followtvmovie.repository.main.MainRepositoryImpl
+import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
+import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,6 +13,6 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideMainRepository(
-        mainRepositoryImpl: MainRepositoryImpl
-    ): MainRepository
+        mainRepositoryImpl: TvShowRepositoryImpl
+    ): TvShowRepository
 }

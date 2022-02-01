@@ -3,12 +3,11 @@ package com.ugurbuga.followtvmovie.base.base
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import com.ugurbuga.followtvmovie.base.BaseViewModel
-import com.ugurbuga.followtvmovie.base.BaseVmActivity
+import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.ViewBindingUtil
 import com.ugurbuga.followtvmovie.databinding.ActivityBaseBinding
 
-abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmActivity<VM>() {
+abstract class BaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> : BaseVmActivity<VM>() {
 
     protected lateinit var mViewBinding: DB
 

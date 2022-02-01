@@ -1,8 +1,8 @@
-package com.ugurbuga.followtvmovie.ui.main
+package com.ugurbuga.followtvmovie.ui.movie
 
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor() : FTMBaseViewModel()
+class MoviesViewModel @Inject constructor() : FTMBaseViewModel()
