@@ -2,9 +2,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/search_nav_graph"
+        android:id="@+id/discover_nav_graph"
         android:icon="@drawable/ic_search"
-        android:title="@string/search" />
+        android:title="@string/discover" />
     <item
         android:id="@+id/tv_series_nav_graph"
         android:icon="@drawable/ic_tv"

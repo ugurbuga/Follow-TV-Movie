@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_item_poster.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/snackbar_background.xml" value="0.2345" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_soon.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_tv_series.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_poster.xml" value="0.4735915492957746" />
         <entry key="app/src/main/res/layout/layout_loading_view.xml" value="0.275" />
         <entry key="app/src/main/res/layout/layout_ltb_snack_bar.xml" value="0.2726449275362319" />
       </map>

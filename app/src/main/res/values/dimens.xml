@@ -128,4 +128,8 @@
     <dimen name="height_300">300dp</dimen>
     <dimen name="height_460">460dp</dimen>
 
+    <dimen name="radius_8">8dp</dimen>
+
+    <dimen name="elevation_4">4dp</dimen>
+
 </resources>

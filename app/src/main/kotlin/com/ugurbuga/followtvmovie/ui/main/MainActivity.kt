@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
 
-    override fun getToolbarType() = FTMToolbarType.NoToolbar
+    override fun getToolbarType() = FTMToolbarType.BaseToolbar
 
     override fun getViewModel() = MainViewModel::class.java
 

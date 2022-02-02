@@ -11,4 +11,6 @@ object ApiConstants {
     const val LANGUAGE = "language"
 
     const val BASE_URL = BuildConfig.API_URL
+    const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+
 }
