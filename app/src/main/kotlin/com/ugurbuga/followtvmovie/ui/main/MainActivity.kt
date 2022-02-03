@@ -5,17 +5,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVmDbActivity
 import com.ugurbuga.followtvmovie.databinding.ActivityMainBinding
-import com.ugurbuga.followtvmovie.view.toolbar.FTMToolbarType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
 
-    override fun getToolbarType() = FTMToolbarType.BaseToolbar
-
-    override fun getViewModel() = MainViewModel::class.java
-
-    override fun getViewBinding() = ActivityMainBinding::class.java
+    override fun getLayoutResourceId() = R.layout.activity_main
 
     override fun onInitDataBinding() {
         initGraph()
@@ -26,7 +21,7 @@ class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
             supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
         var navController = navHostFragment.navController
 
-        mViewBinding.mainBottomNav.setupWithNavController(navController)
+        viewBinding.mainBottomNav.setupWithNavController(navController)
     }
 
 }

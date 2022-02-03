@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
+import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import dagger.Module
 import dagger.Provides
@@ -64,5 +65,11 @@ object NetworkModule {
     @Singleton
     fun provideTvShowService(retrofit: Retrofit): TvShowService {
         return retrofit.create(TvShowService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 }

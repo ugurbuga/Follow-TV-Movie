@@ -1,37 +1,26 @@
 package com.ugurbuga.followtvmovie.base.base
 
 import android.os.Bundle
-import android.view.View
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.common.ViewBindingUtil
-import com.ugurbuga.followtvmovie.databinding.ActivityBaseBinding
 
-abstract class BaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> : BaseVmActivity<VM>() {
 
-    protected lateinit var mViewBinding: DB
+abstract class BaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> :
+    BaseVmActivity<VM>() {
 
-    abstract fun getViewBinding(): Class<DB>
-
+    protected lateinit var viewBinding: DB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val view = setResourceViewBinding()
-        setContentView(view)
-        mViewBinding.lifecycleOwner = this
+        viewBinding = DataBindingUtil.setContentView(this, getLayoutResourceId())
+        viewBinding.lifecycleOwner = this
         onInitDataBinding()
     }
 
-    open fun setResourceViewBinding(): View {
-        val baseViewBinding = ViewBindingUtil.inflate<ActivityBaseBinding>(layoutInflater)
-        mViewBinding = ViewBindingUtil.inflate(
-            layoutInflater,
-            baseViewBinding.baseNxlContentFrame,
-            true,
-            getViewBinding()
-        )
-        return baseViewBinding.root
-    }
+    @LayoutRes
+    abstract fun getLayoutResourceId(): Int
 
     abstract fun onInitDataBinding()
 

@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.discover.popular.tv
+package com.ugurbuga.followtvmovie.ui.discover.popularlist
 
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,20 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.databinding.FragmentPopularTvShowBinding
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.PosterUIModel
+import com.ugurbuga.followtvmovie.databinding.FragmentPopularListBinding
 import com.ugurbuga.followtvmovie.extensions.observe
-import com.ugurbuga.followtvmovie.ui.discover.popular.PosterAdapter
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterItemDecoration
 import com.ugurbuga.followtvmovie.view.toolbar.ToolbarViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PopularTvShowFragment :
-    FTMBaseVMFragment<PopularTvShowViewModel, FragmentPopularTvShowBinding>() {
+class PopularListFragment :
+    FTMBaseVMFragment<PopularListViewModel, FragmentPopularListBinding>() {
 
-    override fun getResourceLayoutId() = R.layout.fragment_popular_tv_show
-
-    override fun getViewModel() = PopularTvShowViewModel::class.java
+    override fun getResourceLayoutId() = R.layout.fragment_popular_list
 
     override fun getToolbarViewState() = ToolbarViewState.NoToolbar
 
@@ -32,30 +31,32 @@ class PopularTvShowFragment :
     }
 
     companion object {
-        fun newInstance() = PopularTvShowFragment()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        const val ARG_POPULAR_LIST_TYPE = "arg_popular_list_type"
+        fun newInstance(popularListType: String) = PopularListFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_POPULAR_LIST_TYPE, popularListType)
+            }
+        }
     }
 
     override fun onInitDataBinding() {
-        observe(mViewModel.poster, ::onPoster)
+        observe(viewModel.posterList, ::onPosterList)
 
         val gridLayoutManager = GridLayoutManager(context, 2)
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (posterAdapter.getItemViewType(position)) {
-                    PosterAdapter.POSTER -> 1
-                    PosterAdapter.LOADING -> 2
+                    PosterHolderType.POSTER -> 1
+                    PosterHolderType.LOADING -> 2
                     else -> Util.INVALID_INDEX
                 }
             }
         }
 
-        viewBinding.popularTvShowRecyclerView.apply {
+        viewBinding.popularListRecyclerView.apply {
             adapter = posterAdapter
             layoutManager = gridLayoutManager
+            addItemDecoration(PosterItemDecoration())
 
             addOnScrollListener(object :
                 RecyclerView.OnScrollListener() {
@@ -68,15 +69,20 @@ class PopularTvShowFragment :
                     val visibleItemCount = layoutManager.childCount
                     val totalItemCount = layoutManager.itemCount
                     val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                    //TODO: Paging
+
+                    viewModel.getNewItems(
+                        visibleItemCount,
+                        firstVisibleItemPosition,
+                        totalItemCount
+                    )
                 }
             })
         }
 
     }
 
-    private fun onPoster(posterList: PosterUIModel) {
-        posterAdapter.submitList(posterList.posterList)
+    private fun onPosterList(posterList: MutableList<Any>) {
+        posterAdapter.submitList(posterList.toMutableList())
     }
 
     private fun onPosterItemClick(id: Int) {

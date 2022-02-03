@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.TvShowGeneralResponse
+import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

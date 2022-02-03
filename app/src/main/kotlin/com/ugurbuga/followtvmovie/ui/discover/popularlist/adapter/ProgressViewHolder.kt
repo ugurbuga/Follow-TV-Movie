@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.discover.popular
+package com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

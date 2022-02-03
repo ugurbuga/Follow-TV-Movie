@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.populartvshow.model
+package com.ugurbuga.followtvmovie.domain.popular.tvshow.model
 
 
 import com.squareup.moshi.Json

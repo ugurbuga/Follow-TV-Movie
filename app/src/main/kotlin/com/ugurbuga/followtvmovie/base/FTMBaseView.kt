@@ -9,5 +9,4 @@ interface FTMBaseView {
     fun showLoading()
 
     fun dismissLoading()
-
 }

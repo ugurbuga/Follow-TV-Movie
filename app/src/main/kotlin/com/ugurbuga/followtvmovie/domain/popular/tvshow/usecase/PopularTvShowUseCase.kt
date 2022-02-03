@@ -1,10 +1,10 @@
-package com.ugurbuga.followtvmovie.domain.populartvshow.usecase
+package com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.common.map
-import com.ugurbuga.followtvmovie.domain.populartvshow.mapper.PosterMapper
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.PosterUIModel
+import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

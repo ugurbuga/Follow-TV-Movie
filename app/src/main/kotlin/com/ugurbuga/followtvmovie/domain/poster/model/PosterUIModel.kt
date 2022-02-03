@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.populartvshow.model
+package com.ugurbuga.followtvmovie.domain.poster.model
 
 data class PosterUIModel(
     val posterList: MutableList<Any>,

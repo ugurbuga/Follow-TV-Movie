@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.discover.popular
+package com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.DisplayHelper
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.LoadingUIModel
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class PosterAdapter(
     context: Context,
@@ -19,13 +19,8 @@ class PosterAdapter(
     contentsSame = { old, new -> old == new }
 ) {
 
-    companion object {
-        const val POSTER = 0
-        const val LOADING = 1
-    }
-
     private var imageHeight: Double? =
-        DisplayHelper.getHeightFromRatio(context, R.dimen.padding_42, 1.75, 2)
+        DisplayHelper.getHeightFromRatio(context, R.dimen.padding_48, 1.5, 2)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,9 +29,9 @@ class PosterAdapter(
     ): RecyclerView.ViewHolder {
 
         when (viewType) {
-            POSTER -> return PosterViewHolder(parent, inflater)
+            PosterHolderType.POSTER -> return PosterViewHolder(parent, inflater)
 
-            LOADING -> return ProgressViewHolder(parent, inflater)
+            PosterHolderType.LOADING -> return ProgressViewHolder(parent, inflater)
         }
         throw IllegalStateException("View Error")
     }
@@ -60,10 +55,10 @@ class PosterAdapter(
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is PosterItemUIModel -> {
-                POSTER
+                PosterHolderType.POSTER
             }
             is LoadingUIModel -> {
-                LOADING
+                PosterHolderType.LOADING
             }
             else -> {
                 Util.INVALID_INDEX

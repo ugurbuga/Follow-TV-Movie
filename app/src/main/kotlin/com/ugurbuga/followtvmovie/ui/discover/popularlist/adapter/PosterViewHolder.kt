@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.discover.popular
+package com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.nextlua.corelib.core.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.databinding.ItemPosterBinding
-import com.ugurbuga.followtvmovie.domain.populartvshow.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class PosterViewHolder(
     parent: ViewGroup,

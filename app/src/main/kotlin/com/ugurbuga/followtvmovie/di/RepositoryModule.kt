@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.di
 
+import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
+import com.ugurbuga.followtvmovie.repository.movie.MovieRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepositoryImpl
 import dagger.Binds
@@ -12,7 +14,12 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun provideMainRepository(
-        mainRepositoryImpl: TvShowRepositoryImpl
+    abstract fun provideTvShowRepository(
+        tvShowRepositoryImpl: TvShowRepositoryImpl
     ): TvShowRepository
+
+    @Binds
+    abstract fun provideMovieRepository(
+        movieRepositoryImpl: MovieRepositoryImpl
+    ): MovieRepository
 }
