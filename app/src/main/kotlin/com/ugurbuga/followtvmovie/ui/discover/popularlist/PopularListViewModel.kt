@@ -7,20 +7,25 @@ import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.PopularMovieUseCase
-import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase.PopularTvShowUseCase
+import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
+import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListFragment.Companion.ARG_POPULAR_LIST_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PopularListViewModel @Inject constructor(
     private val popularTvShowUseCase: PopularTvShowUseCase,
     private val popularMovieUseCase: PopularMovieUseCase,
+    private val favoritesRepository: FavoritesRepository,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -105,6 +110,12 @@ class PopularListViewModel @Inject constructor(
         ) {
             isCanLoadNewItem = false
             getPopularList()
+        }
+    }
+
+    fun addFavorites(poster: PosterItemUIModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            favoritesRepository.insert(poster)
         }
     }
 }

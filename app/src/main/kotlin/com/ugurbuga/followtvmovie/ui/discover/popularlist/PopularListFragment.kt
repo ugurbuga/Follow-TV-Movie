@@ -1,18 +1,22 @@
 package com.ugurbuga.followtvmovie.ui.discover.popularlist
 
 import android.os.Bundle
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ugurbuga.followtvmovie.DiscoverNavGraphDirections
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentPopularListBinding
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.observe
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterItemDecoration
-import com.ugurbuga.followtvmovie.view.toolbar.ToolbarViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,8 +24,6 @@ class PopularListFragment :
     FTMBaseVMFragment<PopularListViewModel, FragmentPopularListBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_popular_list
-
-    override fun getToolbarViewState() = ToolbarViewState.NoToolbar
 
     private val posterAdapter: PosterAdapter by lazy {
         PosterAdapter(
@@ -85,7 +87,13 @@ class PopularListFragment :
         posterAdapter.submitList(posterList.toMutableList())
     }
 
-    private fun onPosterItemClick(id: Int) {
+    private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
+        viewModel.addFavorites(poster)
+        val extras = FragmentNavigatorExtras(imageView to "image_big")
+        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
+        directions.argId = poster.id
+        directions.argImageUrl = poster.posterPath
+        findNavController().navigate(directions, extras)
         //TODO: Navigate Detail
     }
 }

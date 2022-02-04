@@ -4,10 +4,11 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieResponse
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowResponse
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListType
 import javax.inject.Inject
 
 class PosterMapper @Inject constructor() {
@@ -25,7 +26,8 @@ class PosterMapper @Inject constructor() {
         return PosterItemUIModel(
             id = response.id,
             name = response.name,
-            posterPath = getPosterPath(response.posterPath, response.backdropPath)
+            posterPath = getPosterPath(response.posterPath, response.backdropPath),
+            type = PopularListType.TV_SHOW
         )
     }
 
@@ -45,7 +47,7 @@ class PosterMapper @Inject constructor() {
         return PosterUIModel(
             page = response.page,
             posterList = response.results.map { getPosterItemUIModel(it) }.toMutableList(),
-            totalPages = response.totalPages
+            totalPages = response.totalPages,
         )
     }
 
@@ -53,7 +55,8 @@ class PosterMapper @Inject constructor() {
         return PosterItemUIModel(
             id = response.id,
             name = response.title,
-            posterPath = getPosterPath(response.posterPath, response.backdropPath)
+            posterPath = getPosterPath(response.posterPath, response.backdropPath),
+            type = PopularListType.MOVIE
         )
     }
 

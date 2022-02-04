@@ -5,13 +5,10 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentDiscoverBinding
-import com.ugurbuga.followtvmovie.view.toolbar.ToolbarViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBinding>() {
-
-    override fun getToolbarViewState() = ToolbarViewState.NoToolbar
 
     override fun getResourceLayoutId() = R.layout.fragment_discover
 

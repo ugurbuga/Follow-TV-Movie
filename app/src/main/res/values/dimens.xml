@@ -130,6 +130,7 @@
 
     <dimen name="radius_8">8dp</dimen>
 
+    <dimen name="elevation_0">0dp</dimen>
     <dimen name="elevation_4">4dp</dimen>
 
 </resources>

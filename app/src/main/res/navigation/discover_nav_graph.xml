@@ -10,4 +10,23 @@
         android:name="com.ugurbuga.followtvmovie.ui.discover.DiscoverFragment"
         tools:layout="@layout/fragment_discover" />
 
+    <action
+        android:id="@+id/action_to_movieDetailFragment"
+        app:destination="@id/movieDetailFragment" />
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="arg_id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="arg_image_url"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
 </navigation>
