@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.ugurbuga.followtvmovie.BuildConfig
@@ -10,6 +12,7 @@ import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +29,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        applicationInterceptor: ApplicationInterceptor
+        applicationInterceptor: ApplicationInterceptor,
+        chuckerInterceptor: ChuckerInterceptor
     ): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder().apply {
             connectTimeout(ApiConstants.CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -36,6 +40,7 @@ object NetworkModule {
                 val interceptor = HttpLoggingInterceptor()
                 interceptor.level = HttpLoggingInterceptor.Level.BODY
                 addNetworkInterceptor(interceptor)
+                addInterceptor(chuckerInterceptor)
             }
             addInterceptor(applicationInterceptor)
         }
@@ -59,6 +64,12 @@ object NetworkModule {
         return Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providerChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
+        return ChuckerInterceptor.Builder(context = context).build()
     }
 
     @Provides

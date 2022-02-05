@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.DiscoverNavGraphDirections
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentPopularListBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.observe
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterItemDecoration
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.SpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,10 +27,7 @@ class PopularListFragment :
     override fun getResourceLayoutId() = R.layout.fragment_popular_list
 
     private val posterAdapter: PosterAdapter by lazy {
-        PosterAdapter(
-            requireContext(),
-            ::onPosterItemClick
-        )
+        PosterAdapter(::onPosterItemClick)
     }
 
     companion object {
@@ -58,7 +56,6 @@ class PopularListFragment :
         viewBinding.popularListRecyclerView.apply {
             adapter = posterAdapter
             layoutManager = gridLayoutManager
-            addItemDecoration(PosterItemDecoration())
 
             addOnScrollListener(object :
                 RecyclerView.OnScrollListener() {
@@ -83,13 +80,13 @@ class PopularListFragment :
 
     }
 
-    private fun onPosterList(posterList: MutableList<Any>) {
+    private fun onPosterList(posterList: MutableList<ListAdapterItem>) {
         posterAdapter.submitList(posterList.toMutableList())
     }
 
     private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
         viewModel.addFavorites(poster)
-        val extras = FragmentNavigatorExtras(imageView to "image_big")
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
         directions.argId = poster.id
         directions.argImageUrl = poster.posterPath

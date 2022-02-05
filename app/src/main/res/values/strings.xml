@@ -55,6 +55,10 @@
     <string name="movie">Movie</string>
     <string name="tv_series">TV Series</string>
     <string name="soon">Soon</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="popular_tv_shows">Popular Tv Shows</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="image_big">image_big</string>
 
 
 </resources>

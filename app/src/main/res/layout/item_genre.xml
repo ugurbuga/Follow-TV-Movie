@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.GenreUIModel" />
+    </data>
+
+    <com.ugurbuga.followtvmovie.view.FTMTextView
+        style="@style/FTMText.Light.13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_genre"
+        android:paddingHorizontal="@dimen/padding_8"
+        android:paddingVertical="@dimen/padding_2"
+        android:text="@{item.name}"
+        tools:text="Text" />
+</layout>

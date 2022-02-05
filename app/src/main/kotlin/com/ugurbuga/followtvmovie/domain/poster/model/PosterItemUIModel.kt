@@ -3,6 +3,7 @@ package com.ugurbuga.followtvmovie.domain.poster.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
 @Entity(tableName = "favoritesTable")
 data class PosterItemUIModel(
@@ -18,4 +19,4 @@ data class PosterItemUIModel(
 
     @ColumnInfo(name = "type")
     val type: String
-)
+) : ListAdapterItem

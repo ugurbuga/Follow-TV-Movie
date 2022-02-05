@@ -20,7 +20,7 @@ class PopularMovieUseCase @Inject constructor(
 
     override fun execute(params: PopularMovieParams): Flow<Resource<PosterUIModel>> {
         return movieRepository.getPopularMovies(params.page).map {
-            it.map { response -> posterMapper.getPosterUIModel(response) }
+            it.map { response -> posterMapper.toPosterUIModel(response) }
         }
     }
 }

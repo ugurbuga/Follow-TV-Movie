@@ -1,3 +1,5 @@
 package com.ugurbuga.followtvmovie.domain.poster.model
 
-data class LoadingUIModel(val id: Int = 0)
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+
+data class LoadingUIModel(val id: Int = 0) : ListAdapterItem

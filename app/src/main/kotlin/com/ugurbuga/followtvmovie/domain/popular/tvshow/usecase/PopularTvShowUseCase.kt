@@ -20,7 +20,7 @@ class PopularTvShowUseCase @Inject constructor(
 
     override fun execute(params: PopularTvShowParams): Flow<Resource<PosterUIModel>> {
         return tvShowRepository.getPopularTvShows(params.page).map {
-            it.map { response -> posterMapper.getPosterUIModel(response) }
+            it.map { response -> posterMapper.toPosterUIModel(response) }
         }
     }
 }

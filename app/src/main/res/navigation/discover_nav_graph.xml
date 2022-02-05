@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.MovieDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
 
         <argument

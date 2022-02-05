@@ -24,7 +24,7 @@
             android:text="@string/welcome_message_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:textColor="@color/secondary_color" />
+            tools:textColor="@color/tertiary_color" />
 
 
         <com.ugurbuga.followtvmovie.view.FTMTextView

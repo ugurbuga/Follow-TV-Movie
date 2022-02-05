@@ -5,7 +5,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_color"
         android:orientation="vertical">
 
         <androidx.fragment.app.FragmentContainerView
@@ -26,7 +25,7 @@
             style="@style/FTMBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary_color"
+            android:background="@color/quaternary_color"
             android:paddingTop="@dimen/padding_2"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"

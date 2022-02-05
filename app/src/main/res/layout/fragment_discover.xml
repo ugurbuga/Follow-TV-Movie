@@ -1,24 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="adapters"
+            type="com.ugurbuga.followtvmovie.ui.discover.popularlist.DiscoverAdapters" />
+
+        <variable
+            name="viewState"
+            type="com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/discover_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/discover_tab_layout" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/discover_tab_layout"
-            style="@style/FTMTabLayout"
+        <com.ugurbuga.followtvmovie.view.toolbar.FTMToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:title="@string/discover" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.24.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:text="@string/popular_movies" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popular_movie_recycler_view"
+                    adapter="@{adapters.popularMovieAdapter}"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.popularMovieList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_192"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_poster" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.24.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:text="@string/popular_tv_shows" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popular_tv_show_recycler_view"
+                    adapter="@{adapters.popularTvShowAdapter}"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.popularTvShowList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_192"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_poster" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.24.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:text="@string/upcoming_movies" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcoming_movie_recycler_view"
+                    adapter="@{adapters.upcomingMovieAdapter}"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.upcomingMovieList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_192"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_poster" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+
 </layout>

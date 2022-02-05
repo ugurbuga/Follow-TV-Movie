@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.PopularMovieUseCase
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase.PopularTvShowUseCase
@@ -29,8 +30,8 @@ class PopularListViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
-    private val _posterList = MutableLiveData<MutableList<Any>>().apply { value = mutableListOf() }
-    val posterList: LiveData<MutableList<Any>> get() = _posterList
+    private val _posterList = MutableLiveData<MutableList<ListAdapterItem>>().apply { value = mutableListOf() }
+    val posterList: LiveData<MutableList<ListAdapterItem>> get() = _posterList
 
     private var isCanLoadNewItem = false
 
@@ -88,7 +89,7 @@ class PopularListViewModel @Inject constructor(
         _posterList.value = oldList
     }
 
-    private fun getOldList(): MutableList<Any> {
+    private fun getOldList(): MutableList<ListAdapterItem> {
         return posterList.value ?: mutableListOf()
     }
 

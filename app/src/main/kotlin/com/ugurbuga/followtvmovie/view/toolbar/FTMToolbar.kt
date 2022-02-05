@@ -34,7 +34,7 @@ class FTMToolbar @JvmOverloads constructor(
 
     init {
         attributeSet?.let {
-                val attrs = context.obtainStyledAttributes(it, R.styleable.FTMToolbar)
+            val attrs = context.obtainStyledAttributes(it, R.styleable.FTMToolbar)
             try {
                 navigationIconType =
                     NavigationIconType.of(attrs.getInt(R.styleable.FTMToolbar_navigation_type, 0))

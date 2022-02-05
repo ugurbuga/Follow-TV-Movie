@@ -4,13 +4,14 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowsBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.observe
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterItemDecoration
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.SpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,10 +20,7 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
     override fun getResourceLayoutId() = R.layout.fragment_tv_shows
 
     private val posterAdapter: PosterAdapter by lazy {
-        PosterAdapter(
-            requireContext(),
-            ::onPosterItemClick
-        )
+        PosterAdapter(::onPosterItemClick)
     }
 
     override fun onInitDataBinding() {
@@ -42,13 +40,12 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
         viewBinding.tvShowListRecyclerView.apply {
             adapter = posterAdapter
             layoutManager = gridLayoutManager
-            addItemDecoration(PosterItemDecoration())
         }
 
     }
 
-    private fun onPosterList(posterList: MutableList<PosterItemUIModel>) {
-        posterAdapter.submitList((posterList as MutableList<*>).toMutableList())
+    private fun onPosterList(posterList: MutableList<ListAdapterItem>) {
+        posterAdapter.submitList(posterList.toMutableList())
     }
 
     private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {

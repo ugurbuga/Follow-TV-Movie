@@ -1,27 +1,21 @@
 package com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.DisplayHelper
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class PosterAdapter(
-    context: Context,
     private val onPosterClick: ((poster: PosterItemUIModel, imageView: AppCompatImageView) -> Unit)? = null,
-) : FTMBaseListAdapter<Any>(
+) : FTMBaseListAdapter<ListAdapterItem>(
     itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }
 ) {
-
-    private var imageHeight: Double? =
-        DisplayHelper.getHeightFromRatio(context, R.dimen.padding_48, 1.5, 2)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,7 +37,6 @@ class PosterAdapter(
                 val product = getItem(position) as PosterItemUIModel
                 holder.bind(
                     product,
-                    imageHeight,
                     onPosterClick
                 )
             }

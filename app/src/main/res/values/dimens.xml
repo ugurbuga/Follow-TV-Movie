@@ -124,13 +124,18 @@
     <dimen name="height_168">168dp</dimen>
     <dimen name="height_176">176dp</dimen>
     <dimen name="height_181">181dp</dimen>
+    <dimen name="height_192">192dp</dimen>
     <dimen name="height_210">210dp</dimen>
     <dimen name="height_300">300dp</dimen>
     <dimen name="height_460">460dp</dimen>
 
+    <dimen name="radius_4">4dp</dimen>
     <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_20">20dp</dimen>
 
     <dimen name="elevation_0">0dp</dimen>
     <dimen name="elevation_4">4dp</dimen>
+    <dimen name="elevation_8">8dp</dimen>
+    <dimen name="radius_16">16dp</dimen>
 
 </resources>

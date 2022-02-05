@@ -12,36 +12,27 @@
 
     <com.ugurbuga.followtvmovie.view.FTMCardView
         android:id="@+id/main_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/width_120"
+        android:layout_height="@dimen/height_176"
         app:cardPreventCornerOverlap="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="@dimen/width_120"
+            android:layout_height="@dimen/height_176">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/posterImage"
                 imageUrl="@{item.posterPath}"
-                android:layout_width="@dimen/width_0"
-                android:layout_height="@dimen/height_0"
+                android:layout_width="@dimen/width_120"
+                android:layout_height="@dimen/height_176"
+                android:foreground="@drawable/background_item_poster"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/width_0"
-                android:layout_height="@dimen/height_0"
-                android:background="@drawable/background_item_poster"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.ugurbuga.followtvmovie.view.FTMTextView
                 android:id="@+id/name"
@@ -52,7 +43,7 @@
                 android:layout_marginBottom="@dimen/margin_16"
                 android:text="@{item.name}"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/quaternary_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="name \nname" />

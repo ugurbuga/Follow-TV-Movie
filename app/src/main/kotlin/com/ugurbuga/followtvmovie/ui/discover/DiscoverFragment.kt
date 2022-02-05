@@ -1,10 +1,18 @@
 package com.ugurbuga.followtvmovie.ui.discover
 
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.ugurbuga.followtvmovie.DiscoverNavGraphDirections
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
-import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentDiscoverBinding
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.scrollListener
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.DiscoverAdapters
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
+import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,21 +21,109 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
     override fun getResourceLayoutId() = R.layout.fragment_discover
 
     override fun onInitDataBinding() {
-        viewBinding.apply {
-            val adapter = DiscoverFragmentAdapter(requireActivity())
-            discoverViewPager.adapter = adapter
+        observe(viewModel.discover, ::onDiscover)
 
-            TabLayoutMediator(discoverTabLayout, discoverViewPager) { tab, position ->
-                tab.text = when (position) {
+        with(viewBinding) {
+            adapters =
+                DiscoverAdapters(
+                    popularMovieAdapter = PosterAdapter(::onPopularMovieClicked),
+                    popularTvShowAdapter = PosterAdapter(::onPopularTvShowClicked),
+                    upcomingMovieAdapter = PosterAdapter(::onUpcomingMovieClicked)
 
-                    0 -> getString(R.string.movie)
+                )
+            popularMovieRecyclerView.apply {
+                scrollListener(::onPopularMovieScroll)
+            }
 
-                    1 -> getString(R.string.tv_series)
+            popularTvShowRecyclerView.apply {
+                scrollListener(::onPopularTvShowScroll)
+            }
 
-                    else -> Util.EMPTY_STRING
-                }
-            }.attach()
+            upcomingMovieRecyclerView.apply {
+                scrollListener(::onUpcomingMovieScroll)
+            }
         }
+    }
+
+    //////////////////////////////////////////////////////
+
+    private fun onDiscover(posterViewState: PosterViewState) {
+        viewBinding.viewState = posterViewState
+    }
+
+    //////////////////////////////////////////////////////
+
+    private fun onPopularMovieScroll(
+        visibleItemCount: Int,
+        firstVisibleItemPosition: Int,
+        totalItemCount: Int
+    ) {
+        viewModel.getNewItemsPopularMovie(
+            visibleItemCount,
+            firstVisibleItemPosition,
+            totalItemCount
+        )
+    }
+
+    private fun onPopularMovieClicked(
+        poster: PosterItemUIModel,
+        imageView: AppCompatImageView
+    ) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
+        directions.argId = poster.id
+        directions.argImageUrl = poster.posterPath
+        findNavController().navigate(directions, extras)
+    }
+
+//////////////////////////////////////////////////////
+
+    private fun onPopularTvShowScroll(
+        visibleItemCount: Int,
+        firstVisibleItemPosition: Int,
+        totalItemCount: Int
+    ) {
+        viewModel.getNewItemsPopularTvShow(
+            visibleItemCount,
+            firstVisibleItemPosition,
+            totalItemCount
+        )
+    }
+
+    private fun onPopularTvShowClicked(
+        poster: PosterItemUIModel,
+        imageView: AppCompatImageView
+    ) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
+        directions.argId = poster.id
+        directions.argImageUrl = poster.posterPath
+        findNavController().navigate(directions, extras)
+    }
+
+//////////////////////////////////////////////////////
+
+    private fun onUpcomingMovieScroll(
+        visibleItemCount: Int,
+        firstVisibleItemPosition: Int,
+        totalItemCount: Int
+    ) {
+        viewModel.getNewItemsUpcomingMovie(
+            visibleItemCount,
+            firstVisibleItemPosition,
+            totalItemCount
+        )
+    }
+
+    private fun onUpcomingMovieClicked(
+        poster: PosterItemUIModel,
+        imageView: AppCompatImageView
+    ) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
+        directions.argId = poster.id
+        directions.argImageUrl = poster.posterPath
+        findNavController().navigate(directions, extras)
     }
 
 }

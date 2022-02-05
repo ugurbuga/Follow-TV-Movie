@@ -3,9 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewState"
+            type="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailViewState" />
+
+        <variable
+            name="genreAdapter"
+            type="com.ugurbuga.followtvmovie.ui.moviedetail.GenreAdapter" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
@@ -19,12 +31,13 @@
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:elevation="@dimen/elevation_8"
                 app:collapsedTitleGravity="center"
-                app:collapsedTitleTextColor="@color/secondary_color"
-                app:contentScrim="@color/primary_color"
+                app:collapsedTitleTextColor="@color/tertiary_color"
+                app:contentScrim="@color/quaternary_color"
                 app:expandedTitleGravity="center|bottom"
-                app:expandedTitleTextColor="@color/primary_color"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:expandedTitleTextColor="@color/quaternary_color"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:toolbarId="@id/toolbar">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -32,19 +45,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
+                    android:foreground="@drawable/background_item_poster"
                     android:scaleType="centerCrop"
-                    android:transitionName="image_big"
-                    app:layout_collapseMode="parallax" />
+                    android:transitionName="@string/image_big"
+                    app:layout_collapseMode="parallax"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <com.ugurbuga.followtvmovie.view.toolbar.FTMToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
                     android:elevation="@dimen/elevation_0"
                     app:contentInsetStart="0dp"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:title="@string/welcome_message_title" />
+                    app:title="@{viewState.movieDetail.title}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -55,11 +71,37 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Dummy" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.ugurbuga.followtvmovie.view.FTMExpandableTextView
+                    style="@style/FTMText.Regular.14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/padding_16"
+                    android:text="@{viewState.movieDetail.overview}"
+                    tools:text="Açıklama" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/genre_adapter_recycler_view"
+                    adapter="@{genreAdapter}"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.movieDetail.genres}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                    tools:listitem="@layout/item_genre" />
+
+            </LinearLayout>
+
 
         </androidx.core.widget.NestedScrollView>
 

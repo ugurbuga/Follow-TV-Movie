@@ -1,6 +1,5 @@
 package com.ugurbuga.followtvmovie.extensions
 
-
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.common.Status
 import kotlinx.coroutines.flow.Flow
