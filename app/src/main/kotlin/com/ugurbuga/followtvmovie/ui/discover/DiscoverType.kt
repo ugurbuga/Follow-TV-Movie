@@ -1,12 +1,12 @@
-package com.ugurbuga.followtvmovie.ui.discover.popularlist
+package com.ugurbuga.followtvmovie.ui.discover
 
 import androidx.annotation.StringDef
 
 @StringDef(
-    PopularListType.MOVIE,
-    PopularListType.TV_SHOW
+    DiscoverType.MOVIE,
+    DiscoverType.TV_SHOW
 )
-annotation class PopularListType {
+annotation class DiscoverType {
     companion object {
         const val MOVIE = "movie"
         const val TV_SHOW = "tv_show"

@@ -10,7 +10,6 @@ import com.ugurbuga.followtvmovie.databinding.FragmentDiscoverBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.observe
 import com.ugurbuga.followtvmovie.extensions.scrollListener
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.DiscoverAdapters
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState
 import dagger.hilt.android.AndroidEntryPoint

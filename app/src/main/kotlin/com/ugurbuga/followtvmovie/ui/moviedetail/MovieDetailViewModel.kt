@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
+import com.ugurbuga.followtvmovie.domain.poster.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val movieDetailUseCase: MovieDetailUseCase,
+    private val addFavoriteUseCase: AddFavoriteUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -39,6 +41,15 @@ class MovieDetailViewModel @Inject constructor(
                 _movieDetailViewState.postValue(MovieDetailViewState(it))
             }
             .launchIn(viewModelScope)
+    }
+
+    fun addFavorite() {
+        movieDetailViewState.value?.movieDetail?.let {
+            addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it))
+                .doOnStatusChanged {
+                    it
+                }.launchIn(viewModelScope)
+        }
     }
 
 }

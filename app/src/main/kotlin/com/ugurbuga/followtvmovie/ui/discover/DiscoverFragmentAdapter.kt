@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListFragment
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListType
 
 class DiscoverFragmentAdapter(
     fragmentActivity: FragmentActivity
@@ -13,10 +12,10 @@ class DiscoverFragmentAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                PopularListFragment.newInstance(PopularListType.MOVIE)
+                PopularListFragment.newInstance(DiscoverType.MOVIE)
             }
             1 -> {
-                PopularListFragment.newInstance(PopularListType.TV_SHOW)
+                PopularListFragment.newInstance(DiscoverType.TV_SHOW)
             }
             else -> throw IllegalStateException("View Error")
         }

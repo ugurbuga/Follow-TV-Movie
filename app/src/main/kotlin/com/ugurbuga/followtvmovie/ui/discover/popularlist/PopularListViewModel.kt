@@ -15,6 +15,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
+import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListFragment.Companion.ARG_POPULAR_LIST_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -46,10 +47,10 @@ class PopularListViewModel @Inject constructor(
         page++
         addLoading()
         when (listType) {
-            PopularListType.MOVIE -> {
+            DiscoverType.MOVIE -> {
                 getPopularMovies()
             }
-            PopularListType.TV_SHOW -> {
+            DiscoverType.TV_SHOW -> {
                 getPopularTvShows()
             }
         }

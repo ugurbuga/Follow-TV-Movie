@@ -102,8 +102,17 @@
 
             </LinearLayout>
 
-
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/margin_16"
+            android:backgroundTint="@color/primary_color"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/quaternary_color" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

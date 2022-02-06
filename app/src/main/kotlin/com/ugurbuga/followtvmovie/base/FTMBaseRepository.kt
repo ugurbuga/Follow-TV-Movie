@@ -26,4 +26,15 @@ abstract class FTMBaseRepository {
             }
             emit(Resource.Error(error))
         }.flowOn(dispatcher)
+
+    fun <T : Any> onRoomCall(call: suspend () -> T): Flow<Resource<T>> =
+        flow {
+            emit(Resource.Loading)
+            emit(Resource.Success(data = call.invoke()))
+        }.catch { error ->
+            if (BuildConfig.DEBUG) {
+                error.printStackTrace()
+            }
+            emit(Resource.Error(error))
+        }.flowOn(dispatcher)
 }

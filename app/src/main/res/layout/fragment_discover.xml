@@ -7,7 +7,7 @@
 
         <variable
             name="adapters"
-            type="com.ugurbuga.followtvmovie.ui.discover.popularlist.DiscoverAdapters" />
+            type="com.ugurbuga.followtvmovie.ui.discover.DiscoverAdapters" />
 
         <variable
             name="viewState"
@@ -52,7 +52,7 @@
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_poster" />
+                    tools:listitem="@layout/item_favorite" />
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.24.Primary"
@@ -72,7 +72,7 @@
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_poster" />
+                    tools:listitem="@layout/item_favorite" />
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.24.Primary"
@@ -92,7 +92,7 @@
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_poster" />
+                    tools:listitem="@layout/item_favorite" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

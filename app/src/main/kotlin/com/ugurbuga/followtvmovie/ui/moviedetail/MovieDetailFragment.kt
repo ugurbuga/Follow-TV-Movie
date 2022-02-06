@@ -47,6 +47,10 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 )
             }
             genreAdapter = GenreAdapter()
+
+            favoriteButton.setOnClickListener {
+                viewModel.addFavorite()
+            }
         }
     }
 

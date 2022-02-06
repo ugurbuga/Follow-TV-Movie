@@ -24,6 +24,22 @@ class FTMExpandableTextView @JvmOverloads constructor(
                 setUpArrow()
             }
         }
+        post {
+            updateLineCount()
+        }
+    }
+
+    private fun updateLineCount() {
+        if (!text.isNullOrBlank() && lineCount > 0) {
+            if (lineCount > MAX_LINE_COUNT) {
+                isClickable = true
+                maxLines = 3
+                setDownArrow()
+            } else {
+                isClickable = false
+                removeArrow()
+            }
+        }
     }
 
     override fun onTextChanged(
@@ -33,15 +49,7 @@ class FTMExpandableTextView @JvmOverloads constructor(
         lengthAfter: Int
     ) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter)
-
-        if (lineCount > MAX_LINE_COUNT) {
-            isClickable = true
-            maxLines = 3
-            setDownArrow()
-        } else {
-            isClickable = false
-            removeArrow()
-        }
+        updateLineCount()
     }
 
     private fun setDownArrow() {
