@@ -6,17 +6,12 @@
     <data>
 
         <variable
-            name="favoriteAdapter"
-            type="com.ugurbuga.followtvmovie.ui.movie.FavoriteAdapter" />
-
-        <variable
             name="viewState"
             type="com.ugurbuga.followtvmovie.ui.movie.FavoriteViewState" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tv_show_list_recycler_view"
-        adapter="@{favoriteAdapter}"
         spacePaddingBottom="@{@dimen/padding_8}"
         spacePaddingLeft="@{@dimen/padding_8}"
         spacePaddingRight="@{@dimen/padding_8}"

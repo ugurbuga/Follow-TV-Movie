@@ -6,6 +6,7 @@ import com.ugurbuga.followtvmovie.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -36,5 +37,15 @@ abstract class FTMBaseRepository {
                 error.printStackTrace()
             }
             emit(Resource.Error(error))
+        }.flowOn(dispatcher)
+
+    fun <T : Any?> onRoomFlowCall(call: Flow<T>): Flow<Resource<T>> =
+        flow {
+            emit(Resource.Loading)
+            call.collect {
+                emit(Resource.Success(it))
+            }
+        }.catch {
+            emit(Resource.Error(it))
         }.flowOn(dispatcher)
 }

@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.transition.TransitionInflater
 import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.observeEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,8 +31,9 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
     }
 
     override fun onInitDataBinding() {
-        observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
         with(viewBinding) {
+            val adapter = GenreAdapter()
+            genreAdapterRecyclerView.adapter = adapter
             imageView.setImageUrl(args.argImageUrl)
             collapsingToolbarLayout.apply {
                 setCollapsedTitleTypeface(
@@ -46,10 +49,24 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                     )
                 )
             }
-            genreAdapter = GenreAdapter()
 
             favoriteButton.setOnClickListener {
-                viewModel.addFavorite()
+                viewModel.changeFavoriteState()
+            }
+        }
+        observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
+        observeEvent(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+
+    }
+
+    private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {
+        when (event) {
+            MovieDetailViewEvent.ShowAddedSnackbar -> {
+                Snackbar.make(viewBinding.root, "Favoriye Eklendi.", Snackbar.LENGTH_SHORT).show()
+            }
+            MovieDetailViewEvent.ShowDeletedSnackbar -> {
+                Snackbar.make(viewBinding.root, "Favoriden Kaldırıldı.", Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
     }

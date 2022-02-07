@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="adapters"
-            type="com.ugurbuga.followtvmovie.ui.discover.DiscoverAdapters" />
-
-        <variable
             name="viewState"
             type="com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState" />
     </data>
@@ -43,7 +39,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_movie_recycler_view"
-                    adapter="@{adapters.popularMovieAdapter}"
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingLeft="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
@@ -63,7 +58,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_tv_show_recycler_view"
-                    adapter="@{adapters.popularTvShowAdapter}"
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingLeft="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
@@ -83,7 +77,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upcoming_movie_recycler_view"
-                    adapter="@{adapters.upcomingMovieAdapter}"
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingLeft="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"

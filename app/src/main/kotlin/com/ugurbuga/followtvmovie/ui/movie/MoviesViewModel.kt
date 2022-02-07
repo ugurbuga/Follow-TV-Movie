@@ -2,20 +2,18 @@ package com.ugurbuga.followtvmovie.ui.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.common.Resource
-import com.ugurbuga.followtvmovie.domain.poster.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.favorite.GetFavoritesUseCase
+import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val getFavoriteUseCase: GetFavoriteUseCase,
+    private val getFavoriteUseCase: GetFavoritesUseCase,
 ) : FTMBaseViewModel() {
 
     private val _favoriteViewState = MutableLiveData<FavoriteViewState>()
@@ -23,18 +21,10 @@ class MoviesViewModel @Inject constructor(
         get() = _favoriteViewState
 
     init {
-        viewModelScope.launch {
-            getFavoriteUseCase(GetFavoriteUseCase.GetFavoriteParams(DiscoverType.MOVIE)).collect {
-                if (it is Resource.Success) {
-                    _favoriteViewState.value = FavoriteViewState(it.data)
-                }
+        getFavoriteUseCase(GetFavoritesUseCase.GetFavoriteParams(DiscoverType.MOVIE))
+            .doOnSuccess {
+                _favoriteViewState.value = FavoriteViewState(it)
             }
-        }
-    }
-}
-
-fun ViewModel.launchInVMScope(function: suspend () -> Unit) {
-    viewModelScope.launch {
-        function.invoke()
+            .launchIn(viewModelScope)
     }
 }

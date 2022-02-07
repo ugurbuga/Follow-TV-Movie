@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.poster
+package com.ugurbuga.followtvmovie.domain.favorite
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
@@ -7,10 +7,10 @@ import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetFavoriteUseCase @Inject constructor(
+class GetFavoritesUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository
 ) :
-    FTMUseCase<GetFavoriteUseCase.GetFavoriteParams, Resource<MutableList<PosterItemUIModel>>>() {
+    FTMUseCase<GetFavoritesUseCase.GetFavoriteParams, MutableList<PosterItemUIModel>>() {
 
     data class GetFavoriteParams(val type: String)
 

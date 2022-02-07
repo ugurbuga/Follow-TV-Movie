@@ -341,11 +341,6 @@
         <item name="tabTextColor">@color/grey_600</item>
         <item name="tabIndicatorColor">@color/grey_700</item>
         <item name="tabIndicatorHeight">@dimen/height_2</item>
-
-    </style>
-
-    <style name="FTMProductSnackbar" parent="Widget.MaterialComponents.Snackbar">
-        <item name="android:layout_margin">0dp</item>
     </style>
 
     <style name="FTMCardView" parent="Widget.MaterialComponents.CardView">

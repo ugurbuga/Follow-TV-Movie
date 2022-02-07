@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.usecase
 
-import com.ugurbuga.followtvmovie.base.FTMResourceUseCase
+import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.MovieMapper
@@ -14,7 +14,7 @@ class MovieDetailUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
     private val movieMapper: MovieMapper
 ) :
-    FTMResourceUseCase<MovieDetailUseCase.PopularMovieParams, MovieDetailUIModel>() {
+    FTMUseCase<MovieDetailUseCase.PopularMovieParams, MovieDetailUIModel>() {
 
     data class PopularMovieParams(val movieId: Int)
 

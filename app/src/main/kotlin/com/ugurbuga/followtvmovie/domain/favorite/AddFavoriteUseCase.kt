@@ -1,6 +1,6 @@
-package com.ugurbuga.followtvmovie.domain.poster
+package com.ugurbuga.followtvmovie.domain.favorite
 
-import com.ugurbuga.followtvmovie.base.FTMResourceUseCase
+import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
@@ -12,7 +12,7 @@ class AddFavoriteUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository,
     private val posterMapper: PosterMapper
 ) :
-    FTMResourceUseCase<AddFavoriteUseCase.AddFavoriteParams, Unit>() {
+    FTMUseCase<AddFavoriteUseCase.AddFavoriteParams, Unit>() {
 
     data class AddFavoriteParams(val movieDetail: MovieDetailUIModel)
 

@@ -13,13 +13,6 @@ fun submitList(view: RecyclerView, list: List<ListAdapterItem>?) {
     adapter?.submitList(list?.toMutableList())
 }
 
-@BindingAdapter("adapter")
-fun setAdapter(view: RecyclerView, adapter: FTMBaseListAdapter<ListAdapterItem>?) {
-    adapter?.let {
-        view.adapter = it
-    }
-}
-
 @BindingAdapter(
     value = ["spacePaddingLeft", "spacePaddingTop", "spacePaddingRight", "spacePaddingBottom"],
     requireAll = false

@@ -17,7 +17,7 @@ class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMovieBinding>(
         observe(viewModel.favoriteViewState, ::onFavoriteViewState)
 
         with(viewBinding) {
-            favoriteAdapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)
+            movieListRecyclerView.adapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)
         }
 
     }

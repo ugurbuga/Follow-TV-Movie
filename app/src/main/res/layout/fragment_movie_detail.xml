@@ -8,16 +8,11 @@
         <variable
             name="viewState"
             type="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailViewState" />
-
-        <variable
-            name="genreAdapter"
-            type="com.ugurbuga.followtvmovie.ui.moviedetail.GenreAdapter" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
         android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
@@ -87,7 +82,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/genre_adapter_recycler_view"
-                    adapter="@{genreAdapter}"
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingLeft="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
@@ -111,8 +105,9 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/margin_16"
             android:backgroundTint="@color/primary_color"
-            android:src="@drawable/ic_favorite"
-            app:tint="@color/quaternary_color" />
+            android:src="@{viewState.favorite ? @drawable/ic_favorite : @drawable/ic_not_favorite}"
+            app:tint="@color/quaternary_color"
+            tools:src="@drawable/ic_favorite" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

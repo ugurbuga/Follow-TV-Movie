@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase
 
-import com.ugurbuga.followtvmovie.base.FTMResourceUseCase
+import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
@@ -14,7 +14,7 @@ class PopularTvShowUseCase @Inject constructor(
     private val tvShowRepository: TvShowRepository,
     private val posterMapper: PosterMapper
 ) :
-    FTMResourceUseCase<PopularTvShowUseCase.PopularTvShowParams, PosterUIModel>() {
+    FTMUseCase<PopularTvShowUseCase.PopularTvShowParams, PosterUIModel>() {
 
     data class PopularTvShowParams(val page: Int)
 

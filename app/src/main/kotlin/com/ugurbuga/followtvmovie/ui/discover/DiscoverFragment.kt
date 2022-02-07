@@ -23,13 +23,10 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         observe(viewModel.discover, ::onDiscover)
 
         with(viewBinding) {
-            adapters =
-                DiscoverAdapters(
-                    popularMovieAdapter = PosterAdapter(::onPopularMovieClicked),
-                    popularTvShowAdapter = PosterAdapter(::onPopularTvShowClicked),
-                    upcomingMovieAdapter = PosterAdapter(::onUpcomingMovieClicked)
+            popularMovieRecyclerView.adapter = PosterAdapter(::onPopularMovieClicked)
+            popularTvShowRecyclerView.adapter = PosterAdapter(::onPopularTvShowClicked)
+            upcomingMovieRecyclerView.adapter = PosterAdapter(::onUpcomingMovieClicked)
 
-                )
             popularMovieRecyclerView.apply {
                 scrollListener(::onPopularMovieScroll)
             }

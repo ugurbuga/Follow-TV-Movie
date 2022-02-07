@@ -8,9 +8,11 @@ interface FavoritesRepository {
 
     fun insert(note: PosterItemUIModel): Flow<Resource<Unit>>
 
-    suspend fun delete(note: PosterItemUIModel)
+    fun delete(id: Int): Flow<Resource<Unit>>
 
     fun getFavorites(listType: String): Flow<Resource<MutableList<PosterItemUIModel>>>
+
+    fun getFavorite(listType: String, id: Int): Flow<Resource<PosterItemUIModel?>>
 
     suspend fun update(note: PosterItemUIModel)
 }

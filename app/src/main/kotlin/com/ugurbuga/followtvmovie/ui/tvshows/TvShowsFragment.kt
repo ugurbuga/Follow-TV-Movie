@@ -19,9 +19,8 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
         observe(viewModel.favoriteViewState, ::onFavoriteViewState)
 
         with(viewBinding) {
-            favoriteAdapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)
+            tvShowListRecyclerView.adapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)
         }
-
     }
 
     private fun onFavoriteViewState(viewState: FavoriteViewState) {
