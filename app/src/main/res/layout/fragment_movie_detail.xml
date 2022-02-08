@@ -109,6 +109,11 @@
             app:tint="@color/quaternary_color"
             tools:src="@drawable/ic_favorite" />
 
+        <include
+            android:id="@+id/movie_reviews"
+            layout="@layout/layout_reviews_bottom_sheet" />
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

@@ -40,8 +40,11 @@
         <entry key="app/src/main/res/layout/item_genre.xml" value="1.6981759714525801" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.15881458966565348" />
         <entry key="app/src/main/res/layout/item_poster.xml" value="0.2781954887218045" />
+        <entry key="app/src/main/res/layout/item_review.xml" value="0.25272372057057924" />
         <entry key="app/src/main/res/layout/layout_loading_view.xml" value="0.275" />
         <entry key="app/src/main/res/layout/layout_ltb_snack_bar.xml" value="0.2726449275362319" />
+        <entry key="app/src/main/res/layout/layout_persistent_bottom_sheet.xml" value="0.15959809888310791" />
+        <entry key="app/src/main/res/layout/layout_reviews_bottom_sheet.xml" value="0.12228260869565218" />
       </map>
     </option>
   </component>

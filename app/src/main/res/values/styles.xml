@@ -347,7 +347,7 @@
         <item name="cardCornerRadius">@dimen/radius_8</item>
         <item name="cardElevation">@dimen/elevation_4</item>
         <item name="strokeWidth">@dimen/width_0</item>
-        <item name="cardBackgroundColor">@color/primary_color</item>
+        <item name="cardBackgroundColor">@color/quaternary_color</item>
     </style>
 
 </resources>

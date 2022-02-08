@@ -53,10 +53,17 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             favoriteButton.setOnClickListener {
                 viewModel.changeFavoriteState()
             }
-        }
-        observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
-        observeEvent(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
 
+            movieReviews.reviewRecyclerView.adapter = ReviewAdapter()
+        }
+
+        observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
+        observe(viewModel.movieReviewViewState, ::onMovieReviewViewState)
+        observeEvent(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+    }
+
+    private fun onMovieReviewViewState(movieReviewViewState: MovieReviewViewState) {
+        viewBinding.movieReviews.viewState = movieReviewViewState
     }
 
     private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {

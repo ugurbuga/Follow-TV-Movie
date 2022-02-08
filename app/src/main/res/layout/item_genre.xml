@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.GenreUIModel" />
+            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel" />
     </data>
 
     <com.ugurbuga.followtvmovie.view.FTMTextView

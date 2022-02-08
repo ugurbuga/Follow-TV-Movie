@@ -1,10 +1,13 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.GenreResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.GenreUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.MovieDetailResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.MovieDetailUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import javax.inject.Inject
 
 class MovieMapper @Inject constructor() {
@@ -29,6 +32,19 @@ class MovieMapper @Inject constructor() {
         return GenreUIModel(
             id = response.id,
             name = response.name
+        )
+    }
+
+    fun toReviewUIModelList(movieReviewResponse: MovieReviewResponse): List<ReviewUIModel> {
+        return movieReviewResponse.results.map { toReviewUI(it) }
+    }
+
+    private fun toReviewUI(response: ReviewResponse): ReviewUIModel {
+        return ReviewUIModel(
+            author = response.author,
+            content = response.content,
+            createdAt = response.createdAt,
+            id = response.id
         )
     }
 }

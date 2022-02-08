@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel" />
+    </data>
+
+    <com.ugurbuga.followtvmovie.view.FTMCardView
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.ugurbuga.followtvmovie.view.FTMTextView
+                android:id="@+id/name"
+                style="@style/FTMText.SemiBold.15"
+                android:layout_width="@dimen/width_0"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginVertical="@dimen/margin_4"
+                android:text="@{item.author}"
+                app:layout_constraintBottom_toTopOf="@id/review"
+                app:layout_constraintEnd_toStartOf="@id/date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="name" />
+
+            <com.ugurbuga.followtvmovie.view.FTMTextView
+                android:id="@+id/date"
+                style="@style/FTMText.Light.15"
+                android:layout_width="@dimen/width_0"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginVertical="@dimen/margin_4"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:text="@{item.author}"
+                android:textAlignment="viewEnd"
+                app:layout_constraintBottom_toTopOf="@id/review"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/name"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="name" />
+
+            <com.ugurbuga.followtvmovie.view.FTMExpandableTextView
+                android:id="@+id/review"
+                style="@style/FTMText.Light.13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:text="@{item.content}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                tools:text="review" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.ugurbuga.followtvmovie.view.FTMCardView>
+</layout>

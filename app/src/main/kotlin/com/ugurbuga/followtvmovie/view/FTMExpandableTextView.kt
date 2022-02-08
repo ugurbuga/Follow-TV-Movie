@@ -74,7 +74,6 @@ class FTMExpandableTextView @JvmOverloads constructor(
         )
     }
 
-
     companion object {
         const val MAX_LINE_COUNT = 3
     }

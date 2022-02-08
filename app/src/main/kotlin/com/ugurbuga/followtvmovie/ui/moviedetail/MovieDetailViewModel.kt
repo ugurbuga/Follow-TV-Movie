@@ -6,10 +6,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Event
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieReviewUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
@@ -23,6 +24,7 @@ class MovieDetailViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
+    private val movieReviewUseCase: MovieReviewUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -32,10 +34,14 @@ class MovieDetailViewModel @Inject constructor(
     private val _movieDetailViewState = MutableLiveData<MovieDetailViewState>()
     val movieDetailViewState: LiveData<MovieDetailViewState> get() = _movieDetailViewState
 
+    private val _movieReviewViewState = MutableLiveData<MovieReviewViewState>()
+    val movieReviewViewState: LiveData<MovieReviewViewState> get() = _movieReviewViewState
+
     private var movieId: Int = savedStateHandle["arg_id"] ?: -1
 
     init {
         getMovieDetail()
+        getReviews()
     }
 
     private fun isFavorite() {
@@ -52,7 +58,7 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getMovieDetail() {
-        movieDetailUseCase(MovieDetailUseCase.PopularMovieParams(movieId))
+        movieDetailUseCase(MovieDetailUseCase.MovieDetailParams(movieId))
             .doOnStatusChanged {
                 initStatusState(
                     it,
@@ -67,7 +73,7 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun changeFavoriteState() {
-        if (_movieDetailViewState.value?.isFavorite == true) {
+        if (movieDetailViewState.value?.isFavorite == true) {
             movieDetailViewState.value?.movieDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
                     .doOnSuccess {
@@ -85,6 +91,21 @@ class MovieDetailViewModel @Inject constructor(
                     }.launchIn(viewModelScope)
             }
         }
+    }
+
+    private fun getReviews() {
+        movieReviewUseCase(MovieReviewUseCase.MovieReviewParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it,
+                    isShowLoading = false
+                )
+            }
+            .doOnSuccess {
+                _movieReviewViewState.postValue(MovieReviewViewState(it))
+                isFavorite()
+            }
+            .launchIn(viewModelScope)
     }
 
 }

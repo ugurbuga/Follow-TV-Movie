@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.nextlua.corelib.core.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.databinding.ItemGenreBinding
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.GenreUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 
 class GenreViewHolder(
     parent: ViewGroup,

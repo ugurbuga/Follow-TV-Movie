@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.model
+package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
 
 
 data class MovieDetailUIModel(
