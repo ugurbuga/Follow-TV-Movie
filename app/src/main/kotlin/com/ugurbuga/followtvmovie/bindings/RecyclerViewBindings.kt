@@ -14,20 +14,20 @@ fun submitList(view: RecyclerView, list: List<ListAdapterItem>?) {
 }
 
 @BindingAdapter(
-    value = ["spacePaddingLeft", "spacePaddingTop", "spacePaddingRight", "spacePaddingBottom"],
+    value = ["spacePaddingStart", "spacePaddingTop", "spacePaddingEnd", "spacePaddingBottom"],
     requireAll = false
 )
 fun RecyclerView.setSpaceBinding(
-    spacePaddingLeft: Float?,
+    spacePaddingStart: Float?,
     spacePaddingTop: Float?,
-    spacePaddingRight: Float?,
+    spacePaddingEnd: Float?,
     spacePaddingBottom: Float?
 ) {
     addItemDecoration(
         SpaceItemDecoration(
-            spacePaddingLeft?.toInt() ?: 0,
+            spacePaddingStart?.toInt() ?: 0,
             spacePaddingTop?.toInt() ?: 0,
-            spacePaddingRight?.toInt() ?: 0,
+            spacePaddingEnd?.toInt() ?: 0,
             spacePaddingBottom?.toInt() ?: 0,
         )
     )

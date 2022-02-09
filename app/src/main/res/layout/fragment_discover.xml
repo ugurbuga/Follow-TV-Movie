@@ -40,7 +40,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_movie_recycler_view"
                     spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.popularMovieList}"
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_tv_show_recycler_view"
                     spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.popularTvShowList}"
                     android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upcoming_movie_recycler_view"
                     spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingLeft="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.upcomingMovieList}"
                     android:layout_width="match_parent"

@@ -59,6 +59,8 @@
     <string name="popular_tv_shows">Popular Tv Shows</string>
     <string name="upcoming_movies">Upcoming Movies</string>
     <string name="image_big">image_big</string>
+    <string name="reviews">Reviews</string>
+    <string name="no_reviews">No Reviews</string>
 
 
 </resources>

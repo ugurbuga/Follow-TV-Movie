@@ -24,7 +24,7 @@ interface MovieService {
         @Path("movieId") movieId: Int,
     ): MovieDetailResponse
 
-    @GET("movie/{movie_id}/reviews")
+    @GET("movie/{movieId}/reviews")
     suspend fun getMovieReviews(
         @Path("movieId") page: Int,
     ): MovieReviewResponse

@@ -42,13 +42,13 @@
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginVertical="@dimen/margin_4"
                 android:drawableEnd="@drawable/ic_calendar"
-                android:text="@{item.author}"
+                android:text="@{item.createdAt}"
                 android:textAlignment="viewEnd"
                 app:layout_constraintBottom_toTopOf="@id/review"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/name"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="name" />
+                tools:text="date" />
 
             <com.ugurbuga.followtvmovie.view.FTMExpandableTextView
                 android:id="@+id/review"

@@ -17,7 +17,7 @@ class ReviewAdapter : FTMBaseListAdapter<ListAdapterItem>(
         inflater: LayoutInflater,
         viewType: Int
     ): RecyclerView.ViewHolder {
-        return GenreViewHolder(parent, inflater)
+        return ReviewViewHolder(parent, inflater)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/background_genre.xml" value="0.810379150390625" />
         <entry key="app/src/main/res/drawable/background_item_poster.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_reviews.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.171" />
@@ -44,7 +45,7 @@
         <entry key="app/src/main/res/layout/layout_loading_view.xml" value="0.275" />
         <entry key="app/src/main/res/layout/layout_ltb_snack_bar.xml" value="0.2726449275362319" />
         <entry key="app/src/main/res/layout/layout_persistent_bottom_sheet.xml" value="0.15959809888310791" />
-        <entry key="app/src/main/res/layout/layout_reviews_bottom_sheet.xml" value="0.12228260869565218" />
+        <entry key="app/src/main/res/layout/layout_reviews_bottom_sheet.xml" value="0.36885245901639346" />
       </map>
     </option>
   </component>
