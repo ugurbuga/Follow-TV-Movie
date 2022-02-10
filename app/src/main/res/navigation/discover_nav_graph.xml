@@ -12,21 +12,17 @@
 
     <action
         android:id="@+id/action_to_movieDetailFragment"
-        app:destination="@id/movieDetailFragment" />
-
-    <fragment
-        android:id="@+id/movieDetailFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragment"
-        tools:layout="@layout/fragment_movie_detail">
+        app:destination="@id/movie_detail_nav_graph">
 
         <argument
             android:name="arg_id"
-            android:defaultValue="0"
             app:argType="integer" />
+
         <argument
             android:name="arg_image_url"
-            android:defaultValue=""
             app:argType="string" />
-    </fragment>
+    </action>
+
+    <include app:graph="@navigation/movie_detail_nav_graph" />
 
 </navigation>

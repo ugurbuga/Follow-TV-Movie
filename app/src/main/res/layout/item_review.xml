@@ -36,12 +36,14 @@
 
             <com.ugurbuga.followtvmovie.view.FTMTextView
                 android:id="@+id/date"
-                style="@style/FTMText.Light.15"
+                style="@style/FTMText.Light.13"
                 android:layout_width="@dimen/width_0"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginVertical="@dimen/margin_4"
                 android:drawableEnd="@drawable/ic_calendar"
+                android:gravity="center|end"
+                android:drawablePadding="@dimen/padding_4"
                 android:text="@{item.createdAt}"
                 android:textAlignment="viewEnd"
                 app:layout_constraintBottom_toTopOf="@id/review"
@@ -50,7 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="date" />
 
-            <com.ugurbuga.followtvmovie.view.FTMExpandableTextView
+            <com.ugurbuga.followtvmovie.view.FTMTextView
                 android:id="@+id/review"
                 style="@style/FTMText.Light.13"
                 android:layout_width="match_parent"

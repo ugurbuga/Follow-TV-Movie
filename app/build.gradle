@@ -97,6 +97,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
     implementation "com.google.android.flexbox:flexbox:3.0.0"
+    implementation "com.ms-square:expandableTextView:0.1.4"
 
 
 }

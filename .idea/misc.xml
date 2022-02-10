@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/ic_movie.xml" value="0.178" />
+        <entry key="app/src/main/res/drawable/ic_review.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_tv.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/snackbar_background.xml" value="0.2345" />
@@ -30,6 +31,7 @@
         <entry key="app/src/main/res/layout/activity_ftm_base_fullscreen.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_w_base_default.xml" value="0.2726449275362319" />
+        <entry key="app/src/main/res/layout/bottom_sheet_review.xml" value="0.12228260869565218" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.32813720703125004" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.24333892822265626" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.26112823486328124" />
@@ -41,7 +43,7 @@
         <entry key="app/src/main/res/layout/item_genre.xml" value="1.6981759714525801" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.15881458966565348" />
         <entry key="app/src/main/res/layout/item_poster.xml" value="0.2781954887218045" />
-        <entry key="app/src/main/res/layout/item_review.xml" value="0.25272372057057924" />
+        <entry key="app/src/main/res/layout/item_review.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_loading_view.xml" value="0.275" />
         <entry key="app/src/main/res/layout/layout_ltb_snack_bar.xml" value="0.2726449275362319" />
         <entry key="app/src/main/res/layout/layout_persistent_bottom_sheet.xml" value="0.15959809888310791" />

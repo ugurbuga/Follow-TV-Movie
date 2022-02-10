@@ -66,9 +66,8 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         imageView: AppCompatImageView
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
-        directions.argId = poster.id
-        directions.argImageUrl = poster.posterPath
+        val directions =
+            DiscoverNavGraphDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
         findNavController().navigate(directions, extras)
     }
 
@@ -91,9 +90,8 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         imageView: AppCompatImageView
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
-        directions.argId = poster.id
-        directions.argImageUrl = poster.posterPath
+        val directions =
+            DiscoverNavGraphDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
         findNavController().navigate(directions, extras)
     }
 
@@ -116,9 +114,8 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         imageView: AppCompatImageView
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
-        directions.argId = poster.id
-        directions.argImageUrl = poster.posterPath
+        val directions =
+            DiscoverNavGraphDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
         findNavController().navigate(directions, extras)
     }
 

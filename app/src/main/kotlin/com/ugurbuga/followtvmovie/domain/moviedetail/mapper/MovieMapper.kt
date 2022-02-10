@@ -43,7 +43,7 @@ class MovieMapper @Inject constructor() {
         return ReviewUIModel(
             author = response.author,
             content = response.content,
-            createdAt = response.createdAt,
+            createdAt = Util.getDate(response.createdAt),
             id = response.id
         )
     }

@@ -71,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.ugurbuga.followtvmovie.view.FTMExpandableTextView
+                <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.Regular.14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,9 +109,15 @@
             app:tint="@color/quaternary_color"
             tools:src="@drawable/ic_favorite" />
 
-        <include
-            android:id="@+id/movie_reviews"
-            layout="@layout/layout_reviews_bottom_sheet" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reviews_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|bottom"
+            android:layout_margin="@dimen/margin_16"
+            android:backgroundTint="@color/primary_color"
+            android:src="@drawable/ic_review"
+            app:tint="@color/quaternary_color" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

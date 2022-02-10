@@ -3,7 +3,6 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import android.os.Bundle
 import android.transition.TransitionInflater
 import androidx.core.content.res.ResourcesCompat
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
@@ -17,8 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovieDetailBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_movie_detail
-
-    private val args: MovieDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +31,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         with(viewBinding) {
             val adapter = GenreAdapter()
             genreAdapterRecyclerView.adapter = adapter
-            imageView.setImageUrl(args.argImageUrl)
+            imageView.setImageUrl(requireArguments().getString("arg_image_url", ""))
             collapsingToolbarLayout.apply {
                 setCollapsedTitleTypeface(
                     ResourcesCompat.getFont(
@@ -54,16 +51,17 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 viewModel.changeFavoriteState()
             }
 
-            movieReviews.reviewRecyclerView.adapter = ReviewAdapter()
+            reviewsButton.setOnClickListener {
+                navigate(
+                    MovieDetailFragmentDirections.actionReviewFragment(
+                        requireArguments().getInt("arg_id", -1)
+                    )
+                )
+            }
         }
 
         observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
-        observe(viewModel.movieReviewViewState, ::onMovieReviewViewState)
         observeEvent(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
-    }
-
-    private fun onMovieReviewViewState(movieReviewViewState: MovieReviewViewState) {
-        viewBinding.movieReviews.viewState = movieReviewViewState
     }
 
     private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {

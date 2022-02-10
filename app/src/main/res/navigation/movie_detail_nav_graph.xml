@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_detail_nav_graph"
+    app:startDestination="@id/movieDetailFragment">
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <action
+            android:id="@+id/action_review_fragment"
+            app:destination="@id/reviewBottomSheet">
+
+            <argument
+                android:name="arg_id"
+                app:argType="integer" />
+        </action>
+
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/reviewBottomSheet"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.ReviewBottomSheet"
+        tools:layout="@layout/bottom_sheet_review" />
+
+</navigation>

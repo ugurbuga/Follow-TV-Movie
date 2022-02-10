@@ -17,7 +17,6 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.observe
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.SpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -87,9 +86,8 @@ class PopularListFragment :
     private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
         viewModel.addFavorites(poster)
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = DiscoverNavGraphDirections.actionToMovieDetailFragment()
-        directions.argId = poster.id
-        directions.argImageUrl = poster.posterPath
+        val directions =
+            DiscoverNavGraphDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
         findNavController().navigate(directions, extras)
         //TODO: Navigate Detail
     }
