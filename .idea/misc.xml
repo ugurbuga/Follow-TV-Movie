@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../.gradle/caches/transforms-3/1c2fe242bd7269754dd8456e9edafa48/transformed/expandabletextview-1.0.1/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1615" />
+        <entry key="../../../.gradle/caches/transforms-3/1c2fe242bd7269754dd8456e9edafa48/transformed/expandabletextview-1.0.1/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1615" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/ic_mtrl_chip_checked_black.xml" value="0.178" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/mtrl_dialog_background.xml" value="0.178" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/mtrl_dropdown_arrow.xml" value="0.178" />
@@ -21,6 +23,7 @@
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2345" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_movie.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_review.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.178" />
@@ -31,7 +34,7 @@
         <entry key="app/src/main/res/layout/activity_ftm_base_fullscreen.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_w_base_default.xml" value="0.2726449275362319" />
-        <entry key="app/src/main/res/layout/bottom_sheet_review.xml" value="0.12228260869565218" />
+        <entry key="app/src/main/res/layout/bottom_sheet_review.xml" value="0.37104817266049595" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.32813720703125004" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.24333892822265626" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.26112823486328124" />
@@ -39,6 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_soon.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_tv_series.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_tv_shows.xml" value="0.12318840579710146" />
+        <entry key="app/src/main/res/layout/item_cast.xml" value="0.2715611333432405" />
         <entry key="app/src/main/res/layout/item_empty.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_favorite.xml" value="0.12318840579710146" />
         <entry key="app/src/main/res/layout/item_genre.xml" value="1.6981759714525801" />
@@ -50,6 +54,10 @@
         <entry key="app/src/main/res/layout/layout_ltb_snack_bar.xml" value="0.2726449275362319" />
         <entry key="app/src/main/res/layout/layout_persistent_bottom_sheet.xml" value="0.15959809888310791" />
         <entry key="app/src/main/res/layout/layout_reviews_bottom_sheet.xml" value="0.36885245901639346" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_ftm_launcher.xml" value="0.1535" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1535" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1535" />
       </map>
     </option>
   </component>

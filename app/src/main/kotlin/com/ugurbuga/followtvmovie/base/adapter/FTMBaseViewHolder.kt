@@ -1,4 +1,4 @@
-package com.nextlua.corelib.core.adapter
+package com.ugurbuga.followtvmovie.base.adapter
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

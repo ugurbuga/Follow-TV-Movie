@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewState"
+            type="com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +42,7 @@
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.popularMovieList}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
@@ -53,6 +61,7 @@
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.popularTvShowList}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
@@ -71,6 +80,7 @@
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.upcomingMovieList}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_192"
                     android:orientation="horizontal"
@@ -79,7 +89,5 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
     </LinearLayout>
-
 </layout>

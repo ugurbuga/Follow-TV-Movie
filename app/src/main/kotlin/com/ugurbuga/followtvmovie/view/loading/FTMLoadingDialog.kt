@@ -3,10 +3,7 @@ package com.ugurbuga.followtvmovie.view.loading
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
-import androidx.core.content.ContextCompat
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.LayoutLoadingViewBinding
 
 class FTMLoadingDialog(

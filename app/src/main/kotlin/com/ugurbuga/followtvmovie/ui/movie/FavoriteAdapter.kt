@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.DisplayHelper
 import com.ugurbuga.followtvmovie.common.Util
@@ -41,9 +41,9 @@ class FavoriteAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is FavoriteViewHolder -> {
-                val product = getItem(position) as PosterItemUIModel
+                val item = getItem(position) as PosterItemUIModel
                 holder.bind(
-                    product, imageHeight, onPosterClick
+                    item, imageHeight, onPosterClick
                 )
             }
         }

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Splash Screen Theme -->
-    <style name="SplashTheme" parent="Theme.FollowTvMovie">
-        <!--<item name="android:windowBackground">@drawable/splash_background</item>-->
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
-
-    <style name="WelcomeTheme" parent="Theme.FollowTvMovie">
-        <!--<item name="android:windowBackground">@drawable/splash_background</item>-->
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowLightStatusBar">false</item>
-    </style>
-
     <style name="FTMToolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="titleCentered">true</item>
         <item name="titleTextColor">@color/primary_color</item>
@@ -152,22 +139,6 @@
         <item name="android:textSize">@dimen/text_size_13</item>
     </style>
 
-    <style name="FTMText.Light.15">
-        <item name="android:textSize">@dimen/text_size_15</item>
-    </style>
-
-    <style name="FTMText.Regular.9">
-        <item name="android:textSize">@dimen/text_size_9</item>
-    </style>
-
-    <style name="FTMText.Regular.11">
-        <item name="android:textSize">@dimen/text_size_11</item>
-    </style>
-
-    <style name="FTMText.Regular.12">
-        <item name="android:textSize">@dimen/text_size_12</item>
-    </style>
-
     <style name="FTMText.Regular.13">
         <item name="android:textSize">@dimen/text_size_13</item>
     </style>
@@ -180,24 +151,8 @@
         <item name="android:textSize">@dimen/text_size_15</item>
     </style>
 
-    <style name="FTMText.Regular.17">
-        <item name="android:textSize">@dimen/text_size_17</item>
-    </style>
-
-    <style name="FTMText.SemiBold.11">
-        <item name="android:textSize">@dimen/text_size_11</item>
-    </style>
-
-    <style name="FTMText.SemiBold.13">
-        <item name="android:textSize">@dimen/text_size_13</item>
-    </style>
-
     <style name="FTMText.SemiBold.15">
         <item name="android:textSize">@dimen/text_size_15</item>
-    </style>
-
-    <style name="FTMText.SemiBold.17">
-        <item name="android:textSize">@dimen/text_size_17</item>
     </style>
 
     <style name="FTMText.SemiBold.20">
@@ -210,10 +165,6 @@
 
     <style name="FTMText.SemiBold.24.Primary">
         <item name="android:textColor">@color/primary_color</item>
-    </style>
-
-    <style name="FTMText.SemiBold.42">
-        <item name="android:textSize">@dimen/text_size_42</item>
     </style>
 
     <style name="FTMDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
@@ -291,19 +242,6 @@
         <item name="android:textSize">@dimen/text_size_15</item>
     </style>
 
-    <style name="FTMHorizontalDivider">
-        <item name="android:orientation">horizontal</item>
-        <item name="android:background">@color/grey_200</item>
-        <item name="android:layout_height">@dimen/height_0_5</item>
-        <item name="android:layout_width">match_parent</item>
-    </style>
-
-    <style name="FTMVerticalDivider">
-        <item name="android:background">@color/grey_200</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">@dimen/width_0_5</item>
-    </style>
-
     <style name="FTMToolbarMenuStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <item name="android:textSize">@dimen/text_size_15</item>
         <item name="fontFamily">@font/sofiapro_semibold</item>
@@ -317,30 +255,6 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
-        <item name="colorPrimary">@color/tertiary_color</item>
-        <item name="colorOnPrimary">@color/primary_color</item>
-        <item name="textInputStyle">@style/FTMTextInputLayout</item>
-        <item name="fontFamily">@font/sofiapro_regular</item>
-        <item name="android:fontFamily">@font/sofiapro_regular</item>
-    </style>
-
-    <style name="TabDesign" parent="TextAppearance.Design.Tab">
-        <item name="textAllCaps">false</item>
-        <item name="android:textSize">@dimen/text_size_14</item>
-        <item name="android:fontFamily">@font/sofiapro_semibold</item>
-
-    </style>
-
-    <style name="FTMTabLayout">
-        <!--<item name="tabBackground">@drawable/background_tabs</item>-->
-        <item name="tabSelectedTextColor">@color/tertiary_color</item>
-        <item name="tabTextAppearance">@style/TabDesign</item>
-        <item name="tabTextColor">@color/grey_600</item>
-        <item name="tabIndicatorColor">@color/grey_700</item>
-        <item name="tabIndicatorHeight">@dimen/height_2</item>
     </style>
 
     <style name="FTMCardView" parent="Widget.MaterialComponents.CardView">

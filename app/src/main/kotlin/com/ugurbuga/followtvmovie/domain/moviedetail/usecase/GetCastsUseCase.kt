@@ -4,22 +4,22 @@ import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.MovieMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class GetTrailerUseCase @Inject constructor(
+class GetCastsUseCase @Inject constructor(
     private val movieRepository: MovieRepository, private val movieMapper: MovieMapper
-) : FTMUseCase<GetTrailerUseCase.TrailerParams, ArrayList<TrailerUIModel>>() {
+) : FTMUseCase<GetCastsUseCase.CastParams, ArrayList<CastUIModel>>() {
 
-    data class TrailerParams(val movieId: Int)
+    data class CastParams(val movieId: Int)
 
-    override fun execute(params: TrailerParams): Flow<Resource<ArrayList<TrailerUIModel>>> {
-        return movieRepository.getTrailers(params.movieId).map {
-            it.map { trailersResponse ->
-                movieMapper.toTrailerList(trailersResponse)
+    override fun execute(params: CastParams): Flow<Resource<ArrayList<CastUIModel>>> {
+        return movieRepository.getCredits(params.movieId).map {
+            it.map { creditResponse ->
+                movieMapper.toCastList(creditResponse)
             }
         }
     }

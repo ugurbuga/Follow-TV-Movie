@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseBottomSheetDialogFragment
 import com.ugurbuga.followtvmovie.databinding.BottomSheetReviewBinding
-import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +19,7 @@ class ReviewBottomSheet : FTMBaseBottomSheetDialogFragment<BottomSheetReviewBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
-        observe(viewModel.movieReviewViewState, ::onMovieReviewViewState)
+        collect(viewModel.movieReviewViewState, ::onMovieReviewViewState)
     }
 
     private fun onMovieReviewViewState(movieReviewViewState: MovieReviewViewState) {

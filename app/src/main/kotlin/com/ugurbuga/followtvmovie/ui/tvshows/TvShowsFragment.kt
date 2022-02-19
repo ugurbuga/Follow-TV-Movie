@@ -5,7 +5,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowsBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.movie.FavoriteAdapter
 import com.ugurbuga.followtvmovie.ui.movie.FavoriteViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +16,7 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
     override fun getResourceLayoutId() = R.layout.fragment_tv_shows
 
     override fun onInitDataBinding() {
-        observe(viewModel.favoriteViewState, ::onFavoriteViewState)
+        collect(viewModel.favoriteViewState, ::onFavoriteViewState)
 
         with(viewBinding) {
             tvShowListRecyclerView.adapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)

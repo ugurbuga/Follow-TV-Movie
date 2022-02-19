@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
@@ -34,9 +34,9 @@ class PosterAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is PosterViewHolder -> {
-                val product = getItem(position) as PosterItemUIModel
+                val item = getItem(position) as PosterItemUIModel
                 holder.bind(
-                    product,
+                    item,
                     onPosterClick
                 )
             }

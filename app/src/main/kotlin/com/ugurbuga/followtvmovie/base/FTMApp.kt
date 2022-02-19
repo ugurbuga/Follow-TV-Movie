@@ -6,7 +6,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import dagger.hilt.android.HiltAndroidApp
-import java.util.*
+import java.util.Locale
 
 @HiltAndroidApp
 class FTMApp : Application() {

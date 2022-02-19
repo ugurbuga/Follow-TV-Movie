@@ -9,11 +9,11 @@ import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate
 import com.akexorcist.localizationactivity.core.OnLocaleChangedListener
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.base.BaseVmDbActivity
+import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.getString
-import com.ugurbuga.followtvmovie.extensions.observeEvent
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
-import java.util.*
+import java.util.Locale
 
 abstract class FTMBaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> :
     BaseVmDbActivity<VM,DB>(), FTMBaseView, OnLocaleChangedListener {
@@ -24,7 +24,7 @@ abstract class FTMBaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> 
         localizationDelegate.addOnLocaleChangedListener(this)
         localizationDelegate.onCreate()
         super.onCreate(savedInstanceState)
-        observeEvent(viewModel.baseEvent, ::onViewEvent)
+        collect(viewModel.baseEvent, ::onViewEvent)
     }
 
     override fun onViewEvent(baseViewEvent: FTMBaseViewEvent) {

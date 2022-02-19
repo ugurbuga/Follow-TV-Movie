@@ -1,7 +1,5 @@
 package com.ugurbuga.followtvmovie.ui.discover.popularlist
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
@@ -19,6 +17,8 @@ import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.PopularListFragment.Companion.ARG_POPULAR_LIST_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,8 +31,8 @@ class PopularListViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
-    private val _posterList = MutableLiveData<MutableList<ListAdapterItem>>().apply { value = mutableListOf() }
-    val posterList: LiveData<MutableList<ListAdapterItem>> get() = _posterList
+    private val _posterList = MutableStateFlow(mutableListOf<ListAdapterItem>())
+    val posterList: StateFlow<MutableList<ListAdapterItem>> get() = _posterList
 
     private var isCanLoadNewItem = false
 
@@ -57,31 +57,23 @@ class PopularListViewModel @Inject constructor(
     }
 
     private fun getPopularTvShows() {
-        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(page))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                setPopularList(it)
-            }
-            .launchIn(viewModelScope)
+        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(page)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setPopularList(it)
+        }.launchIn(viewModelScope)
     }
 
     private fun getPopularMovies() {
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(page))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                setPopularList(it)
-            }
-            .launchIn(viewModelScope)
+        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(page)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setPopularList(it)
+        }.launchIn(viewModelScope)
     }
 
     private fun addLoading() {
@@ -91,7 +83,7 @@ class PopularListViewModel @Inject constructor(
     }
 
     private fun getOldList(): MutableList<ListAdapterItem> {
-        return posterList.value ?: mutableListOf()
+        return posterList.value.toMutableList()
     }
 
     private fun setPopularList(posterModel: PosterUIModel) {
@@ -104,10 +96,7 @@ class PopularListViewModel @Inject constructor(
 
     fun getNewItems(visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int) {
         if (Util.canPagingAvailable(
-                isCanLoadNewItem,
-                visibleItemCount,
-                firstVisibleItemPosition,
-                totalItemCount
+                isCanLoadNewItem, visibleItemCount, firstVisibleItemPosition, totalItemCount
             )
         ) {
             isCanLoadNewItem = false

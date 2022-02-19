@@ -8,9 +8,9 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
-import com.ugurbuga.followtvmovie.extensions.observe
-import com.ugurbuga.followtvmovie.extensions.observeEvent
+import com.ugurbuga.followtvmovie.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +31,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
     override fun onInitDataBinding() {
         with(viewBinding) {
             trailerRecyclerView.adapter = TrailerAdapter(::onTrailerClicked)
+            castRecyclerView.adapter = CastAdapter(::onCastClicked)
             val adapter = GenreAdapter()
             genreRecyclerView.adapter = adapter
             imageView.setImageUrl(requireArguments().getString("arg_image_url", ""))
@@ -60,13 +61,16 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             }
         }
 
-        observe(viewModel.movieDetailViewState, ::onMovieDetailViewState)
-        observeEvent(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+        collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)
+        collect(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+    }
+
+    private fun onCastClicked(castUIModel: CastUIModel) {
+
     }
 
     private fun onTrailerClicked(trailer: TrailerUIModel) {
         navigate(MovieDetailFragmentDirections.actionMovieDetailToTrailer(trailer.key))
-        //startActivity(TrailerActivity.newIntent(requireContext(), trailer.key))
     }
 
     private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {

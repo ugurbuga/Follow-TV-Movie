@@ -1,6 +1,10 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.data.api.ApiConstants
+import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CastResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
@@ -30,14 +34,14 @@ class MovieMapper @Inject constructor() {
         )
     }
 
-    fun toGenresUIModel(response: GenreResponse): GenreUIModel {
+    private fun toGenresUIModel(response: GenreResponse): GenreUIModel {
         return GenreUIModel(
             id = response.id, name = response.name
         )
     }
 
-    fun toReviewUIModelList(movieReviewResponse: MovieReviewResponse): List<ReviewUIModel> {
-        return movieReviewResponse.results.map { toReviewUI(it) }
+    fun toReviewUIModelList(response: MovieReviewResponse): List<ReviewUIModel> {
+        return response.results.map { toReviewUI(it) }
     }
 
     private fun toReviewUI(response: ReviewResponse): ReviewUIModel {
@@ -49,13 +53,35 @@ class MovieMapper @Inject constructor() {
         )
     }
 
-    fun toTrailerList(trailersResponse: TrailersResponse): ArrayList<TrailerUIModel> {
+    fun toTrailerList(response: TrailersResponse): ArrayList<TrailerUIModel> {
         val list = arrayListOf<TrailerUIModel>()
-        trailersResponse.results.forEach {
+        response.results.forEach {
             if (it.site == "YouTube") {
                 list.add(TrailerUIModel(key = it.key, name = it.name))
             }
         }
         return list
+    }
+
+    fun toCastList(response: CreditResponse): ArrayList<CastUIModel> {
+        return ArrayList(response.cast.map {
+            getCast(it)
+        })
+    }
+
+    private fun getCast(response: CastResponse): CastUIModel {
+        return CastUIModel(
+            name = response.name,
+            character = response.character,
+            profilePath = getProfilePath(response),
+        )
+    }
+
+    private fun getProfilePath(response: CastResponse): String {
+        return if (response.profilePath != null) {
+            ApiConstants.BASE_IMAGE_URL + response.profilePath
+        } else {
+            Util.EMPTY_STRING
+        }
     }
 }

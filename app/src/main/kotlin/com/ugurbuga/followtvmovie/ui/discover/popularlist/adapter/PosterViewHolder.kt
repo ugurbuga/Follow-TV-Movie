@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.ViewCompat
-import com.nextlua.corelib.core.adapter.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.databinding.ItemPosterBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel

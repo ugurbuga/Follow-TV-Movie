@@ -3,15 +3,18 @@ package com.ugurbuga.followtvmovie.base
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.viewbinding.BuildConfig
 import com.ugurbuga.followtvmovie.base.base.BaseViewModel
-import com.ugurbuga.followtvmovie.common.Event
 import com.ugurbuga.followtvmovie.common.Status
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.launch
 
 abstract class FTMBaseViewModel : BaseViewModel() {
 
-    private val _baseEvent = MutableLiveData<Event<FTMBaseViewEvent>>()
-    val baseEvent: LiveData<Event<FTMBaseViewEvent>> = _baseEvent
+    private val _baseEvent = MutableSharedFlow<FTMBaseViewEvent>()
+    val baseEvent: SharedFlow<FTMBaseViewEvent> = _baseEvent
 
     private val _baseViewState = MutableLiveData<FTMBaseViewState>()
     val baseViewState: LiveData<FTMBaseViewState> = _baseViewState
@@ -39,8 +42,7 @@ abstract class FTMBaseViewModel : BaseViewModel() {
                     GeneralErrorsHandler(
                         { message, code ->
                             checkError(message, code, errorId)
-                        },
-                        status.exception!!
+                        }, status.exception!!
                     )
                 }
             }
@@ -67,21 +69,25 @@ abstract class FTMBaseViewModel : BaseViewModel() {
 
     private fun checkError(message: Any, code: Int, errorId: Int?) {
         showErrorMessage(
-            message,
-            errorId
+            message, errorId
         )
     }
 
     private fun showLoading() {
-        _baseEvent.value = Event(FTMBaseViewEvent.ShowLoading)
+        viewModelScope.launch {
+            _baseEvent.emit(FTMBaseViewEvent.ShowLoading)
+        }
     }
 
     private fun dismissLoading() {
-        _baseEvent.value = Event(FTMBaseViewEvent.DismissLoading)
+        viewModelScope.launch {
+            _baseEvent.emit(FTMBaseViewEvent.DismissLoading)
+        }
     }
 
     private fun showErrorMessage(message: Any, errorId: Int? = null) {
-        _baseEvent.value =
-            Event(FTMBaseViewEvent.ShowErrorMessage(message, errorId))
+        viewModelScope.launch {
+            _baseEvent.emit(FTMBaseViewEvent.ShowErrorMessage(message, errorId))
+        }
     }
 }

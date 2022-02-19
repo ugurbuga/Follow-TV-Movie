@@ -3,12 +3,12 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
 
 class TrailerAdapter(
-    private val onTrailerClick: ((trailer: TrailerUIModel) -> Unit)? = null,
+    private val onTrailerClicked: ((trailer: TrailerUIModel) -> Unit)? = null,
 ) : FTMBaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }) {
 
@@ -20,8 +20,8 @@ class TrailerAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TrailerViewHolder) {
-            val product = getItem(position) as TrailerUIModel
-            holder.bind(product, onTrailerClick)
+            val item = getItem(position) as TrailerUIModel
+            holder.bind(item, onTrailerClicked)
         }
     }
 }

@@ -14,7 +14,7 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentPopularListBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +39,7 @@ class PopularListFragment :
     }
 
     override fun onInitDataBinding() {
-        observe(viewModel.posterList, ::onPosterList)
+        collect(viewModel.posterList, ::onPosterList)
 
         val gridLayoutManager = GridLayoutManager(context, 2)
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

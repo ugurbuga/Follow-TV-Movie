@@ -5,7 +5,8 @@ import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 object Util {
 
@@ -22,15 +23,16 @@ object Util {
     }
 
     fun getPosterPath(posterPath: String?, backdropPath: String?): String {
-        posterPath?.let {
-            return ApiConstants.BASE_IMAGE_URL + it
-        }
 
-        backdropPath?.let {
-            return ApiConstants.BASE_IMAGE_URL + it
-        }
+        return if (posterPath != null) {
+            ApiConstants.BASE_IMAGE_URL + posterPath
 
-        return EMPTY_STRING
+        } else if (backdropPath != null) {
+            ApiConstants.BASE_IMAGE_URL + backdropPath
+
+        } else {
+            EMPTY_STRING
+        }
     }
 
     fun getTypefaceFromFontRes(context: Context, font: Int): Typeface? {

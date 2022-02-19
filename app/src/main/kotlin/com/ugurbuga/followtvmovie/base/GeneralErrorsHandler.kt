@@ -1,17 +1,17 @@
 package com.ugurbuga.followtvmovie.base
 
 import com.ugurbuga.followtvmovie.R
-import retrofit2.HttpException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import retrofit2.HttpException
 
 class GeneralErrorsHandler(
     private var onErrorMessage: ((Any, Int) -> Unit?)? = null,
     throwable: Throwable
 ) {
 
-    var errorBody: FTMErrorBody? = null
+    private var errorBody: FTMErrorBody? = null
 
     init {
         if (isNetworkError(throwable)) {

@@ -13,7 +13,7 @@ class FTMToolbar @JvmOverloads constructor(
     context, attributeSet, defStyleAttr
 ) {
 
-    var navigationIconType = NavigationIconType.NONE
+    private var navigationIconType = NavigationIconType.NONE
         set(value) {
             field = value
             when (value) {

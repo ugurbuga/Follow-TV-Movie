@@ -10,7 +10,7 @@
             type="com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel" />
     </data>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:background="?attr/selectableItemBackground"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                tools:src="@mipmap/ic_launcher" />
+                tools:src="@mipmap/ic_ftm_launcher" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -50,5 +50,53 @@
             android:maxLines="1"
             android:text="@{item.name}"
             tools:text="testsdfsdf" />
-    </LinearLayout>
+    </LinearLayout>-->
+
+    <com.ugurbuga.followtvmovie.view.FTMCardView
+        android:id="@+id/main_layout"
+        android:layout_width="@dimen/width_200"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation_0"
+        app:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movie_trailer_image"
+                imageUrl="@{item.videoUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_100"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_ftm_launcher" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_0"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="@id/movie_trailer_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_play_arrow" />
+
+            <com.ugurbuga.followtvmovie.view.FTMTextView
+                android:id="@+id/movie_trailer_name"
+                style="@style/FTMText.Light.13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="@dimen/padding_4"
+                android:text="@{item.name}"
+                app:layout_constraintTop_toBottomOf="@id/movie_trailer_image"
+                tools:text="testsdfsdf" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.ugurbuga.followtvmovie.view.FTMCardView>
+
 </layout>

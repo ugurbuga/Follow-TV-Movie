@@ -42,8 +42,9 @@
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginVertical="@dimen/margin_4"
                 android:drawableEnd="@drawable/ic_calendar"
-                android:gravity="center|end"
+                android:drawableTint="@color/primary_color"
                 android:drawablePadding="@dimen/padding_4"
+                android:gravity="center|end"
                 android:text="@{item.createdAt}"
                 android:textAlignment="viewEnd"
                 app:layout_constraintBottom_toTopOf="@id/review"
@@ -52,16 +53,23 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="date" />
 
-            <com.ugurbuga.followtvmovie.view.FTMTextView
+            <io.github.glailton.expandabletextview.ExpandableTextView
                 android:id="@+id/review"
                 style="@style/FTMText.Light.13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginBottom="@dimen/margin_4"
-                android:text="@{item.content}"
+                android:text="@{item.htmlContent}"
+                app:animDuration="500"
+                app:collapsedLines="5"
+                app:isExpanded="false"
+                app:ellipsizeTextColor="@color/secondary_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name"
+                app:readLessText="@string/read_less"
+                app:readMoreText="@string/read_more"
+                app:textMode="line"
                 tools:text="review" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

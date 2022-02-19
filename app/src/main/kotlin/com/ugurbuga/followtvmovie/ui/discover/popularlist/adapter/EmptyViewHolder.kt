@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.nextlua.corelib.core.adapter.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemEmptyBinding
 
 class EmptyViewHolder(

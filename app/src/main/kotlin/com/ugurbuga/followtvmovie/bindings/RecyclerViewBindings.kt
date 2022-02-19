@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.bindings
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.SpaceItemDecoration
 

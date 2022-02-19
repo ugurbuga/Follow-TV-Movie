@@ -2,8 +2,6 @@ package com.ugurbuga.followtvmovie.extensions
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nextlua.corelib.core.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
 fun RecyclerView.scrollListener(
     scrollValues: ((visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int) -> Unit)?
@@ -21,8 +19,4 @@ fun RecyclerView.scrollListener(
             scrollValues?.invoke(visibleItemCount, firstVisibleItemPosition, totalItemCount)
         }
     })
-}
-
-fun <T : ListAdapterItem> FTMBaseListAdapter<T>.updateList(list: MutableList<T>) {
-    submitList(list.toMutableList())
 }

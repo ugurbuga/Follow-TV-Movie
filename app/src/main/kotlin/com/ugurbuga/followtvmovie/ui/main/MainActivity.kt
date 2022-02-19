@@ -19,7 +19,7 @@ class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
     private fun initGraph() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
-        var navController = navHostFragment.navController
+        val navController = navHostFragment.navController
 
         viewBinding.mainBottomNav.setupWithNavController(navController)
     }

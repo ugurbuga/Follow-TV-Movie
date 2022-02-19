@@ -6,7 +6,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.observe
+import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +16,7 @@ class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMovieBinding>(
     override fun getResourceLayoutId() = R.layout.fragment_movie
 
     override fun onInitDataBinding() {
-        observe(viewModel.favoriteViewState, ::onFavoriteViewState)
+        collect(viewModel.favoriteViewState, ::onFavoriteViewState)
 
         with(viewBinding) {
             val favoriteAdapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)

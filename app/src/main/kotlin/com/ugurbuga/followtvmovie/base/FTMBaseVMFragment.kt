@@ -4,13 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.IdRes
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.ugurbuga.followtvmovie.base.base.BaseVmDbFragment
-import com.ugurbuga.followtvmovie.extensions.observeEvent
+import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
 
 abstract class FTMBaseVMFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :
@@ -30,7 +29,7 @@ abstract class FTMBaseVMFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        observeEvent(viewModel.baseEvent, ::onViewEvent)
+        collect(viewModel.baseEvent, ::onViewEvent)
     }
 
     private fun onViewEvent(baseViewEvent: FTMBaseViewEvent) {

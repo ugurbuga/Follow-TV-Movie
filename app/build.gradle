@@ -28,11 +28,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseAppDistribution {
-                serviceCredentialsFile="follow-tv-movie-firebase.json"
+                serviceCredentialsFile = "follow-tv-movie-firebase.json"
                 artifactType = "APK"
 
                 // Note or NoteFile
-                releaseNotesFile="releasenotes.txt"
+                releaseNotesFile = "releasenotes.txt"
                 //releaseNotes="Test2"
 
                 //Tester Groups or testers
@@ -120,9 +120,7 @@ dependencies {
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
 
-    //ExpoPlayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.16.1'
+    implementation "io.github.glailton.expandabletextview:expandabletextview:1.0.1"
 
 
 }

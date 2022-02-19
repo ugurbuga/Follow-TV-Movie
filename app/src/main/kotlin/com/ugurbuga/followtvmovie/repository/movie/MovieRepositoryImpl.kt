@@ -3,12 +3,13 @@ package com.ugurbuga.followtvmovie.repository.movie
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
+import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class MovieRepositoryImpl @Inject constructor(private val movieService: MovieService) :
     MovieRepository, FTMBaseRepository() {
@@ -31,5 +32,9 @@ class MovieRepositoryImpl @Inject constructor(private val movieService: MovieSer
 
     override fun getTrailers(movieId: Int): Flow<Resource<TrailersResponse>> {
         return onApiCall { movieService.getTrailers(movieId) }
+    }
+
+    override fun getCredits(movieId: Int): Flow<Resource<CreditResponse>> {
+        return onApiCall { movieService.getCredits(movieId) }
     }
 }

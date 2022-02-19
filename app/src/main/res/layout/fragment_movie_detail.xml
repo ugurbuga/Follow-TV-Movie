@@ -108,6 +108,20 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_trailer" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cast_recycler_view"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.casts}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_cast" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -119,6 +133,7 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/margin_16"
             android:backgroundTint="@color/primary_color"
+            android:contentDescription="@string/favorite"
             android:src="@{viewState.favorite ? @drawable/ic_favorite : @drawable/ic_not_favorite}"
             app:tint="@color/quaternary_color"
             tools:src="@drawable/ic_favorite" />
@@ -130,9 +145,9 @@
             android:layout_gravity="start|bottom"
             android:layout_margin="@dimen/margin_16"
             android:backgroundTint="@color/primary_color"
+            android:contentDescription="@string/reviews"
             android:src="@drawable/ic_review"
             app:tint="@color/quaternary_color" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
