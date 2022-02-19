@@ -1,7 +1,5 @@
 package com.ugurbuga.followtvmovie.ui.discover
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
@@ -13,8 +11,9 @@ import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
@@ -25,10 +24,14 @@ class DiscoverViewModel @Inject constructor(
     private val popularTvShowUseCase: PopularTvShowUseCase,
 ) : FTMBaseViewModel() {
 
-    private val _discover = MutableLiveData<PosterViewState>().apply {
-        value = PosterViewState()
-    }
-    val discover: LiveData<PosterViewState> get() = _discover
+    private val _popularMovies = MutableStateFlow(mutableListOf<ListAdapterItem>())
+    val popularMovies: StateFlow<MutableList<ListAdapterItem>> get() = _popularMovies
+
+    private val _upcomingMovies = MutableStateFlow(mutableListOf<ListAdapterItem>())
+    val upcomingMovies: StateFlow<MutableList<ListAdapterItem>> get() = _upcomingMovies
+
+    private val _popularTvShows = MutableStateFlow(mutableListOf<ListAdapterItem>())
+    val popularTvShows: StateFlow<MutableList<ListAdapterItem>> get() = _popularTvShows
 
     var upPopularMoviePage = 0
     var popularTvShowPage = 0
@@ -48,47 +51,31 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularMovies() {
         this.upPopularMoviePage++
         addLoadingPopularMovie()
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(this.upPopularMoviePage))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                setPopularMovieList(it)
-            }
-            .launchIn(viewModelScope)
+        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(this.upPopularMoviePage)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setPopularMovieList(it)
+        }.launchIn(viewModelScope)
     }
 
     private fun addLoadingPopularMovie() {
-        val oldList = getOldListPopularMovie()
+        val oldList = popularMovies.value.toMutableList()
         oldList.add(LoadingUIModel())
-        _discover.value = updatePopularMovieList(oldList)
-    }
-
-    private fun updatePopularMovieList(oldList: MutableList<ListAdapterItem>): PosterViewState {
-        return _discover.value?.copy(popularMovieList = oldList) ?: PosterViewState(
-            popularMovieList = oldList
-        )
-    }
-
-    private fun getOldListPopularMovie(): MutableList<ListAdapterItem> {
-        return discover.value?.popularMovieList ?: mutableListOf()
+        _popularMovies.value = oldList
     }
 
     private fun setPopularMovieList(posterModel: PosterUIModel) {
-        val oldList = getOldListPopularMovie()
+        val oldList = popularMovies.value.toMutableList()
         oldList.remove(LoadingUIModel())
         oldList.addAll(posterModel.posterList)
-        _discover.value = updatePopularMovieList(oldList)
+        _popularMovies.value = oldList
         isCanLoadNewItemPopularMovie = posterModel.totalPages > posterModel.page
     }
 
     fun getNewItemsPopularMovie(
-        visibleItemCount: Int,
-        firstVisibleItemPosition: Int,
-        totalItemCount: Int
+        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
     ) {
         if (Util.canPagingAvailable(
                 isCanLoadNewItemPopularMovie,
@@ -108,47 +95,31 @@ class DiscoverViewModel @Inject constructor(
     private fun getUpcomingMovies() {
         this.upComingMoviePage++
         addLoadingUpcomingMovie()
-        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(this.upComingMoviePage))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                setUpcomingMovieList(it)
-            }
-            .launchIn(viewModelScope)
+        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(this.upComingMoviePage)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setUpcomingMovieList(it)
+        }.launchIn(viewModelScope)
     }
 
     private fun addLoadingUpcomingMovie() {
-        val oldList = getOldListUpcomingMovie()
+        val oldList = upcomingMovies.value
         oldList.add(LoadingUIModel())
-        _discover.value = updateUpcomingMovieList(oldList)
-    }
-
-    private fun updateUpcomingMovieList(oldList: MutableList<ListAdapterItem>): PosterViewState {
-        return _discover.value?.copy(upcomingMovieList = oldList) ?: PosterViewState(
-            upcomingMovieList = oldList
-        )
-    }
-
-    private fun getOldListUpcomingMovie(): MutableList<ListAdapterItem> {
-        return discover.value?.upcomingMovieList ?: mutableListOf()
+        _upcomingMovies.value = oldList
     }
 
     private fun setUpcomingMovieList(posterModel: PosterUIModel) {
-        val oldList = getOldListUpcomingMovie()
+        val oldList = upcomingMovies.value
         oldList.remove(LoadingUIModel())
         oldList.addAll(posterModel.posterList)
-        _discover.value = updateUpcomingMovieList(oldList)
+        _upcomingMovies.value = oldList
         isCanLoadNewItemUpcomingMovie = posterModel.totalPages > posterModel.page
     }
 
     fun getNewItemsUpcomingMovie(
-        visibleItemCount: Int,
-        firstVisibleItemPosition: Int,
-        totalItemCount: Int
+        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
     ) {
         if (Util.canPagingAvailable(
                 isCanLoadNewItemUpcomingMovie,
@@ -168,47 +139,31 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularTvShows() {
         this.popularTvShowPage++
         addLoadingPopularTvShow()
-        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                setPopularTvShowList(it)
-            }
-            .launchIn(viewModelScope)
+        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setPopularTvShowList(it)
+        }.launchIn(viewModelScope)
     }
 
     private fun addLoadingPopularTvShow() {
-        val oldList = getOldListPopularTvShow()
+        val oldList = popularTvShows.value
         oldList.add(LoadingUIModel())
-        _discover.value = updatePopularTvShowList(oldList)
-    }
-
-    private fun updatePopularTvShowList(oldList: MutableList<ListAdapterItem>): PosterViewState {
-        return _discover.value?.copy(popularTvShowList = oldList) ?: PosterViewState(
-            popularTvShowList = oldList
-        )
-    }
-
-    private fun getOldListPopularTvShow(): MutableList<ListAdapterItem> {
-        return discover.value?.popularTvShowList ?: mutableListOf()
+        _popularTvShows.value = oldList
     }
 
     private fun setPopularTvShowList(posterModel: PosterUIModel) {
-        val oldList = getOldListPopularTvShow()
+        val oldList = popularTvShows.value
         oldList.remove(LoadingUIModel())
         oldList.addAll(posterModel.posterList)
-        _discover.value = updatePopularTvShowList(oldList)
+        _popularTvShows.value = oldList
         isCanLoadNewItemPopularTvShow = posterModel.totalPages > posterModel.page
     }
 
     fun getNewItemsPopularTvShow(
-        visibleItemCount: Int,
-        firstVisibleItemPosition: Int,
-        totalItemCount: Int
+        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
     ) {
         if (Util.canPagingAvailable(
                 isCanLoadNewItemPopularTvShow,

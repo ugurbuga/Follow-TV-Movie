@@ -1,5 +1,5 @@
 package com.ugurbuga.followtvmovie.ui.movie
 
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
-data class FavoriteViewState(val posterList: MutableList<PosterItemUIModel>)
+data class FavoriteViewState(val posterList: MutableList<ListAdapterItem>)

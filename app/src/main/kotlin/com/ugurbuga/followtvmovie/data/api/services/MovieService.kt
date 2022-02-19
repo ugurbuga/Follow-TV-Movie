@@ -2,6 +2,7 @@ package com.ugurbuga.followtvmovie.data.api.services
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -28,4 +29,9 @@ interface MovieService {
     suspend fun getMovieReviews(
         @Path("movieId") page: Int,
     ): MovieReviewResponse
+
+    @GET("movie/{movieId}/videos")
+    suspend fun getTrailers(
+        @Path("movieId") page: Int,
+    ): TrailersResponse
 }

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "932386090652",
+    "project_id": "follow-tv-movie",
+    "storage_bucket": "follow-tv-movie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932386090652:android:8533350079898b3bbb8759",
+        "android_client_info": {
+          "package_name": "com.ugurbuga.followtvmovie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932386090652-8j4mj1avn84k4mirb7res5kd4j23n8mv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Is5z-7RZKtLC_oIFzitoJofBDcijRzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932386090652-8j4mj1avn84k4mirb7res5kd4j23n8mv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932386090652:android:2399c784c2022916bb8759",
+        "android_client_info": {
+          "package_name": "com.ugurbuga.followtvmovie.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932386090652-8j4mj1avn84k4mirb7res5kd4j23n8mv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Is5z-7RZKtLC_oIFzitoJofBDcijRzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932386090652-8j4mj1avn84k4mirb7res5kd4j23n8mv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

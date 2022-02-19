@@ -1,6 +1,5 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
 
-
 import com.squareup.moshi.Json
 
 data class BelongsToCollectionResponse(

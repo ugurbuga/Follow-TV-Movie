@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "follow-tv-movie",
+  "private_key_id": "26dccc9e798cf2cff695d7392e30c8c0e37d4ca9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDRXSC6/7jXn4vH\n9hNFqX2q2cvc6O2KOSLjMowGM2LnATx+EkP1ePI+gT0mGNkpkia/xmgRcd+FdMTY\nLut/5F3G6h+FyIDDZp5nq2HMhfFfISPNHgfNIYOLxFJBUos8iF5ixmzxjJj6AtrD\nRaR9a8n34sXkfiypp+Tmc766QrcC7RfjREQS0egDVZgmveFt45AKobC1tRg6QdMv\n4LAe1NLXLGYXoXuot/9MCdMqRZAxpLty1aCScbeLRe4bdTcfDNzm5NitIsgB2l4G\nlWZzRdiXzg9adI1SjvrJb8YM+lYf/+LJv9Ht8Lhiz+tshzN0bZYGzBBnM5Y+s74D\naR6xFUZbAgMBAAECggEAEFdlL0i31BdfQQj9/BlR9mdFjZqeCoSR1TX5eUptf9EN\njbGTSF0GW3FET+2Z6wVorN3++s2ZQBYbKdyPrnh+sVX42+ezKo1J8+w2l/t5xDkW\novNNxz8ZwMEJbTvUzlwT3JXW+bZFrSNSkUdQTXx/qS+JeV+NJjjf7vTogCqmP5Np\nxElMPXziAFYwGRW9WFhJEDnIiZXaxzkAy0GAq+2Nofi2pI6jb0eHkXweDLpyuvNA\nev6hXAZG42RDN++8y0AshWysDUBweawgvEZtgCkRcDDZ23QwxdWXIB96sUXhe1ua\nuj4nR1ZS7Gk3mugKLlhjkONIk3hfPR9UY7hoKvQeYQKBgQD1XluHpl6J6jskzSD2\nBARooGHSpAIJU1xL4/bXCZT/o39sbfYWrM3dA2IkeNBw4t4xdUWqidAzYIpzwTDa\n7H9a3BFh9Sygt9/08UAk9+maGoVIn0RonKf3MStWF7HERE7scJjJWS4ayj1fgJ2p\nrxm8CdvebFG9PWD5WiaCgU8yQwKBgQDab2cohCZBk+fh/LyG4mZoJgL5SsxuCOe6\nzBUGOCL0OO4Jg4EF3j1Ebk4XNny5E/TGu8e6PxlHoNlf6ya63iCewVUswUdf3kh+\nnbuG4eRa2jAVsBvhWRD4kNSPrspiODAbdNVqmIzag8egolzsG5xsDq26ZmZEKVTT\n7C5uPk5WCQKBgQCih40TjqVir2/b0bC6pTCSaWJC1/atXLVvY6J3EFbM+u0F0tTG\nclKuynXw+MIBdJV/p1GtRDpQPeuX/2kwKqW1dr5g57lXAFVt93vowPrQ5C5TS4RR\n0ysDd2NgVLOg8SpiPbdG8Da08i+zGgvVgTIHt3QXoiKGuqiIoymNGsBt5wKBgDo9\nreGtqo2dpBwrSREl2Gw4hl51xSApm6/ArnJkEV3QuBctSv+HjAps5sFls8edPIyo\nkM5l+JWSm6LpjgARLd1maxFtz1wOZoHsCI4kOMDIoD2IIUbqeo3r/+D3l9qsZJdN\nhYHQfu3caSO5ZtFFY2WkXEnw95+A7a87r/2Q+04RAoGAefyADu7g1p62RQOv3xOY\nhjtW0UVBT2ZveJvLo8C8iU5YrX2htD7+A3fbn2hJBvGkiNvsAFDkmpJFEH21NEba\n6rbccgL5YZCGnuG00f9jeB0bDGc/I1eALbKXZdv8dJtyFZtcn13xxvaz1pkDkn+G\n8RSF89qmx3zLI1KbPo61ezw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-app-distribution-admi@follow-tv-movie.iam.gserviceaccount.com",
+  "client_id": "111285714406902961956",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-app-distribution-admi%40follow-tv-movie.iam.gserviceaccount.com"
+}

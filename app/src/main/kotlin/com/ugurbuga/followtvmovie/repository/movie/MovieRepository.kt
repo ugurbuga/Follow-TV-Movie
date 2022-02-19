@@ -3,6 +3,7 @@ package com.ugurbuga.followtvmovie.repository.movie
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import kotlinx.coroutines.flow.Flow
 
@@ -15,4 +16,6 @@ interface MovieRepository {
     fun getMovieDetail(movieId: Int): Flow<Resource<MovieDetailResponse>>
 
     fun getMovieReviews(movieId: Int): Flow<Resource<MovieReviewResponse>>
+
+    fun getTrailers(movieId: Int): Flow<Resource<TrailersResponse>>
 }

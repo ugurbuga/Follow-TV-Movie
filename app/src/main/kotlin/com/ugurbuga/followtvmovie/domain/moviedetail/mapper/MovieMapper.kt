@@ -5,9 +5,11 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import javax.inject.Inject
 
 class MovieMapper @Inject constructor() {
@@ -30,8 +32,7 @@ class MovieMapper @Inject constructor() {
 
     fun toGenresUIModel(response: GenreResponse): GenreUIModel {
         return GenreUIModel(
-            id = response.id,
-            name = response.name
+            id = response.id, name = response.name
         )
     }
 
@@ -46,5 +47,15 @@ class MovieMapper @Inject constructor() {
             createdAt = Util.getDate(response.createdAt),
             id = response.id
         )
+    }
+
+    fun toTrailerList(trailersResponse: TrailersResponse): ArrayList<TrailerUIModel> {
+        val list = arrayListOf<TrailerUIModel>()
+        trailersResponse.results.forEach {
+            if (it.site == "YouTube") {
+                list.add(TrailerUIModel(key = it.key, name = it.name))
+            }
+        }
+        return list
     }
 }

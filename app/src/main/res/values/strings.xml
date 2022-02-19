@@ -61,6 +61,7 @@
     <string name="image_big">image_big</string>
     <string name="reviews">Reviews</string>
     <string name="no_reviews">No Reviews</string>
+    <string name="empty_favorites">Favori listen boş.</string>
 
 
 </resources>

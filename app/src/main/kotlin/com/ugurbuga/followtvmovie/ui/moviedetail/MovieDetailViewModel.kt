@@ -9,6 +9,7 @@ import com.ugurbuga.followtvmovie.common.Event
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetTrailerUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
@@ -23,6 +24,7 @@ class MovieDetailViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
+    private val getTrailerUseCase: GetTrailerUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -52,38 +54,43 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getMovieDetail() {
-        movieDetailUseCase(MovieDetailUseCase.MovieDetailParams(movieId))
-            .doOnStatusChanged {
-                initStatusState(
-                    it,
-                    isShowLoading = false
-                )
-            }
-            .doOnSuccess {
-                _movieDetailViewState.postValue(MovieDetailViewState(it, false))
-                isFavorite()
-            }
-            .launchIn(viewModelScope)
+        movieDetailUseCase(MovieDetailUseCase.MovieDetailParams(movieId)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            _movieDetailViewState.postValue(MovieDetailViewState(it, false))
+            isFavorite()
+            getTrailers()
+        }.launchIn(viewModelScope)
     }
 
     fun changeFavoriteState() {
         if (movieDetailViewState.value?.isFavorite == true) {
             movieDetailViewState.value?.movieDetail?.let {
-                deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
-                    .doOnSuccess {
-                        _movieDetailViewEvent.value =
-                            Event(MovieDetailViewEvent.ShowDeletedSnackbar)
-                    }
-                    .launchIn(viewModelScope)
+                deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
+                    _movieDetailViewEvent.value = Event(MovieDetailViewEvent.ShowDeletedSnackbar)
+                }.launchIn(viewModelScope)
             }
         } else {
             movieDetailViewState.value?.movieDetail?.let {
-                addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it))
-                    .doOnSuccess {
-                        _movieDetailViewEvent.value =
-                            Event(MovieDetailViewEvent.ShowAddedSnackbar)
-                    }.launchIn(viewModelScope)
+                addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it)).doOnSuccess {
+                    _movieDetailViewEvent.value = Event(MovieDetailViewEvent.ShowAddedSnackbar)
+                }.launchIn(viewModelScope)
             }
         }
+    }
+
+    private fun getTrailers() {
+        getTrailerUseCase(GetTrailerUseCase.TrailerParams(movieId)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            movieDetailViewState.value?.apply {
+                _movieDetailViewState.value = this.copy(trailers = it)
+            }
+            isFavorite()
+        }.launchIn(viewModelScope)
     }
 }
