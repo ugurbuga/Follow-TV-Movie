@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState" />
+            type="com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState" />
     </data>
 
     <LinearLayout

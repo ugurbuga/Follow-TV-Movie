@@ -21,7 +21,6 @@
             android:id="@+id/loading_title_text_view"
             style="@style/FTMText.SemiBold.24"
             android:layout_marginTop="@dimen/margin_28"
-            android:text="@string/welcome_message_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:textColor="@color/tertiary_color" />
@@ -31,7 +30,6 @@
             android:id="@+id/loading_sub_title_text_view"
             style="@style/FTMText.Regular.13"
             android:layout_marginTop="@dimen/margin_8"
-            android:text="@string/welcome_message_title"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

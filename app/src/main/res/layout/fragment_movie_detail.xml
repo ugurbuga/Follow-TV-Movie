@@ -22,7 +22,7 @@
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
@@ -31,7 +31,7 @@
                 app:collapsedTitleTextColor="@color/tertiary_color"
                 app:contentScrim="@color/quaternary_color"
                 app:expandedTitleGravity="center|bottom"
-                app:expandedTitleTextColor="@color/quaternary_color"
+                app:expandedTitleTextColor="@color/always_white"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:toolbarId="@id/toolbar">
 
@@ -57,7 +57,7 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:title="@{viewState.movieDetail.title}" />
 
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -89,10 +89,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_8"
                     app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                     tools:listitem="@layout/item_genre" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.trailers.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/videos" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/trailer_recycler_view"
@@ -100,13 +109,47 @@
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.trailers}"
+                    visible="@{viewState.trailers.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_8"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_trailer" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.images.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/images" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/image_recycler_view"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.images}"
+                    visible="@{viewState.images.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_image" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.casts.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/cast" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/cast_recycler_view"
@@ -114,9 +157,11 @@
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.casts}"
+                    visible="@{viewState.casts.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_8"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

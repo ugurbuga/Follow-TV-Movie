@@ -7,6 +7,7 @@ import androidx.annotation.IdRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavDirections
+import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
 import com.ugurbuga.followtvmovie.base.base.BaseVmDbFragment
 import com.ugurbuga.followtvmovie.extensions.collect
@@ -59,6 +60,15 @@ abstract class FTMBaseVMFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :
 
     protected fun navigate(navDirections: NavDirections) {
         findNavController().navigate(navDirections.actionId, navDirections.arguments)
+    }
+
+    protected fun navigate(navDirections: NavDirections, navigatorExtras: Navigator.Extras) {
+        findNavController().navigate(
+            navDirections.actionId,
+            navDirections.arguments,
+            null,
+            navigatorExtras
+        )
     }
 
     fun popBack(@IdRes destinationId: Int, inclusive: Boolean = false) {

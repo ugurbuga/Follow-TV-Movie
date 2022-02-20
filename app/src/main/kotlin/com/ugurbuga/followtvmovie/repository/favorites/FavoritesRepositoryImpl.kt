@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
-class FavoritesRepositoryImpl @Inject constructor(private val favoritesDao: FavoritesDao) :
+class FavoritesRepositoryImpl @Inject constructor(
+    private val favoritesDao: FavoritesDao
+) :
     FavoritesRepository, FTMBaseRepository() {
 
     override fun insert(note: PosterItemUIModel): Flow<Resource<Unit>> {

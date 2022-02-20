@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 
 abstract class BaseVmDbFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :
-    BaseVMFragment<VM>() {
+    BaseVmFragment<VM>() {
 
     protected lateinit var viewBinding: DB
 

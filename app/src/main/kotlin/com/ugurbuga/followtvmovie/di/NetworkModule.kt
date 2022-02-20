@@ -7,6 +7,8 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
+import com.ugurbuga.followtvmovie.data.api.interceptor.LanguageInterceptor
+import com.ugurbuga.followtvmovie.data.api.services.CreditService
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import dagger.Module
@@ -30,6 +32,7 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(
         applicationInterceptor: ApplicationInterceptor,
+        languageInterceptor: LanguageInterceptor,
         chuckerInterceptor: ChuckerInterceptor
     ): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder().apply {
@@ -42,6 +45,7 @@ object NetworkModule {
                 addNetworkInterceptor(interceptor)
                 addInterceptor(chuckerInterceptor)
             }
+            addInterceptor(languageInterceptor)
             addInterceptor(applicationInterceptor)
         }
         return okHttpClient.build()
@@ -82,5 +86,11 @@ object NetworkModule {
     @Singleton
     fun provideMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCreditService(retrofit: Retrofit): CreditService {
+        return retrofit.create(CreditService::class.java)
     }
 }

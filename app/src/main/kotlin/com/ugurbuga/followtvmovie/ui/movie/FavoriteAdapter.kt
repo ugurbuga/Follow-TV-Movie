@@ -12,8 +12,8 @@ import com.ugurbuga.followtvmovie.common.DisplayHelper
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.EmptyViewHolder
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterHolderType
+import com.ugurbuga.followtvmovie.ui.discover.adapter.EmptyViewHolder
+import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 
 class FavoriteAdapter(
     context: Context,

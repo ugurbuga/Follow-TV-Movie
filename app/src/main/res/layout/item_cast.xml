@@ -13,25 +13,22 @@
     <com.ugurbuga.followtvmovie.view.FTMCardView
         android:id="@+id/main_layout"
         android:layout_width="@dimen/width_100"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_130"
         app:cardPreventCornerOverlap="false">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/posterImage"
                 imageUrl="@{item.profilePath}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_130"
+                android:layout_height="match_parent"
+                android:foreground="@drawable/background_item_poster"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <com.ugurbuga.followtvmovie.view.FTMTextView
@@ -39,18 +36,18 @@
                 style="@style/FTMText.Light.13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_8"
                 android:layout_marginHorizontal="@dimen/margin_4"
+                android:layout_marginBottom="@dimen/margin_8"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:lines="2"
                 android:text="@{item.name}"
                 android:textAlignment="center"
+                android:textColor="@color/always_white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 tools:text="name \nname" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.ugurbuga.followtvmovie.view.FTMCardView>
 

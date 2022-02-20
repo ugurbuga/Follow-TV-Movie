@@ -4,6 +4,8 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CastResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
@@ -71,6 +73,7 @@ class MovieMapper @Inject constructor() {
 
     private fun getCast(response: CastResponse): CastUIModel {
         return CastUIModel(
+            creditId = response.creditId,
             name = response.name,
             character = response.character,
             profilePath = getProfilePath(response),
@@ -83,5 +86,30 @@ class MovieMapper @Inject constructor() {
         } else {
             Util.EMPTY_STRING
         }
+    }
+
+    fun toImageList(imageResponse: ImageResponse): ArrayList<ImageUIModel> {
+        var list = arrayListOf<ImageUIModel>()
+        list.addAll(imageResponse.posters.map {
+            ImageUIModel(
+                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
+            )
+        })
+
+        list.addAll(imageResponse.backdrops.map {
+            ImageUIModel(
+                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
+            )
+        })
+
+        list.addAll(imageResponse.logos.map {
+            ImageUIModel(
+                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
+            )
+        })
+
+        list = ArrayList(list.filter { it.imageUrl.isNotBlank() })
+        list.sortBy { it.imageUrl }
+        return list
     }
 }

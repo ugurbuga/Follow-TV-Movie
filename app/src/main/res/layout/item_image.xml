@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel" />
+
+    </data>
+
+
+    <com.ugurbuga.followtvmovie.view.FTMCardView
+        android:id="@+id/posterImage"
+        android:layout_width="match_parent"
+        app:cardElevation="@dimen/elevation_0"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            imageUrl="@{item.imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:stateListAnimator="@animator/mtrl_card_state_list_anim"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RadiusShapeableImageView"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </com.ugurbuga.followtvmovie.view.FTMCardView>
+
+
+</layout>

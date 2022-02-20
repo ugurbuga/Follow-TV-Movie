@@ -6,6 +6,9 @@
     <color name="tertiary_color">#000000</color>
     <color name="quaternary_color">#FFFFFF</color>
 
+    <color name="always_white">#FFFFFF</color>
+    <color name="always_black">#000000</color>
+
     <color name="grey_100">#F2F2F2</color>
     <color name="grey_200">#E6E6E2</color>
     <!--<color name="grey_300">#C6C6C1</color>-->

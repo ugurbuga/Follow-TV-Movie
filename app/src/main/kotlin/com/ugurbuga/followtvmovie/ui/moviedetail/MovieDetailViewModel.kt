@@ -7,6 +7,7 @@ import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetCastsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetTrailersUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
@@ -27,6 +28,7 @@ class MovieDetailViewModel @Inject constructor(
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     private val getTrailersUseCase: GetTrailersUseCase,
+    private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
@@ -43,6 +45,7 @@ class MovieDetailViewModel @Inject constructor(
         getMovieDetail()
         getTrailers()
         getCasts()
+        getImages()
     }
 
     private fun isFavorite() {
@@ -103,6 +106,17 @@ class MovieDetailViewModel @Inject constructor(
             )
         }.doOnSuccess {
             _movieDetailViewState.value = movieDetailViewState.value.copy(casts = it)
+            isFavorite()
+        }.launchIn(viewModelScope)
+    }
+
+    private fun getImages() {
+        getImagesUseCase(GetImagesUseCase.ImageParams(movieId)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            _movieDetailViewState.value = movieDetailViewState.value.copy(images = it)
             isFavorite()
         }.launchIn(viewModelScope)
     }

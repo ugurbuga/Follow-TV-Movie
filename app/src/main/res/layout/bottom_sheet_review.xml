@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.ui.moviedetail.MovieReviewViewState" />
+            type="com.ugurbuga.followtvmovie.ui.moviedetail.review.MovieReviewViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

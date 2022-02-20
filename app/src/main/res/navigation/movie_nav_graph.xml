@@ -8,6 +8,23 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.ugurbuga.followtvmovie.ui.movie.MoviesFragment"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie">
+
+        <action
+            android:id="@+id/action_to_movieDetailFragment"
+            app:destination="@id/movie_detail_nav_graph">
+
+            <argument
+                android:name="arg_id"
+                app:argType="integer" />
+
+            <argument
+                android:name="arg_image_url"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <include app:graph="@navigation/movie_detail_nav_graph" />
 
 </navigation>

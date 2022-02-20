@@ -11,7 +11,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.ui.discover.popularlist.adapter.PosterViewState
+import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

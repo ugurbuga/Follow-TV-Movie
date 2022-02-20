@@ -43,7 +43,7 @@
                 android:layout_marginBottom="@dimen/margin_16"
                 android:text="@{item.name}"
                 android:textAlignment="center"
-                android:textColor="@color/quaternary_color"
+                android:textColor="@color/always_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="name \nname" />

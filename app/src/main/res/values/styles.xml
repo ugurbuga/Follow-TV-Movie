@@ -159,6 +159,10 @@
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
+    <style name="FTMText.SemiBold.20.Primary">
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
     <style name="FTMText.SemiBold.24">
         <item name="android:textSize">@dimen/text_size_24</item>
     </style>
@@ -174,7 +178,7 @@
         <item name="materialAlertDialogBodyTextStyle">
             @style/FTMMessageStyle
         </item>
-        <item name="android:background">@color/primary_color</item>
+        <item name="android:background">@color/quaternary_color</item>
         <item name="fontFamily">@font/sofiapro_semibold</item>
         <item name="android:fontFamily">@font/sofiapro_semibold</item>
 
@@ -262,6 +266,11 @@
         <item name="cardElevation">@dimen/elevation_4</item>
         <item name="strokeWidth">@dimen/width_0</item>
         <item name="cardBackgroundColor">@color/quaternary_color</item>
+    </style>
+
+    <style name="RadiusShapeableImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_8</item>
     </style>
 
 </resources>

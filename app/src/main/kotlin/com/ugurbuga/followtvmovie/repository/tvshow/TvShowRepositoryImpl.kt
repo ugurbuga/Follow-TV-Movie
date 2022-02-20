@@ -7,7 +7,9 @@ import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralRespo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class TvShowRepositoryImpl @Inject constructor(private val tvShowService: TvShowService) :
+class TvShowRepositoryImpl @Inject constructor(
+    private val tvShowService: TvShowService
+) :
     TvShowRepository, FTMBaseRepository() {
 
     override fun getPopularTvShows(page: Int): Flow<Resource<TvShowGeneralResponse>> {

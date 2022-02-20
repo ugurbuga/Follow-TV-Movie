@@ -5,7 +5,7 @@ import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.extensions.lazyThreadSafetyNone
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseVMFragment<VM : FTMBaseViewModel> : BaseFragment() {
+abstract class BaseVmFragment<VM : FTMBaseViewModel> : BaseFragment() {
 
     @Suppress("UNCHECKED_CAST")
     val viewModel by lazyThreadSafetyNone {

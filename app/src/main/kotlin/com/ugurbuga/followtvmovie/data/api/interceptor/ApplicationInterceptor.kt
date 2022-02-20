@@ -17,7 +17,6 @@ class ApplicationInterceptor @Inject constructor() : Interceptor {
 
         val url = originalHttpUrl.newBuilder()
             .addQueryParameter(ApiConstants.API_KEY, BuildConfig.API_KEY)
-            .addQueryParameter(ApiConstants.LANGUAGE, "en-US")
             .build()
 
         val requestBuilder: Request.Builder = original.newBuilder().url(url)

@@ -18,6 +18,14 @@
             android:id="@+id/action_movie_detail_to_trailer"
             app:destination="@id/trailerActivity" />
 
+        <action
+            android:id="@+id/action_movie_detail_to_cast_detail"
+            app:destination="@id/castDetailFragment" />
+
+        <action
+            android:id="@+id/action_movie_detail_to_image"
+            app:destination="@id/imageFragment" />
+
     </fragment>
 
     <activity
@@ -29,9 +37,35 @@
             app:argType="string" />
     </activity>
 
+    <fragment
+        android:id="@+id/castDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.cast.CastDetailFragment"
+        tools:layout="@layout/fragment_cast_detail">
+
+        <argument
+            android:name="arg_cast_id"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.image.ImageFragment"
+        tools:layout="@layout/fragment_image">
+
+        <argument
+            android:name="arg_images"
+            app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
+
+        <argument
+            android:name="arg_position"
+            app:argType="integer" />
+
+    </fragment>
+
     <dialog
         android:id="@+id/reviewBottomSheet"
-        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.ReviewBottomSheet"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.review.ReviewBottomSheet"
         tools:layout="@layout/bottom_sheet_review">
 
         <argument
