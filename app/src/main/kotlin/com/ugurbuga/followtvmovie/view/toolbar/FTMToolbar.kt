@@ -2,13 +2,12 @@ package com.ugurbuga.followtvmovie.view.toolbar
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.ugurbuga.followtvmovie.R
 
 class FTMToolbar @JvmOverloads constructor(
-    context: Context,
-    attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.ftmToolbar
+    context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = R.attr.ftmToolbar
 ) : MaterialToolbar(
     context, attributeSet, defStyleAttr
 ) {
@@ -19,10 +18,10 @@ class FTMToolbar @JvmOverloads constructor(
             when (value) {
                 NavigationIconType.LOGO -> {
                     navigationIcon = null
-                    //set Logo
+                    logo = ContextCompat.getDrawable(context, R.drawable.ic_ftm_app_logo)
                 }
                 NavigationIconType.BACK_BUTTON -> {
-                    //set Navigation Icon
+                    navigationIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_back)
                     logo = null
                 }
                 NavigationIconType.NONE -> {
@@ -44,22 +43,16 @@ class FTMToolbar @JvmOverloads constructor(
         }
     }
 
-    fun setNavigationClickListener(listener: NavigationClickListener) {
+    fun setNavigationClickListener(listener: (() -> Unit)) {
         setNavigationOnClickListener {
             if (navigationIconType == NavigationIconType.BACK_BUTTON) {
-                listener.onNavigationClickListener()
+                listener.invoke()
             }
         }
     }
 
-    interface NavigationClickListener {
-        fun onNavigationClickListener()
-    }
-
     enum class NavigationIconType(private val value: Int) {
-        NONE(value = 0),
-        LOGO(value = 1),
-        BACK_BUTTON(value = 2);
+        NONE(value = 0), LOGO(value = 1), BACK_BUTTON(value = 2);
 
         companion object {
             fun of(value: Int): NavigationIconType =

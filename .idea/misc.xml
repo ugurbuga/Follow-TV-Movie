@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../.gradle/caches/transforms-3/1c2fe242bd7269754dd8456e9edafa48/transformed/expandabletextview-1.0.1/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1615" />
         <entry key="../../../.gradle/caches/transforms-3/1c2fe242bd7269754dd8456e9edafa48/transformed/expandabletextview-1.0.1/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1615" />
+        <entry key="../../../.gradle/caches/transforms-3/86213c8e66020ae0d23ba7453e2cc6cc/transformed/appcompat-1.4.1/res/drawable/abc_item_background_holo_dark.xml" value="0.12" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/ic_mtrl_chip_checked_black.xml" value="0.178" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/mtrl_dialog_background.xml" value="0.178" />
         <entry key="../../../.gradle/caches/transforms-3/902aa028d19ca5c1eee0cc85b337e3a9/transformed/material-1.6.0-alpha02/res/drawable/mtrl_dropdown_arrow.xml" value="0.178" />
@@ -16,18 +17,21 @@
         <entry key="app/src/main/res/drawable/background_genre.xml" value="0.810379150390625" />
         <entry key="app/src/main/res/drawable/background_item_poster.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_reviews.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_ftm_logo.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2345" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_movie.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_review.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/ic_tv.xml" value="0.178" />
+        <entry key="app/src/main/res/drawable/item_background.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/snackbar_background.xml" value="0.2345" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_ftm_base_default.xml" value="0.275" />

@@ -51,6 +51,9 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                     )
                 )
             }
+            toolbar.setNavigationClickListener {
+                popBack()
+            }
         }
 
         collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)

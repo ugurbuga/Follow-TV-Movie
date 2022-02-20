@@ -4,6 +4,7 @@
     <style name="FTMToolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="titleCentered">true</item>
         <item name="titleTextColor">@color/primary_color</item>
+        <item name="android:inset">0dp</item>
         <item name="titleTextAppearance">@style/FTMToolbarTextStyle</item>
         <item name="android:elevation">@dimen/elevation_8</item>
         <item name="android:background">@color/quaternary_color</item>

@@ -66,7 +66,9 @@ class MovieDetailViewModel @Inject constructor(
                 it, isShowLoading = false
             )
         }.doOnSuccess {
-            _movieDetailViewState.value = MovieDetailViewState(it, false)
+            _movieDetailViewState.value = _movieDetailViewState.value.copy(
+                movieDetail = it, isFavorite = false
+            )
             isFavorite()
         }.launchIn(viewModelScope)
     }

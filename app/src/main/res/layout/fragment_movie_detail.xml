@@ -29,6 +29,7 @@
                 android:elevation="@dimen/elevation_8"
                 app:collapsedTitleGravity="center"
                 app:collapsedTitleTextColor="@color/tertiary_color"
+                app:contentInsetStartWithNavigation="0dp"
                 app:contentScrim="@color/quaternary_color"
                 app:expandedTitleGravity="center|bottom"
                 app:expandedTitleTextColor="@color/always_white"
@@ -54,6 +55,7 @@
                     android:elevation="@dimen/elevation_0"
                     app:contentInsetStart="0dp"
                     app:layout_collapseMode="pin"
+                    app:navigation_type="back_button"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:title="@{viewState.movieDetail.title}" />
 
