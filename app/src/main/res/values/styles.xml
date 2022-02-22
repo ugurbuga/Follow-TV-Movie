@@ -13,7 +13,7 @@
     <style name="FTMToolbarTextStyle" parent="@style/TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/sofiapro_semibold</item>
         <item name="android:fontFamily">@font/sofiapro_semibold</item>
-        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
         <item name="android:textColor">@color/primary_color</item>
     </style>
 
@@ -272,6 +272,16 @@
     <style name="RadiusShapeableImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_8</item>
+    </style>
+
+    <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
     </style>
 
 </resources>

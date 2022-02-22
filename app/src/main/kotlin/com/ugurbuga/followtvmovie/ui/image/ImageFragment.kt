@@ -16,9 +16,10 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
 
     override fun getResourceLayoutId() = R.layout.fragment_image
 
-    val args: ImageFragmentArgs by navArgs()
+    private val args: ImageFragmentArgs by navArgs()
 
     override fun onInitDataBinding() {
+
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer(40))
 
@@ -26,6 +27,7 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
             val r = 1f.minus(abs(position))
             page.scaleY = 0.85f + r * 0.15f
         }
+
         val imageAdapter = ImageAdapter(isFullScreen = true)
         imageAdapter.submitList(args.argImages.toMutableList() as List<ImageUIModel>)
         viewBinding.viewPager.apply {
@@ -34,7 +36,6 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
             clipChildren = false
             offscreenPageLimit = 3
             currentItem = args.argPosition
-            setPageTransformer(compositePageTransformer)
         }
     }
 }

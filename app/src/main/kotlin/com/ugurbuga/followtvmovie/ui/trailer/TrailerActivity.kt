@@ -35,7 +35,7 @@ class TrailerActivity : FTMBaseVmDbActivity<TrailerViewModel, ActivityTrailerBin
                 youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState
             ) {
                 super.onStateChange(youTubePlayer, state)
-                if (state == PlayerConstants.PlayerState.PLAYING) {
+                if (state == PlayerConstants.PlayerState.PLAYING || state == PlayerConstants.PlayerState.BUFFERING) {
                     dismissLoading()
                 }
             }

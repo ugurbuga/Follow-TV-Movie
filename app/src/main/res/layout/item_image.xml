@@ -13,24 +13,26 @@
 
 
     <com.ugurbuga.followtvmovie.view.FTMCardView
-        android:id="@+id/posterImage"
+        android:id="@+id/posterLayout"
         android:layout_width="match_parent"
         app:cardElevation="@dimen/elevation_0"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@android:color/transparent">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <com.jsibbold.zoomage.ZoomageView
             imageUrl="@{item.imageUrl}"
+            android:id="@+id/posterImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:stateListAnimator="@animator/mtrl_card_state_list_anim"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/RadiusShapeableImageView"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:zoomage_restrictBounds="false"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_autoCenter="true"
+            app:zoomage_zoomable="true"
+            app:zoomage_translatable="true"
+            app:zoomage_minScale="0.6"
+            app:zoomage_maxScale="8"
+            />
 
     </com.ugurbuga.followtvmovie.view.FTMCardView>
 

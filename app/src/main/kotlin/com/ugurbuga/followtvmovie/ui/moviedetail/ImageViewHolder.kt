@@ -22,15 +22,14 @@ class ImageViewHolder(
         binding.executeAfter {
             this.item = image
 
-            val height = posterImage.context.resources.getDimensionPixelOffset(R.dimen.height_130)
-            val width = (height * image.aspectRatio).toInt()
-
             if (!isFullScreen) {
-                posterImage.layoutParams = LinearLayout.LayoutParams(width, height)
-            }
-
-            root.setOnClickListener {
-                onImageClicked?.invoke(image, position)
+                val height =
+                    posterLayout.context.resources.getDimensionPixelOffset(R.dimen.height_130)
+                val width = (height * image.aspectRatio).toInt()
+                posterLayout.layoutParams = LinearLayout.LayoutParams(width, height)
+                posterImage.setOnClickListener {
+                    onImageClicked?.invoke(image, position)
+                }
             }
         }
     }

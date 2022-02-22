@@ -2,6 +2,7 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 
 import android.os.Bundle
 import android.transition.TransitionInflater
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
@@ -29,6 +30,18 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         )
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), android.R.color.transparent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.quaternary_color)
     }
 
     override fun onInitDataBinding() {

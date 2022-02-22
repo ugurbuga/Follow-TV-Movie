@@ -22,16 +22,17 @@
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:elevation="@dimen/elevation_8"
-                app:collapsedTitleGravity="center"
-                app:collapsedTitleTextColor="@color/tertiary_color"
+                app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
+                app:collapsedTitleTextColor="@color/primary_color"
                 app:contentInsetStartWithNavigation="0dp"
                 app:contentScrim="@color/quaternary_color"
                 app:expandedTitleGravity="center|bottom"
+                app:expandedTitleTextAppearance="@style/ExpandedAppBar"
                 app:expandedTitleTextColor="@color/always_white"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:toolbarId="@id/toolbar">
@@ -54,12 +55,13 @@
                     android:background="@android:color/transparent"
                     android:elevation="@dimen/elevation_0"
                     app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
                     app:navigation_type="back_button"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:title="@{viewState.movieDetail.title}" />
 
-            </com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 

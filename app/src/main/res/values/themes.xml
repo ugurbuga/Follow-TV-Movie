@@ -28,7 +28,12 @@
         <item name="ftmSwitchView">@style/FTMSwitchView</item>
         <item name="ftmCardView">@style/FTMCardView</item>
         <item name="bottomNavigationStyle">@style/FTMBottomNavigationView</item>
+    </style>
 
+    <style name="Theme.FollowTvMovie.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_ftm_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.FollowTvMovie</item>
     </style>
 
     <style name="Theme.FollowTvMovie.FullScreen">

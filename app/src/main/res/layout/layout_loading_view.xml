@@ -21,20 +21,20 @@
             android:id="@+id/loading_title_text_view"
             style="@style/FTMText.SemiBold.24"
             android:layout_marginTop="@dimen/margin_28"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:textColor="@color/tertiary_color" />
-
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             android:id="@+id/loading_sub_title_text_view"
             style="@style/FTMText.Regular.13"
             android:layout_marginTop="@dimen/margin_8"
             android:textAlignment="center"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:textColor="@color/grey_600" />
-
 
     </LinearLayout>
 </layout>

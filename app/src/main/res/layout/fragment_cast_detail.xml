@@ -22,7 +22,7 @@
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
@@ -57,7 +57,7 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:title="@{viewState.movieDetail.title}" />
 
-            </com.ugurbuga.followtvmovie.view.toolbar.FTMCollapsingToolbarLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -70,8 +70,8 @@
                 style="@style/FTMText.SemiBold.24"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:text="@string/coming_soon" />
 
         </androidx.core.widget.NestedScrollView>

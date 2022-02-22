@@ -1,12 +1,15 @@
 package com.ugurbuga.followtvmovie.ui.main
 
+import android.os.Bundle
 import androidx.annotation.IdRes
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVmDbActivity
 import com.ugurbuga.followtvmovie.databinding.ActivityMainBinding
+import com.ugurbuga.followtvmovie.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,8 +19,24 @@ class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun getLayoutResourceId() = R.layout.activity_main
 
+    var loading = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                loading
+            }
+        }
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onInitDataBinding() {
+        collect(viewModel.isLoading, ::onLoading)
         initGraph()
+    }
+
+    private fun onLoading(loading: Boolean) {
+        this.loading = loading
     }
 
     private fun initGraph() {
