@@ -26,6 +26,8 @@
     <!-- Width -->
     <dimen name="width_0">0dp</dimen>
     <dimen name="width_1_5">1.5dp</dimen>
+    <dimen name="width_30">30dp</dimen>
+    <dimen name="width_50">50dp</dimen>
     <dimen name="width_100">100dp</dimen>
     <dimen name="width_120">120dp</dimen>
     <dimen name="width_200">200dp</dimen>
@@ -33,7 +35,9 @@
     <!-- Height -->
     <dimen name="height_0">0dp</dimen>
     <dimen name="height_3">3dp</dimen>
+    <dimen name="height_30">30dp</dimen>
     <dimen name="height_46">46dp</dimen>
+    <dimen name="height_50">50dp</dimen>
     <dimen name="height_60">60dp</dimen>
     <dimen name="height_100">100dp</dimen>
     <dimen name="height_130">130dp</dimen>
@@ -42,6 +46,7 @@
     <dimen name="height_192">192dp</dimen>
     <dimen name="height_210">210dp</dimen>
 
+    <dimen name="radius_4">4dp</dimen>
     <dimen name="radius_8">8dp</dimen>
     <dimen name="radius_20">20dp</dimen>
 

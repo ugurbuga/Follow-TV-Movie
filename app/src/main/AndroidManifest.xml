@@ -32,4 +32,11 @@
             android:theme="@style/Theme.FollowTvMovie.FullScreen" />
     </application>
 
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.instagram.android" />
+        <package android:name="com.twitter.android" />
+        <package android:name="com.imdb.mobile" />
+    </queries>
+
 </manifest>

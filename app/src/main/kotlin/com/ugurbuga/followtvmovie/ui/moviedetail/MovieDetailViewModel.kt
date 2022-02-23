@@ -7,6 +7,7 @@ import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetCastsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetTrailersUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.MovieDetailUseCase
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
@@ -30,6 +32,7 @@ class MovieDetailViewModel @Inject constructor(
     private val getTrailersUseCase: GetTrailersUseCase,
     private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
+    private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -46,6 +49,7 @@ class MovieDetailViewModel @Inject constructor(
         getTrailers()
         getCasts()
         getImages()
+        getExternalUrls()
     }
 
     private fun isFavorite() {
@@ -122,4 +126,75 @@ class MovieDetailViewModel @Inject constructor(
             isFavorite()
         }.launchIn(viewModelScope)
     }
+
+    private fun getExternalUrls() {
+        getExternalUrlsUseCase(GetExternalUrlsUseCase.ExternalUrlParams(movieId)).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            _movieDetailViewState.value = movieDetailViewState.value.copy(externalUrls = it)
+            isFavorite()
+        }.launchIn(viewModelScope)
+    }
+
+    fun reviewsClicked() {
+        viewModelScope.launch {
+            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToReviews(movieId))
+        }
+    }
+
+    fun imageClicked(position: Int) {
+        viewModelScope.launch {
+            _movieDetailViewEvent.emit(
+                MovieDetailViewEvent.NavigateToImages(
+                    imageList = movieDetailViewState.value.images, position = position
+                )
+            )
+        }
+    }
+
+    fun imdbClicked(packageEnabled: Boolean) {
+        if (packageEnabled) {
+            navigateToOtherApp(movieDetailViewState.value.externalUrls.getImdbUrl())
+        } else {
+            navigateToWebView(movieDetailViewState.value.externalUrls.getImdbUrl())
+        }
+    }
+
+    fun facebookClicked(packageEnabled: Boolean) {
+        if (packageEnabled) {
+            navigateToOtherApp(movieDetailViewState.value.externalUrls.getFacebookDeeplink())
+        } else {
+            navigateToWebView(movieDetailViewState.value.externalUrls.getFacebookUrl())
+        }
+    }
+
+    fun twitterClicked(packageEnabled: Boolean) {
+        if (packageEnabled) {
+            navigateToOtherApp(movieDetailViewState.value.externalUrls.getTwitterUrl())
+        } else {
+            navigateToWebView(movieDetailViewState.value.externalUrls.getTwitterUrl())
+        }
+    }
+
+    fun instagramClicked(packageEnabled: Boolean) {
+        if (packageEnabled) {
+            navigateToOtherApp(movieDetailViewState.value.externalUrls.getInstagramUrl())
+        } else {
+            navigateToWebView(movieDetailViewState.value.externalUrls.getInstagramUrl())
+        }    }
+
+    private fun navigateToOtherApp(url: String) {
+        viewModelScope.launch {
+            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToOtherApp(url))
+        }
+    }
+
+    private fun navigateToWebView(url: String) {
+        viewModelScope.launch {
+            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToWebView(url))
+        }
+    }
+
 }

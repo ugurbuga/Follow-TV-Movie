@@ -4,13 +4,14 @@ import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class MovieRepositoryImpl @Inject constructor(
     private val movieService: MovieService
@@ -43,5 +44,9 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun getImages(movieId: Int): Flow<Resource<ImageResponse>> {
         return onApiCall { movieService.getImages(movieId) }
+    }
+
+    override fun getExternalIds(movieId: Int): Flow<Resource<ExternalIdsResponse>> {
+        return onApiCall { movieService.getExternalIds(movieId) }
     }
 }

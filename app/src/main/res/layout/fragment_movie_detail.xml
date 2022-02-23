@@ -75,14 +75,32 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.Regular.14"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:padding="@dimen/padding_16"
-                    android:text="@{viewState.movieDetail.overview}"
-                    tools:text="Açıklama" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_16">
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        style="@style/FTMText.Regular.14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:text="@{viewState.movieDetail.overview}"
+                        tools:text="Açıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama" />
+
+                    <androidx.appcompat.widget.AppCompatToggleButton
+                        android:id="@+id/favorite_button"
+                        android:layout_width="@dimen/width_50"
+                        android:layout_height="@dimen/height_50"
+                        android:layout_gravity="center"
+                        android:background="@drawable/favorite_toggle_button"
+                        android:checked="@{viewState.favorite}"
+                        android:gravity="center"
+                        android:textOff=""
+                        android:textOn="" />
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/genre_recycler_view"
@@ -99,9 +117,7 @@
                     app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                     tools:listitem="@layout/item_genre" />
 
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.trailers.size() > 0}"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
@@ -171,32 +187,75 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_cast" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/reviews_button"
+                        style="@style/FTMButton"
+                        visible="@{viewState.movieDetail != null}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/reviews"
+                        android:textColor="@color/primary_color"
+                        app:backgroundTint="@color/quaternary_color"
+                        app:cornerRadius="@dimen/radius_8"
+                        app:icon="@drawable/ic_review"
+                        app:iconTint="@color/primary_color"
+                        app:strokeColor="@color/primary_color"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imdb_button"
+                        visible="@{viewState.externalUrls.hasImdbId()}"
+                        android:layout_width="@dimen/width_30"
+                        android:layout_height="@dimen/height_30"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:src="@drawable/imdb_logo"
+                        app:shapeAppearance="@style/RadiusShapeableImageView" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/facebook_button"
+                        visible="@{viewState.externalUrls.hasFacebookId()}"
+                        android:layout_width="@dimen/width_30"
+                        android:layout_height="@dimen/height_30"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:src="@drawable/facebook_logo"
+                        app:shapeAppearance="@style/RadiusShapeableImageView" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/twitter_button"
+                        visible="@{viewState.externalUrls.hasTwitterId()}"
+                        android:layout_width="@dimen/width_30"
+                        android:layout_height="@dimen/height_30"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:src="@drawable/twitter_logo"
+                        app:shapeAppearance="@style/RadiusShapeableImageView" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/instagram_button"
+                        visible="@{viewState.externalUrls.hasInstagramId()}"
+                        android:layout_width="@dimen/width_30"
+                        android:layout_height="@dimen/height_30"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:src="@drawable/instagram_logo"
+                        app:shapeAppearance="@style/RadiusShapeableImageView" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/favorite_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/margin_16"
-            android:backgroundTint="@color/primary_color"
-            android:contentDescription="@string/favorite"
-            android:src="@{viewState.favorite ? @drawable/ic_favorite : @drawable/ic_not_favorite}"
-            app:tint="@color/quaternary_color"
-            tools:src="@drawable/ic_favorite" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/reviews_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|bottom"
-            android:layout_margin="@dimen/margin_16"
-            android:backgroundTint="@color/primary_color"
-            android:contentDescription="@string/reviews"
-            android:src="@drawable/ic_review"
-            app:tint="@color/quaternary_color" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

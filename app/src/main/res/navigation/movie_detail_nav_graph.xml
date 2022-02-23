@@ -26,6 +26,10 @@
             android:id="@+id/action_movie_detail_to_image"
             app:destination="@id/imageFragment" />
 
+        <action
+            android:id="@+id/action_movie_detail_to_web"
+            app:destination="@id/webViewFragment" />
+
     </fragment>
 
     <activity
@@ -72,5 +76,15 @@
             android:name="arg_id"
             app:argType="integer" />
     </dialog>
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.webview.WebViewFragment"
+        tools:layout="@layout/fragment_web_view">
+
+        <argument
+            android:name="arg_url"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

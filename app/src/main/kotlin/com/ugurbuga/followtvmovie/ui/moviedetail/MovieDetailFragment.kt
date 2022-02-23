@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.ui.moviedetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.transition.TransitionInflater
 import androidx.core.content.ContextCompat
@@ -7,11 +9,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
+import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
@@ -58,14 +62,26 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             }
 
             reviewsButton.setOnClickListener {
-                navigate(
-                    MovieDetailFragmentDirections.actionReviewFragment(
-                        requireArguments().getInt("arg_id", -1)
-                    )
-                )
+                viewModel.reviewsClicked()
             }
             toolbar.setNavigationClickListener {
                 popBack()
+            }
+
+            imdbButton.setOnClickListener {
+                viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
+            }
+
+            facebookButton.setOnClickListener {
+                viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
+            }
+
+            twitterButton.setOnClickListener {
+                viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
+            }
+
+            instagramButton.setOnClickListener {
+                viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
             }
         }
 
@@ -74,11 +90,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
     }
 
     private fun onImageClicked(imageUIModel: ImageUIModel, position: Int) {
-        navigate(
-            MovieDetailFragmentDirections.actionMovieDetailToImage(
-                viewBinding.viewState!!.images.toTypedArray(), position
-            )
-        )
+        viewModel.imageClicked(position)
     }
 
     private fun onCastClicked(cast: CastUIModel) {
@@ -100,6 +112,26 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 Snackbar.make(
                     viewBinding.root, getString(R.string.removed_favorite), Snackbar.LENGTH_SHORT
                 ).show()
+            }
+            is MovieDetailViewEvent.NavigateToReviews -> {
+                navigate(MovieDetailFragmentDirections.actionReviewFragment(event.movieId))
+            }
+            is MovieDetailViewEvent.NavigateToImages -> {
+                navigate(
+                    MovieDetailFragmentDirections.actionMovieDetailToImage(
+                        event.imageList.toTypedArray(), event.position
+                    )
+                )
+            }
+            is MovieDetailViewEvent.NavigateToOtherApp -> {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.url)))
+            }
+            is MovieDetailViewEvent.NavigateToWebView -> {
+                navigate(
+                    MovieDetailFragmentDirections.actionMovieDetailToWeb(
+                        event.url
+                    )
+                )
             }
         }
     }

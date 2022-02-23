@@ -11,7 +11,7 @@ import com.ugurbuga.followtvmovie.common.ImageManager
 
 @BindingAdapter("imageUrl")
 fun AppCompatImageView.setImageUrl(url: String?) {
-    if (url.isNullOrEmpty()) {
+    if (url.isNullOrBlank()) {
         setImageResource(R.drawable.ic_tv)
         background = ContextCompat.getDrawable(context, R.drawable.ic_launcher_background)
         scaleType = ImageView.ScaleType.CENTER

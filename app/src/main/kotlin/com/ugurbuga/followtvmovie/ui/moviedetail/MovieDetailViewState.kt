@@ -1,5 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.moviedetail
 
+import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
@@ -10,5 +11,6 @@ data class MovieDetailViewState(
     val isFavorite: Boolean = false,
     val trailers: ArrayList<TrailerUIModel> = arrayListOf(),
     val casts: ArrayList<CastUIModel> = arrayListOf(),
-    val images: ArrayList<ImageUIModel> = arrayListOf()
+    val images: ArrayList<ImageUIModel> = arrayListOf(),
+    val externalUrls: ExternalIdsUIModel = ExternalIdsUIModel()
 )

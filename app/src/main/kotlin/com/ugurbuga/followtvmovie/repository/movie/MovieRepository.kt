@@ -2,6 +2,7 @@ package com.ugurbuga.followtvmovie.repository.movie
 
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
@@ -24,4 +25,6 @@ interface MovieRepository {
     fun getCredits(movieId: Int): Flow<Resource<CreditResponse>>
 
     fun getImages(movieId: Int): Flow<Resource<ImageResponse>>
+
+    fun getExternalIds(movieId: Int): Flow<Resource<ExternalIdsResponse>>
 }

@@ -36,6 +36,7 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
             clipChildren = false
             offscreenPageLimit = 3
             currentItem = args.argPosition
+            setPageTransformer(compositePageTransformer)
         }
     }
 }

@@ -4,6 +4,8 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CastResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -88,21 +90,21 @@ class MovieMapper @Inject constructor() {
         }
     }
 
-    fun toImageList(imageResponse: ImageResponse): ArrayList<ImageUIModel> {
+    fun toImageList(response: ImageResponse): ArrayList<ImageUIModel> {
         var list = arrayListOf<ImageUIModel>()
-        list.addAll(imageResponse.posters.map {
+        list.addAll(response.posters.map {
             ImageUIModel(
                 ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
             )
         })
 
-        list.addAll(imageResponse.backdrops.map {
+        list.addAll(response.backdrops.map {
             ImageUIModel(
                 ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
             )
         })
 
-        list.addAll(imageResponse.logos.map {
+        list.addAll(response.logos.map {
             ImageUIModel(
                 ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
             )
@@ -111,5 +113,14 @@ class MovieMapper @Inject constructor() {
         list = ArrayList(list.filter { it.imageUrl.isNotBlank() })
         list.sortBy { it.imageUrl }
         return list
+    }
+
+    fun toExternalUrls(response: ExternalIdsResponse): ExternalIdsUIModel {
+        return ExternalIdsUIModel(
+            facebookId = response.facebookId,
+            imdbId = response.imdbId,
+            instagramId = response.instagramId,
+            twitterId = response.twitterId
+        )
     }
 }
