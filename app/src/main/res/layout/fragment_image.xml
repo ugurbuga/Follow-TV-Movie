@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp" />
-</layout><!-- submitList="@{viewState.images}" -->
+        android:orientation="vertical">
+
+        <com.ugurbuga.followtvmovie.view.toolbar.FTMToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigation_type="back_button"
+            app:title="@string/images" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp" />
+
+    </LinearLayout>
+
+</layout>

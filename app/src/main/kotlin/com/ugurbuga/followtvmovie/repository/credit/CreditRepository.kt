@@ -1,10 +1,10 @@
 package com.ugurbuga.followtvmovie.repository.credit
 
 import com.ugurbuga.followtvmovie.common.Resource
-import com.ugurbuga.followtvmovie.domain.cast.CastDetailResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditDetailResponse
 import kotlinx.coroutines.flow.Flow
 
 interface CreditRepository {
 
-    fun getCastDetail(page: Int): Flow<Resource<CastDetailResponse>>
+    fun getCreditDetail(page: String): Flow<Resource<CreditDetailResponse>>
 }

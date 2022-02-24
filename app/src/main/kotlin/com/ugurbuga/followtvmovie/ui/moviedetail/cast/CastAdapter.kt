@@ -2,13 +2,14 @@ package com.ugurbuga.followtvmovie.ui.moviedetail.cast
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 
 class CastAdapter(
-    private val onCastClicked: ((cast: CastUIModel) -> Unit)? = null,
+    private val onCastClicked: ((cast: CastUIModel, imageView: AppCompatImageView) -> Unit)? = null,
 ) : FTMBaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }) {
 

@@ -1,9 +1,9 @@
-package com.ugurbuga.followtvmovie.domain.cast
+package com.ugurbuga.followtvmovie.domain.credit.model
 
 
 import com.squareup.moshi.Json
 
-data class CastDetailResponse(
+data class CreditDetailResponse(
     @Json(name = "credit_type")
     val creditType: String,
     @Json(name = "department")

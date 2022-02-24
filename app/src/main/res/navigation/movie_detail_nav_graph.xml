@@ -10,6 +10,14 @@
         android:name="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
 
+        <argument
+            android:name="arg_id"
+            app:argType="integer" />
+
+        <argument
+            android:name="arg_image_url"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_review_fragment"
             app:destination="@id/reviewBottomSheet" />
@@ -19,8 +27,8 @@
             app:destination="@id/trailerActivity" />
 
         <action
-            android:id="@+id/action_movie_detail_to_cast_detail"
-            app:destination="@id/castDetailFragment" />
+            android:id="@+id/action_movie_detail_to_credit_detail"
+            app:destination="@id/creditDetailFragment" />
 
         <action
             android:id="@+id/action_movie_detail_to_image"
@@ -36,18 +44,27 @@
         android:id="@+id/trailerActivity"
         android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
         tools:layout="@layout/activity_trailer">
+
         <argument
             android:name="arg_url_key"
             app:argType="string" />
     </activity>
 
     <fragment
-        android:id="@+id/castDetailFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.cast.CastDetailFragment"
-        tools:layout="@layout/fragment_cast_detail">
+        android:id="@+id/creditDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.cast.CreditDetailFragment"
+        tools:layout="@layout/fragment_credit_detail">
+
+        <action
+            android:id="@+id/action_credit_detail_to_movie_detail"
+            app:destination="@id/movieDetailFragment" />
 
         <argument
-            android:name="arg_cast_id"
+            android:name="arg_credit_id"
+            app:argType="string" />
+
+        <argument
+            android:name="arg_image_url"
             app:argType="string" />
 
     </fragment>

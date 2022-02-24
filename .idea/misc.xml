@@ -47,7 +47,9 @@
         <entry key="app/src/main/res/layout/activity_w_base_default.xml" value="0.2726449275362319" />
         <entry key="app/src/main/res/layout/bottom_sheet_review.xml" value="0.37104817266049595" />
         <entry key="app/src/main/res/layout/fragment_cast_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_credit_detail.xml" value="0.15217391304347827" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.32813720703125004" />
+        <entry key="app/src/main/res/layout/fragment_image.xml" value="0.3406321649966033" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.24333892822265626" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.4528985507246377" />

@@ -1,13 +1,13 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.cast.CastDetailResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface CreditService {
 
-    @GET("movie/{movieId}")
-    suspend fun getCastDetail(
-        @Path("creditId") creditId: Int,
-    ): CastDetailResponse
+    @GET("credit/{creditId}")
+    suspend fun getCreditDetail(
+        @Path("creditId") creditId: String,
+    ): CreditDetailResponse
 }

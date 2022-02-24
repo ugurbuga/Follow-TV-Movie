@@ -2,6 +2,8 @@ package com.ugurbuga.followtvmovie.ui.moviedetail.cast
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.ViewCompat
 import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.databinding.ItemCastBinding
@@ -12,12 +14,15 @@ class CastViewHolder(
 ) : FTMBaseViewHolder<ItemCastBinding>(
     binding = ItemCastBinding.inflate(inflater, parent, false)
 ) {
-    fun bind(cast: CastUIModel, onCastClicked: ((cast: CastUIModel) -> Unit)?) {
+    fun bind(
+        cast: CastUIModel,
+        onCastClicked: ((cast: CastUIModel, imageView: AppCompatImageView) -> Unit)?
+    ) {
         binding.executeAfter {
             this.item = cast
-            root.setOnClickListener {
-                onCastClicked?.invoke(cast)
-            }
+            ViewCompat.setTransitionName(posterImage, cast.name)
+
+            root.setOnClickListener { onCastClicked?.invoke(cast, posterImage) }
         }
     }
 }

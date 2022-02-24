@@ -4,7 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.transition.TransitionInflater
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
@@ -93,8 +95,12 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         viewModel.imageClicked(position)
     }
 
-    private fun onCastClicked(cast: CastUIModel) {
-        navigate(MovieDetailFragmentDirections.actionMovieDetailToCastDetail(cast.creditId))
+    private fun onCastClicked(cast: CastUIModel, imageView: AppCompatImageView) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions = MovieDetailFragmentDirections.actionMovieDetailToCreditDetail(
+            cast.creditId, cast.profilePath
+        )
+        navigate(directions, extras)
     }
 
     private fun onTrailerClicked(trailer: TrailerUIModel) {

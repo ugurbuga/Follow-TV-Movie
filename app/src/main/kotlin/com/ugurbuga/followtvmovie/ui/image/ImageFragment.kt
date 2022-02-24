@@ -38,5 +38,9 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
             currentItem = args.argPosition
             setPageTransformer(compositePageTransformer)
         }
+
+        viewBinding.toolbar.setNavigationClickListener {
+            popBack()
+        }
     }
 }

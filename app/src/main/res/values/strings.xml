@@ -26,5 +26,6 @@
     <string name="cast">Cast</string>
     <string name="coming_soon">Coming Soon</string>
     <string name="favorite_movies">Favorite Movies</string>
+    <string name="known_for">Known For</string>
 
 </resources>
