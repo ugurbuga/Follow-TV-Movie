@@ -11,7 +11,7 @@ class DeleteFavoriteUseCase @Inject constructor(
 ) :
     FTMUseCase<DeleteFavoriteUseCase.DeleteFavoriteParams, Unit>() {
 
-    data class DeleteFavoriteParams(val id: Int)
+    data class DeleteFavoriteParams(val id: String)
 
     override fun execute(params: DeleteFavoriteParams): Flow<Resource<Unit>> {
         return favoritesRepository.delete(params.id)

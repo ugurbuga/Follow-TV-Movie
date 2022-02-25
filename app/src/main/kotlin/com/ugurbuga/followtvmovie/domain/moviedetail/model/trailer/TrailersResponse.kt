@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class TrailersResponse(
     @Json(name = "id")
-    val id: Int,
+    val id: String,
     @Json(name = "results")
     val results: List<TrailerResponse>
 )

@@ -24,7 +24,7 @@ data class MovieDetailResponse(
     val homepage: String?,
 
     @Json(name = "id")
-    val id: Int,
+    val id: String,
 
     @Json(name = "imdb_id")
     val imdbId: String?,

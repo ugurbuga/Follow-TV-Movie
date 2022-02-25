@@ -9,5 +9,5 @@ data class CreditResponse(
     @Json(name = "crew")
     val crew: List<CrewResponse>,
     @Json(name = "id")
-    val id: Int
+    val id: String
 )

@@ -12,7 +12,7 @@
 
         <argument
             android:name="arg_id"
-            app:argType="integer" />
+            app:argType="string" />
 
         <argument
             android:name="arg_image_url"
@@ -27,8 +27,8 @@
             app:destination="@id/trailerActivity" />
 
         <action
-            android:id="@+id/action_movie_detail_to_credit_detail"
-            app:destination="@id/creditDetailFragment" />
+            android:id="@+id/action_movie_detail_to_person_detail"
+            app:destination="@id/personDetailFragment" />
 
         <action
             android:id="@+id/action_movie_detail_to_image"
@@ -51,16 +51,20 @@
     </activity>
 
     <fragment
-        android:id="@+id/creditDetailFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.cast.CreditDetailFragment"
-        tools:layout="@layout/fragment_credit_detail">
+        android:id="@+id/personDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.person.PersonDetailFragment"
+        tools:layout="@layout/fragment_person_detail">
 
         <action
-            android:id="@+id/action_credit_detail_to_movie_detail"
+            android:id="@+id/action_person_detail_to_movie_detail"
             app:destination="@id/movieDetailFragment" />
 
+        <action
+            android:id="@+id/action_person_detail_to_image"
+            app:destination="@id/imageFragment" />
+
         <argument
-            android:name="arg_credit_id"
+            android:name="arg_person_id"
             app:argType="string" />
 
         <argument
@@ -91,7 +95,7 @@
 
         <argument
             android:name="arg_id"
-            app:argType="integer" />
+            app:argType="string" />
     </dialog>
 
     <fragment

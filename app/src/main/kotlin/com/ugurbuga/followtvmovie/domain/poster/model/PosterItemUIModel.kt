@@ -9,7 +9,7 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 data class PosterItemUIModel(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int,
+    val id: String,
 
     @ColumnInfo(name = "name")
     val name: String,

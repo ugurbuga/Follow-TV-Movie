@@ -4,11 +4,11 @@ import androidx.annotation.StringDef
 
 @StringDef(
     DiscoverType.MOVIE,
-    DiscoverType.TV_SHOW
+    DiscoverType.TV
 )
 annotation class DiscoverType {
     companion object {
         const val MOVIE = "movie"
-        const val TV_SHOW = "tv_show"
+        const val TV = "tv"
     }
 }

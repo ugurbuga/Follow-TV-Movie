@@ -5,7 +5,7 @@ import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.MovieImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
@@ -26,27 +26,27 @@ class MovieRepositoryImpl @Inject constructor(
         return onApiCall { movieService.getUpcomingMovies(page) }
     }
 
-    override fun getMovieDetail(movieId: Int): Flow<Resource<MovieDetailResponse>> {
+    override fun getMovieDetail(movieId: String): Flow<Resource<MovieDetailResponse>> {
         return onApiCall { movieService.getMovieDetail(movieId) }
     }
 
-    override fun getMovieReviews(movieId: Int): Flow<Resource<MovieReviewResponse>> {
+    override fun getMovieReviews(movieId: String): Flow<Resource<MovieReviewResponse>> {
         return onApiCall { movieService.getMovieReviews(movieId) }
     }
 
-    override fun getTrailers(movieId: Int): Flow<Resource<TrailersResponse>> {
-        return onApiCall { movieService.getTrailers(movieId) }
+    override fun getMovieTrailers(movieId: String): Flow<Resource<TrailersResponse>> {
+        return onApiCall { movieService.getMovieTrailers(movieId) }
     }
 
-    override fun getCredits(movieId: Int): Flow<Resource<CreditResponse>> {
-        return onApiCall { movieService.getCredits(movieId) }
+    override fun getMovieCredits(movieId: String): Flow<Resource<CreditResponse>> {
+        return onApiCall { movieService.getMovieCredits(movieId) }
     }
 
-    override fun getImages(movieId: Int): Flow<Resource<ImageResponse>> {
-        return onApiCall { movieService.getImages(movieId) }
+    override fun getMovieImages(movieId: String): Flow<Resource<MovieImageResponse>> {
+        return onApiCall { movieService.getMovieImages(movieId) }
     }
 
-    override fun getExternalIds(movieId: Int): Flow<Resource<ExternalIdsResponse>> {
-        return onApiCall { movieService.getExternalIds(movieId) }
+    override fun getMovieExternalIds(movieId: String): Flow<Resource<ExternalIdsResponse>> {
+        return onApiCall { movieService.getMovieExternalIds(movieId) }
     }
 }

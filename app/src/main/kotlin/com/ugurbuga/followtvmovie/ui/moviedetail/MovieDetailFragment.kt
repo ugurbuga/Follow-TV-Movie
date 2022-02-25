@@ -12,6 +12,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
+import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -57,7 +58,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             castRecyclerView.adapter = CastAdapter(::onCastClicked)
             val adapter = GenreAdapter()
             genreRecyclerView.adapter = adapter
-            imageView.setImageUrl(requireArguments().getString("arg_image_url", ""))
+            imageView.setImageUrl(requireArguments().getString("arg_image_url", Util.EMPTY_STRING))
 
             favoriteButton.setOnClickListener {
                 viewModel.changeFavoriteState()
@@ -97,8 +98,8 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onCastClicked(cast: CastUIModel, imageView: AppCompatImageView) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = MovieDetailFragmentDirections.actionMovieDetailToCreditDetail(
-            cast.creditId, cast.profilePath
+        val directions = MovieDetailFragmentDirections.actionMovieDetailToPersonDetail(
+            cast.id, cast.profilePath
         )
         navigate(directions, extras)
     }

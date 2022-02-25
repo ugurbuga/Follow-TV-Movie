@@ -8,7 +8,7 @@ sealed class MovieDetailViewEvent {
 
     object ShowAddedSnackbar : MovieDetailViewEvent()
 
-    data class NavigateToReviews(val movieId: Int) : MovieDetailViewEvent()
+    data class NavigateToReviews(val movieId: String) : MovieDetailViewEvent()
 
     data class NavigateToImages(val imageList: ArrayList<ImageUIModel>, val position: Int) :
         MovieDetailViewEvent()

@@ -7,7 +7,7 @@ data class ExternalIdsResponse(
     @Json(name = "facebook_id")
     val facebookId: String?,
     @Json(name = "id")
-    val id: Int,
+    val id: String,
     @Json(name = "imdb_id")
     val imdbId: String?,
     @Json(name = "instagram_id")

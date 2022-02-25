@@ -1,11 +1,11 @@
 package com.ugurbuga.followtvmovie.di
 
-import com.ugurbuga.followtvmovie.repository.credit.CreditRepository
-import com.ugurbuga.followtvmovie.repository.credit.CreditRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
 import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepositoryImpl
+import com.ugurbuga.followtvmovie.repository.person.PersonRepository
+import com.ugurbuga.followtvmovie.repository.person.PersonRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepositoryImpl
 import dagger.Binds
@@ -28,9 +28,9 @@ abstract class RepositoryModule {
     ): MovieRepository
 
     @Binds
-    abstract fun provideCreditRepository(
-        creditRepositoryImpl: CreditRepositoryImpl
-    ): CreditRepository
+    abstract fun providePersonRepository(
+        personRepositoryImpl: PersonRepositoryImpl
+    ): PersonRepository
 
     @Binds
     abstract fun provideFavoritesRepository(

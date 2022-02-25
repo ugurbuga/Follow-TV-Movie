@@ -1,0 +1,24 @@
+package com.ugurbuga.followtvmovie.domain.person.mapper
+
+import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.domain.image.ImageMapper
+import com.ugurbuga.followtvmovie.domain.person.model.PersonDetailResponse
+import com.ugurbuga.followtvmovie.domain.person.model.PersonDetailUIModel
+import javax.inject.Inject
+
+class PersonMapper @Inject constructor(
+    private val imageMapper: ImageMapper
+) {
+
+    fun toPersonDetailUIModel(response: PersonDetailResponse): PersonDetailUIModel {
+
+        return PersonDetailUIModel(
+            name = response.name,
+            biography = response.biography,
+            profilePath = imageMapper.getPosterUrl(response.profilePath),
+            birthDay = response.birthDay ?: Util.EMPTY_STRING,
+            deathDay = response.deathDay ?: Util.EMPTY_STRING,
+        )
+    }
+
+}

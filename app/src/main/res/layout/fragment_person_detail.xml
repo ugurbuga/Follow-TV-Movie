@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.ui.cast.CreditDetailViewState" />
+            type="com.ugurbuga.followtvmovie.ui.person.PersonDetailViewState" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,7 +25,7 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="@dimen/height_350"
                 android:elevation="@dimen/elevation_8"
                 app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
                 app:collapsedTitleTextColor="@color/primary_color"
@@ -59,7 +59,7 @@
                     app:layout_collapseMode="pin"
                     app:navigation_type="back_button"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:title="@{viewState.creditDetail.name}" />
+                    app:title="@{viewState.personDetail.name}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -76,8 +76,16 @@
                 android:orientation="vertical">
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.Regular.14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:text="@{viewState.personDetail.biography}"
+                    tools:text="Açıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.creditDetail.knownFor.size() > 0}"
+                    visible="@{viewState.casts.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
@@ -88,8 +96,32 @@
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.creditDetail.knownFor}"
-                    visible="@{viewState.creditDetail.knownFor.size() > 0}"
+                    submitList="@{viewState.casts}"
+                    visible="@{viewState.casts.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_image" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.images.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/images" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/image_recycler_view"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.images}"
+                    visible="@{viewState.images.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"

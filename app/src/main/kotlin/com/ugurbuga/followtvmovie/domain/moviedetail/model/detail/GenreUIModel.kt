@@ -4,6 +4,6 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
 
 data class GenreUIModel(
-    val id: Int,
+    val id: String,
     val name: String
 ) : ListAdapterItem

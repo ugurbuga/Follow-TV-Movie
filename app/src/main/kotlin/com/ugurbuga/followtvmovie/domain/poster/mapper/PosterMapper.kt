@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.poster.mapper
 
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.domain.image.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieResponse
@@ -11,7 +11,9 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
 import javax.inject.Inject
 
-class PosterMapper @Inject constructor() {
+class PosterMapper @Inject constructor(
+    private val imageMapper: ImageMapper
+) {
 
     fun toPosterUIModel(response: TvShowGeneralResponse): PosterUIModel {
 
@@ -26,8 +28,8 @@ class PosterMapper @Inject constructor() {
         return PosterItemUIModel(
             id = response.id,
             name = response.name,
-            posterPath = Util.getPosterPath(response.posterPath, response.backdropPath),
-            type = DiscoverType.TV_SHOW
+            posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
+            type = DiscoverType.TV
         )
     }
 
@@ -43,7 +45,7 @@ class PosterMapper @Inject constructor() {
         return PosterItemUIModel(
             id = response.id,
             name = response.title,
-            posterPath = Util.getPosterPath(response.posterPath, response.backdropPath),
+            posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             type = DiscoverType.MOVIE
         )
     }

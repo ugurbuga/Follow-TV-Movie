@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.data.api.services
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.MovieImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
@@ -25,31 +25,31 @@ interface MovieService {
 
     @GET("movie/{movieId}")
     suspend fun getMovieDetail(
-        @Path("movieId") movieId: Int,
+        @Path("movieId") movieId: String,
     ): MovieDetailResponse
 
     @GET("movie/{movieId}/reviews")
     suspend fun getMovieReviews(
-        @Path("movieId") movieId: Int,
+        @Path("movieId") movieId: String,
     ): MovieReviewResponse
 
     @GET("movie/{movieId}/videos")
-    suspend fun getTrailers(
-        @Path("movieId") movieId: Int,
+    suspend fun getMovieTrailers(
+        @Path("movieId") movieId: String,
     ): TrailersResponse
 
     @GET("movie/{movieId}/credits")
-    suspend fun getCredits(
-        @Path("movieId") movieId: Int,
+    suspend fun getMovieCredits(
+        @Path("movieId") movieId: String,
     ): CreditResponse
 
     @GET("movie/{movieId}/images")
-    suspend fun getImages(
-        @Path("movieId") movieId: Int,
-    ): ImageResponse
+    suspend fun getMovieImages(
+        @Path("movieId") movieId: String,
+    ): MovieImageResponse
 
     @GET("movie/{movieId}/external_ids")
-    suspend fun getExternalIds(
-        @Path("movieId") movieId: Int,
+    suspend fun getMovieExternalIds(
+        @Path("movieId") movieId: String,
     ): ExternalIdsResponse
 }

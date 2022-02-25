@@ -6,19 +6,19 @@ import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.MovieMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class MovieReviewUseCase @Inject constructor(
+class GetMovieReviewsUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
     private val movieMapper: MovieMapper
 ) :
-    FTMUseCase<MovieReviewUseCase.MovieReviewParams, List<ReviewUIModel>>() {
+    FTMUseCase<GetMovieReviewsUseCase.MovieReviewsParams, List<ReviewUIModel>>() {
 
-    data class MovieReviewParams(val movieId: Int)
+    data class MovieReviewsParams(val movieId: String)
 
-    override fun execute(params: MovieReviewParams): Flow<Resource<List<ReviewUIModel>>> {
+    override fun execute(params: MovieReviewsParams): Flow<Resource<List<ReviewUIModel>>> {
         return movieRepository.getMovieReviews(params.movieId).map {
             it.map { movieReviewResponse ->
                 movieMapper.toReviewUIModelList(movieReviewResponse)

@@ -6,7 +6,7 @@ import com.squareup.moshi.Json
 data class ProductionCompanyResponse(
 
     @Json(name = "id")
-    val id: Int,
+    val id: String,
 
     @Json(name = "logo_path")
     val logoPath: String?,

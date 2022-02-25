@@ -1,5 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.discover
 
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,18 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
 
             upcomingMovieRecyclerView.apply {
                 scrollListener(::onUpcomingMovieScroll)
+            }
+
+            toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.search -> {
+                        Toast.makeText(requireContext(), "search", Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.settings -> {
+                        Toast.makeText(requireContext(), "settings", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                true
             }
         }
     }

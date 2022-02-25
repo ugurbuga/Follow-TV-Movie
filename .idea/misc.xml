@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/drawable/ic_not_favorite.xml" value="0.1575" />
         <entry key="app/src/main/res/drawable/ic_review.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.178" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_tv.xml" value="0.178" />
         <entry key="app/src/main/res/drawable/item_background.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/logo_animation.xml" value="0.1245" />
@@ -52,6 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_image.xml" value="0.3406321649966033" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.24333892822265626" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_person_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_soon.xml" value="0.4528985507246377" />
         <entry key="app/src/main/res/layout/fragment_tv_series.xml" value="0.375" />
@@ -70,6 +72,7 @@
         <entry key="app/src/main/res/layout/layout_persistent_bottom_sheet.xml" value="0.15959809888310791" />
         <entry key="app/src/main/res/layout/layout_reviews_bottom_sheet.xml" value="0.36885245901639346" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.3111111111111111" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_ftm_launcher.xml" value="0.1535" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1535" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1535" />

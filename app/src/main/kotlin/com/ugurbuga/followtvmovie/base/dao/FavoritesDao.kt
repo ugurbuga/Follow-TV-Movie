@@ -15,13 +15,13 @@ interface FavoritesDao {
     suspend fun insert(note: PosterItemUIModel)
 
     @Query("Delete from favoritesTable WHERE id = :id")
-    suspend fun delete(id: Int)
+    suspend fun delete(id: String)
 
     @Query("Select * from favoritesTable where type=:listType order by id")
     fun getFavorites(listType: String): Flow<MutableList<PosterItemUIModel>>
 
     @Query("Select * from favoritesTable where type=:listType AND id=:id")
-    fun getFavorite(listType: String, id: Int): Flow<PosterItemUIModel?>
+    fun getFavorite(listType: String, id: String): Flow<PosterItemUIModel?>
 
     @Update
     suspend fun update(note: PosterItemUIModel)

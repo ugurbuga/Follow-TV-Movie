@@ -27,5 +27,6 @@
     <string name="coming_soon">Coming Soon</string>
     <string name="favorite_movies">Favorite Movies</string>
     <string name="known_for">Known For</string>
+    <string name="settings">Settings</string>
 
 </resources>

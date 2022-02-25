@@ -17,7 +17,7 @@ class FavoritesRepositoryImpl @Inject constructor(
         return onRoomCall { favoritesDao.insert(note) }
     }
 
-    override fun delete(id: Int): Flow<Resource<Unit>> {
+    override fun delete(id: String): Flow<Resource<Unit>> {
         return onRoomCall { favoritesDao.delete(id) }
     }
 
@@ -25,7 +25,7 @@ class FavoritesRepositoryImpl @Inject constructor(
         return onRoomFlowCall(favoritesDao.getFavorites(listType))
     }
 
-    override fun getFavorite(listType: String, id: Int): Flow<Resource<PosterItemUIModel?>> {
+    override fun getFavorite(listType: String, id: String): Flow<Resource<PosterItemUIModel?>> {
         return onRoomFlowCall(favoritesDao.getFavorite(listType, id))
     }
 

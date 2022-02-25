@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class MovieReviewResponse(
     @Json(name = "id")
-    val id: Int,
+    val id: String,
     @Json(name = "page")
     val page: Int,
     @Json(name = "results")

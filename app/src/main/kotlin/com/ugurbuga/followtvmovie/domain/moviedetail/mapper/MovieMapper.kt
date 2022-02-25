@@ -1,14 +1,9 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.data.api.ApiConstants
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CastResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.image.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
@@ -20,7 +15,9 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor() {
+class MovieMapper @Inject constructor(
+    private val imageMapper: ImageMapper
+) {
 
     fun toMovieDetailUIModel(response: MovieDetailResponse): MovieDetailUIModel {
 
@@ -29,7 +26,7 @@ class MovieMapper @Inject constructor() {
             genres = response.genres.map { toGenresUIModel(it) },
             id = response.id,
             overview = response.overview,
-            posterPath = Util.getPosterPath(response.posterPath, response.backdropPath),
+            posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             releaseDate = response.releaseDate,
             status = response.status,
             title = response.title,
@@ -64,54 +61,6 @@ class MovieMapper @Inject constructor() {
                 list.add(TrailerUIModel(key = it.key, name = it.name))
             }
         }
-        return list
-    }
-
-    fun toCastList(response: CreditResponse): ArrayList<CastUIModel> {
-        return ArrayList(response.cast.map {
-            getCast(it)
-        })
-    }
-
-    private fun getCast(response: CastResponse): CastUIModel {
-        return CastUIModel(
-            creditId = response.creditId,
-            name = response.name,
-            character = response.character,
-            profilePath = getProfilePath(response),
-        )
-    }
-
-    private fun getProfilePath(response: CastResponse): String {
-        return if (response.profilePath != null) {
-            ApiConstants.BASE_IMAGE_URL + response.profilePath
-        } else {
-            Util.EMPTY_STRING
-        }
-    }
-
-    fun toImageList(response: ImageResponse): ArrayList<ImageUIModel> {
-        var list = arrayListOf<ImageUIModel>()
-        list.addAll(response.posters.map {
-            ImageUIModel(
-                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
-            )
-        })
-
-        list.addAll(response.backdrops.map {
-            ImageUIModel(
-                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
-            )
-        })
-
-        list.addAll(response.logos.map {
-            ImageUIModel(
-                ApiConstants.BASE_IMAGE_URL + it.filePath, it.aspectRatio
-            )
-        })
-
-        list = ArrayList(list.filter { it.imageUrl.isNotBlank() })
-        list.sortBy { it.imageUrl }
         return list
     }
 

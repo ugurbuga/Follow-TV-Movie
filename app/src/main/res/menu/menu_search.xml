@@ -2,9 +2,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.ugurbuga.followtvmovie.ui.main.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/search"
         android:title="@string/search"
         android:icon="@drawable/ic_search"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
+
 </menu>
