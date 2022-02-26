@@ -14,7 +14,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCa
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -56,7 +56,7 @@ class MovieDetailViewModel @Inject constructor(
     private fun isFavorite() {
         getFavoriteUseCase(
             GetFavoriteUseCase.GetFavoriteParams(
-                DiscoverType.MOVIE, movieId
+                MediaType.MOVIE, movieId
             )
         ).doOnSuccess {
             _movieDetailViewState.value = _movieDetailViewState.value.copy(

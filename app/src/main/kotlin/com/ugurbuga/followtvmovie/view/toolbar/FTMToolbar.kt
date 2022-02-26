@@ -7,7 +7,9 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.ugurbuga.followtvmovie.R
 
 class FTMToolbar @JvmOverloads constructor(
-    context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = R.attr.ftmToolbar
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.ftmToolbar
 ) : MaterialToolbar(
     context, attributeSet, defStyleAttr
 ) {

@@ -6,6 +6,7 @@
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_28">28dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
 
     <!-- Padding -->
     <dimen name="padding_2">2dp</dimen>

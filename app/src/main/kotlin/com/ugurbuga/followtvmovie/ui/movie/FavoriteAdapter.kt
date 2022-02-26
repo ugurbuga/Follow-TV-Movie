@@ -11,9 +11,11 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.DisplayHelper
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.ui.discover.adapter.EmptyViewHolder
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
+import com.ugurbuga.followtvmovie.ui.discover.adapter.ProgressViewHolder
 
 class FavoriteAdapter(
     context: Context,
@@ -33,7 +35,10 @@ class FavoriteAdapter(
             PosterHolderType.POSTER -> return FavoriteViewHolder(parent, inflater)
 
             PosterHolderType.EMPTY -> return EmptyViewHolder(parent, inflater)
+
+            PosterHolderType.LOADING -> return ProgressViewHolder(parent, inflater)
         }
+
         throw IllegalStateException("View Error")
 
     }
@@ -42,10 +47,18 @@ class FavoriteAdapter(
         when (holder) {
             is FavoriteViewHolder -> {
                 val item = getItem(position) as PosterItemUIModel
-                holder.bind(
-                    item, imageHeight, onPosterClick
-                )
+                holder.bind(item, imageHeight, onPosterClick)
             }
+
+            is EmptyViewHolder -> {
+                val item = getItem(position) as EmptyUIModel
+                holder.bind(item)
+            }
+
+            is ProgressViewHolder -> {
+
+            }
+
         }
     }
 
@@ -56,6 +69,9 @@ class FavoriteAdapter(
             }
             is EmptyUIModel -> {
                 PosterHolderType.EMPTY
+            }
+            is LoadingUIModel -> {
+                PosterHolderType.LOADING
             }
             else -> {
                 Util.INVALID_INDEX

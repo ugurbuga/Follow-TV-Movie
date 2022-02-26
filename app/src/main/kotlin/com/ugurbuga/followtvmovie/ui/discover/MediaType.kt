@@ -3,12 +3,14 @@ package com.ugurbuga.followtvmovie.ui.discover
 import androidx.annotation.StringDef
 
 @StringDef(
-    DiscoverType.MOVIE,
-    DiscoverType.TV
+    MediaType.MOVIE,
+    MediaType.TV,
+    MediaType.PERSON
 )
-annotation class DiscoverType {
+annotation class MediaType {
     companion object {
         const val MOVIE = "movie"
         const val TV = "tv"
+        const val PERSON = "person"
     }
 }

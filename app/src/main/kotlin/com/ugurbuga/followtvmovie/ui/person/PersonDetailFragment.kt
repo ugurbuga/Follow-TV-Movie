@@ -13,7 +13,7 @@ import com.ugurbuga.followtvmovie.databinding.FragmentPersonDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -82,10 +82,10 @@ class PersonDetailFragment :
         cast: CastUIModel, imageView: AppCompatImageView
     ) {
         when (cast.mediaType) {
-            DiscoverType.TV -> {
+            MediaType.TV -> {
                 showErrorDialog(getString(R.string.coming_soon), 0)
             }
-            DiscoverType.MOVIE -> {
+            MediaType.MOVIE -> {
                 val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
                 val directions = PersonDetailFragmentDirections.actionPersonDetailToMovieDetail(
                     cast.id, cast.profilePath

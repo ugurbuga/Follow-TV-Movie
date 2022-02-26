@@ -8,7 +8,6 @@ import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.ui.discover.DiscoverFragmentDirections
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +46,7 @@ class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMovieBinding>(
     private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions =
-            DiscoverFragmentDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
+            MoviesFragmentDirections.actionMoviesToMovieDetail(poster.id, poster.posterPath)
         navigate(directions, extras)
     }
 }

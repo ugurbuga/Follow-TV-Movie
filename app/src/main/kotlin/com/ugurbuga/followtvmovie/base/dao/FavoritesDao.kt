@@ -17,11 +17,11 @@ interface FavoritesDao {
     @Query("Delete from favoritesTable WHERE id = :id")
     suspend fun delete(id: String)
 
-    @Query("Select * from favoritesTable where type=:listType order by id")
-    fun getFavorites(listType: String): Flow<MutableList<PosterItemUIModel>>
+    @Query("Select * from favoritesTable where mediaType=:mediaType order by id")
+    fun getFavorites(mediaType: String): Flow<MutableList<PosterItemUIModel>>
 
-    @Query("Select * from favoritesTable where type=:listType AND id=:id")
-    fun getFavorite(listType: String, id: String): Flow<PosterItemUIModel?>
+    @Query("Select * from favoritesTable where mediaType=:mediaType AND id=:id")
+    fun getFavorite(mediaType: String, id: String): Flow<PosterItemUIModel?>
 
     @Update
     suspend fun update(note: PosterItemUIModel)

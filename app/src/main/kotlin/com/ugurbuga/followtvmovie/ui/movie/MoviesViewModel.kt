@@ -1,17 +1,18 @@
 package com.ugurbuga.followtvmovie.ui.movie
 
 import androidx.lifecycle.viewModelScope
+import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoritesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.ui.discover.DiscoverType
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
@@ -28,9 +29,9 @@ class MoviesViewModel @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     private fun getFavorites() {
-        getFavoriteUseCase(GetFavoritesUseCase.GetFavoriteParams(DiscoverType.MOVIE)).doOnSuccess {
+        getFavoriteUseCase(GetFavoritesUseCase.GetFavoriteParams(MediaType.MOVIE)).doOnSuccess {
             if (it.isEmpty()) {
-                _favoriteViewState.value = FavoriteViewState(arrayListOf(EmptyUIModel()))
+                _favoriteViewState.value = FavoriteViewState(arrayListOf(EmptyUIModel(message = R.string.empty_favorite_movies)))
 
             } else {
                 _favoriteViewState.value = FavoriteViewState(it as ArrayList<ListAdapterItem>)

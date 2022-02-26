@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_movie">
 
         <action
-            android:id="@+id/action_to_movieDetailFragment"
+            android:id="@+id/action_movies_to_movie_detail"
             app:destination="@id/movie_detail_nav_graph">
 
             <argument
@@ -26,5 +26,7 @@
     </fragment>
 
     <include app:graph="@navigation/movie_detail_nav_graph" />
+
+    <include app:graph="@navigation/person_detail_nav_graph" />
 
 </navigation>

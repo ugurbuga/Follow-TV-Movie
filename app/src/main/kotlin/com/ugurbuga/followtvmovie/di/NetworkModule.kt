@@ -10,6 +10,7 @@ import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
 import com.ugurbuga.followtvmovie.data.api.interceptor.LanguageInterceptor
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.api.services.PersonService
+import com.ugurbuga.followtvmovie.data.api.services.SearchService
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import dagger.Module
 import dagger.Provides
@@ -92,5 +93,11 @@ object NetworkModule {
     @Singleton
     fun providePersonService(retrofit: Retrofit): PersonService {
         return retrofit.create(PersonService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchService(retrofit: Retrofit): SearchService {
+        return retrofit.create(SearchService::class.java)
     }
 }

@@ -12,9 +12,9 @@ class GetFavoriteUseCase @Inject constructor(
 ) :
     FTMUseCase<GetFavoriteUseCase.GetFavoriteParams, PosterItemUIModel?>() {
 
-    data class GetFavoriteParams(val type: String, val id: String)
+    data class GetFavoriteParams(val mediaType: String, val id: String)
 
     override fun execute(params: GetFavoriteParams): Flow<Resource<PosterItemUIModel?>> {
-        return favoritesRepository.getFavorite(params.type, params.id)
+        return favoritesRepository.getFavorite(params.mediaType, params.id)
     }
 }

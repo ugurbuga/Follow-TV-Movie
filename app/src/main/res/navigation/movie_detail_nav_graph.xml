@@ -28,11 +28,31 @@
 
         <action
             android:id="@+id/action_movie_detail_to_person_detail"
-            app:destination="@id/personDetailFragment" />
+            app:destination="@id/person_detail_nav_graph">
+
+            <argument
+                android:name="arg_person_id"
+                app:argType="string" />
+
+            <argument
+                android:name="arg_image_url"
+                app:argType="string" />
+
+        </action>
 
         <action
             android:id="@+id/action_movie_detail_to_image"
-            app:destination="@id/imageFragment" />
+            app:destination="@id/image_nav_graph">
+
+            <argument
+                android:name="arg_images"
+                app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
+
+            <argument
+                android:name="arg_position"
+                app:argType="integer" />
+
+        </action>
 
         <action
             android:id="@+id/action_movie_detail_to_web"
@@ -50,43 +70,7 @@
             app:argType="string" />
     </activity>
 
-    <fragment
-        android:id="@+id/personDetailFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.person.PersonDetailFragment"
-        tools:layout="@layout/fragment_person_detail">
-
-        <action
-            android:id="@+id/action_person_detail_to_movie_detail"
-            app:destination="@id/movieDetailFragment" />
-
-        <action
-            android:id="@+id/action_person_detail_to_image"
-            app:destination="@id/imageFragment" />
-
-        <argument
-            android:name="arg_person_id"
-            app:argType="string" />
-
-        <argument
-            android:name="arg_image_url"
-            app:argType="string" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/imageFragment"
-        android:name="com.ugurbuga.followtvmovie.ui.image.ImageFragment"
-        tools:layout="@layout/fragment_image">
-
-        <argument
-            android:name="arg_images"
-            app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
-
-        <argument
-            android:name="arg_position"
-            app:argType="integer" />
-
-    </fragment>
+    <include app:graph="@navigation/image_nav_graph" />
 
     <dialog
         android:id="@+id/reviewBottomSheet"

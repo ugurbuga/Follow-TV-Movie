@@ -14,13 +14,6 @@ class LanguageInterceptor @Inject constructor() : Interceptor {
         val original: Request = chain.request()
         val originalHttpUrl: HttpUrl = original.url
 
-        val originalUrlString = originalHttpUrl.toUrl().toString()
-        if (originalUrlString.startsWith(ApiConstants.BASE_URL + "movie/") &&
-            originalUrlString.endsWith("images")
-        ) {
-            return chain.proceed(original)
-        }
-
         val url = originalHttpUrl.newBuilder()
             .addQueryParameter(ApiConstants.LANGUAGE, "en-US")
             .build()

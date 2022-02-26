@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_discover">
 
         <action
-            android:id="@+id/action_to_movieDetailFragment"
+            android:id="@+id/action_discover_to_movie_detail"
             app:destination="@id/movie_detail_nav_graph">
 
             <argument
@@ -23,9 +23,48 @@
                 app:argType="string" />
         </action>
 
+        <action
+            android:id="@+id/action_discover_to_search"
+            app:destination="@id/searchFragment" />
+
     </fragment>
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_search_to_movie_detail"
+            app:destination="@id/movie_detail_nav_graph">
+
+            <argument
+                android:name="arg_id"
+                app:argType="string" />
+
+            <argument
+                android:name="arg_image_url"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_search_to_person_detail"
+            app:destination="@id/person_detail_nav_graph">
+
+            <argument
+                android:name="arg_person_id"
+                app:argType="string" />
+
+            <argument
+                android:name="arg_image_url"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
 
     <include app:graph="@navigation/movie_detail_nav_graph" />
+
+    <include app:graph="@navigation/person_detail_nav_graph" />
 
 </navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/image_nav_graph"
+    app:startDestination="@id/imageFragment">
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.image.ImageFragment"
+        tools:layout="@layout/fragment_image">
+
+        <argument
+            android:name="arg_images"
+            app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
+
+        <argument
+            android:name="arg_position"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>

@@ -14,7 +14,7 @@
     <string name="image_big">image_big</string>
     <string name="reviews">Reviews</string>
     <string name="no_reviews">No Reviews</string>
-    <string name="empty_favorites">Favorite list is empty.</string>
+    <string name="empty_favorite_movies">Favorite Movie list is empty.</string>
     <string name="favorite">favorite</string>
     <string name="search">Search</string>
     <string name="read_more">Read More</string>
@@ -28,5 +28,6 @@
     <string name="favorite_movies">Favorite Movies</string>
     <string name="known_for">Known For</string>
     <string name="settings">Settings</string>
+    <string name="item_not_found">Item Not Found</string>
 
 </resources>

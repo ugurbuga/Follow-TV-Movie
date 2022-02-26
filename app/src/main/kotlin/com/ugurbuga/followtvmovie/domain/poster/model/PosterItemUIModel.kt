@@ -17,6 +17,6 @@ data class PosterItemUIModel(
     @ColumnInfo(name = "posterPath")
     val posterPath: String,
 
-    @ColumnInfo(name = "type")
-    val type: String
+    @ColumnInfo(name = "mediaType")
+    val mediaType: String
 ) : ListAdapterItem

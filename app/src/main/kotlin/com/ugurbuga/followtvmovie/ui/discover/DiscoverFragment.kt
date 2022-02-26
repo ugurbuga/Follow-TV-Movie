@@ -3,7 +3,6 @@ package com.ugurbuga.followtvmovie.ui.discover
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentDiscoverBinding
@@ -42,7 +41,7 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
             toolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.search -> {
-                        Toast.makeText(requireContext(), "search", Toast.LENGTH_SHORT).show()
+                        navigate(DiscoverFragmentDirections.actionDiscoverToSearch())
                     }
                     R.id.settings -> {
                         Toast.makeText(requireContext(), "settings", Toast.LENGTH_SHORT).show()
@@ -74,7 +73,7 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions =
-            DiscoverFragmentDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
+            DiscoverFragmentDirections.actionDiscoverToMovieDetail(poster.id, poster.posterPath)
         navigate(directions, extras)
     }
 
@@ -113,8 +112,8 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions =
-            DiscoverFragmentDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
-        findNavController().navigate(directions, extras)
+            DiscoverFragmentDirections.actionDiscoverToMovieDetail(poster.id, poster.posterPath)
+        navigate(directions, extras)
     }
 
 }

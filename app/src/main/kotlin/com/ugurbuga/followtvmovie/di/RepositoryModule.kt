@@ -6,6 +6,8 @@ import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.person.PersonRepository
 import com.ugurbuga.followtvmovie.repository.person.PersonRepositoryImpl
+import com.ugurbuga.followtvmovie.repository.search.SearchRepository
+import com.ugurbuga.followtvmovie.repository.search.SearchRepositoryImpl
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepositoryImpl
 import dagger.Binds
@@ -36,4 +38,9 @@ abstract class RepositoryModule {
     abstract fun provideFavoritesRepository(
         favoriteRepositoryImpl: FavoritesRepositoryImpl
     ): FavoritesRepository
+
+    @Binds
+    abstract fun provideSearchRepository(
+        searchRepositoryImpl: SearchRepositoryImpl
+    ): SearchRepository
 }
