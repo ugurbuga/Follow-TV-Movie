@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.base
 
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.di.IoDispatcher
@@ -24,8 +26,13 @@ abstract class FTMBaseRepository {
             if (BuildConfig.DEBUG) {
                 error.printStackTrace()
             }
+            recordException(error)
             emit(Resource.Error(error))
         }.flowOn(dispatcher)
+
+    private fun recordException(error: Throwable) {
+        Firebase.crashlytics.recordException(error)
+    }
 
     fun <T : Any> onRoomCall(call: suspend () -> T): Flow<Resource<T>> =
         flow {
@@ -35,6 +42,7 @@ abstract class FTMBaseRepository {
             if (BuildConfig.DEBUG) {
                 error.printStackTrace()
             }
+            recordException(error)
             emit(Resource.Error(error))
         }.flowOn(dispatcher)
 
@@ -45,6 +53,7 @@ abstract class FTMBaseRepository {
                 emit(Resource.Success(it))
             }
         }.catch {
+            recordException(Throwable("onRoomFlowCall"))
             emit(Resource.Error(it))
         }.flowOn(dispatcher)
 }

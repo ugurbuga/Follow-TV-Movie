@@ -14,8 +14,8 @@ import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.ui.discover.adapter.EmptyViewHolder
+import com.ugurbuga.followtvmovie.ui.discover.adapter.LoadingViewHolder
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
-import com.ugurbuga.followtvmovie.ui.discover.adapter.ProgressViewHolder
 
 class FavoriteAdapter(
     context: Context,
@@ -36,7 +36,7 @@ class FavoriteAdapter(
 
             PosterHolderType.EMPTY -> return EmptyViewHolder(parent, inflater)
 
-            PosterHolderType.LOADING -> return ProgressViewHolder(parent, inflater)
+            PosterHolderType.LOADING -> return LoadingViewHolder(parent, inflater)
         }
 
         throw IllegalStateException("View Error")
@@ -55,7 +55,7 @@ class FavoriteAdapter(
                 holder.bind(item)
             }
 
-            is ProgressViewHolder -> {
+            is LoadingViewHolder -> {
 
             }
 

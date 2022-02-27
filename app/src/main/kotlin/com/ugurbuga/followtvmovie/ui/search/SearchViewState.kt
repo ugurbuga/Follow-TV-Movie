@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.ui.search
 
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 
-data class SearchViewState(val posterList: MutableList<ListAdapterItem> = arrayListOf())
+data class SearchViewState(
+    val poster: PosterUIModel = PosterUIModel()
+)

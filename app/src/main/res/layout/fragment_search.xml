@@ -65,7 +65,7 @@
                 spacePaddingEnd="@{@dimen/padding_8}"
                 spacePaddingStart="@{@dimen/padding_8}"
                 spacePaddingTop="@{@dimen/padding_8}"
-                submitList="@{viewState.posterList}"
+                submitList="@{viewState.poster.posterList}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"

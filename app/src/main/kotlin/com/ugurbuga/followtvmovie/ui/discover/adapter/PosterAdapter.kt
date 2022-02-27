@@ -26,7 +26,7 @@ class PosterAdapter(
         when (viewType) {
             PosterHolderType.POSTER -> return PosterViewHolder(parent, inflater)
 
-            PosterHolderType.LOADING -> return ProgressViewHolder(parent, inflater)
+            PosterHolderType.LOADING -> return LoadingViewHolder(parent, inflater)
         }
         throw IllegalStateException("View Error")
     }
@@ -41,7 +41,7 @@ class PosterAdapter(
                 )
             }
 
-            is ProgressViewHolder -> {
+            is LoadingViewHolder -> {
             }
         }
     }

@@ -17,15 +17,19 @@
         android:theme="@style/Theme.FollowTvMovie.Splash"
         tools:targetApi="31">
         <activity
-            android:name="com.ugurbuga.followtvmovie.ui.main.MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize|adjustPan">
+            android:name="com.ugurbuga.followtvmovie.ui.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.ugurbuga.followtvmovie.ui.main.MainActivity"
+            android:theme="@style/Theme.FollowTvMovie"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
 
         <activity
             android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"

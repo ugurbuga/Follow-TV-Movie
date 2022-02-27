@@ -27,7 +27,16 @@
             android:id="@+id/action_discover_to_search"
             app:destination="@id/searchFragment" />
 
+        <action
+            android:id="@+id/action_discover_to_settings"
+            app:destination="@id/settingsFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/searchFragment"

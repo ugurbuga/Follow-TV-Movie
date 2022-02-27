@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemLoadingBinding
 
-class ProgressViewHolder(
+class LoadingViewHolder(
     parent: ViewGroup,
     inflater: LayoutInflater
 ) : FTMBaseViewHolder<ItemLoadingBinding>(

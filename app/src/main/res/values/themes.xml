@@ -33,7 +33,8 @@
     <style name="Theme.FollowTvMovie.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenIconBackgroundColor">@color/primary_color</item>
         <item name="windowSplashScreenBackground">@color/primary_color</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_ftm_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_animation_logo</item>
         <item name="postSplashScreenTheme">@style/Theme.FollowTvMovie</item>
     </style>
 

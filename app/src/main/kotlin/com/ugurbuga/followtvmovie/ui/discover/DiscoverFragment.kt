@@ -1,6 +1,5 @@
 package com.ugurbuga.followtvmovie.ui.discover
 
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.ugurbuga.followtvmovie.R
@@ -44,7 +43,7 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
                         navigate(DiscoverFragmentDirections.actionDiscoverToSearch())
                     }
                     R.id.settings -> {
-                        Toast.makeText(requireContext(), "settings", Toast.LENGTH_SHORT).show()
+                        navigate(DiscoverFragmentDirections.actionDiscoverToSettings())
                     }
                 }
                 true
