@@ -12,4 +12,8 @@ data class MovieDetailUIModel(
     val title: String,
     val video: Boolean,
     val voteAverage: Double,
-)
+) {
+    fun getProgressValue(): Int {
+        return (voteAverage.times(10.0)).toInt()
+    }
+}

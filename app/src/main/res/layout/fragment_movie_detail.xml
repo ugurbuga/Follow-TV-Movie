@@ -66,6 +66,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            visible="@{viewState.movieDetail != null}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -75,32 +76,63 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_16">
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_16"
+                    tools:context=".MainActivity">
 
                     <com.ugurbuga.followtvmovie.view.FTMTextView
+                        android:id="@+id/overview"
                         style="@style/FTMText.Regular.14"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:text="@{viewState.movieDetail.overview}"
+                        app:layout_constraintEnd_toStartOf="@id/progress_bar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="Açıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        style="@style/CircularDeterminateProgressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:progress="@{viewState.movieDetail.getProgressValue()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/overview"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:progress="60" />
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        android:id="@+id/text_view_progress"
+                        style="@style/FTMText.Light.13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(viewState.movieDetail.voteAverage)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+                        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+                        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+                        tools:text="7.7" />
 
                     <androidx.appcompat.widget.AppCompatToggleButton
                         android:id="@+id/favorite_button"
                         android:layout_width="@dimen/width_50"
                         android:layout_height="@dimen/height_50"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:background="@drawable/favorite_toggle_button"
-                        android:layout_marginTop="@dimen/margin_16"
                         android:checked="@{viewState.favorite}"
                         android:gravity="center"
                         android:textOff=""
-                        android:textOn="" />
-                </LinearLayout>
+                        android:textOn=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/overview"
+                        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/genre_recycler_view"
@@ -197,7 +229,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16">
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:layout_marginBottom="@dimen/margin_16">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/reviews_button"

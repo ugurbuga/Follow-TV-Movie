@@ -281,4 +281,9 @@
         <item name="android:textSize">@dimen/text_size_17</item>
     </style>
 
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle</item>
+    </style>
+
 </resources>

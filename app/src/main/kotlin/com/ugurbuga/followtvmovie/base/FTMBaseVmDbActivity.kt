@@ -16,7 +16,7 @@ import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
 import java.util.Locale
 
 abstract class FTMBaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> :
-    BaseVmDbActivity<VM,DB>(), FTMBaseView, OnLocaleChangedListener {
+    BaseVmDbActivity<VM, DB>(), FTMBaseView, OnLocaleChangedListener {
 
     private val loading: FTMLoadingDialog by lazy { FTMLoadingDialog(this) }
 

@@ -46,13 +46,14 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularMovies() {
         this.upPopularMoviePage++
         addLoadingPopularMovie()
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(this.upPopularMoviePage)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            setPopularMovieList(it)
-        }.launchIn(viewModelScope)
+        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(this.upPopularMoviePage))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                setPopularMovieList(it)
+            }.launchIn(viewModelScope)
     }
 
     private fun addLoadingPopularMovie() {
