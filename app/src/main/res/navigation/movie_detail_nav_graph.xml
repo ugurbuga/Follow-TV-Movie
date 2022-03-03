@@ -10,10 +10,6 @@
         android:name="com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
 
-        <deepLink
-            android:id="@+id/movieDetailDeeplink"
-            app:uri="ftm.com/{arg_id}/{arg_image_url}" />
-
         <argument
             android:name="arg_id"
             app:argType="string" />

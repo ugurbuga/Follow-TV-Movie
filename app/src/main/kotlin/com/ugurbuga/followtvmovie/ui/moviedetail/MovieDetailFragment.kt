@@ -8,12 +8,14 @@ import android.webkit.URLUtil
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
+import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
@@ -41,6 +43,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         )
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
+        deepLinkPush()
     }
 
     override fun onResume() {
@@ -94,6 +97,20 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
         collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)
         collect(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+    }
+
+
+    private fun deepLinkPush() {
+        val context = requireContext().applicationContext
+        val navController = findNavController()
+
+        val pendingIntent = navController
+            .createDeepLink()
+            .setDestination(R.id.movieDetailFragment)
+            .setArguments(args.toBundle())
+            .createPendingIntent()
+
+        Notifier.postNotification(args.argId.toLong(), context, pendingIntent)
     }
 
     private fun getImageUrl(): String {

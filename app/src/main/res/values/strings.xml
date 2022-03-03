@@ -34,5 +34,7 @@
     <string name="light_theme">Light Theme</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="system_default">System Default</string>
+    <string name="defaultChannel">Default Channel</string>
+    <string name="push">Push</string>
 
 </resources>
