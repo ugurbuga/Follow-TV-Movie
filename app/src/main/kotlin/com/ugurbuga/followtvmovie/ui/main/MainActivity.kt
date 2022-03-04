@@ -22,9 +22,9 @@ open class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding
     override fun getLayoutResourceId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
         setAppTheme(FTMPreferenceManager(this).getTheme())
         super.onCreate(savedInstanceState)
+        installSplashScreen()
     }
 
     override fun onInitDataBinding() {

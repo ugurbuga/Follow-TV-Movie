@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+     Copyright (C) 2020 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar"
+        android:shortcutDisabledMessage="@string/soon"
+        android:shortcutId="SoonFragment"
+        android:shortcutLongLabel="@string/soon"
+        android:shortcutShortLabel="@string/soon">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="myapp://followtvmovie.com/soon" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_movie"
+        android:shortcutDisabledMessage="@string/movie"
+        android:shortcutId="MoviesFragment"
+        android:shortcutLongLabel="@string/movie"
+        android:shortcutShortLabel="@string/movie">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="myapp://followtvmovie.com/movies" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_tv"
+        android:shortcutDisabledMessage="@string/tv_series"
+        android:shortcutId="TvSeriesFragment"
+        android:shortcutLongLabel="@string/tv_series"
+        android:shortcutShortLabel="@string/tv_series">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="myapp://followtvmovie.com/tvseries" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:shortcutDisabledMessage="@string/discover"
+        android:shortcutId="DiscoverFragment"
+        android:shortcutLongLabel="@string/discover"
+        android:shortcutShortLabel="@string/discover">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="myapp://followtvmovie.com/discover" />
+    </shortcut>
+
+</shortcuts>

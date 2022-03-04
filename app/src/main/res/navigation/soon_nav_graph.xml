@@ -8,6 +8,9 @@
     <fragment
         android:id="@+id/soonFragment"
         android:name="com.ugurbuga.followtvmovie.ui.soon.SoonFragment"
-        tools:layout="@layout/fragment_soon" />
+        tools:layout="@layout/fragment_soon">
+        <deepLink app:uri="myapp://followtvmovie.com/soon" />
+
+    </fragment>
 
 </navigation>

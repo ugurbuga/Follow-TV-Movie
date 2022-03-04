@@ -1,7 +1,6 @@
 package com.ugurbuga.followtvmovie.extensions
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,8 +12,8 @@ fun <T> LifecycleOwner.collect(stateFlow: StateFlow<T>, observer: (T) -> Unit) {
     }
 }
 
-fun <T> LifecycleOwner.collect(stateFlow: SharedFlow<T>, observer: (T) -> Unit) {
+fun <T> LifecycleOwner.collect(sharedFlow: SharedFlow<T>, observer: (T) -> Unit) {
     lifecycleScope.launchWhenStarted {
-        stateFlow.collectLatest { t -> observer(t) }
+        sharedFlow.collectLatest { t -> observer(t) }
     }
 }

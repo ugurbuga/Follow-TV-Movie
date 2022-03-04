@@ -9,6 +9,7 @@
         android:id="@+id/movieFragment"
         android:name="com.ugurbuga.followtvmovie.ui.movie.MoviesFragment"
         tools:layout="@layout/fragment_movie">
+        <deepLink app:uri="myapp://followtvmovie.com/movies" />
 
         <action
             android:id="@+id/action_movies_to_movie_detail"
