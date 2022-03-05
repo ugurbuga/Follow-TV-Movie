@@ -18,18 +18,29 @@ android {
         minSdk 23
         targetSdk 31
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         flavorDimensions "default"
     }
 
+    signingConfigs {
+
+        release {
+            keyAlias 'TestTest'
+            keyPassword 'TestTest'
+            storeFile file("${project.rootDir}/keys/TestKeyStore.jks")
+            storePassword 'TestTest'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseAppDistribution {
-                // build comment -> ./gradlew assembleRelease appDistributionUploadDevRelease
+                // build comment -> ./gradlew clean assembleRelease appDistributionUploadDevRelease
                 serviceCredentialsFile = "follow-tv-movie-firebase.json"
                 artifactType = "APK"
 
