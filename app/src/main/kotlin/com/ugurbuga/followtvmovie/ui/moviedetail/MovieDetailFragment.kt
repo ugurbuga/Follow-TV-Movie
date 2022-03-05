@@ -3,13 +3,13 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.webkit.URLUtil
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
@@ -109,8 +109,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             .setDestination(R.id.movieDetailFragment)
             .setArguments(args.toBundle())
             .createPendingIntent()
-
-        Notifier.postNotification(args.argId.toLong(), context, pendingIntent)
+        Notifier.postNotification(args.argId.toInt(), context, pendingIntent)
     }
 
     private fun getImageUrl(): String {

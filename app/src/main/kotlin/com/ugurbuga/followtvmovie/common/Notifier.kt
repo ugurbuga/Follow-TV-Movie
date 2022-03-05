@@ -49,7 +49,7 @@ object Notifier {
         }
     }
 
-    fun postNotification(id: Long, context: Context, intent: PendingIntent) {
+    fun postNotification(id: Int, context: Context, intent: PendingIntent) {
         init(context)
         val builder = NotificationCompat.Builder(context, channelId)
         builder.setContentTitle("Title").setSmallIcon(R.drawable.ic_tv).color =
@@ -63,6 +63,6 @@ object Notifier {
         val notificationManager = NotificationManagerCompat.from(context)
         // Remove prior notifications; only allow one at a time to edit the latest item
         notificationManager.cancelAll()
-        notificationManager.notify(id.toInt(), notification)
+        notificationManager.notify(id, notification)
     }
 }
