@@ -24,7 +24,15 @@ open class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         setAppTheme(FTMPreferenceManager(this).getTheme())
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+    }
+
+    override fun setViewDataBinding() {
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                viewModel.isLoading.value
+            }
+        }
+        super.setViewDataBinding()
     }
 
     override fun onInitDataBinding() {

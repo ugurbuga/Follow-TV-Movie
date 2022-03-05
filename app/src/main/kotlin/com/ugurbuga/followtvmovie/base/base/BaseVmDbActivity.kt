@@ -14,6 +14,10 @@ abstract class BaseVmDbActivity<VM : FTMBaseViewModel, DB : ViewDataBinding> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setViewDataBinding()
+    }
+
+    open fun setViewDataBinding() {
         viewBinding = DataBindingUtil.setContentView(this, getLayoutResourceId())
         viewBinding.lifecycleOwner = this
         onInitDataBinding()
