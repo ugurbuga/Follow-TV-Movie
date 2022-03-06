@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/soon_nav_graph"
-        android:icon="@drawable/ic_calendar"
+        android:icon="@drawable/anim_calendar"
         android:title="@string/soon" />
 
 </menu>

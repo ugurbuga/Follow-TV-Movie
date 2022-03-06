@@ -61,6 +61,7 @@ class SettingsFragment : FTMBaseVMFragment<SettingsViewModel, FragmentSettingsBi
     }
 
     private fun onThemeClicked() {
+        viewBinding.currentTheme.text = themeOptions[selectedIndex]
         updateTheme()
     }
 
