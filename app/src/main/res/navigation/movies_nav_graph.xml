@@ -2,13 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movie_nav_graph"
-    app:startDestination="@id/movieFragment">
+    android:id="@+id/movies_nav_graph"
+    app:startDestination="@id/moviesFragment">
 
     <fragment
-        android:id="@+id/movieFragment"
+        android:id="@+id/moviesFragment"
         android:name="com.ugurbuga.followtvmovie.ui.movie.MoviesFragment"
-        tools:layout="@layout/fragment_movie">
+        tools:layout="@layout/fragment_movies">
         <deepLink app:uri="myapp://followtvmovie.com/movies" />
 
         <action

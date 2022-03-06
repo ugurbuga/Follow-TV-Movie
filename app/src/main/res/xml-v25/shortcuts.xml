@@ -30,10 +30,10 @@
     <shortcut
         android:enabled="true"
         android:icon="@drawable/ic_movie"
-        android:shortcutDisabledMessage="@string/movie"
+        android:shortcutDisabledMessage="@string/movies"
         android:shortcutId="MoviesFragment"
-        android:shortcutLongLabel="@string/movie"
-        android:shortcutShortLabel="@string/movie">
+        android:shortcutLongLabel="@string/movies"
+        android:shortcutShortLabel="@string/movies">
         <intent
             android:action="android.intent.action.VIEW"
             android:data="myapp://followtvmovie.com/movies" />
@@ -42,13 +42,13 @@
     <shortcut
         android:enabled="true"
         android:icon="@drawable/ic_tv"
-        android:shortcutDisabledMessage="@string/tv_series"
-        android:shortcutId="TvSeriesFragment"
-        android:shortcutLongLabel="@string/tv_series"
-        android:shortcutShortLabel="@string/tv_series">
+        android:shortcutDisabledMessage="@string/tv_shows"
+        android:shortcutId="TvShowsFragment"
+        android:shortcutLongLabel="@string/tv_shows"
+        android:shortcutShortLabel="@string/tv_shows">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="myapp://followtvmovie.com/tvseries" />
+            android:data="myapp://followtvmovie.com/tvshows" />
     </shortcut>
 
     <shortcut

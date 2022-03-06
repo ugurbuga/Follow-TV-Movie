@@ -52,12 +52,12 @@ open class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding
                     popBack(R.id.discoverFragment)
                 }
 
-                R.id.tv_series_nav_graph -> {
-                    popBack(R.id.tvSeriesFragment)
+                R.id.tv_shows_nav_graph -> {
+                    popBack(R.id.tvShowsFragment)
                 }
 
-                R.id.movie_nav_graph -> {
-                    popBack(R.id.movieFragment)
+                R.id.movies_nav_graph -> {
+                    popBack(R.id.moviesFragment)
                 }
 
                 R.id.soon_nav_graph -> {

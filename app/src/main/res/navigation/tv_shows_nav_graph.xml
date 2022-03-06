@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_series_nav_graph"
-    app:startDestination="@id/tvSeriesFragment">
+    android:id="@+id/tv_shows_nav_graph"
+    app:startDestination="@id/tvShowsFragment">
 
     <fragment
-        android:id="@+id/tvSeriesFragment"
+        android:id="@+id/tvShowsFragment"
         android:name="com.ugurbuga.followtvmovie.ui.tvshows.TvShowsFragment"
         tools:layout="@layout/fragment_tv_shows">
-        <deepLink app:uri="myapp://followtvmovie.com/tvseries" />
+        <deepLink app:uri="myapp://followtvmovie.com/tvshows" />
 
     </fragment>
 

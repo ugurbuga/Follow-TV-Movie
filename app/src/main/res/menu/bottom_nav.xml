@@ -6,14 +6,14 @@
         android:icon="@drawable/ic_search"
         android:title="@string/discover" />
     <item
-        android:id="@+id/tv_series_nav_graph"
+        android:id="@+id/tv_shows_nav_graph"
         android:icon="@drawable/ic_tv"
-        android:title="@string/tv_series" />
+        android:title="@string/tv_shows" />
 
     <item
-        android:id="@+id/movie_nav_graph"
+        android:id="@+id/movies_nav_graph"
         android:icon="@drawable/ic_movie"
-        android:title="@string/movie" />
+        android:title="@string/movies" />
 
     <item
         android:id="@+id/soon_nav_graph"

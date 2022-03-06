@@ -5,8 +5,8 @@
     <string name="warning">Warning</string>
     <string name="ok">OK</string>
     <string name="discover">Discover</string>
-    <string name="movie">Movie</string>
-    <string name="tv_series">TV Series</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
     <string name="soon">Soon</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="popular_tv_shows">Popular Tv Shows</string>

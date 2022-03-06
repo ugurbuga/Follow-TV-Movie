@@ -5,16 +5,16 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
-import com.ugurbuga.followtvmovie.databinding.FragmentMovieBinding
+import com.ugurbuga.followtvmovie.databinding.FragmentMoviesBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMovieBinding>() {
+class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMoviesBinding>() {
 
-    override fun getResourceLayoutId() = R.layout.fragment_movie
+    override fun getResourceLayoutId() = R.layout.fragment_movies
 
     override fun onInitDataBinding() {
         collect(viewModel.favoriteViewState, ::onFavoriteViewState)
