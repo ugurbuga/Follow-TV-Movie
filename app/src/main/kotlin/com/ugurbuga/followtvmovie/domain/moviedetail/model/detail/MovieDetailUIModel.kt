@@ -1,6 +1,5 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
 
-
 data class MovieDetailUIModel(
     val adult: Boolean,
     val genres: List<GenreUIModel>,
@@ -8,6 +7,7 @@ data class MovieDetailUIModel(
     val overview: String?,
     val posterPath: String,
     val releaseDate: String,
+    val releaseDateLong: Long,
     val status: String,
     val title: String,
     val video: Boolean,

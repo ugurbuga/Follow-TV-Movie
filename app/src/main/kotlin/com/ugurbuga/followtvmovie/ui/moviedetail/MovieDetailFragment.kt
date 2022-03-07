@@ -138,15 +138,9 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {
         when (event) {
-            MovieDetailViewEvent.ShowAddedSnackbar -> {
-                Snackbar.make(
-                    viewBinding.root, getString(R.string.added_favorite), Snackbar.LENGTH_SHORT
-                ).show()
-            }
-            MovieDetailViewEvent.ShowDeletedSnackbar -> {
-                Snackbar.make(
-                    viewBinding.root, getString(R.string.removed_favorite), Snackbar.LENGTH_SHORT
-                ).show()
+            is MovieDetailViewEvent.ShowSnackbar -> {
+                Snackbar.make(viewBinding.root, getString(event.message), Snackbar.LENGTH_SHORT)
+                    .show()
             }
             is MovieDetailViewEvent.NavigateToReviews -> {
                 navigate(MovieDetailFragmentDirections.actionReviewFragment(event.movieId))

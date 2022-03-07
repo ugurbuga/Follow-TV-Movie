@@ -28,6 +28,7 @@ class MovieMapper @Inject constructor(
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             releaseDate = response.releaseDate,
+            releaseDateLong = Util.getDateLong(response.releaseDate),
             status = response.status,
             title = response.title,
             video = response.video,
@@ -49,7 +50,7 @@ class MovieMapper @Inject constructor(
         return ReviewUIModel(
             author = response.author,
             content = response.content,
-            createdAt = Util.getDate(response.createdAt),
+            createdAt = response.createdAt,
             id = response.id
         )
     }

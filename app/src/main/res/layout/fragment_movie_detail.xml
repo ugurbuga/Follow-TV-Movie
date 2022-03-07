@@ -134,6 +134,25 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:orientation="horizontal">
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        style="@style/FTMText.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/release_date" />
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        style="@style/FTMText.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewState.movieDetail.releaseDate}" />
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/genre_recycler_view"
                     spacePaddingBottom="@{@dimen/padding_8}"

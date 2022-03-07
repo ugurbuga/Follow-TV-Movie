@@ -4,9 +4,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 
 sealed class MovieDetailViewEvent {
 
-    object ShowDeletedSnackbar : MovieDetailViewEvent()
-
-    object ShowAddedSnackbar : MovieDetailViewEvent()
+    data class ShowSnackbar(val message: Int) : MovieDetailViewEvent()
 
     data class NavigateToReviews(val movieId: String) : MovieDetailViewEvent()
 

@@ -2,6 +2,7 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
@@ -82,13 +83,13 @@ class MovieDetailViewModel @Inject constructor(
         if (movieDetailViewState.value.isFavorite) {
             movieDetailViewState.value.movieDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowDeletedSnackbar)
+                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.removed_favorite))
                 }.launchIn(viewModelScope)
             }
         } else {
             movieDetailViewState.value.movieDetail?.let {
                 addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it)).doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowAddedSnackbar)
+                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.added_favorite))
                 }.launchIn(viewModelScope)
             }
         }

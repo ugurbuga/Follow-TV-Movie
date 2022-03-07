@@ -36,5 +36,6 @@
     <string name="system_default">System Default</string>
     <string name="defaultChannel">Default Channel</string>
     <string name="push">Push</string>
+    <string name="release_date">Release Date:</string>
 
 </resources>
