@@ -21,8 +21,11 @@ class FavoritesRepositoryImpl @Inject constructor(
         return onRoomCall { favoritesDao.delete(id) }
     }
 
-    override fun getFavorites(mediaType: String): Flow<Resource<MutableList<PosterItemUIModel>>> {
-        return onRoomFlowCall(favoritesDao.getFavorites(mediaType))
+    override fun getFavorites(
+        mediaType: String,
+        isWatched: Boolean
+    ): Flow<Resource<MutableList<PosterItemUIModel>>> {
+        return onRoomFlowCall(favoritesDao.getFavorites(mediaType, isWatched))
     }
 
     override fun getFavorite(mediaType: String, id: String): Flow<Resource<PosterItemUIModel?>> {

@@ -26,6 +26,7 @@ import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
+import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -106,11 +107,8 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         val context = requireContext().applicationContext
         val navController = findNavController()
 
-        val pendingIntent = navController
-            .createDeepLink()
-            .setDestination(R.id.movieDetailFragment)
-            .setArguments(args.toBundle())
-            .createPendingIntent()
+        val pendingIntent = navController.createDeepLink().setDestination(R.id.movieDetailFragment)
+            .setArguments(args.toBundle()).createPendingIntent()
         Notifier.postNotification(args.argId.toInt(), context, pendingIntent)
     }
 
@@ -164,7 +162,27 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                     )
                 )
             }
+            is MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog -> {
+                showWatchedOrWatchLaterDialog(event.movieName)
+            }
         }
+    }
+
+    private fun showWatchedOrWatchLaterDialog(movieName: String) {
+        val builder = FTMDialog(requireContext())
+        builder.setTitle(movieName)
+
+        builder.setNeutralButton(getString(R.string.watched)) { _, _ ->
+            viewModel.addFavorite(isWatched = true)
+        }
+        builder.setPositiveButton(getString(R.string.watch_later)) { _, _ ->
+            viewModel.addFavorite(isWatched = false)
+        }
+
+        val dialog = builder.create()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
     }
 
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {

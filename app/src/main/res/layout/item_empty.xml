@@ -32,7 +32,7 @@
             android:layout_marginTop="@dimen/margin_16"
             android:gravity="center"
             android:text="@{item.getEmptyMessage(context)}"
-            tools:text="@string/empty_favorite_movies" />
+            tools:text="@string/empty_watched_movie_list" />
 
     </LinearLayout>
 

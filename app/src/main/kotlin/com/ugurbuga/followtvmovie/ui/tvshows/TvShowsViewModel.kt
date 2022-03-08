@@ -23,7 +23,7 @@ class TvShowsViewModel @Inject constructor(
         get() = _favoriteViewState
 
     init {
-        getFavoriteUseCase(GetFavoritesUseCase.GetFavoriteParams(MediaType.TV))
+        getFavoriteUseCase(GetFavoritesUseCase.GetFavoriteParams(MediaType.TV, true))
             .doOnSuccess {
                 _favoriteViewState.value = FavoriteViewState(it as ArrayList<ListAdapterItem>)
             }.launchIn(viewModelScope)

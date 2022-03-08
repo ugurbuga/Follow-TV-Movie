@@ -15,4 +15,6 @@ sealed class MovieDetailViewEvent {
 
     data class NavigateToWebView(val url: String) : MovieDetailViewEvent()
 
+    data class ShowWatchedOrWatchLaterDialog(val movieName: String) : MovieDetailViewEvent()
+
 }

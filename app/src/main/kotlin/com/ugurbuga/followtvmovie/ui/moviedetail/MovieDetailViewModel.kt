@@ -83,15 +83,24 @@ class MovieDetailViewModel @Inject constructor(
         if (movieDetailViewState.value.isFavorite) {
             movieDetailViewState.value.movieDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.removed_favorite))
+                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.removed_movie_list))
                 }.launchIn(viewModelScope)
             }
         } else {
-            movieDetailViewState.value.movieDetail?.let {
-                addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it)).doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.added_favorite))
-                }.launchIn(viewModelScope)
+            val isReleased =
+                Util.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
+            if (isReleased) {
+                viewModelScope.launch {
+                    _movieDetailViewEvent.emit(
+                        MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog(
+                            movieDetailViewState.value.movieDetail?.title ?: Util.EMPTY_STRING
+                        )
+                    )
+                }
+            } else {
+                addFavorite(isWatched = false)
             }
+
         }
     }
 
@@ -197,6 +206,18 @@ class MovieDetailViewModel @Inject constructor(
     private fun navigateToWebView(url: String) {
         viewModelScope.launch {
             _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToWebView(url))
+        }
+    }
+
+    fun addFavorite(isWatched: Boolean) {
+        val message =
+            if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
+
+        movieDetailViewState.value.movieDetail?.let {
+            addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it, isWatched))
+                .doOnSuccess {
+                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(message))
+                }.launchIn(viewModelScope)
         }
     }
 

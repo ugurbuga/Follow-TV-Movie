@@ -14,13 +14,17 @@
     <string name="image_big">image_big</string>
     <string name="reviews">Reviews</string>
     <string name="no_reviews">No Reviews</string>
-    <string name="empty_favorite_movies">Favorite Movie list is empty.</string>
+    <string name="empty_watched_movie_list">Watched Movie List is Empty.</string>
+    <string name="empty_watch_later_movie_list">Watch Later Movie List is Empty.</string>
+    <string name="empty_watched_tv_show_list">Watched Tv Show List is Empty.</string>
+    <string name="empty_watch_later_tv_show_list">Watch Later Tv Show List is Empty.</string>
     <string name="favorite">favorite</string>
     <string name="search">Search</string>
     <string name="read_more">Read More</string>
     <string name="read_less">Read Less</string>
-    <string name="added_favorite">Added to Favorites.</string>
-    <string name="removed_favorite">Removed from Favorites.</string>
+    <string name="added_watched_list">Added to Watched List.</string>
+    <string name="added_watch_later_list">Added to Watch Later List.</string>
+    <string name="removed_movie_list">Removed from Movie List.</string>
     <string name="videos">Videos</string>
     <string name="images">Images</string>
     <string name="cast">Cast</string>
@@ -37,5 +41,7 @@
     <string name="defaultChannel">Default Channel</string>
     <string name="push">Push</string>
     <string name="release_date">Release Date:</string>
+    <string name="watched">Watched</string>
+    <string name="watch_later">Watch Later</string>
 
 </resources>

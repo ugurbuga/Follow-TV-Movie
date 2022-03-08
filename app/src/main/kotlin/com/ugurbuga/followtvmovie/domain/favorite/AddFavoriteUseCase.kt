@@ -5,18 +5,21 @@ import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class AddFavoriteUseCase @Inject constructor(
-    private val favoritesRepository: FavoritesRepository,
-    private val posterMapper: PosterMapper
-) :
-    FTMUseCase<AddFavoriteUseCase.AddFavoriteParams, Unit>() {
+    private val favoritesRepository: FavoritesRepository, private val posterMapper: PosterMapper
+) : FTMUseCase<AddFavoriteUseCase.AddFavoriteParams, Unit>() {
 
-    data class AddFavoriteParams(val movieDetail: MovieDetailUIModel)
+    data class AddFavoriteParams(val movieDetail: MovieDetailUIModel, val isWatched: Boolean)
 
     override fun execute(params: AddFavoriteParams): Flow<Resource<Unit>> {
-        return favoritesRepository.insert(posterMapper.toPosterUIModel(params.movieDetail))
+        return favoritesRepository.insert(
+            posterMapper.toPosterUIModel(
+                params.movieDetail,
+                params.isWatched
+            )
+        )
     }
 }

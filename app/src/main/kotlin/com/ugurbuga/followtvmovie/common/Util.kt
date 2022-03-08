@@ -26,15 +26,19 @@ object Util {
         return ResourcesCompat.getFont(context, font)
     }
 
-    fun getDateLong(releaseDate: String): Long {
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        return sdf.parse(releaseDate)?.time ?: 0
+    fun getDateLong(date: String?): Long {
+        return if (date != null) {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            sdf.parse(date)?.time ?: 0
+        } else {
+            0
+        }
 
     }
 
     fun isReleased(releaseDate: Long?): Boolean {
         return if (releaseDate != null) {
-            releaseDate > Calendar.getInstance().time.time
+            Calendar.getInstance().time.time > releaseDate
         } else {
             false
         }

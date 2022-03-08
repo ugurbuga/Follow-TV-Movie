@@ -18,5 +18,11 @@ data class PosterItemUIModel(
     val posterPath: String,
 
     @ColumnInfo(name = "mediaType")
-    val mediaType: String
+    val mediaType: String,
+
+    @ColumnInfo(name = "releaseDateLong")
+    val releaseDateLong: Long,
+
+    @ColumnInfo(name = "isWatched")
+    val isWatched: Boolean = false
 ) : ListAdapterItem

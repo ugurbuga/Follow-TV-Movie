@@ -286,4 +286,20 @@
         <item name="android:progressDrawable">@drawable/circle</item>
     </style>
 
+    <style name="FTMTabLayout">
+        <item name="tabSelectedTextColor">@color/primary_color</item>
+        <item name="tabTextAppearance">@style/TabDesign</item>
+        <item name="tabTextColor">@color/grey_500</item>
+        <item name="tabIndicatorColor">@color/primary_color</item>
+        <item name="tabIndicatorHeight">@dimen/height_2</item>
+
+    </style>
+
+    <style name="TabDesign" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:fontFamily">@font/sofiapro_semibold</item>
+
+    </style>
+
 </resources>

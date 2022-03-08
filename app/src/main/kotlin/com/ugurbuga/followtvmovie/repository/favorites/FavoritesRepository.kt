@@ -10,7 +10,7 @@ interface FavoritesRepository {
 
     fun delete(id: String): Flow<Resource<Unit>>
 
-    fun getFavorites(mediaType: String): Flow<Resource<MutableList<PosterItemUIModel>>>
+    fun getFavorites(mediaType: String, isWatched: Boolean): Flow<Resource<MutableList<PosterItemUIModel>>>
 
     fun getFavorite(mediaType: String, id: String): Flow<Resource<PosterItemUIModel?>>
 
