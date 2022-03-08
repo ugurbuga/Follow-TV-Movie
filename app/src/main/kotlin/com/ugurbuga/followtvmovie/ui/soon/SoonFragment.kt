@@ -10,6 +10,8 @@ class SoonFragment : FTMBaseVMFragment<SoonViewModel, FragmentSoonBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_soon
 
+    override fun generateViewModel() = SoonViewModel::class.java
+
     override fun onInitDataBinding() {
 
     }

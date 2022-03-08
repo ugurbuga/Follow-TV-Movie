@@ -16,6 +16,8 @@ class WebViewFragment : FTMBaseVMFragment<WebViewViewModel, FragmentWebViewBindi
 
     val args: WebViewFragmentArgs by navArgs()
 
+    override fun generateViewModel() = WebViewViewModel::class.java
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         handleBackPressed()

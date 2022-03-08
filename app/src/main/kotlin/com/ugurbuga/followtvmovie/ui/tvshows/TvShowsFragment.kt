@@ -15,6 +15,8 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
 
     override fun getResourceLayoutId() = R.layout.fragment_tv_shows
 
+    override fun generateViewModel() = TvShowsViewModel::class.java
+
     override fun onInitDataBinding() {
         collect(viewModel.favoriteViewState, ::onFavoriteViewState)
 

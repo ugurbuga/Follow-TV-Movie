@@ -1,17 +1,17 @@
 package com.ugurbuga.followtvmovie.base.base
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.extensions.lazyThreadSafetyNone
-import java.lang.reflect.ParameterizedType
 
 abstract class BaseVmFragment<VM : FTMBaseViewModel> : BaseFragment() {
 
-    @Suppress("UNCHECKED_CAST")
-    val viewModel by lazyThreadSafetyNone {
-        val persistentViewModelClass = (javaClass.genericSuperclass as ParameterizedType)
-            .actualTypeArguments[0] as Class<VM>
-        return@lazyThreadSafetyNone ViewModelProvider(this)[persistentViewModelClass]
-    }
+    protected lateinit var viewModel: VM
 
+    abstract fun generateViewModel(): Class<VM>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[generateViewModel()]
+    }
 }

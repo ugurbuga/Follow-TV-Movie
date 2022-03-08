@@ -33,6 +33,8 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     override fun getResourceLayoutId() = R.layout.fragment_movie_detail
 
+    override fun generateViewModel() = MovieDetailViewModel::class.java
+
     val args: MovieDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {

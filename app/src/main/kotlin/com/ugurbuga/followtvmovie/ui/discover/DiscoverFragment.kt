@@ -17,6 +17,8 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
 
     override fun getResourceLayoutId() = R.layout.fragment_discover
 
+    override fun generateViewModel() = DiscoverViewModel::class.java
+
     override fun onInitDataBinding() {
         collect(viewModel.discover, ::onDiscover)
 

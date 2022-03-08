@@ -18,6 +18,7 @@ class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMoviesBinding>
 
     override fun onInitDataBinding() {
         collect(viewModel.favoriteViewState, ::onFavoriteViewState)
+    override fun generateViewModel() = MoviesViewModel::class.java
 
         with(viewBinding) {
             val favoriteAdapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)

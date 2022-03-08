@@ -24,6 +24,8 @@ class PersonDetailFragment :
 
     override fun getResourceLayoutId() = R.layout.fragment_person_detail
 
+    override fun generateViewModel() = PersonDetailViewModel::class.java
+
     val args: PersonDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {

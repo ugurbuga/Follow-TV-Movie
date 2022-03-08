@@ -17,8 +17,9 @@ class SettingsFragment : FTMBaseVMFragment<SettingsViewModel, FragmentSettingsBi
     @Inject
     lateinit var preferenceManager: FTMPreferenceManager
 
-
     override fun getResourceLayoutId() = R.layout.fragment_settings
+
+    override fun generateViewModel() = SettingsViewModel::class.java
 
     private var selectedIndex: Int = -1
 
