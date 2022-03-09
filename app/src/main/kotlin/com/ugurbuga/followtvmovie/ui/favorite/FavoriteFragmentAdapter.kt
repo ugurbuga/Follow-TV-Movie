@@ -1,14 +1,13 @@
-package com.ugurbuga.followtvmovie.ui.movie
+package com.ugurbuga.followtvmovie.ui.favorite
 
 import android.content.Context
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.ui.movies.WatchLaterMovieListFragment
+import com.ugurbuga.followtvmovie.ui.movies.WatchedMovieListFragment
 
 class FavoriteFragmentAdapter(
     var context: Context,

@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.movie
+package com.ugurbuga.followtvmovie.ui.favorite
 
 import android.content.Context
 import android.view.LayoutInflater

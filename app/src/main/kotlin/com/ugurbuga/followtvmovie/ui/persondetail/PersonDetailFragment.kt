@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.person
+package com.ugurbuga.followtvmovie.ui.persondetail
 
 import android.os.Bundle
 import android.transition.TransitionInflater

@@ -1,8 +1,9 @@
-package com.ugurbuga.followtvmovie.ui.movie
+package com.ugurbuga.followtvmovie.ui.movies
 
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentMoviesBinding
+import com.ugurbuga.followtvmovie.ui.favorite.FavoriteFragmentAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

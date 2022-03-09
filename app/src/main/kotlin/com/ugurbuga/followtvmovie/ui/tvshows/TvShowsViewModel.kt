@@ -6,7 +6,7 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoritesUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
-import com.ugurbuga.followtvmovie.ui.movie.FavoriteViewState
+import com.ugurbuga.followtvmovie.ui.favorite.FavoriteViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.ui.person.PersonDetailViewState" />
+            type="com.ugurbuga.followtvmovie.ui.persondetail.PersonDetailViewState" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

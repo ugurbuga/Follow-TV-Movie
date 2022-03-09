@@ -13,7 +13,7 @@ import com.ugurbuga.followtvmovie.extensions.scrollListener
 import com.ugurbuga.followtvmovie.extensions.showKeyboard
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
-import com.ugurbuga.followtvmovie.ui.movie.FavoriteAdapter
+import com.ugurbuga.followtvmovie.ui.favorite.FavoriteAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

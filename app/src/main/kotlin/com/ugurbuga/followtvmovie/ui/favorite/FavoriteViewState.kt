@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.movie
+package com.ugurbuga.followtvmovie.ui.favorite
 
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
