@@ -175,7 +175,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.images.size() > 0}"
+                    visible="@{viewState.trailers.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"

@@ -21,7 +21,7 @@ data class PersonDetailResponse(
     @Json(name = "id")
     val id: String,
     @Json(name = "imdb_id")
-    val imdbId: String,
+    val imdbId: String?,
     @Json(name = "known_for_department")
     val knownForDepartment: String,
     @Json(name = "name")

@@ -16,6 +16,11 @@
         android:title="@string/movies" />
 
     <item
+        android:id="@+id/persons_nav_graph"
+        android:icon="@drawable/anim_person"
+        android:title="@string/persons" />
+
+    <item
         android:id="@+id/soon_nav_graph"
         android:icon="@drawable/anim_calendar"
         android:title="@string/soon" />

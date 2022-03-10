@@ -29,7 +29,11 @@ object Util {
     fun getDateLong(date: String?): Long {
         return if (date != null) {
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            sdf.parse(date)?.time ?: 0
+            try {
+                sdf.parse(date)?.time ?: 0
+            } catch (e: java.lang.Exception) {
+                0
+            }
         } else {
             0
         }

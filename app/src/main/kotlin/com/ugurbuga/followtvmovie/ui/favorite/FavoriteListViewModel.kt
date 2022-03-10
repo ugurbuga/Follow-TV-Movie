@@ -7,6 +7,7 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoritesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,35 +21,26 @@ class FavoriteListViewModel @Inject constructor(
     private val getFavoriteUseCase: GetFavoritesUseCase,
 ) : FTMBaseViewModel() {
 
+    private var mainList: MutableList<PosterItemUIModel> = arrayListOf()
     private val _favoriteViewState = MutableStateFlow(FavoriteViewState())
     val favoriteViewState: StateFlow<FavoriteViewState>
         get() = _favoriteViewState
 
-    @Suppress("UNCHECKED_CAST")
+    var searchQuery: String = Util.EMPTY_STRING
+    private var mediaType: String = Util.EMPTY_STRING
+    private var favoriteListType: String = Util.EMPTY_STRING
+
     fun setFavoriteListType(mediaType: String, favoriteListType: String) {
+        this.mediaType = mediaType
+        this.favoriteListType = favoriteListType
         val isWatched = favoriteListType == FavoriteListType.WATCHED_LIST
         getFavoriteUseCase(
             GetFavoritesUseCase.GetFavoriteParams(
                 mediaType, isWatched
             )
         ).doOnSuccess {
-            if (it.isEmpty()) {
-                _favoriteViewState.value =
-                    FavoriteViewState(
-                        arrayListOf(
-                            EmptyUIModel(
-                                message = getEmptyMessageId(
-                                    mediaType,
-                                    favoriteListType
-                                )
-                            )
-                        )
-                    )
-
-            } else {
-                _favoriteViewState.value = FavoriteViewState(it as ArrayList<ListAdapterItem>)
-            }
-
+            mainList = it
+            setFilterList()
         }.launchIn(viewModelScope)
     }
 
@@ -69,5 +61,52 @@ class FavoriteListViewModel @Inject constructor(
             Util.EMPTY_STRING
         }
 
+    }
+
+    fun setQuery(query: String) {
+        searchQuery = query
+        setFilterList()
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun setFilterList() {
+        if (searchQuery.isNotEmpty()) {
+            val filteredList = mainList.filter {
+                it.name.contains(
+                    searchQuery,
+                    ignoreCase = true
+                )
+            }.toMutableList()
+            setList(filteredList as ArrayList<ListAdapterItem>)
+        } else {
+            if (mainList.isEmpty()) {
+                setEmptyState()
+            } else {
+                setList(mainList as ArrayList<ListAdapterItem>)
+
+            }
+        }
+    }
+
+    private fun setList(list: ArrayList<ListAdapterItem>) {
+        if (list.isEmpty()) {
+            setEmptyState()
+        } else {
+            _favoriteViewState.value = FavoriteViewState(list)
+        }
+    }
+
+    private fun setEmptyState() {
+        _favoriteViewState.value =
+            FavoriteViewState(
+                arrayListOf(
+                    EmptyUIModel(
+                        message = getEmptyMessageId(
+                            mediaType,
+                            favoriteListType
+                        )
+                    )
+                )
+            )
     }
 }
