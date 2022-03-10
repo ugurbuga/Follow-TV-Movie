@@ -10,6 +10,8 @@
 
     <include app:graph="@navigation/movies_nav_graph" />
 
+    <include app:graph="@navigation/persons_nav_graph" />
+
     <include app:graph="@navigation/soon_nav_graph" />
 
 </navigation>

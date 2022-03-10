@@ -63,6 +63,10 @@ open class MainActivity : FTMBaseVmDbActivity<MainViewModel, ActivityMainBinding
                 R.id.soon_nav_graph -> {
                     popBack(R.id.soonFragment)
                 }
+
+                R.id.persons_nav_graph -> {
+                    popBack(R.id.personsFragment)
+                }
             }
         }
     }

@@ -43,5 +43,6 @@
     <string name="release_date">Release Date:</string>
     <string name="watched">Watched</string>
     <string name="watch_later">Watch Later</string>
+    <string name="persons">Persons</string>
 
 </resources>
