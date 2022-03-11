@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PersonDetailViewModel @Inject constructor(
@@ -72,13 +71,11 @@ class PersonDetailViewModel @Inject constructor(
     }
 
     fun imageClicked(position: Int) {
-        viewModelScope.launch {
-            _personDetailViewEvent.emit(
-                PersonDetailViewEvent.NavigateToImages(
-                    imageList = personDetailViewState.value.images, position = position
-                )
+        _personDetailViewEvent.emitSuspending(
+            PersonDetailViewEvent.NavigateToImages(
+                imageList = personDetailViewState.value.images, position = position
             )
-        }
+        )
     }
 
 }

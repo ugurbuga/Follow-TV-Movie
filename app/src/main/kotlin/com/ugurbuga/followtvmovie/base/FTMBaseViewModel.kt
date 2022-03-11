@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.viewbinding.BuildConfig
 import com.ugurbuga.followtvmovie.base.base.BaseViewModel
 import com.ugurbuga.followtvmovie.common.Status
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
@@ -74,20 +75,19 @@ abstract class FTMBaseViewModel : BaseViewModel() {
     }
 
     private fun showLoading() {
-        viewModelScope.launch {
-            _baseEvent.emit(FTMBaseViewEvent.ShowLoading)
-        }
+        _baseEvent.emitSuspending(FTMBaseViewEvent.ShowLoading)
     }
 
     private fun dismissLoading() {
-        viewModelScope.launch {
-            _baseEvent.emit(FTMBaseViewEvent.DismissLoading)
-        }
+        _baseEvent.emitSuspending(FTMBaseViewEvent.DismissLoading)
+
     }
 
     private fun showErrorMessage(message: Any, errorId: Int? = null) {
-        viewModelScope.launch {
-            _baseEvent.emit(FTMBaseViewEvent.ShowErrorMessage(message, errorId))
-        }
+        _baseEvent.emitSuspending(FTMBaseViewEvent.ShowErrorMessage(message, errorId))
+
     }
+
+    fun <T> MutableSharedFlow<T>.emitSuspending(value: T) =
+        viewModelScope.launch(Dispatchers.IO) { emit(value) }
 }

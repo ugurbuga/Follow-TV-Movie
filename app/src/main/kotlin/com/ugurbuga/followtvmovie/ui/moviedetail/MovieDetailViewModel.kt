@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
@@ -90,13 +89,12 @@ class MovieDetailViewModel @Inject constructor(
             val isReleased =
                 Util.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
             if (isReleased) {
-                viewModelScope.launch {
-                    _movieDetailViewEvent.emit(
-                        MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog(
-                            movieDetailViewState.value.movieDetail?.title ?: Util.EMPTY_STRING
-                        )
+                _movieDetailViewEvent.emitSuspending(
+                    MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog(
+                        movieDetailViewState.value.movieDetail?.title ?: Util.EMPTY_STRING
                     )
-                }
+                )
+
             } else {
                 addFavorite(isWatched = false)
             }
@@ -150,19 +148,16 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun reviewsClicked() {
-        viewModelScope.launch {
-            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToReviews(movieId))
-        }
+        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToReviews(movieId))
+
     }
 
     fun imageClicked(position: Int) {
-        viewModelScope.launch {
-            _movieDetailViewEvent.emit(
-                MovieDetailViewEvent.NavigateToImages(
-                    imageList = movieDetailViewState.value.images, position = position
-                )
+        _movieDetailViewEvent.emitSuspending(
+            MovieDetailViewEvent.NavigateToImages(
+                imageList = movieDetailViewState.value.images, position = position
             )
-        }
+        )
     }
 
     fun imdbClicked(packageEnabled: Boolean) {
@@ -198,15 +193,11 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun navigateToOtherApp(url: String) {
-        viewModelScope.launch {
-            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToOtherApp(url))
-        }
+        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToOtherApp(url))
     }
 
     private fun navigateToWebView(url: String) {
-        viewModelScope.launch {
-            _movieDetailViewEvent.emit(MovieDetailViewEvent.NavigateToWebView(url))
-        }
+        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToWebView(url))
     }
 
     fun addFavorite(isWatched: Boolean) {
