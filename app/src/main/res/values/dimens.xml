@@ -26,6 +26,7 @@
 
     <!-- Width -->
     <dimen name="width_0">0dp</dimen>
+    <dimen name="width_1">1dp</dimen>
     <dimen name="width_1_5">1.5dp</dimen>
     <dimen name="width_30">30dp</dimen>
     <dimen name="width_50">50dp</dimen>

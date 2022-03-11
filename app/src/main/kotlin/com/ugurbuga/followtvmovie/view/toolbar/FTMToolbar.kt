@@ -2,14 +2,17 @@ package com.ugurbuga.followtvmovie.view.toolbar
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.extensions.showKeyboard
 
 class FTMToolbar @JvmOverloads constructor(
-    context: Context,
-    attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.ftmToolbar
+    context: Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = R.attr.ftmToolbar
 ) : MaterialToolbar(
     context, attributeSet, defStyleAttr
 ) {
@@ -49,6 +52,63 @@ class FTMToolbar @JvmOverloads constructor(
         setNavigationOnClickListener {
             if (navigationIconType == NavigationIconType.BACK_BUTTON) {
                 listener.invoke()
+            }
+        }
+    }
+
+    fun setSearchView(
+        menuSearchItemId: Int,
+        isExpand: Boolean = true,
+        onQueryChanged: ((query: String) -> Unit)
+    ) {
+        val menuSearchItem = menu.findItem(menuSearchItemId)
+
+        if (menuSearchItem != null && menuSearchItem.actionView is SearchView) {
+            val searchView = menuSearchItem.actionView as SearchView
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    onQueryChanged.invoke(query)
+                    return false
+                }
+
+                override fun onQueryTextChange(query: String): Boolean {
+                    onQueryChanged.invoke(query)
+                    return false
+                }
+            })
+
+            val searchIcon: ImageView =
+                searchView.findViewById(androidx.appcompat.R.id.search_button)
+
+            searchIcon.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context, R.drawable.ic_search
+                )
+            )
+
+            val backgroundView =
+                searchView.findViewById(androidx.appcompat.R.id.search_plate) as View
+            backgroundView.background = null
+
+            val searchAutoComplete: SearchView.SearchAutoComplete =
+                searchView.findViewById(androidx.appcompat.R.id.search_src_text)
+
+            searchAutoComplete.setTextColor(
+                ContextCompat.getColor(
+                    context, R.color.primary_color
+                )
+            )
+            searchAutoComplete.typeface =
+                ResourcesCompat.getFont(context, R.font.league_spartan_regular)
+
+            searchView.isIconified = !isExpand
+
+            if (isExpand) {
+                searchAutoComplete.post {
+                    searchAutoComplete.requestFocus()
+                    searchAutoComplete.showKeyboard()
+                }
             }
         }
     }

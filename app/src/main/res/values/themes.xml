@@ -28,6 +28,11 @@
         <item name="ftmSwitchView">@style/FTMSwitchView</item>
         <item name="ftmCardView">@style/FTMCardView</item>
         <item name="bottomNavigationStyle">@style/FTMBottomNavigationView</item>
+        <item name="autoCompleteTextViewStyle">@style/cursorColor</item>
+    </style>
+
+    <style name="cursorColor" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textCursorDrawable">@drawable/cursor_color</item>
     </style>
 
     <style name="Theme.FollowTvMovie.Splash" parent="Theme.SplashScreen">

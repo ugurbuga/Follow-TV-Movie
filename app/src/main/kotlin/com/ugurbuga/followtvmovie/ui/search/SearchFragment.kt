@@ -1,7 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.search
 
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ugurbuga.followtvmovie.R
@@ -10,7 +9,6 @@ import com.ugurbuga.followtvmovie.databinding.FragmentSearchBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.scrollListener
-import com.ugurbuga.followtvmovie.extensions.showKeyboard
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 import com.ugurbuga.followtvmovie.ui.favorite.FavoriteAdapter
@@ -42,25 +40,29 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
                 layoutManager = gridLayoutManager
                 adapter = favoriteAdapter
                 scrollListener { visibleItemCount, firstVisibleItemPosition, totalItemCount ->
-                    viewModel.getNewItems(visibleItemCount,firstVisibleItemPosition,totalItemCount)
+                    viewModel.getNewItems(
+                        visibleItemCount, firstVisibleItemPosition, totalItemCount
+                    )
                 }
             }
-            searchInput.apply {
-                requestFocus()
-                showKeyboard()
-                doOnTextChanged { text, _, _, _ ->
-                    viewModel.onTextChanged(text)
-                }
-            }
+            toolbar.setSearchView(
+                menuSearchItemId = R.id.search,
+                isExpand = true,
+                onQueryChanged = ::onQueryChanged
+            )
+
             toolbar.setNavigationClickListener {
                 popBack()
             }
         }
     }
 
+    private fun onQueryChanged(query: String) {
+        viewModel.onTextChanged(query)
+    }
+
     private fun onPosterItemClick(
-        poster: PosterItemUIModel,
-        imageView: AppCompatImageView
+        poster: PosterItemUIModel, imageView: AppCompatImageView
     ) {
         when (poster.mediaType) {
             MediaType.MOVIE -> {
@@ -74,8 +76,9 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
             }
             MediaType.PERSON -> {
                 val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-                val directions =
-                    SearchFragmentDirections.actionSearchToPersonDetail(poster.id, poster.posterPath)
+                val directions = SearchFragmentDirections.actionSearchToPersonDetail(
+                    poster.id, poster.posterPath
+                )
                 navigate(directions, extras)
 
             }

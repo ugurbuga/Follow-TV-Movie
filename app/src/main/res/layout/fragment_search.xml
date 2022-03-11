@@ -20,66 +20,27 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_search"
             app:navigation_type="back_button"
             app:title="@string/search" />
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_list_recycler_view"
+            spacePaddingBottom="@{@dimen/padding_8}"
+            spacePaddingEnd="@{@dimen/padding_8}"
+            spacePaddingStart="@{@dimen/padding_8}"
+            spacePaddingTop="@{@dimen/padding_8}"
+            submitList="@{viewState.poster.posterList}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:padding="@dimen/padding_8"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.ugurbuga.followtvmovie.view.FTMTextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_8"
-                    android:layout_marginBottom="@dimen/margin_8"
-                    app:boxStrokeColor="@null"
-                    app:boxStrokeWidth="@dimen/width_0"
-                    app:endIconMode="clear_text"
-                    app:errorEnabled="false"
-                    app:hintEnabled="false"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:startIconDrawable="@drawable/ic_search">
-
-                    <com.ugurbuga.followtvmovie.view.FTMTextInputEditText
-                        android:id="@+id/search_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/search" />
-
-                </com.ugurbuga.followtvmovie.view.FTMTextInputLayout>
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_list_recycler_view"
-                spacePaddingBottom="@{@dimen/padding_8}"
-                spacePaddingEnd="@{@dimen/padding_8}"
-                spacePaddingStart="@{@dimen/padding_8}"
-                spacePaddingTop="@{@dimen/padding_8}"
-                submitList="@{viewState.poster.posterList}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:padding="@dimen/padding_8"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:spanCount="2"
-                tools:listitem="@layout/item_poster" />
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:spanCount="2"
+            tools:listitem="@layout/item_poster" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
