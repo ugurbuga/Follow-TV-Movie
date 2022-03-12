@@ -29,7 +29,7 @@ class SearchViewModel @Inject constructor(
 
     var isCanLoadNewItem = false
     var currentPage = 1
-    var currentText = ""
+    private var currentText = Util.EMPTY_STRING
 
     fun onTextChanged(text: CharSequence?) {
         currentPage = 1

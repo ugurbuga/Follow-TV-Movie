@@ -11,11 +11,11 @@
         tools:layout="@layout/fragment_image">
 
         <argument
-            android:name="arg_images"
+            android:name="images"
             app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
 
         <argument
-            android:name="arg_position"
+            android:name="position"
             app:argType="integer" />
 
     </fragment>

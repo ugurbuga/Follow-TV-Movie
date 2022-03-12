@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
+import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
@@ -43,7 +44,7 @@ class MovieDetailViewModel @Inject constructor(
     private val _movieDetailViewState = MutableStateFlow(MovieDetailViewState())
     val movieDetailViewState: StateFlow<MovieDetailViewState> get() = _movieDetailViewState
 
-    private var movieId: String = savedStateHandle["arg_id"] ?: Util.EMPTY_STRING
+    private var movieId: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
 
     init {
         getMovieDetail()

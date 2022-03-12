@@ -68,7 +68,7 @@ class WebViewFragment : FTMBaseVMFragment<WebViewViewModel, FragmentWebViewBindi
                     super.onPageFinished(view, url)
                 }
             }
-            loadUrl(args.argUrl)
+            loadUrl(args.url)
         }
     }
 }

@@ -15,11 +15,11 @@
             app:destination="@id/movie_detail_nav_graph">
 
             <argument
-                android:name="arg_id"
+                android:name="id"
                 app:argType="string" />
 
             <argument
-                android:name="arg_image_url"
+                android:name="image_url"
                 app:argType="string" />
 
         </action>
@@ -33,21 +33,21 @@
             app:popExitAnim="@anim/slide_out_right">
 
             <argument
-                android:name="arg_images"
+                android:name="images"
                 app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
 
             <argument
-                android:name="arg_position"
+                android:name="position"
                 app:argType="integer" />
 
         </action>
 
         <argument
-            android:name="arg_person_id"
+            android:name="person_id"
             app:argType="string" />
 
         <argument
-            android:name="arg_image_url"
+            android:name="image_url"
             app:argType="string" />
 
     </fragment>

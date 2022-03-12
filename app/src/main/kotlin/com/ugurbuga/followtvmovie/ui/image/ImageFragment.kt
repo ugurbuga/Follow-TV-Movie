@@ -31,13 +31,13 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
         }
 
         val imageAdapter = ImageAdapter(isFullScreen = true)
-        imageAdapter.submitList(args.argImages.toMutableList() as List<ImageUIModel>)
+        imageAdapter.submitList(args.images.toMutableList() as List<ImageUIModel>)
         viewBinding.viewPager.apply {
             adapter = imageAdapter
             clipToPadding = false
             clipChildren = false
             offscreenPageLimit = 3
-            currentItem = args.argPosition
+            currentItem = args.position
             setPageTransformer(compositePageTransformer)
         }
 

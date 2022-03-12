@@ -16,11 +16,11 @@
             app:destination="@id/movie_detail_nav_graph">
 
             <argument
-                android:name="arg_id"
+                android:name="id"
                 app:argType="string" />
 
             <argument
-                android:name="arg_image_url"
+                android:name="image_url"
                 app:argType="string" />
         </action>
 

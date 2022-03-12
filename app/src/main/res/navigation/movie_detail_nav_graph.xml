@@ -11,11 +11,11 @@
         tools:layout="@layout/fragment_movie_detail">
 
         <argument
-            android:name="arg_id"
+            android:name="id"
             app:argType="string" />
 
         <argument
-            android:name="arg_image_url"
+            android:name="image_url"
             app:argType="string" />
 
         <action
@@ -31,11 +31,11 @@
             app:destination="@id/person_detail_nav_graph">
 
             <argument
-                android:name="arg_person_id"
+                android:name="person_id"
                 app:argType="string" />
 
             <argument
-                android:name="arg_image_url"
+                android:name="image_url"
                 app:argType="string" />
 
         </action>
@@ -49,11 +49,11 @@
             app:popExitAnim="@anim/slide_out_right">
 
             <argument
-                android:name="arg_images"
+                android:name="images"
                 app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
 
             <argument
-                android:name="arg_position"
+                android:name="position"
                 app:argType="integer" />
 
         </action>
@@ -70,7 +70,7 @@
         tools:layout="@layout/activity_trailer">
 
         <argument
-            android:name="arg_url_key"
+            android:name="url_key"
             app:argType="string" />
     </activity>
 
@@ -82,7 +82,7 @@
         tools:layout="@layout/bottom_sheet_review">
 
         <argument
-            android:name="arg_id"
+            android:name="id"
             app:argType="string" />
     </dialog>
 
@@ -92,7 +92,7 @@
         tools:layout="@layout/fragment_web_view">
 
         <argument
-            android:name="arg_url"
+            android:name="url"
             app:argType="string" />
     </fragment>
 

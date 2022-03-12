@@ -23,7 +23,7 @@ class TrailerActivity : FTMBaseVmDbActivity<TrailerViewModel, ActivityTrailerBin
         viewBinding.youtubePlayerView.addYouTubePlayerListener(object :
             AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(args.argUrlKey, 0f)
+                youTubePlayer.loadVideo(args.urlKey, 0f)
             }
 
             override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {

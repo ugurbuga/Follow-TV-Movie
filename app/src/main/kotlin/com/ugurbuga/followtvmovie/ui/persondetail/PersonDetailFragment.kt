@@ -54,7 +54,7 @@ class PersonDetailFragment :
         collect(viewModel.personDetailViewState, ::onPersonDetailViewState)
         collect(viewModel.personDetailViewEvent, ::onPersonDetailViewEvent)
         with(viewBinding) {
-            imageView.setImageUrl(args.argImageUrl)
+            imageView.setImageUrl(args.imageUrl)
             imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
             knownForRecyclerView.adapter = CastAdapter(::onPersonClicked)
 
