@@ -38,6 +38,14 @@
             android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.FollowTvMovie.FullScreen" />
+
+        <!-- If you want to disable android.startup completely. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove">
+        </provider>
+
     </application>
 
     <queries>

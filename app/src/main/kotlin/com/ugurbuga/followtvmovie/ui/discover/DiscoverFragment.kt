@@ -116,5 +116,4 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
             DiscoverFragmentDirections.actionDiscoverToMovieDetail(poster.id, poster.posterPath)
         navigate(directions, extras)
     }
-
 }

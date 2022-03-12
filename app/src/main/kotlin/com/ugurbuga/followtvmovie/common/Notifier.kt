@@ -19,11 +19,17 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.domain.image.ImageMapper
 
 /**
  * Utility class for posting notifications.
@@ -33,7 +39,7 @@ object Notifier {
 
     private const val channelId = "Default"
 
-    fun init(context: Context) {
+    private fun init(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationManager =
                 context.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
@@ -49,20 +55,51 @@ object Notifier {
         }
     }
 
-    fun postNotification(id: Int, context: Context, intent: PendingIntent) {
+    fun postNotification(
+        id: Int,
+        title: String,
+        imageUrl: String,
+        content: String,
+        context: Context,
+        intent: PendingIntent
+    ) {
         init(context)
         val builder = NotificationCompat.Builder(context, channelId)
-        builder.setContentTitle("Title").setSmallIcon(R.drawable.ic_tv).color =
-            context.getColor(R.color.primary_color)
-        val text = "Message"
-        val notification = builder.setContentText(text)
+        builder.setContentTitle(title)
+            .setColor(ContextCompat.getColor(context, R.color.primary_color))
+            .setSmallIcon(R.drawable.ic_tv)
+
+
+        Glide.with(context)
+            .asBitmap()
+            .load(ImageMapper.getPosterUrl(imageUrl))
+            .into(object : SimpleTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    builder.setLargeIcon(resource)
+                        .setStyle(
+                            NotificationCompat.BigPictureStyle()
+                                .bigPicture(resource)
+                                .bigLargeIcon(null)
+                        )
+                    setNotificationAfterImageLoad(id, content, builder, context, intent)
+                }
+            })
+    }
+
+    fun setNotificationAfterImageLoad(
+        id: Int,
+        content: String,
+        builder: NotificationCompat.Builder,
+        context: Context,
+        intent: PendingIntent
+    ) {
+
+        val notification = builder.setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(intent)
             .setAutoCancel(true)
             .build()
         val notificationManager = NotificationManagerCompat.from(context)
-        // Remove prior notifications; only allow one at a time to edit the latest item
-        notificationManager.cancelAll()
         notificationManager.notify(id, notification)
     }
 }

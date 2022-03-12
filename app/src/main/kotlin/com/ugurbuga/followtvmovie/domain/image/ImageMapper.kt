@@ -9,11 +9,13 @@ import javax.inject.Inject
 
 class ImageMapper @Inject constructor() {
 
-    fun getPosterUrl(path: String?): String {
-        return if (!path.isNullOrBlank()) {
-            ApiConstants.BASE_IMAGE_URL + path
-        } else {
-            Util.EMPTY_STRING
+    companion object{
+        fun getPosterUrl(path: String?): String {
+            return if (!path.isNullOrBlank()) {
+                ApiConstants.BASE_IMAGE_URL + path
+            } else {
+                Util.EMPTY_STRING
+            }
         }
     }
 

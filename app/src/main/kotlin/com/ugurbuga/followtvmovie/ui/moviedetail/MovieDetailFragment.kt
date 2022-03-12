@@ -46,7 +46,6 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         )
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
-        deepLinkPush()
     }
 
     override fun onResume() {
@@ -102,21 +101,11 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         collect(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
     }
 
-
-    private fun deepLinkPush() {
-        val context = requireContext().applicationContext
-        val navController = findNavController()
-
-        val pendingIntent = navController.createDeepLink().setDestination(R.id.movieDetailFragment)
-            .setArguments(args.toBundle()).createPendingIntent()
-        Notifier.postNotification(args.argId.toInt(), context, pendingIntent)
-    }
-
     private fun getImageUrl(): String {
-        return if (URLUtil.isValidUrl(args.argImageUrl)) {
-            args.argImageUrl
+        return if (URLUtil.isValidUrl(args.imageUrl)) {
+            args.imageUrl
         } else {
-            ApiConstants.BASE_IMAGE_URL + "/" + args.argImageUrl
+            ApiConstants.BASE_IMAGE_URL + "/" + args.imageUrl
         }
     }
 
@@ -187,5 +176,26 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {
         viewBinding.viewState = movieDetailViewState
+        movieDetailViewState.movieDetail?.let {
+            deepLinkPush(it.id, it.title, it.releaseDate)
+        }
+    }
+
+    private fun deepLinkPush(id: String, title: String, releaseDate: String) {
+        val context = requireContext().applicationContext
+        val navController = findNavController()
+
+        val pendingIntent = navController.createDeepLink()
+            .setDestination(R.id.movieDetailFragment)
+            .setArguments(args.toBundle())
+            .createPendingIntent()
+        Notifier.postNotification(
+            id = id.toInt(),
+            title = title,
+            imageUrl = args.imageUrl,
+            content = releaseDate,
+            context = context,
+            intent = pendingIntent
+        )
     }
 }
