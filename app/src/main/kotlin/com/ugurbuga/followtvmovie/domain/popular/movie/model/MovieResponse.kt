@@ -31,7 +31,7 @@ data class MovieResponse(
     val posterPath: String?,
 
     @Json(name = "release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
 
     @Json(name = "title")
     val title: String,

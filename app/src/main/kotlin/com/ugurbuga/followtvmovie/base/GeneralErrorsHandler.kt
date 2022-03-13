@@ -33,9 +33,9 @@ class GeneralErrorsHandler(
             var errorMessage: String? = null
             errorBody.errors?.forEach {
                 if (errorMessage == null) {
-                    errorMessage = it.message
+                    errorMessage = it
                 } else {
-                    errorMessage += "\n" + it.message
+                    errorMessage += "\n" + it
                 }
             }
 

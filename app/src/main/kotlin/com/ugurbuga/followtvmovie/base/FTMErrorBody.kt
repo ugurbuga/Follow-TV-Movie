@@ -3,15 +3,15 @@ package com.ugurbuga.followtvmovie.base
 import android.os.Parcelable
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import java.nio.charset.Charset
 import kotlinx.parcelize.Parcelize
 import okhttp3.ResponseBody
 import retrofit2.Response
-import java.nio.charset.Charset
 
 @Parcelize
 data class FTMErrorBody(
     var code: Int,
-    @SerializedName("errors") val errors: List<ErrorResponse>? = null
+    @SerializedName("errors") val errors: List<String>? = null
 ) : Parcelable {
 
     companion object {

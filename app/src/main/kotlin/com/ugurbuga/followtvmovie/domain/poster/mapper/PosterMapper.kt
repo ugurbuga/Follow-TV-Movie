@@ -12,6 +12,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.search.SearchItemResponse
 import com.ugurbuga.followtvmovie.domain.search.SearchResponse
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
+import java.util.Calendar
 import javax.inject.Inject
 
 class PosterMapper @Inject constructor(
@@ -31,6 +32,16 @@ class PosterMapper @Inject constructor(
         return PosterUIModel(
             page = response.page,
             posterList = response.results.map { toPosterItemUIModel(it) }.toMutableList(),
+            totalPages = response.totalPages,
+        )
+    }
+
+
+    fun upcomingToPosterUIModel(response: MovieGeneralResponse): PosterUIModel {
+        return PosterUIModel(
+            page = response.page,
+            posterList = response.results.map { toPosterItemUIModel(it) }
+                .filter { it.releaseDateLong > Calendar.getInstance().time.time }.toMutableList(),
             totalPages = response.totalPages,
         )
     }

@@ -28,7 +28,7 @@ class DiscoverViewModel @Inject constructor(
     private val _discover = MutableStateFlow(PosterViewState())
     val discover: StateFlow<PosterViewState> get() = _discover
 
-    private var upPopularMoviePage = 0
+    private var popularMoviePage = 0
     private var popularTvShowPage = 0
     private var upComingMoviePage = 0
 
@@ -44,9 +44,9 @@ class DiscoverViewModel @Inject constructor(
 
     // Begin --> Popular Movie
     private fun getPopularMovies() {
-        this.upPopularMoviePage++
+        popularMoviePage++
         addLoadingPopularMovie()
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(this.upPopularMoviePage))
+        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(popularMoviePage))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
@@ -97,15 +97,16 @@ class DiscoverViewModel @Inject constructor(
 
     // Begin --> Upcoming Movie
     private fun getUpcomingMovies() {
-        this.upComingMoviePage++
+        upComingMoviePage++
         addLoadingUpcomingMovie()
-        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(this.upComingMoviePage)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            setUpcomingMovieList(it)
-        }.launchIn(viewModelScope)
+        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(upComingMoviePage))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                setUpcomingMovieList(it)
+            }.launchIn(viewModelScope)
     }
 
     private fun addLoadingUpcomingMovie() {
@@ -128,6 +129,9 @@ class DiscoverViewModel @Inject constructor(
         oldList.addAll(posterModel.posterList)
         _discover.value = updateUpcomingMovieList(oldList)
         isCanLoadNewItemUpcomingMovie = posterModel.totalPages > posterModel.page
+        if (isCanLoadNewItemUpcomingMovie && (discover.value.upcomingMovieList.size < 3 || posterModel.posterList.isEmpty())) {
+            getUpcomingMovies()
+        }
     }
 
     fun getNewItemsUpcomingMovie(
@@ -149,15 +153,16 @@ class DiscoverViewModel @Inject constructor(
     // Begin --> Popular Tv Show
 
     private fun getPopularTvShows() {
-        this.popularTvShowPage++
+        popularTvShowPage++
         addLoadingPopularTvShow()
-        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            setPopularTvShowList(it)
-        }.launchIn(viewModelScope)
+        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                setPopularTvShowList(it)
+            }.launchIn(viewModelScope)
     }
 
     private fun addLoadingPopularTvShow() {
