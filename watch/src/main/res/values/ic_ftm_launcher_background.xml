@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_ftm_launcher_background">#CB2E63</color>
+    <color name="primary_color">#CB2E63</color>
+    <color name="secondary_color">#950039</color>
+    <color name="accent_color">#CB2E63</color>
+    <color name="tertiary_color">#000000</color>
+    <color name="quaternary_color">#FFFFFF</color>
+</resources>
