@@ -7,10 +7,17 @@
 Follow TV Movie is a sample project that presents a modern, 2022 approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
 
 You can search movies/tv shows/persons.
+
 You can create favorite list.
 
+|             Discover (Night)             |              Movies (Light)              |
+| :--------------------------------------: | :--------------------------------------: |
+| ![Discover](app/screenshots/discover_night.png) | ![Movies](app/screenshots/movies_light.png) |
 
-## Project characteristics and tech-stack
+
+|           Person Detail (Light)           |           Movie Detail (Night)           |
+| :---------------------------------------: |:---------------------------------------: |
+| ![Person_Detail](app/screenshots/person_light.png) | ![Movie_Detail](app/screenshots/movie_detail_night.png) |
 
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
