@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

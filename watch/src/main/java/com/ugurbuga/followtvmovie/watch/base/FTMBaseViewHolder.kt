@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.base
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

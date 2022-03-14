@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.util
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

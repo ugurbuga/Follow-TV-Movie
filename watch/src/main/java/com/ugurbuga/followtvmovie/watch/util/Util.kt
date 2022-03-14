@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.util
 
 import android.content.Context
 import android.graphics.Typeface
@@ -14,6 +14,7 @@ object Util {
     const val EMPTY_STRING = ""
     const val INVALID_INDEX = -1
     const val DATE_PATTERN = "yyyy-MM-dd"
+    const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
     fun canPagingAvailable(
         isCanLoadNewItem: Boolean,

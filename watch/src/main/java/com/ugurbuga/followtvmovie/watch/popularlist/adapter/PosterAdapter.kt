@@ -1,8 +1,14 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.popularlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ugurbuga.followtvmovie.watch.base.FTMBaseListAdapter
+import com.ugurbuga.followtvmovie.watch.popularlist.model.PosterHolderType
+import com.ugurbuga.followtvmovie.watch.popularlist.model.LoadingUIModel
+import com.ugurbuga.followtvmovie.watch.popularlist.model.MovieResponse
+import com.ugurbuga.followtvmovie.watch.popularlist.model.ListAdapterItem
+import com.ugurbuga.followtvmovie.watch.util.Util
 
 class PosterAdapter(
     private val onPosterClick: ((poster: MovieResponse) -> Unit)? = null,

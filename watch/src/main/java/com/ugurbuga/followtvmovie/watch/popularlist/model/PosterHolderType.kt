@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch
+package com.ugurbuga.followtvmovie.watch.popularlist.model
 
 import androidx.annotation.IntDef
 
