@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/box_inset_layout_padding"
     android:background="#000000"
-    tools:context=".PopularMoviesActivity"
+    tools:context=".popularlist.PopularMoviesActivity"
     tools:deviceIds="wear">
 
     <androidx.wear.widget.WearableRecyclerView
