@@ -4,11 +4,11 @@
 [![AGP](https://img.shields.io/badge/AGP-4-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
 
-Follow TV Movie is a sample project that presents a modern, 2022 approach to [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development.
-
 You can search movies/tv shows/persons.
 
 You can create favorite list.
+
+You can follow movie/tv release date.
 
 |             Discover (Night)             |              Movies (Light)              |
 | :--------------------------------------: | :--------------------------------------: |
@@ -37,7 +37,7 @@ You can create favorite list.
 
 * Modern Architecture
     * Clean Architecture
-    * Single activity architecture ( with[Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
+    * Single activity architecture ( with [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
     * MVVM
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
     * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
@@ -48,4 +48,3 @@ You can create favorite list.
 * UI
     * [Material3](https://m3.material.io/) theme
     * [Dark Mode](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) - ui
-)
