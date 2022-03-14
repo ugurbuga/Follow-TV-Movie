@@ -10,14 +10,8 @@ You can create favorite list.
 
 You can follow movie/tv release date.
 
-|             Discover (Night)             |              Movies (Light)              |
-| :--------------------------------------: | :--------------------------------------: |
-| ![Discover](app/screenshots/discover_night.png) | ![Movies](app/screenshots/movies_light.png) |
-
-
-|           Person Detail (Light)           |           Movie Detail (Night)           |
-| :---------------------------------------: |:---------------------------------------: |
-| ![Person_Detail](app/screenshots/person_light.png) | ![Movie_Detail](app/screenshots/movie_detail_night.png) |
+<img src="app/screenshots/discover_night.png" width="249"> <img src="app/screenshots/movies_light.png" width="249">
+<img src="app/screenshots/movie_detail_night.png" width="249"> <img src="app/screenshots/person_light.png" width="249">
 
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
