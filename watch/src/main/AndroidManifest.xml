@@ -10,8 +10,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_ftm_launcher"
-        android:roundIcon="@mipmap/ic_ftm_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_ftm_launcher"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
         <uses-library
@@ -27,7 +27,7 @@
             android:value="true" />
 
         <activity
-            android:name=".PopularMoviesActivity"
+            android:name=".popularlist.PopularMoviesActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -36,6 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".detail.MovieDetailActivity" />
+
     </application>
 
 </manifest>
