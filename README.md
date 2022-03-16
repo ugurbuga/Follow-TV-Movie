@@ -9,9 +9,9 @@ You can search movies/tv shows/persons.
 You can create favorite list.
 
 You can follow movie/tv release date.
-
-<img src="app/screenshots/discover_night.png" width="249"> <img src="app/screenshots/movies_light.png" width="249">
-<img src="app/screenshots/movie_detail_night.png" width="249"> <img src="app/screenshots/person_light.png" width="249">
+| Discover | Movies | Movie Detail | Person Detail |
+| --- | ----------- | --- | ----------- |
+| <img src="app/screenshots/discover_night.png" width="200">  | <img src="app/screenshots/movies_light.png" width="200">| <img src="app/screenshots/movie_detail_night.png" width="200"> | <img src="app/screenshots/person_light.png" width="200"> |
 
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
