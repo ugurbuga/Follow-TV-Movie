@@ -3,7 +3,6 @@ package com.ugurbuga.followtvmovie.ui.discover
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.PopularMovieUseCase
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.UpcomingMovieUseCase
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase.PopularTvShowUseCase
@@ -13,10 +12,10 @@ import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import javax.inject.Inject
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
@@ -78,21 +77,12 @@ class DiscoverViewModel @Inject constructor(
         isCanLoadNewItemPopularMovie = posterModel.totalPages > posterModel.page
     }
 
-    fun getNewItemsPopularMovie(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        if (Util.canPagingAvailable(
-                isCanLoadNewItemPopularMovie,
-                visibleItemCount,
-                firstVisibleItemPosition,
-                totalItemCount
-            )
-        ) {
+    fun getNewItemsPopularMovie() {
+        if (isCanLoadNewItemPopularMovie) {
             isCanLoadNewItemPopularMovie = false
             getPopularMovies()
         }
     }
-
     // End --> Popular Movie
 
     // Begin --> Upcoming Movie
@@ -134,16 +124,8 @@ class DiscoverViewModel @Inject constructor(
         }
     }
 
-    fun getNewItemsUpcomingMovie(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        if (Util.canPagingAvailable(
-                isCanLoadNewItemUpcomingMovie,
-                visibleItemCount,
-                firstVisibleItemPosition,
-                totalItemCount
-            )
-        ) {
+    fun getNewItemsUpcomingMovie() {
+        if (isCanLoadNewItemUpcomingMovie) {
             isCanLoadNewItemUpcomingMovie = false
             getUpcomingMovies()
         }
@@ -151,7 +133,6 @@ class DiscoverViewModel @Inject constructor(
     // End --> Upcoming Movie
 
     // Begin --> Popular Tv Show
-
     private fun getPopularTvShows() {
         popularTvShowPage++
         addLoadingPopularTvShow()
@@ -187,19 +168,10 @@ class DiscoverViewModel @Inject constructor(
         isCanLoadNewItemPopularTvShow = posterModel.totalPages > posterModel.page
     }
 
-    fun getNewItemsPopularTvShow(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        if (Util.canPagingAvailable(
-                isCanLoadNewItemPopularTvShow,
-                visibleItemCount,
-                firstVisibleItemPosition,
-                totalItemCount
-            )
-        ) {
+    fun getNewItemsPopularTvShow() {
+        if (isCanLoadNewItemPopularTvShow) {
             isCanLoadNewItemPopularTvShow = false
             getPopularTvShows()
         }
     }
-
 }

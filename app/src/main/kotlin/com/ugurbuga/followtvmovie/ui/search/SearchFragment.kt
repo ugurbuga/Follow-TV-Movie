@@ -8,7 +8,7 @@ import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentSearchBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.extensions.scrollListener
+import com.ugurbuga.followtvmovie.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 import com.ugurbuga.followtvmovie.ui.favorite.FavoriteAdapter
@@ -39,10 +39,8 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
             searchListRecyclerView.apply {
                 layoutManager = gridLayoutManager
                 adapter = favoriteAdapter
-                scrollListener { visibleItemCount, firstVisibleItemPosition, totalItemCount ->
-                    viewModel.getNewItems(
-                        visibleItemCount, firstVisibleItemPosition, totalItemCount
-                    )
+                scrollEndListener {
+                    viewModel.getNewItems()
                 }
             }
             toolbar.setSearchView(

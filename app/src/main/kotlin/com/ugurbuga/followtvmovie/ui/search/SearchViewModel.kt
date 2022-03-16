@@ -11,11 +11,11 @@ import com.ugurbuga.followtvmovie.domain.search.GetSearchUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
@@ -71,11 +71,8 @@ class SearchViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun getNewItems(visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int) {
-        if (Util.canPagingAvailable(
-                isCanLoadNewItem, visibleItemCount, firstVisibleItemPosition, totalItemCount
-            )
-        ) {
+    fun getNewItems() {
+        if (isCanLoadNewItem) {
             isCanLoadNewItem = false
             currentPage++
             val temp = searchViewState.value.poster.posterList.toMutableList()

@@ -4,9 +4,7 @@ import android.content.Context
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 
 object Util {
@@ -14,15 +12,6 @@ object Util {
     const val EMPTY_STRING = ""
     const val INVALID_INDEX = -1
     const val DATE_PATTERN = "yyyy-MM-dd"
-
-    fun canPagingAvailable(
-        isCanLoadNewItem: Boolean,
-        visibleItemCount: Int,
-        firstVisibleItemPosition: Int,
-        totalItemCount: Int
-    ): Boolean {
-        return isCanLoadNewItem && visibleItemCount + firstVisibleItemPosition >= totalItemCount && firstVisibleItemPosition >= 0
-    }
 
     fun getTypefaceFromFontRes(context: Context, font: Int): Typeface? {
         return ResourcesCompat.getFont(context, font)

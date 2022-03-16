@@ -4,6 +4,6 @@ import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
 data class PosterUIModel(
     var posterList: MutableList<ListAdapterItem> = arrayListOf(),
-    val page: Int = 0,
+    var page: Int = 0,
     val totalPages: Int = 0
 )

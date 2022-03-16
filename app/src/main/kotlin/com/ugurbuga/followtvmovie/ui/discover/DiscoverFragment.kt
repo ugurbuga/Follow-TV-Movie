@@ -7,7 +7,7 @@ import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentDiscoverBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.extensions.scrollListener
+import com.ugurbuga.followtvmovie.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,16 +27,16 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
             popularTvShowRecyclerView.adapter = PosterAdapter(::onPopularTvShowClicked)
             upcomingMovieRecyclerView.adapter = PosterAdapter(::onUpcomingMovieClicked)
 
-            popularMovieRecyclerView.apply {
-                scrollListener(::onPopularMovieScroll)
+            popularMovieRecyclerView.scrollEndListener {
+                viewModel.getNewItemsPopularMovie()
             }
 
-            popularTvShowRecyclerView.apply {
-                scrollListener(::onPopularTvShowScroll)
+            popularTvShowRecyclerView.scrollEndListener {
+                viewModel.getNewItemsPopularTvShow()
             }
 
-            upcomingMovieRecyclerView.apply {
-                scrollListener(::onUpcomingMovieScroll)
+            upcomingMovieRecyclerView.scrollEndListener {
+                viewModel.getNewItemsUpcomingMovie()
             }
 
             toolbar.setOnMenuItemClickListener {
@@ -61,14 +61,6 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
 
     //////////////////////////////////////////////////////
 
-    private fun onPopularMovieScroll(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        viewModel.getNewItemsPopularMovie(
-            visibleItemCount, firstVisibleItemPosition, totalItemCount
-        )
-    }
-
     private fun onPopularMovieClicked(
         poster: PosterItemUIModel, imageView: AppCompatImageView
     ) {
@@ -78,15 +70,7 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         navigate(directions, extras)
     }
 
-//////////////////////////////////////////////////////
-
-    private fun onPopularTvShowScroll(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        viewModel.getNewItemsPopularTvShow(
-            visibleItemCount, firstVisibleItemPosition, totalItemCount
-        )
-    }
+    //////////////////////////////////////////////////////
 
     private fun onPopularTvShowClicked(
         poster: PosterItemUIModel, imageView: AppCompatImageView
@@ -98,15 +82,7 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
         showErrorDialog(getString(R.string.coming_soon), 0)
     }
 
-//////////////////////////////////////////////////////
-
-    private fun onUpcomingMovieScroll(
-        visibleItemCount: Int, firstVisibleItemPosition: Int, totalItemCount: Int
-    ) {
-        viewModel.getNewItemsUpcomingMovie(
-            visibleItemCount, firstVisibleItemPosition, totalItemCount
-        )
-    }
+    //////////////////////////////////////////////////////
 
     private fun onUpcomingMovieClicked(
         poster: PosterItemUIModel, imageView: AppCompatImageView
