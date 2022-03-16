@@ -37,24 +37,6 @@ import com.ugurbuga.followtvmovie.domain.image.ImageMapper
  */
 object Notifier {
 
-    private const val channelId = "Default"
-
-    private fun init(context: Context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationManager =
-                context.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
-            val existingChannel = notificationManager.getNotificationChannel(channelId)
-            if (existingChannel == null) {
-                // Create the NotificationChannel
-                val name = context.getString(R.string.defaultChannel)
-                val importance = NotificationManager.IMPORTANCE_DEFAULT
-                val mChannel = NotificationChannel(channelId, name, importance)
-                mChannel.description = "Description"
-                notificationManager.createNotificationChannel(mChannel)
-            }
-        }
-    }
-
     fun postNotification(
         id: Int,
         title: String,
@@ -63,12 +45,30 @@ object Notifier {
         context: Context,
         intent: PendingIntent
     ) {
-        init(context)
+        val channelId = context.getString(R.string.default_channel_id)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationManager =
+                context.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
+            val existingChannel = notificationManager.getNotificationChannel(channelId)
+            if (existingChannel == null) {
+                // Create the NotificationChannel
+                val name = context.getString(R.string.default_channel)
+                val importance = NotificationManager.IMPORTANCE_HIGH
+                val channel = NotificationChannel(channelId, name, importance)
+                channel.description = context.getString(R.string.default_channel_description)
+                notificationManager.createNotificationChannel(channel)
+            }
+        }
+
         val builder = NotificationCompat.Builder(context, channelId)
         builder.setContentTitle(title)
             .setColor(ContextCompat.getColor(context, R.color.primary_color))
             .setSmallIcon(R.drawable.ic_tv)
-
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(intent)
+            .setAutoCancel(true)
+            .setContentText(content)
 
         Glide.with(context)
             .asBitmap()
@@ -81,24 +81,17 @@ object Notifier {
                                 .bigPicture(resource)
                                 .bigLargeIcon(null)
                         )
-                    setNotificationAfterImageLoad(id, content, builder, context, intent)
+                    setNotificationAfterImageLoad(id, builder, context)
                 }
             })
     }
 
     fun setNotificationAfterImageLoad(
         id: Int,
-        content: String,
         builder: NotificationCompat.Builder,
         context: Context,
-        intent: PendingIntent
     ) {
-
-        val notification = builder.setContentText(content)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setContentIntent(intent)
-            .setAutoCancel(true)
-            .build()
+        val notification = builder.build()
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.notify(id, notification)
     }

@@ -5,12 +5,12 @@ import com.google.firebase.ktx.Firebase
 import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.common.Resource
 import com.ugurbuga.followtvmovie.di.IoDispatcher
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
 abstract class FTMBaseRepository {
 
