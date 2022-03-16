@@ -248,6 +248,54 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_cast" />
 
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.recommendation.posterList.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/recommendations" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recommendation_recycler_view"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.recommendation.posterList}"
+                    visible="@{viewState.recommendation.posterList.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_poster" />
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    visible="@{viewState.similarMovie.posterList.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:text="@string/similar_movies" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/similar_movies_recycler_view"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.similarMovie.posterList}"
+                    visible="@{viewState.similarMovie.posterList.size() > 0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_poster" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

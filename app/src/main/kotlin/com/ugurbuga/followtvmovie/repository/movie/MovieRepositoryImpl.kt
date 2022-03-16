@@ -10,8 +10,8 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailRes
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
     private val movieService: MovieService
@@ -48,5 +48,19 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun getMovieExternalIds(movieId: String): Flow<Resource<ExternalIdsResponse>> {
         return onApiCall { movieService.getMovieExternalIds(movieId) }
+    }
+
+    override fun getRecommendations(
+        movieId: String,
+        page: Int
+    ): Flow<Resource<MovieGeneralResponse>> {
+        return onApiCall { movieService.getRecommendations(movieId, page) }
+    }
+
+    override fun getSimilarMovies(
+        movieId: String,
+        page: Int
+    ): Flow<Resource<MovieGeneralResponse>> {
+        return onApiCall { movieService.getSimilarMovies(movieId, page) }
     }
 }

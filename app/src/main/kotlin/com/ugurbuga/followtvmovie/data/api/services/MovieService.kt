@@ -53,4 +53,16 @@ interface MovieService {
     suspend fun getMovieExternalIds(
         @Path("movieId") movieId: String,
     ): ExternalIdsResponse
+
+    @GET("movie/{movieId}/recommendations")
+    suspend fun getRecommendations(
+        @Path("movieId") movieId: String,
+        @Query("page") page: Int,
+    ): MovieGeneralResponse
+
+    @GET("movie/{movieId}/similar")
+    suspend fun getSimilarMovies(
+        @Path("movieId") movieId: String,
+        @Query("page") page: Int,
+    ): MovieGeneralResponse
 }

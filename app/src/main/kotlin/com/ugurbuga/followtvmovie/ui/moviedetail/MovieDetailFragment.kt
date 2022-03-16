@@ -21,8 +21,11 @@ import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
+import com.ugurbuga.followtvmovie.extensions.scrollEndListener
+import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
@@ -65,8 +68,22 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
             trailerRecyclerView.adapter = TrailerAdapter(::onTrailerClicked)
             castRecyclerView.adapter = CastAdapter(::onCastClicked)
-            val adapter = GenreAdapter()
-            genreRecyclerView.adapter = adapter
+            genreRecyclerView.adapter = GenreAdapter()
+
+            recommendationRecyclerView.apply {
+                adapter = PosterAdapter(::onMovieClicked)
+                scrollEndListener {
+                    viewModel.getNewRecommendations()
+                }
+            }
+
+            similarMoviesRecyclerView.apply {
+                adapter = PosterAdapter(::onMovieClicked)
+                scrollEndListener {
+                    viewModel.getNewSimilarMovies()
+                }
+            }
+
             imageView.setImageUrl(getImageUrl())
 
             favoriteButton.setOnClickListener {
@@ -99,6 +116,16 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
         collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)
         collect(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+    }
+
+    private fun onMovieClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions =
+            MovieDetailFragmentDirections.actionMovieDetailToMovieDetail(
+                poster.id,
+                poster.posterPath
+            )
+        navigate(directions, extras)
     }
 
     private fun getImageUrl(): String {
@@ -177,7 +204,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {
         viewBinding.viewState = movieDetailViewState
         movieDetailViewState.movieDetail?.let {
-            deepLinkPush(it.id, it.title, it.releaseDate)
+            //deepLinkPush(it.id, it.title, it.releaseDate)
         }
     }
 
@@ -189,6 +216,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             .setDestination(R.id.movieDetailFragment)
             .setArguments(args.toBundle())
             .createPendingIntent()
+
         Notifier.postNotification(
             id = id.toInt(),
             title = title,

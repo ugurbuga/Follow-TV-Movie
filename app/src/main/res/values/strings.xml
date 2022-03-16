@@ -38,11 +38,15 @@
     <string name="light_theme">Light Theme</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="system_default">System Default</string>
-    <string name="defaultChannel">Default Channel</string>
+    <string name="default_channel">Default Channel</string>
+    <string name="default_channel_description">Default Channel Description</string>
+    <string name="default_channel_id">Default Channel Id</string>
     <string name="push">Push</string>
     <string name="release_date">Release Date:</string>
     <string name="watched">Watched</string>
     <string name="watch_later">Watch Later</string>
     <string name="persons">Persons</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="similar_movies">Similar Movies</string>
 
 </resources>

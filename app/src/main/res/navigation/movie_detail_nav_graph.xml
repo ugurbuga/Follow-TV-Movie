@@ -62,6 +62,10 @@
             android:id="@+id/action_movie_detail_to_web"
             app:destination="@id/webViewFragment" />
 
+        <action
+            android:id="@+id/action_movie_detail_to_movie_detail"
+            app:destination="@id/movieDetailFragment" />
+
     </fragment>
 
     <activity

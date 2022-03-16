@@ -27,4 +27,8 @@ interface MovieRepository {
     fun getMovieImages(movieId: String): Flow<Resource<MovieImageResponse>>
 
     fun getMovieExternalIds(movieId: String): Flow<Resource<ExternalIdsResponse>>
+
+    fun getRecommendations(movieId: String, page: Int): Flow<Resource<MovieGeneralResponse>>
+
+    fun getSimilarMovies(movieId: String, page: Int): Flow<Resource<MovieGeneralResponse>>
 }

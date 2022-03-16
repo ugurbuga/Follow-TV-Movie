@@ -9,21 +9,15 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieCastsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieExternalUrlsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.*
+import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
@@ -35,6 +29,8 @@ class MovieDetailViewModel @Inject constructor(
     private val getMovieImagesUseCase: GetMovieImagesUseCase,
     private val getMovieCastsUseCase: GetMovieCastsUseCase,
     private val getMovieExternalUrlsUseCase: GetMovieExternalUrlsUseCase,
+    private val getRecommendationsUseCase: GetRecommendationsUseCase,
+    private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -46,12 +42,17 @@ class MovieDetailViewModel @Inject constructor(
 
     private var movieId: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
 
+    private var isCanLoadNewItemRecommendations = false
+    private var isCanLoadNewItemSimilarMovies = false
+
     init {
         getMovieDetail()
         getTrailers()
         getCasts()
         getImages()
         getExternalUrls()
+        getRecommendations()
+        getSimilarMovies()
     }
 
     private fun isFavorite() {
@@ -113,7 +114,6 @@ class MovieDetailViewModel @Inject constructor(
             isFavorite()
         }.launchIn(viewModelScope)
     }
-
 
     private fun getCasts() {
         getMovieCastsUseCase(GetMovieCastsUseCase.CastParams(movieId)).doOnStatusChanged {
@@ -213,4 +213,91 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
+    private fun getRecommendations() {
+        addRecommendationLoading()
+        getRecommendationsUseCase(
+            GetRecommendationsUseCase.Recommendations(
+                movieId,
+                ++movieDetailViewState.value.recommendation.page
+            )
+        ).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setRecommendationList(it)
+            isCanLoadNewItemRecommendations = it.totalPages > it.page
+            isFavorite()
+        }.launchIn(viewModelScope)
+    }
+
+    fun getNewRecommendations() {
+        if (isCanLoadNewItemRecommendations) {
+            isCanLoadNewItemRecommendations = false
+            getRecommendations()
+        }
+    }
+
+    private fun addRecommendationLoading() {
+        val list = movieDetailViewState.value.recommendation.posterList.toMutableList()
+        list.add(LoadingUIModel())
+        val recommendation = movieDetailViewState.value.recommendation.copy()
+        recommendation.posterList = list
+        _movieDetailViewState.value =
+            movieDetailViewState.value.copy(recommendation = recommendation)
+    }
+
+    private fun setRecommendationList(recommendation: PosterUIModel) {
+        val list = movieDetailViewState.value.recommendation.posterList.toMutableList()
+        list.remove(LoadingUIModel())
+        list.addAll(recommendation.posterList)
+        recommendation.posterList = list
+        _movieDetailViewState.value =
+            movieDetailViewState.value.copy(recommendation = recommendation)
+    }
+
+    /////////////
+
+    private fun getSimilarMovies() {
+        addSimilarMoviesLoading()
+        getSimilarMoviesUseCase(
+            GetSimilarMoviesUseCase.SimilarMovies(
+                movieId,
+                ++movieDetailViewState.value.similarMovie.page
+            )
+        ).doOnStatusChanged {
+            initStatusState(
+                it, isShowLoading = false
+            )
+        }.doOnSuccess {
+            setSimilarMovieList(it)
+            isCanLoadNewItemSimilarMovies = it.totalPages > it.page
+            isFavorite()
+        }.launchIn(viewModelScope)
+    }
+
+    fun getNewSimilarMovies() {
+        if (isCanLoadNewItemSimilarMovies) {
+            isCanLoadNewItemSimilarMovies = false
+            getSimilarMovies()
+        }
+    }
+
+    private fun addSimilarMoviesLoading() {
+        val list = movieDetailViewState.value.similarMovie.posterList.toMutableList()
+        list.add(LoadingUIModel())
+        val similarMovie = movieDetailViewState.value.similarMovie.copy()
+        similarMovie.posterList = list
+        _movieDetailViewState.value =
+            movieDetailViewState.value.copy(similarMovie = similarMovie)
+    }
+
+    private fun setSimilarMovieList(similarMovie: PosterUIModel) {
+        val list = movieDetailViewState.value.similarMovie.posterList.toMutableList()
+        list.remove(LoadingUIModel())
+        list.addAll(similarMovie.posterList)
+        similarMovie.posterList = list
+        _movieDetailViewState.value =
+            movieDetailViewState.value.copy(similarMovie = similarMovie)
+    }
 }
