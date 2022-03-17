@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel" />
+
+        <variable
+            name="isFirst"
+            type="Boolean" />
+
+        <variable
+            name="isLast"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            imageUrl="@{item.posterPath}"
+            android:layout_width="@dimen/width_80"
+            android:layout_height="@dimen/height_120"
+            android:layout_margin="@dimen/margin_8"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.ugurbuga.followtvmovie.view.FTMTextView
+            android:id="@+id/name"
+            style="@style/FTMText.SemiBold.15"
+            android:layout_width="@dimen/width_0"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:text="@{item.name}"
+            android:textColor="@color/tertiary_color"
+            app:layout_constraintEnd_toStartOf="@id/day_count"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name\nname" />
+
+        <com.ugurbuga.followtvmovie.view.FTMTextView
+            android:id="@+id/releaseDate"
+            style="@style/FTMText.Light.13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:text="@{item.releaseDate}"
+            android:textColor="@color/tertiary_color"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:text="name" />
+
+        <View
+            visible="@{!isFirst}"
+            android:layout_width="@dimen/width_4"
+            android:layout_height="@dimen/height_0"
+            android:layout_marginEnd="@dimen/margin_31"
+            android:background="@drawable/background_line_soon"
+            app:layout_constraintBottom_toTopOf="@id/day_count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            visible="@{!isLast}"
+            android:layout_width="@dimen/width_4"
+            android:layout_height="@dimen/height_0"
+            android:layout_marginEnd="@dimen/margin_31"
+            android:background="@drawable/background_line_soon_reverse"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/day_count" />
+
+        <com.ugurbuga.followtvmovie.view.FTMTextView
+            android:id="@+id/day_count"
+            style="@style/FTMText.SemiBold.15"
+            android:layout_width="@dimen/width_50"
+            android:layout_height="@dimen/height_50"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:background="@drawable/background_oval_soon"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@{item.getDateCount(context)}"
+            android:textColor="@color/always_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12345\nDay" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

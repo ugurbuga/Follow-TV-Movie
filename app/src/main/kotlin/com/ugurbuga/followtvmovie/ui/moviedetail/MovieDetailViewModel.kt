@@ -9,15 +9,25 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.*
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieCastsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieExternalUrlsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarMoviesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(

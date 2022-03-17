@@ -1,4 +1,5 @@
 package com.ugurbuga.followtvmovie.di
+
 import android.content.Context
 import androidx.room.Room
 import com.ugurbuga.followtvmovie.base.dao.FTMRoomDatabase
@@ -25,6 +26,6 @@ class DatabaseModule {
             context,
             FTMRoomDatabase::class.java,
             "ftm_database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }

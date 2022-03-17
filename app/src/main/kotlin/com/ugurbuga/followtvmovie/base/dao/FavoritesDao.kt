@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import java.util.Calendar
 import kotlinx.coroutines.flow.Flow
 
@@ -29,7 +30,16 @@ interface FavoritesDao {
 
     @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong DESC")
     fun getFutureMovies(
-        mediaType: String, isWatched: Boolean, date: Long = Calendar.getInstance().time.time
+        mediaType: String = MediaType.MOVIE,
+        isWatched: Boolean = false,
+        date: Long = Calendar.getInstance().time.time
     ): MutableList<PosterItemUIModel>
+
+    @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong ASC")
+    fun getSoonMovies(
+        mediaType: String = MediaType.MOVIE,
+        isWatched: Boolean = false,
+        date: Long = Calendar.getInstance().time.time
+    ): Flow<MutableList<PosterItemUIModel>>
 
 }

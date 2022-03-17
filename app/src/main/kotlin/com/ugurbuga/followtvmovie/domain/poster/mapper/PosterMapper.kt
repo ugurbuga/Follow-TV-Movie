@@ -60,6 +60,7 @@ class PosterMapper @Inject constructor(
             name = response.title,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             mediaType = MediaType.MOVIE,
+            releaseDate = response.releaseDate ?: Util.EMPTY_STRING,
             releaseDateLong = Util.getDateLong(response.releaseDate)
         )
     }
@@ -70,6 +71,7 @@ class PosterMapper @Inject constructor(
             name = response.name,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             mediaType = MediaType.TV,
+            releaseDate = response.firstAirDate ?: Util.EMPTY_STRING,
             releaseDateLong = Util.getDateLong(response.firstAirDate)
         )
     }
@@ -85,6 +87,7 @@ class PosterMapper @Inject constructor(
                 response.profilePath
             ),
             mediaType = response.mediaType,
+            releaseDate = response.releaseDate ?: response.firstAirDate ?: Util.EMPTY_STRING,
             releaseDateLong = Util.getDateLong(response.releaseDate ?: response.firstAirDate)
         )
     }
@@ -94,6 +97,7 @@ class PosterMapper @Inject constructor(
         name = movieDetail.title,
         posterPath = movieDetail.posterPath,
         mediaType = MediaType.MOVIE,
+        releaseDate = movieDetail.releaseDate,
         releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
         isWatched = isWatched
     )

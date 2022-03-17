@@ -8,7 +8,7 @@ data class TvShowResponse(
     val backdropPath: String?,
 
     @Json(name = "first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
 
     @Json(name = "genre_ids")
     val genreIds: List<Int>,

@@ -1,9 +1,13 @@
 package com.ugurbuga.followtvmovie.domain.poster.model
 
+import android.content.Context
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 @Entity(tableName = "favoritesTable")
 data class PosterItemUIModel(
@@ -20,9 +24,23 @@ data class PosterItemUIModel(
     @ColumnInfo(name = "mediaType")
     val mediaType: String,
 
+    @ColumnInfo(name = "releaseDate")
+    val releaseDate: String,
+
     @ColumnInfo(name = "releaseDateLong")
     val releaseDateLong: Long,
 
     @ColumnInfo(name = "isWatched")
     val isWatched: Boolean = false
-) : ListAdapterItem
+) : ListAdapterItem {
+
+    fun getDateCount(context: Context): String {
+        val milliseconds = releaseDateLong.minus(Calendar.getInstance().time.time)
+        val days = TimeUnit.MILLISECONDS.toDays(milliseconds).toInt().plus(1)
+        return if (days > 1) {
+            context.getString(R.string.x_days, days)
+        } else {
+            context.getString(R.string.one_day)
+        }
+    }
+}

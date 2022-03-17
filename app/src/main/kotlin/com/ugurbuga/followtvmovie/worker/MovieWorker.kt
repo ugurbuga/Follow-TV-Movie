@@ -12,7 +12,6 @@ import com.ugurbuga.followtvmovie.base.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
@@ -25,7 +24,7 @@ class MovieWorker @AssistedInject constructor(
 
     override fun doWork(): Result {
 
-        val list = favoritesDao.getFutureMovies(MediaType.MOVIE, false)
+        val list = favoritesDao.getFutureMovies()
 
         list.forEach {
             Notifier.postNotification(

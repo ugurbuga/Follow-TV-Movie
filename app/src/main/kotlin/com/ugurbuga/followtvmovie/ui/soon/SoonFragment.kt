@@ -10,10 +10,19 @@ class SoonFragment : FTMBaseVMFragment<SoonViewModel, FragmentSoonBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_soon
 
-    override fun generateViewModel() = SoonViewModel::class.java
+    override fun viewModelClass() = SoonViewModel::class.java
+
+    private val adapter: SoonFragmentAdapter by lazy {
+        SoonFragmentAdapter(
+            requireContext(),
+            childFragmentManager
+        )
+    }
 
     override fun onInitDataBinding() {
-
+        with(viewBinding) {
+            viewPager.adapter = adapter
+        }
     }
 
 }

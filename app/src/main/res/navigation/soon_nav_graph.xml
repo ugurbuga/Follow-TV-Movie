@@ -11,6 +11,21 @@
         tools:layout="@layout/fragment_soon">
         <deepLink app:uri="myapp://followtvmovie.com/soon" />
 
+        <action
+            android:id="@+id/action_soon_to_movie_detail"
+            app:destination="@id/movie_detail_nav_graph">
+
+            <argument
+                android:name="id"
+                app:argType="string" />
+
+            <argument
+                android:name="image_url"
+                app:argType="string" />
+        </action>
+
     </fragment>
+
+    <include app:graph="@navigation/movie_detail_nav_graph" />
 
 </navigation>
