@@ -16,7 +16,7 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
 
     override fun getResourceLayoutId() = R.layout.fragment_image
 
-    override fun generateViewModel() = ImageViewModel::class.java
+    override fun viewModelClass() = ImageViewModel::class.java
 
     private val args: ImageFragmentArgs by navArgs()
 

@@ -4,14 +4,16 @@ import android.content.Context
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 
 object Util {
 
     const val EMPTY_STRING = ""
     const val INVALID_INDEX = -1
-    const val DATE_PATTERN = "yyyy-MM-dd"
+    private const val DATE_PATTERN = "yyyy-MM-dd"
 
     fun getTypefaceFromFontRes(context: Context, font: Int): Typeface? {
         return ResourcesCompat.getFont(context, font)

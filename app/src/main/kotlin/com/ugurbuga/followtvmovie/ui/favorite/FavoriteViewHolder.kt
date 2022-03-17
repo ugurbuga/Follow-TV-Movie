@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.databinding.ItemFavoriteBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
@@ -23,7 +24,7 @@ class FavoriteViewHolder(
     ) {
         val context = itemView.context
 
-        binding.apply {
+        binding.executeAfter {
             this.item = poster
 
             val imageViewParams = ConstraintLayout.LayoutParams(
@@ -34,8 +35,6 @@ class FavoriteViewHolder(
             ViewCompat.setTransitionName(posterImage, poster.name)
 
             root.setOnClickListener { onPosterClick?.invoke(poster, posterImage) }
-
-            executePendingBindings()
         }
     }
 }

@@ -19,7 +19,7 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
 
     override fun getResourceLayoutId() = R.layout.fragment_search
 
-    override fun generateViewModel() = SearchViewModel::class.java
+    override fun viewModelClass() = SearchViewModel::class.java
 
     override fun onInitDataBinding() {
         collect(viewModel.searchViewState, ::onSearchViewState)

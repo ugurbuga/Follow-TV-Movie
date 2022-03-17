@@ -17,7 +17,7 @@ open class FavoriteListFragment : FTMBaseVMFragment<FavoriteListViewModel, Fragm
 
     override fun getResourceLayoutId() = R.layout.fragment_favorite_list
 
-    override fun generateViewModel() = FavoriteListViewModel::class.java
+    override fun viewModelClass() = FavoriteListViewModel::class.java
 
     override fun onInitDataBinding() {
         collect(viewModel.favoriteViewState, ::onFavoriteViewState)

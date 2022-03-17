@@ -8,10 +8,10 @@ abstract class BaseVmFragment<VM : FTMBaseViewModel> : BaseFragment() {
 
     protected lateinit var viewModel: VM
 
-    abstract fun generateViewModel(): Class<VM>
+    abstract fun viewModelClass(): Class<VM>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[generateViewModel()]
+        viewModel = ViewModelProvider(this)[viewModelClass()]
     }
 }

@@ -14,7 +14,7 @@ class MoviesFragment : FTMBaseVMFragment<MoviesViewModel, FragmentMoviesBinding>
 
     override fun getResourceLayoutId() = R.layout.fragment_movies
 
-    override fun generateViewModel() = MoviesViewModel::class.java
+    override fun viewModelClass() = MoviesViewModel::class.java
 
     private val adapter: FavoriteFragmentAdapter by lazy {
         FavoriteFragmentAdapter(

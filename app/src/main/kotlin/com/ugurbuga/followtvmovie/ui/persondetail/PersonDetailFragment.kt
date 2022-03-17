@@ -24,7 +24,7 @@ class PersonDetailFragment :
 
     override fun getResourceLayoutId() = R.layout.fragment_person_detail
 
-    override fun generateViewModel() = PersonDetailViewModel::class.java
+    override fun viewModelClass() = PersonDetailViewModel::class.java
 
     val args: PersonDetailFragmentArgs by navArgs()
 
