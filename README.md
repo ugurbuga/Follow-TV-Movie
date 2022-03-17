@@ -42,3 +42,8 @@ You can follow movie/tv release date.
 * UI
     * [Material3](https://m3.material.io/) theme
     * [Dark Mode](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) - ui
+
+
+| Movie Detail | Soon |
+| ------------ | ---- |
+| <img src="app/screenshots/movie_detail_part2_night.png" width="200">  | <img src="app/screenshots/soon_light.png" width="200">|
