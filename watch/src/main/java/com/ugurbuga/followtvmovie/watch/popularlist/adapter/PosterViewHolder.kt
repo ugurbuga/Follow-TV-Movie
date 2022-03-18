@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.ugurbuga.followtvmovie.watch.base.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.watch.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.watch.databinding.ItemPosterBinding
 import com.ugurbuga.followtvmovie.watch.popularlist.model.MovieResponse
-import com.ugurbuga.followtvmovie.watch.util.Util
 
 class PosterViewHolder(
     parent: ViewGroup,
@@ -25,7 +25,7 @@ class PosterViewHolder(
         }
 
         Glide.with(binding.menuIcon)
-            .load(Util.BASE_IMAGE_URL + poster.posterPath)
+            .load(ApiConstants.BASE_IMAGE_URL + poster.posterPath)
             .circleCrop()
             .into(binding.menuIcon)
     }
