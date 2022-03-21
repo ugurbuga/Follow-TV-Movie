@@ -26,7 +26,7 @@ You can follow movie/tv release date.
         * [Room](https://developer.android.com/jetpack/androidx/releases/room) - store offline cache
         * [Work Manager](https://developer.android.com/topic/libraries/architecture/workmanager/basics) - notify when movie released
         * [Push Notification](https://developer.android.com/guide/topics/ui/notifiers/notifications) - notification
-        * [Splash Screen](https://developer.android.com/guide/topics/ui/splash-screen) - splash screen with animated icon
+        * [Splash Screen API](https://developer.android.com/guide/topics/ui/splash-screen) - splash screen with animated icon
     * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - dependency injection
     * [Flow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) - view state
     * [Glide](https://github.com/bumptech/glide) - image loading library
