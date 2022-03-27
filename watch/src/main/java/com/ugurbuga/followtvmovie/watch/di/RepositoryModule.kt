@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.watch.di
 
+import com.ugurbuga.followtvmovie.watch.repository.favorites.FavoritesRepository
+import com.ugurbuga.followtvmovie.watch.repository.favorites.FavoritesRepositoryImpl
 import com.ugurbuga.followtvmovie.watch.repository.movie.MovieRepository
 import com.ugurbuga.followtvmovie.watch.repository.movie.MovieRepositoryImpl
 import dagger.Binds
@@ -15,5 +17,11 @@ abstract class RepositoryModule {
     abstract fun provideMovieRepository(
         movieRepositoryImpl: MovieRepositoryImpl
     ): MovieRepository
+
+
+    @Binds
+    abstract fun provideFavoritesRepository(
+        favoriteRepositoryImpl: FavoritesRepositoryImpl
+    ): FavoritesRepository
 
 }

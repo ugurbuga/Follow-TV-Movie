@@ -3,5 +3,6 @@
     <string name="tile_description">Tile Description</string>
     <string name="tile_label">Tile Label</string>
     <string name="tile_preview">Tile Preview</string>
-
+    <string name="x_days">%d\ndays</string>
+    <string name="one_day">1\nday</string>
 </resources>
