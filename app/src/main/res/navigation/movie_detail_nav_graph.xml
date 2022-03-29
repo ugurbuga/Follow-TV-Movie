@@ -88,6 +88,7 @@
         <argument
             android:name="id"
             app:argType="string" />
+
     </dialog>
 
     <fragment
@@ -98,6 +99,7 @@
         <argument
             android:name="url"
             app:argType="string" />
+
     </fragment>
 
 </navigation>
