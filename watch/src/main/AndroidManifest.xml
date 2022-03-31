@@ -28,7 +28,7 @@
             android:value="true" />
 
         <activity
-            android:name=".popularlist.PopularMoviesActivity"
+            android:name=".ui.popularlist.PopularMoviesActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".detail.MovieDetailActivity" />
+        <activity android:name=".ui.detail.MovieDetailActivity" />
 
         <service
             android:name=".tile.MovieTileService"

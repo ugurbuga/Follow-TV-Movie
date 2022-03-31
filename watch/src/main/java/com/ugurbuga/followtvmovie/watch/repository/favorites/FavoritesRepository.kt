@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.watch.repository.favorites
 
-import com.ugurbuga.followtvmovie.watch.detail.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.watch.ui.detail.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import kotlinx.coroutines.flow.Flow
 

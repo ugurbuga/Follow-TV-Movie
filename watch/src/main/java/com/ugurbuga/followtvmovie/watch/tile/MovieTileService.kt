@@ -10,7 +10,7 @@ import androidx.wear.tiles.TileService
 import androidx.wear.tiles.TimelineBuilders
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
-import com.ugurbuga.followtvmovie.watch.popularlist.PopularMoviesActivity
+import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

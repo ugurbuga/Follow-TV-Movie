@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.watch.detail.MovieDetailViewState" />
+            type="com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailViewState" />
     </data>
 
     <ScrollView
@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:background="#000000"
         android:padding="@dimen/box_inset_layout_padding"
-        tools:context=".popularlist.PopularMoviesActivity"
+        tools:context=".ui.popularlist.PopularMoviesActivity"
         tools:deviceIds="wear">
 
         <LinearLayout

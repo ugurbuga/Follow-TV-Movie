@@ -1,8 +1,8 @@
 package com.ugurbuga.followtvmovie.watch.repository.favorites
 
 import com.ugurbuga.followtvmovie.watch.dao.FavoritesDao
-import com.ugurbuga.followtvmovie.watch.detail.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.watch.repository.FTMBaseRepository
+import com.ugurbuga.followtvmovie.watch.ui.detail.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.watch.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
