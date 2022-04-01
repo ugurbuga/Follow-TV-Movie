@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="1dp"
+            android:fontFamily="@font/league_spartan_regular"
+            android:gravity="start|center"
+            android:text="Menu \n Item"
+            android:textColor="@color/quaternary_color"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</layout>

@@ -5,4 +5,6 @@
     <string name="tile_preview">Tile Preview</string>
     <string name="x_days">%d\ndays</string>
     <string name="one_day">1\nday</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="coming_soon_movies">Coming Soon Movies</string>
 </resources>

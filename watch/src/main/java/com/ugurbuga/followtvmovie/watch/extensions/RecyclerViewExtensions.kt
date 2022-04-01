@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.util
+package com.ugurbuga.followtvmovie.watch.extensions
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

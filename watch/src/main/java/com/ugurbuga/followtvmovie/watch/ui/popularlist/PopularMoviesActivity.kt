@@ -5,17 +5,15 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.wear.widget.WearableLinearLayoutManager
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityPopularMoviesBinding
+import com.ugurbuga.followtvmovie.watch.extensions.collect
+import com.ugurbuga.followtvmovie.watch.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailActivity
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieResponse
-import com.ugurbuga.followtvmovie.watch.util.scrollEndListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.StateFlow
 
 @AndroidEntryPoint
 class PopularMoviesActivity : AppCompatActivity() {
@@ -54,12 +52,5 @@ class PopularMoviesActivity : AppCompatActivity() {
         startActivity(Intent(this, MovieDetailActivity::class.java).apply {
             putExtra("movieId", movieResponse.id)
         })
-    }
-}
-
-
-fun <T> LifecycleOwner.collect(stateFlow: StateFlow<T>, observer: (T) -> Unit) {
-    lifecycleScope.launchWhenStarted {
-        stateFlow.collect { t -> observer(t) }
     }
 }

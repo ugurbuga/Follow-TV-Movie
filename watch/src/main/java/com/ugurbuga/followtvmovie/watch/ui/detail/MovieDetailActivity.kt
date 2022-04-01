@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityMovieDetailBinding
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.collect
+import com.ugurbuga.followtvmovie.watch.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

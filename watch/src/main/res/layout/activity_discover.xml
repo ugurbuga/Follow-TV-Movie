@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.wear.widget.BoxInsetLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/box_inset_layout_padding"
+        android:background="#000000"
+        tools:context=".ui.popularlist.PopularMoviesActivity"
+        tools:deviceIds="wear">
+
+        <androidx.wear.widget.WearableRecyclerView
+            android:id="@+id/discover_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_poster"
+            android:scrollbars="vertical" />
+
+    </androidx.wear.widget.BoxInsetLayout>
+</layout>
