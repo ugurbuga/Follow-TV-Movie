@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail.model
+package com.ugurbuga.followtvmovie.watch.domain.detail.model
 
 
 import com.squareup.moshi.Json

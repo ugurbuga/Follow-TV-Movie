@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.ugurbuga.followtvmovie.watch.ui.detail.MediaType
-import com.ugurbuga.followtvmovie.watch.ui.detail.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.watch.ui.detail.PosterItemUIModel
 import java.util.Calendar
 import kotlinx.coroutines.flow.Flow
 

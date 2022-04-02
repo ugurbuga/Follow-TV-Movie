@@ -1,7 +1,9 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail
+package com.ugurbuga.followtvmovie.watch.domain.detail
 
-import com.ugurbuga.followtvmovie.watch.ui.detail.model.GenreResponse
-import com.ugurbuga.followtvmovie.watch.ui.detail.model.MovieDetailResponse
+import com.ugurbuga.followtvmovie.watch.ui.detail.GenreUIModel
+import com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailUIModel
+import com.ugurbuga.followtvmovie.watch.domain.detail.model.GenreResponse
+import com.ugurbuga.followtvmovie.watch.domain.detail.model.MovieDetailResponse
 import com.ugurbuga.followtvmovie.watch.util.Util
 import javax.inject.Inject
 

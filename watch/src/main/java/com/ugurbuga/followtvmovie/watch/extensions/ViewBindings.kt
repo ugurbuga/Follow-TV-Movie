@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail
+package com.ugurbuga.followtvmovie.watch.extensions
 
 import android.view.View
 import androidx.databinding.BindingAdapter

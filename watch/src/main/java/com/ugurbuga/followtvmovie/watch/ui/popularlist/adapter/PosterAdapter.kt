@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.watch.base.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.PosterHolderType
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.LoadingUIModel
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieResponse
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.ListAdapterItem
+import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
+import com.ugurbuga.followtvmovie.watch.base.ListAdapterItem
 import com.ugurbuga.followtvmovie.watch.util.Util
 
 class PosterAdapter(

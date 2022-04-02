@@ -1,11 +1,11 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail.model
+package com.ugurbuga.followtvmovie.watch.ui.detail
 
 import android.content.Context
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ugurbuga.followtvmovie.watch.R
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.ListAdapterItem
+import com.ugurbuga.followtvmovie.watch.base.ListAdapterItem
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 

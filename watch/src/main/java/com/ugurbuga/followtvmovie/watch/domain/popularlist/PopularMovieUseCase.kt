@@ -1,6 +1,5 @@
-package com.ugurbuga.followtvmovie.watch.ui.popularlist
+package com.ugurbuga.followtvmovie.watch.domain.popularlist
 
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieGeneralResponse
 import com.ugurbuga.followtvmovie.watch.base.FTMUseCase
 import com.ugurbuga.followtvmovie.watch.repository.movie.MovieRepository
 import com.ugurbuga.followtvmovie.watch.util.Resource

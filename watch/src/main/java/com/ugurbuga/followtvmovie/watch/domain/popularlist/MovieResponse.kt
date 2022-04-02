@@ -1,6 +1,7 @@
-package com.ugurbuga.followtvmovie.watch.ui.popularlist.model
+package com.ugurbuga.followtvmovie.watch.domain.popularlist
 
 import com.squareup.moshi.Json
+import com.ugurbuga.followtvmovie.watch.base.ListAdapterItem
 
 data class MovieResponse(
     @Json(name = "adult")

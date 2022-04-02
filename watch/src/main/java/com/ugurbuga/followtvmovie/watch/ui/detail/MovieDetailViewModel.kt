@@ -3,6 +3,8 @@ package com.ugurbuga.followtvmovie.watch.ui.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ugurbuga.followtvmovie.watch.domain.detail.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.watch.domain.detail.GetMovieDetailUseCase
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import com.ugurbuga.followtvmovie.watch.util.Util
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,8 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail
+package com.ugurbuga.followtvmovie.watch.domain.detail
 
 import com.ugurbuga.followtvmovie.watch.base.FTMUseCase
 import com.ugurbuga.followtvmovie.watch.repository.movie.MovieRepository
+import com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import com.ugurbuga.followtvmovie.watch.util.map
 import javax.inject.Inject

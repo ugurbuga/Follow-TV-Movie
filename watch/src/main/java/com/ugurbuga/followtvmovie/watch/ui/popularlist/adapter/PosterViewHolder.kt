@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.ugurbuga.followtvmovie.watch.base.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.watch.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.watch.databinding.ItemPosterBinding
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieResponse
+import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
 
 class PosterViewHolder(
     parent: ViewGroup,

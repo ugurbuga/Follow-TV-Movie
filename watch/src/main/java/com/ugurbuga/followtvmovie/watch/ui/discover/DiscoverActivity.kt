@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.ui.popularlist.discover
+package com.ugurbuga.followtvmovie.watch.ui.discover
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.wear.widget.WearableLinearLayoutManager
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityDiscoverBinding
-import com.ugurbuga.followtvmovie.watch.ui.discover.DiscoverItem
-import com.ugurbuga.followtvmovie.watch.ui.discover.ScreenType
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesActivity
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint

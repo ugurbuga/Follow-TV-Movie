@@ -12,7 +12,7 @@ import com.ugurbuga.followtvmovie.watch.extensions.collect
 import com.ugurbuga.followtvmovie.watch.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailActivity
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.adapter.PosterAdapter
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieResponse
+import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

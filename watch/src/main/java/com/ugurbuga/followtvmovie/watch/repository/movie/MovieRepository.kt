@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.watch.repository.movie
 
-import com.ugurbuga.followtvmovie.watch.ui.detail.model.MovieDetailResponse
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.MovieGeneralResponse
+import com.ugurbuga.followtvmovie.watch.domain.detail.model.MovieDetailResponse
+import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieGeneralResponse
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import kotlinx.coroutines.flow.Flow
 

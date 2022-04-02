@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.ui.detail
+package com.ugurbuga.followtvmovie.watch.domain.detail
 
 import com.ugurbuga.followtvmovie.watch.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.watch.util.Util
