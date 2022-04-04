@@ -9,6 +9,8 @@ interface MovieRepository {
 
     fun getPopularMovies(page: Int): Flow<Resource<MovieGeneralResponse>>
 
+    fun getUpcomingMovies(page: Int): Flow<Resource<MovieGeneralResponse>>
+
     fun getMovieDetail(movieId: String): Flow<Resource<MovieDetailResponse>>
 
 }

@@ -131,6 +131,7 @@
                         android:gravity="center"
                         android:textOff=""
                         android:textOn=""
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/overview"
                         app:layout_constraintTop_toBottomOf="@id/progress_bar" />

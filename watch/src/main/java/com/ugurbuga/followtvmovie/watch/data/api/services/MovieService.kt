@@ -13,6 +13,11 @@ interface MovieService {
         @Query("page") page: Int,
     ): MovieGeneralResponse
 
+    @GET("movie/upcoming")
+    suspend fun getUpcomingMovies(
+        @Query("page") page: Int,
+    ): MovieGeneralResponse
+
     @GET("movie/{movieId}")
     suspend fun getMovieDetail(
         @Path("movieId") movieId: String,

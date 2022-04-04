@@ -2,7 +2,6 @@ package com.ugurbuga.followtvmovie.watch.ui.discover
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,6 +10,7 @@ import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityDiscoverBinding
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesActivity
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesViewModel
+import com.ugurbuga.followtvmovie.watch.ui.upcoming.UpcomingMoviesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,7 +60,7 @@ class DiscoverActivity : AppCompatActivity() {
             }
 
             ScreenType.COMING_SOON_MOVIES -> {
-                Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, UpcomingMoviesActivity::class.java))
             }
         }
     }
