@@ -44,16 +44,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/app_name" />
 
-            <androidx.appcompat.widget.AppCompatToggleButton
-                android:id="@+id/favorite_button"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:background="@drawable/favorite_toggle_button"
-                android:checked="@{viewState.favorite}"
-                android:gravity="center"
-                android:textOff=""
-                android:textOn="" />
+            <LinearLayout
+                visible="@{viewState.movieDetail.isReleaseInFuture()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/favorite_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/favorite_toggle_button"
+                    android:checked="@{viewState.favorite}"
+                    android:gravity="center"
+                    android:textOff=""
+                    android:textOn="" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/detail"
