@@ -59,6 +59,36 @@
                 android:resource="@drawable/ic_ftm_launcher_foreground" />
         </service>
 
+        <service
+            android:name=".tile.FitnessTileService"
+            android:description="@string/tile_description"
+            android:exported="true"
+            android:label="@string/tile_label"
+            android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+            <intent-filter>
+                <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="androidx.wear.tiles.PREVIEW"
+                android:resource="@drawable/ic_ftm_launcher_foreground" />
+        </service>
+
+        <service
+            android:name=".tile.MessagingTileService"
+            android:description="@string/tile_description"
+            android:exported="true"
+            android:label="@string/tile_label"
+            android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+            <intent-filter>
+                <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="androidx.wear.tiles.PREVIEW"
+                android:resource="@drawable/ic_ftm_launcher_foreground" />
+        </service>
+
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.guava.future
 
+
 private const val RESOURCES_VERSION = "1"
 
 @AndroidEntryPoint
