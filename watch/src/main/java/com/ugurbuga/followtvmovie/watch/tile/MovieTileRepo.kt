@@ -15,26 +15,20 @@
  */
 package com.ugurbuga.followtvmovie.watch.tile
 
-import kotlin.random.Random
+import androidx.annotation.DrawableRes
 import kotlinx.coroutines.delay
 
-data class GoalProgress(
-    val current: Int,
-    val goal: Int
-) {
-    val percentage get() = current.toFloat() / goal.toFloat()
-}
+data class Dummy(
+    val id: Long,
+    val initials: String,
+    val name: String,
+    @DrawableRes val avatarRes: Int?
+)
 
-/**
- * A fake repo
- */
-object FitnessRepo {
-    suspend fun getGoalProgress(): GoalProgress {
+object MovieTileRepo {
+
+    suspend fun getFavoriteContacts(): List<Dummy> {
         delay(200)
-        val random = Random.nextInt(8000)
-        println("Ugur Random $random")
-        return goalProgress.copy(current = random)
+        return listOf()
     }
 }
-
-val goalProgress = GoalProgress(current = 0, goal = 8000)

@@ -20,10 +20,21 @@ android {
         flavorDimensions "default"
     }
 
+    signingConfigs {
+
+        release {
+            keyAlias 'TestTest'
+            keyPassword 'TestTest'
+            storeFile file("${project.rootDir}/keys/TestKeyStore.jks")
+            storePassword 'TestTest'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 

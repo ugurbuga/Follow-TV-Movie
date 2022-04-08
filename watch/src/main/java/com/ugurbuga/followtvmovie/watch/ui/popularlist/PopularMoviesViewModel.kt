@@ -2,14 +2,15 @@ package com.ugurbuga.followtvmovie.watch.ui.popularlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ugurbuga.followtvmovie.watch.domain.popularlist.PopularMovieUseCase
 import com.ugurbuga.followtvmovie.watch.base.ListAdapterItem
+import com.ugurbuga.followtvmovie.watch.domain.popularlist.PopularMovieUseCase
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @HiltViewModel
