@@ -30,5 +30,9 @@ class MovieDetailActivity : AppCompatActivity() {
         collect(viewModel.movieDetailViewState) {
             viewBinding.viewState = it
         }
+
+        viewBinding.tileButton.setOnClickListener {
+            viewModel.tileClicked()
+        }
     }
 }

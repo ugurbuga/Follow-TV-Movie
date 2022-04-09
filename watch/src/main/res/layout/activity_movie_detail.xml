@@ -45,21 +45,34 @@
                 tools:text="@string/app_name" />
 
             <LinearLayout
+                android:id="@+id/tile_view"
                 visible="@{viewState.movieDetail.isReleaseInFuture()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/favorite_button"
+                    android:id="@+id/tile_button"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/favorite_toggle_button"
+                    android:background="@drawable/tile_toggle_button"
                     android:checked="@{viewState.favorite}"
                     android:gravity="center"
                     android:textOff=""
                     android:textOn="" />
+
+                <TextView
+                    android:id="@+id/add_remove_tile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/league_spartan_light"
+                    android:gravity="center"
+                    android:text="@{viewState.favorite ? @string/remove_from_tile : @string/add_to_tile }"
+                    android:textColor="@color/quaternary_color"
+                    android:textSize="11sp"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    tools:text="@string/remove_from_tile" />
 
             </LinearLayout>
 

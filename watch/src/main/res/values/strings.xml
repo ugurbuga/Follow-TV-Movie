@@ -9,4 +9,7 @@
     <string name="coming_soon_movies">Coming Soon Movies</string>
     <string name="tile_fitness_goal">/ %d</string>
     <string name="tile_fitness_content_description">%1$d out of %2$d steps</string>
+    <string name="add_to_tile">Add To Tile</string>
+    <string name="remove_from_tile">Remove From Tile</string>
+
 </resources>
