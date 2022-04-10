@@ -81,8 +81,17 @@ class MovieDetailViewModel @Inject constructor(
     fun tileClicked() {
         if (movieDetailViewState.value.isFavorite) {
             //Remove
+            viewModelScope.launch {
+                movieDetailViewState.value.movieDetail?.let {
+                    deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
+                }
+            }
         } else {
-            //Add
+            viewModelScope.launch {
+                movieDetailViewState.value.movieDetail?.let {
+                    addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it, false))
+                }
+            }
         }
     }
 }
