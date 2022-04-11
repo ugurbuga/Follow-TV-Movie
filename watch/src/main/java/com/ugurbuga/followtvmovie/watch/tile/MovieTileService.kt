@@ -16,6 +16,7 @@
 package com.ugurbuga.followtvmovie.watch.tile
 
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.asLiveData
 import androidx.wear.tiles.ActionBuilders
 import androidx.wear.tiles.ColorBuilders.argb
 import androidx.wear.tiles.DeviceParametersBuilders.DeviceParameters
@@ -43,7 +44,11 @@ import androidx.wear.tiles.TileBuilders.Tile
 import androidx.wear.tiles.TimelineBuilders.Timeline
 import androidx.wear.tiles.TimelineBuilders.TimelineEntry
 import com.ugurbuga.followtvmovie.watch.R
+import com.ugurbuga.followtvmovie.watch.dao.FavoritesDao
+import com.ugurbuga.followtvmovie.watch.ui.detail.MediaType
+import com.ugurbuga.followtvmovie.watch.ui.detail.PosterItemUIModel
 import com.ugurbuga.followtvmovie.watch.ui.discover.DiscoverActivity
+import javax.inject.Inject
 
 private const val RESOURCES_VERSION = "1"
 
@@ -57,8 +62,12 @@ private val ICON_SIZE = dp(24f)
 private const val ID_IC_SEARCH = "ic_search"
 
 class MovieTileService : CoroutinesTileService() {
+
+    @Inject
+    lateinit var favoritesDao: FavoritesDao
+
     override suspend fun tileRequest(requestParams: TileRequest): Tile {
-        val dummy = MovieTileRepo.getFavoriteContacts().take(4)
+        val movies = favoritesDao.getFavorites(MediaType.MOVIE, false).asLiveData().value
         return Tile.Builder()
             .setResourcesVersion(RESOURCES_VERSION)
             .setTimeline(
@@ -67,7 +76,7 @@ class MovieTileService : CoroutinesTileService() {
                         TimelineEntry.Builder()
                             .setLayout(
                                 Layout.Builder()
-                                    .setRoot(layout(dummy, requestParams.deviceParameters!!))
+                                    .setRoot(layout(movies, requestParams.deviceParameters!!))
                                     .build()
                             )
                             .build()
@@ -77,7 +86,6 @@ class MovieTileService : CoroutinesTileService() {
     }
 
     override suspend fun resourcesRequest(requestParams: ResourcesRequest): Resources {
-        val dummy = MovieTileRepo.getFavoriteContacts()
         return Resources.Builder()
             .setVersion(RESOURCES_VERSION)
             .addIdToImageMapping(
@@ -94,12 +102,12 @@ class MovieTileService : CoroutinesTileService() {
     }
 
     private fun layout(
-        dummy: List<Dummy>,
+        dummy: MutableList<PosterItemUIModel>?,
         deviceParameters: DeviceParameters
     ): LayoutElement = Column.Builder()
         .addContent(
             Text.Builder()
-                .setText("3")
+                .setText(dummy?.get(0)?.name ?: "")
                 .setFontStyle(
                     FontStyles
                         .title3(deviceParameters)
@@ -113,7 +121,7 @@ class MovieTileService : CoroutinesTileService() {
         .addContent(Spacer.Builder().setHeight(SPACING_TITLE_SUBTITLE).build())
         .addContent(
             Text.Builder()
-                .setText("2")
+                .setText(dummy?.get(0)?.releaseDate ?: "")
                 .setFontStyle(
                     FontStyles
                         .caption1(deviceParameters)
