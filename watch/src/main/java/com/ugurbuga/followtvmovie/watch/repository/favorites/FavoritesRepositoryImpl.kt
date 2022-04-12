@@ -1,8 +1,8 @@
 package com.ugurbuga.followtvmovie.watch.repository.favorites
 
+import com.ugurbuga.followtvmovie.watch.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.watch.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.watch.ui.detail.PosterItemUIModel
-import com.ugurbuga.followtvmovie.watch.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.watch.util.Resource
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -19,13 +19,6 @@ class FavoritesRepositoryImpl @Inject constructor(
 
     override fun delete(id: String): Flow<Resource<Unit>> {
         return onRoomCall { favoritesDao.delete(id) }
-    }
-
-    override fun getFavorites(
-        mediaType: String,
-        isWatched: Boolean
-    ): Flow<Resource<MutableList<PosterItemUIModel>>> {
-        return onRoomFlowCall(favoritesDao.getFavorites(mediaType, isWatched))
     }
 
     override fun getFavorite(mediaType: String, id: String): Flow<Resource<PosterItemUIModel?>> {

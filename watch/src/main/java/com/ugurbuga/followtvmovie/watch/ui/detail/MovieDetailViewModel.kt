@@ -83,13 +83,36 @@ class MovieDetailViewModel @Inject constructor(
             //Remove
             viewModelScope.launch {
                 movieDetailViewState.value.movieDetail?.let {
-                    deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
+                    deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).collect { result ->
+                        when (result) {
+                            is Resource.Error -> {
+                            }
+                            Resource.Loading -> {
+                            }
+                            is Resource.Success -> {
+                            }
+                        }
+                    }
                 }
             }
         } else {
             viewModelScope.launch {
                 movieDetailViewState.value.movieDetail?.let {
-                    addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it, false))
+                    addFavoriteUseCase(
+                        AddFavoriteUseCase.AddFavoriteParams(
+                            it,
+                            false
+                        )
+                    ).collect { result ->
+                        when (result) {
+                            is Resource.Error -> {
+                            }
+                            Resource.Loading -> {
+                            }
+                            is Resource.Success -> {
+                            }
+                        }
+                    }
                 }
             }
         }

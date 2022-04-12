@@ -16,7 +16,6 @@
 package com.ugurbuga.followtvmovie.watch.tile
 
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.asLiveData
 import androidx.wear.tiles.ActionBuilders
 import androidx.wear.tiles.ColorBuilders.argb
 import androidx.wear.tiles.DeviceParametersBuilders.DeviceParameters
@@ -48,6 +47,7 @@ import com.ugurbuga.followtvmovie.watch.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.watch.ui.detail.MediaType
 import com.ugurbuga.followtvmovie.watch.ui.detail.PosterItemUIModel
 import com.ugurbuga.followtvmovie.watch.ui.discover.DiscoverActivity
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 private const val RESOURCES_VERSION = "1"
@@ -61,13 +61,15 @@ private val ICON_SIZE = dp(24f)
 // Resource identifiers for images
 private const val ID_IC_SEARCH = "ic_search"
 
+@AndroidEntryPoint
 class MovieTileService : CoroutinesTileService() {
 
     @Inject
     lateinit var favoritesDao: FavoritesDao
 
     override suspend fun tileRequest(requestParams: TileRequest): Tile {
-        val movies = favoritesDao.getFavorites(MediaType.MOVIE, false).asLiveData().value
+        val movies = favoritesDao.getFavorites(MediaType.MOVIE, false)
+        println("Ugur -> $movies")
         return Tile.Builder()
             .setResourcesVersion(RESOURCES_VERSION)
             .setTimeline(

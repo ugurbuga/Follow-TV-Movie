@@ -20,7 +20,7 @@ interface FavoritesDao {
     suspend fun delete(id: String)
 
     @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched order by releaseDateLong DESC")
-    fun getFavorites(mediaType: String, isWatched: Boolean): Flow<MutableList<PosterItemUIModel>>
+    suspend fun getFavorites(mediaType: String, isWatched: Boolean): MutableList<PosterItemUIModel>
 
     @Query("Select * from favoritesTable where mediaType=:mediaType AND id=:id")
     fun getFavorite(mediaType: String, id: String): Flow<PosterItemUIModel?>
