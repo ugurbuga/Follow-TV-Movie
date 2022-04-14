@@ -75,11 +75,10 @@ class DiscoverFragment : FTMBaseVMFragment<DiscoverViewModel, FragmentDiscoverBi
     private fun onPopularTvShowClicked(
         poster: PosterItemUIModel, imageView: AppCompatImageView
     ) {
-        //val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        //val directions =
-        //    MainNavGraphDirections.actionToMovieDetailFragment(poster.id, poster.posterPath)
-        //findNavController().navigate(directions, extras)
-        showErrorDialog(getString(R.string.coming_soon), 0)
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions =
+            DiscoverFragmentDirections.actionDiscoverToTvShowDetail(poster.id, poster.posterPath)
+        navigate(directions, extras)
     }
 
     //////////////////////////////////////////////////////

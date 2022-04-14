@@ -6,31 +6,31 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsRespons
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor(
+class TvShowMapper @Inject constructor(
     private val imageMapper: ImageMapper
 ) {
 
-    fun toMovieDetailUIModel(response: MovieDetailResponse): MovieDetailUIModel {
+    fun toTvShowDetailUIModel(response: TvShowDetailResponse): TvShowDetailUIModel {
 
-        return MovieDetailUIModel(
+        return TvShowDetailUIModel(
             adult = response.adult,
             genres = response.genres.map { toGenresUIModel(it) },
             id = response.id,
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
-            releaseDate = response.releaseDate,
-            releaseDateLong = Util.getDateLong(response.releaseDate),
+            releaseDate = response.firstAirDate,
+            releaseDateLong = Util.getDateLong(response.firstAirDate),
             status = response.status,
-            title = response.title,
+            title = response.name,
             voteAverage = response.voteAverage,
         )
     }

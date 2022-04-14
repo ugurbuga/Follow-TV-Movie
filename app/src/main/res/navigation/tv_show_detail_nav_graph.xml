@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_show_detail_nav_graph"
+    app:startDestination="@id/tvShowDetailFragment">
+
+    <fragment
+        android:id="@+id/tvShowDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.tvshowdetail.TvShowDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+        <argument
+            android:name="image_url"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_review_fragment"
+            app:destination="@id/reviewBottomSheet" />
+
+        <action
+            android:id="@+id/action_movie_detail_to_trailer"
+            app:destination="@id/trailerActivity" />
+
+        <action
+            android:id="@+id/action_movie_detail_to_person_detail"
+            app:destination="@id/person_detail_nav_graph">
+
+            <argument
+                android:name="person_id"
+                app:argType="string" />
+
+            <argument
+                android:name="image_url"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_movie_detail_to_image"
+            app:destination="@id/image_nav_graph"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="images"
+                app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
+
+            <argument
+                android:name="position"
+                app:argType="integer" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_movie_detail_to_web"
+            app:destination="@id/webViewFragment" />
+
+        <action
+            android:id="@+id/action_movie_detail_to_movie_detail"
+            app:destination="@id/movieDetailFragment" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/trailerActivity"
+        android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
+        tools:layout="@layout/activity_trailer">
+
+        <argument
+            android:name="url_key"
+            app:argType="string" />
+    </activity>
+
+    <include app:graph="@navigation/image_nav_graph" />
+
+    <dialog
+        android:id="@+id/reviewBottomSheet"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.review.ReviewBottomSheet"
+        tools:layout="@layout/bottom_sheet_review">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+    </dialog>
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.webview.WebViewFragment"
+        tools:layout="@layout/fragment_web_view">
+
+        <argument
+            android:name="url"
+            app:argType="string" />
+
+    </fragment>
+
+</navigation>

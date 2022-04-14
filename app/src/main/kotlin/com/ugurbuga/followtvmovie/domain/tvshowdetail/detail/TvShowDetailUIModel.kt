@@ -1,6 +1,8 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
+package com.ugurbuga.followtvmovie.domain.tvshowdetail.detail
 
-data class MovieDetailUIModel(
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
+
+data class TvShowDetailUIModel(
     val adult: Boolean,
     val genres: List<GenreUIModel>,
     val id: String,
