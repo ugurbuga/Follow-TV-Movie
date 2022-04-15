@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.image
 
 import com.squareup.moshi.Json
 
-data class MovieImageResponse(
+data class ImageResponse(
     @Json(name = "backdrops")
     val backdrops: List<PosterResponse>,
     @Json(name = "id")

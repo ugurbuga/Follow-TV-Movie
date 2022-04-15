@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.model.review
 
 import com.squareup.moshi.Json
 
-data class MovieReviewResponse(
+data class ReviewGeneralResponse(
     @Json(name = "id")
     val id: String,
     @Json(name = "page")

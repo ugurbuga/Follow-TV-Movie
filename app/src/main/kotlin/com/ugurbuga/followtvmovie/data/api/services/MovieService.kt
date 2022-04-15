@@ -2,9 +2,9 @@ package com.ugurbuga.followtvmovie.data.api.services
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.MovieImageResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import retrofit2.http.GET
@@ -31,7 +31,7 @@ interface MovieService {
     @GET("movie/{movieId}/reviews")
     suspend fun getMovieReviews(
         @Path("movieId") movieId: String,
-    ): MovieReviewResponse
+    ): ReviewGeneralResponse
 
     @GET("movie/{movieId}/videos")
     suspend fun getMovieTrailers(
@@ -47,7 +47,7 @@ interface MovieService {
     suspend fun getMovieImages(
         @Path("movieId") movieId: String,
         @Query("include_image_language") includeImageLanguage: String = "null"
-    ): MovieImageResponse
+    ): ImageResponse
 
     @GET("movie/{movieId}/external_ids")
     suspend fun getMovieExternalIds(

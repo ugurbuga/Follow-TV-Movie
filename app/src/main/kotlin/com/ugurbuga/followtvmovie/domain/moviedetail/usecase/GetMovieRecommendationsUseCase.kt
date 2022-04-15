@@ -6,15 +6,15 @@ import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.repository.movie.MovieRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class GetRecommendationsUseCase @Inject constructor(
+class GetMovieRecommendationsUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
     private val posterMapper: PosterMapper
 ) :
-    FTMUseCase<GetRecommendationsUseCase.Recommendations, PosterUIModel>() {
+    FTMUseCase<GetMovieRecommendationsUseCase.Recommendations, PosterUIModel>() {
 
     data class Recommendations(var movieId: String, val page: Int)
 
