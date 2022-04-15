@@ -8,9 +8,9 @@ import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class AddFavoriteUseCase @Inject constructor(
+class AddFavoriteMovieUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository, private val posterMapper: PosterMapper
-) : FTMUseCase<AddFavoriteUseCase.AddFavoriteParams, Unit>() {
+) : FTMUseCase<AddFavoriteMovieUseCase.AddFavoriteParams, Unit>() {
 
     data class AddFavoriteParams(val movieDetail: MovieDetailUIModel, val isWatched: Boolean)
 

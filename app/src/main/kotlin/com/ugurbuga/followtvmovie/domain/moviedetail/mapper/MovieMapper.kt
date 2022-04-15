@@ -9,7 +9,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.MovieReviewResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
@@ -41,7 +41,7 @@ class MovieMapper @Inject constructor(
         )
     }
 
-    fun toReviewUIModelList(response: MovieReviewResponse): List<ReviewUIModel> {
+    fun toReviewUIModelList(response: ReviewGeneralResponse): List<ReviewUIModel> {
         return response.results.map { toReviewUI(it) }
     }
 

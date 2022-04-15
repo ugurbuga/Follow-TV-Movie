@@ -30,13 +30,14 @@ class ReviewViewModel @Inject constructor(
     }
 
     private fun getReviews() {
-        movieReviewUseCase(GetMovieReviewsUseCase.MovieReviewsParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieReviewViewState.value = MovieReviewViewState(it)
-        }.launchIn(viewModelScope)
+        movieReviewUseCase(GetMovieReviewsUseCase.MovieReviewsParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieReviewViewState.value = MovieReviewViewState(it)
+            }.launchIn(viewModelScope)
     }
 
 }

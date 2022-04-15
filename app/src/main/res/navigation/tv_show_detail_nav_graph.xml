@@ -23,11 +23,11 @@
             app:destination="@id/reviewBottomSheet" />
 
         <action
-            android:id="@+id/action_movie_detail_to_trailer"
+            android:id="@+id/action_tv_show_detail_to_trailer"
             app:destination="@id/trailerActivity" />
 
         <action
-            android:id="@+id/action_movie_detail_to_person_detail"
+            android:id="@+id/action_tv_show_detail_to_person_detail"
             app:destination="@id/person_detail_nav_graph">
 
             <argument
@@ -41,7 +41,7 @@
         </action>
 
         <action
-            android:id="@+id/action_movie_detail_to_image"
+            android:id="@+id/action_tv_show_detail_to_image"
             app:destination="@id/image_nav_graph"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -59,12 +59,12 @@
         </action>
 
         <action
-            android:id="@+id/action_movie_detail_to_web"
+            android:id="@+id/action_tv_show_detail_to_web"
             app:destination="@id/webViewFragment" />
 
         <action
-            android:id="@+id/action_movie_detail_to_movie_detail"
-            app:destination="@id/movieDetailFragment" />
+            android:id="@+id/action_tv_show_detail_to_tv_show_detail"
+            app:destination="@id/tvShowDetailFragment" />
 
     </fragment>
 

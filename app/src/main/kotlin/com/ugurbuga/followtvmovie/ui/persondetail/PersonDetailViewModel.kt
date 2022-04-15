@@ -41,34 +41,37 @@ class PersonDetailViewModel @Inject constructor(
     }
 
     private fun getPersonDetail() {
-        getPersonDetailUseCase(GetPersonDetailUseCase.PersonDetailParam(personId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _personDetailViewState.value = personDetailViewState.value.copy(personDetail = it)
-        }.launchIn(viewModelScope)
+        getPersonDetailUseCase(GetPersonDetailUseCase.PersonDetailParam(personId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _personDetailViewState.value = personDetailViewState.value.copy(personDetail = it)
+            }.launchIn(viewModelScope)
     }
 
     private fun getPersonImages() {
-        getPersonImagesUseCase(GetPersonImagesUseCase.PersonImagesParam(personId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _personDetailViewState.value = personDetailViewState.value.copy(images = it)
-        }.launchIn(viewModelScope)
+        getPersonImagesUseCase(GetPersonImagesUseCase.PersonImagesParam(personId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _personDetailViewState.value = personDetailViewState.value.copy(images = it)
+            }.launchIn(viewModelScope)
     }
 
 
     private fun getPersonCasts() {
-        getPersonCastsUseCase(GetPersonCastsUseCase.PersonCastParams(personId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _personDetailViewState.value = personDetailViewState.value.copy(casts = it)
-        }.launchIn(viewModelScope)
+        getPersonCastsUseCase(GetPersonCastsUseCase.PersonCastParams(personId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _personDetailViewState.value = personDetailViewState.value.copy(casts = it)
+            }.launchIn(viewModelScope)
     }
 
     fun imageClicked(position: Int) {

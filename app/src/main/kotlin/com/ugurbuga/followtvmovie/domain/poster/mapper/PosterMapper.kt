@@ -11,6 +11,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.search.SearchItemResponse
 import com.ugurbuga.followtvmovie.domain.search.SearchResponse
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import java.util.Calendar
 import javax.inject.Inject
@@ -93,6 +94,16 @@ class PosterMapper @Inject constructor(
     }
 
     fun toPosterUIModel(movieDetail: MovieDetailUIModel, isWatched: Boolean) = PosterItemUIModel(
+        id = movieDetail.id,
+        name = movieDetail.title,
+        posterPath = movieDetail.posterPath,
+        mediaType = MediaType.MOVIE,
+        releaseDate = movieDetail.releaseDate,
+        releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
+        isWatched = isWatched
+    )
+
+    fun toPosterUIModel(movieDetail: TvShowDetailUIModel, isWatched: Boolean) = PosterItemUIModel(
         id = movieDetail.id,
         name = movieDetail.title,
         posterPath = movieDetail.posterPath,

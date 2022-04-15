@@ -6,15 +6,15 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteMovieUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieCastsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarMoviesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
@@ -32,14 +32,14 @@ import kotlinx.coroutines.flow.launchIn
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val addFavoriteUseCase: AddFavoriteMovieUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     private val getMovieTrailersUseCase: GetMovieTrailersUseCase,
     private val getMovieImagesUseCase: GetMovieImagesUseCase,
     private val getMovieCastsUseCase: GetMovieCastsUseCase,
     private val getMovieExternalUrlsUseCase: GetMovieExternalUrlsUseCase,
-    private val getRecommendationsUseCase: GetRecommendationsUseCase,
+    private val getRecommendationsUseCase: GetMovieRecommendationsUseCase,
     private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
@@ -78,16 +78,17 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getMovieDetail() {
-        getMovieDetailUseCase(GetMovieDetailUseCase.MovieDetailParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieDetailViewState.value = _movieDetailViewState.value.copy(
-                movieDetail = it, isFavorite = false
-            )
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getMovieDetailUseCase(GetMovieDetailUseCase.MovieDetailParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieDetailViewState.value = _movieDetailViewState.value.copy(
+                    movieDetail = it, isFavorite = false
+                )
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     fun changeFavoriteState() {
@@ -115,47 +116,51 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getTrailers() {
-        getMovieTrailersUseCase(GetMovieTrailersUseCase.MovieTrailerParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieDetailViewState.value = movieDetailViewState.value.copy(trailers = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getMovieTrailersUseCase(GetMovieTrailersUseCase.MovieTrailerParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieDetailViewState.value = movieDetailViewState.value.copy(trailers = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getCasts() {
-        getMovieCastsUseCase(GetMovieCastsUseCase.CastParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieDetailViewState.value = movieDetailViewState.value.copy(casts = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getMovieCastsUseCase(GetMovieCastsUseCase.CastParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieDetailViewState.value = movieDetailViewState.value.copy(casts = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getImages() {
-        getMovieImagesUseCase(GetMovieImagesUseCase.MovieImageParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieDetailViewState.value = movieDetailViewState.value.copy(images = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getMovieImagesUseCase(GetMovieImagesUseCase.MovieImageParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieDetailViewState.value = movieDetailViewState.value.copy(images = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getExternalUrls() {
-        getMovieExternalUrlsUseCase(GetMovieExternalUrlsUseCase.ExternalUrlParams(movieId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _movieDetailViewState.value = movieDetailViewState.value.copy(externalUrls = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getMovieExternalUrlsUseCase(GetMovieExternalUrlsUseCase.ExternalUrlParams(movieId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _movieDetailViewState.value = movieDetailViewState.value.copy(externalUrls = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     fun reviewsClicked() {
@@ -216,7 +221,7 @@ class MovieDetailViewModel @Inject constructor(
             if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
 
         movieDetailViewState.value.movieDetail?.let {
-            addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it, isWatched))
+            addFavoriteUseCase(AddFavoriteMovieUseCase.AddFavoriteParams(it, isWatched))
                 .doOnSuccess {
                     _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(message))
                 }.launchIn(viewModelScope)
@@ -226,7 +231,7 @@ class MovieDetailViewModel @Inject constructor(
     private fun getRecommendations() {
         addRecommendationLoading()
         getRecommendationsUseCase(
-            GetRecommendationsUseCase.Recommendations(
+            GetMovieRecommendationsUseCase.Recommendations(
                 movieId,
                 ++movieDetailViewState.value.recommendation.page
             )

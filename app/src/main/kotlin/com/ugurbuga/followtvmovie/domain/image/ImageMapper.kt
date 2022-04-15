@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.image
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.MovieImageResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.PersonImageResponse
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class ImageMapper @Inject constructor() {
         }
     }
 
-    fun toMovieImageList(response: MovieImageResponse): ArrayList<ImageUIModel> {
+    fun toMovieImageList(response: ImageResponse): ArrayList<ImageUIModel> {
         var list = arrayListOf<ImageUIModel>()
         list.addAll(response.posters.map {
             ImageUIModel(

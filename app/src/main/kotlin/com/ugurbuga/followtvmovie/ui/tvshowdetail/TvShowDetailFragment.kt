@@ -27,8 +27,6 @@ import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
-import com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragmentArgs
-import com.ugurbuga.followtvmovie.ui.moviedetail.MovieDetailFragmentDirections
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
@@ -42,7 +40,7 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
 
     override fun viewModelClass() = TvShowDetailViewModel::class.java
 
-    val args: MovieDetailFragmentArgs by navArgs()
+    val args: TvShowDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,16 +72,16 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
             genreRecyclerView.adapter = GenreAdapter()
 
             recommendationRecyclerView.apply {
-                adapter = PosterAdapter(::onMovieClicked)
+                adapter = PosterAdapter(::onTvShowClicked)
                 scrollEndListener {
                     viewModel.getNewRecommendations()
                 }
             }
 
-            similarMoviesRecyclerView.apply {
-                adapter = PosterAdapter(::onMovieClicked)
+            similarTvShowsRecyclerView.apply {
+                adapter = PosterAdapter(::onTvShowClicked)
                 scrollEndListener {
-                    viewModel.getNewSimilarMovies()
+                    viewModel.getNewSimilarTvShows()
                 }
             }
 
@@ -117,14 +115,14 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
             }
         }
 
-        collect(viewModel.tvShowDetailViewState, ::onMovieDetailViewState)
-        collect(viewModel.tvShowDetailViewEvent, ::onMovieDetailViewEvent)
+        collect(viewModel.tvShowDetailViewState, ::onTvShowDetailViewState)
+        collect(viewModel.tvShowDetailViewEvent, ::onTvShowDetailViewEvent)
     }
 
-    private fun onMovieClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
+    private fun onTvShowClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions =
-            MovieDetailFragmentDirections.actionMovieDetailToMovieDetail(
+            TvShowDetailFragmentDirections.actionTvShowDetailToTvShowDetail(
                 poster.id,
                 poster.posterPath
             )
@@ -145,28 +143,28 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
 
     private fun onCastClicked(cast: CastUIModel, imageView: AppCompatImageView) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-        val directions = MovieDetailFragmentDirections.actionMovieDetailToPersonDetail(
+        val directions = TvShowDetailFragmentDirections.actionTvShowDetailToPersonDetail(
             cast.id, cast.profilePath
         )
         navigate(directions, extras)
     }
 
     private fun onTrailerClicked(trailer: TrailerUIModel) {
-        navigate(MovieDetailFragmentDirections.actionMovieDetailToTrailer(trailer.key))
+        navigate(TvShowDetailFragmentDirections.actionTvShowDetailToTrailer(trailer.key))
     }
 
-    private fun onMovieDetailViewEvent(event: TvShowDetailViewEvent) {
+    private fun onTvShowDetailViewEvent(event: TvShowDetailViewEvent) {
         when (event) {
             is TvShowDetailViewEvent.ShowSnackbar -> {
                 Snackbar.make(viewBinding.root, getString(event.message), Snackbar.LENGTH_SHORT)
                     .show()
             }
             is TvShowDetailViewEvent.NavigateToReviews -> {
-                navigate(MovieDetailFragmentDirections.actionReviewFragment(event.movieId))
+                navigate(TvShowDetailFragmentDirections.actionReviewFragment(event.tvShowI))
             }
             is TvShowDetailViewEvent.NavigateToImages -> {
                 navigate(
-                    MovieDetailFragmentDirections.actionMovieDetailToImage(
+                    TvShowDetailFragmentDirections.actionTvShowDetailToImage(
                         event.imageList.toTypedArray(), event.position
                     )
                 )
@@ -176,13 +174,13 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
             }
             is TvShowDetailViewEvent.NavigateToWebView -> {
                 navigate(
-                    MovieDetailFragmentDirections.actionMovieDetailToWeb(
+                    TvShowDetailFragmentDirections.actionTvShowDetailToWeb(
                         event.url
                     )
                 )
             }
             is TvShowDetailViewEvent.ShowWatchedOrWatchLaterDialog -> {
-                showWatchedOrWatchLaterDialog(event.movieName)
+                showWatchedOrWatchLaterDialog(event.tvShowName)
             }
         }
     }
@@ -204,7 +202,7 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
         dialog.show()
     }
 
-    private fun onMovieDetailViewState(movieDetailViewState: TvShowDetailViewState) {
+    private fun onTvShowDetailViewState(movieDetailViewState: TvShowDetailViewState) {
         viewBinding.viewState = movieDetailViewState
         movieDetailViewState.tvShowDetail?.let {
             //deepLinkPush(it.id, it.title, it.releaseDate)

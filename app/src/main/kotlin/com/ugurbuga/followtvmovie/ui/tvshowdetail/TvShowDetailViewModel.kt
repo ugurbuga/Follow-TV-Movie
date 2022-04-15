@@ -6,18 +6,18 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteTvShowUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieCastsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieExternalUrlsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarMoviesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetSimilarTvShowsUseCase
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowCastsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowExternalUrlsUseCase
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowImagesUseCase
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowTrailersUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
@@ -32,15 +32,15 @@ import kotlinx.coroutines.flow.launchIn
 @HiltViewModel
 class TvShowDetailViewModel @Inject constructor(
     private val getTvShowDetailUseCase: GetTvShowDetailUseCase,
-    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val addFavoriteUseCase: AddFavoriteTvShowUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val getMovieTrailersUseCase: GetMovieTrailersUseCase,
-    private val getMovieImagesUseCase: GetMovieImagesUseCase,
-    private val getMovieCastsUseCase: GetMovieCastsUseCase,
-    private val getMovieExternalUrlsUseCase: GetMovieExternalUrlsUseCase,
-    private val getRecommendationsUseCase: GetRecommendationsUseCase,
-    private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
+    private val getTvShowTrailersUseCase: GetTvShowTrailersUseCase,
+    private val getTvShowImagesUseCase: GetTvShowImagesUseCase,
+    private val getTvShowCastsUseCase: GetTvShowCastsUseCase,
+    private val getTvShowExternalUrlsUseCase: GetTvShowExternalUrlsUseCase,
+    private val getTvShowRecommendationsUseCase: GetTvShowRecommendationsUseCase,
+    private val getSimilarTvShowsUseCase: GetSimilarTvShowsUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -53,16 +53,16 @@ class TvShowDetailViewModel @Inject constructor(
     private var tvShowId: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
 
     private var isCanLoadNewItemRecommendations = false
-    private var isCanLoadNewItemSimilarMovies = false
+    private var isCanLoadNewItemSimilarTvShows = false
 
     init {
         getTvShowDetail()
-        //getTrailers()
-        //getCasts()
-        //getImages()
-        //getExternalUrls()
-        //getRecommendations()
-        //getSimilarMovies()
+        getTrailers()
+        getCasts()
+        getImages()
+        getExternalUrls()
+        getRecommendations()
+        getSimilarTvShows()
     }
 
     private fun isFavorite() {
@@ -78,16 +78,17 @@ class TvShowDetailViewModel @Inject constructor(
     }
 
     private fun getTvShowDetail() {
-        getTvShowDetailUseCase(GetTvShowDetailUseCase.TvShowDetailParams(tvShowId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _tvShowDetailViewState.value = _tvShowDetailViewState.value.copy(
-                tvShowDetail = it, isFavorite = false
-            )
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getTvShowDetailUseCase(GetTvShowDetailUseCase.TvShowDetailParams(tvShowId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _tvShowDetailViewState.value = _tvShowDetailViewState.value.copy(
+                    tvShowDetail = it, isFavorite = false
+                )
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     fun changeFavoriteState() {
@@ -115,47 +116,51 @@ class TvShowDetailViewModel @Inject constructor(
     }
 
     private fun getTrailers() {
-        getMovieTrailersUseCase(GetMovieTrailersUseCase.MovieTrailerParams(tvShowId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(trailers = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getTvShowTrailersUseCase(GetTvShowTrailersUseCase.TvShowTrailerParams(tvShowId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(trailers = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getCasts() {
-        getMovieCastsUseCase(GetMovieCastsUseCase.CastParams(tvShowId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(casts = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getTvShowCastsUseCase(GetTvShowCastsUseCase.CastParams(tvShowId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(casts = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getImages() {
-        getMovieImagesUseCase(GetMovieImagesUseCase.MovieImageParams(tvShowId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(images = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getTvShowImagesUseCase(GetTvShowImagesUseCase.TvShowImageParams(tvShowId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(images = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     private fun getExternalUrls() {
-        getMovieExternalUrlsUseCase(GetMovieExternalUrlsUseCase.ExternalUrlParams(tvShowId)).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(externalUrls = it)
-            isFavorite()
-        }.launchIn(viewModelScope)
+        getTvShowExternalUrlsUseCase(GetTvShowExternalUrlsUseCase.ExternalUrlParams(tvShowId))
+            .doOnStatusChanged {
+                initStatusState(
+                    it, isShowLoading = false
+                )
+            }.doOnSuccess {
+                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(externalUrls = it)
+                isFavorite()
+            }.launchIn(viewModelScope)
     }
 
     fun reviewsClicked() {
@@ -212,20 +217,20 @@ class TvShowDetailViewModel @Inject constructor(
     }
 
     fun addFavorite(isWatched: Boolean) {
-        //val message = if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
-
-        //tvShowDetailViewState.value.tvShowDetail?.let {
-        //    addFavoriteUseCase(AddFavoriteUseCase.AddFavoriteParams(it, isWatched))
-        //        .doOnSuccess {
-        //            _tvShowDetailViewEvent.emit(TvShowDetailViewEvent.ShowSnackbar(message))
-        //        }.launchIn(viewModelScope)
-        //}
+        val message =
+            if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
+        tvShowDetailViewState.value.tvShowDetail?.let {
+            addFavoriteUseCase(AddFavoriteTvShowUseCase.AddFavoriteParams(it, isWatched))
+                .doOnSuccess {
+                    _tvShowDetailViewEvent.emit(TvShowDetailViewEvent.ShowSnackbar(message))
+                }.launchIn(viewModelScope)
+        }
     }
 
     private fun getRecommendations() {
         addRecommendationLoading()
-        getRecommendationsUseCase(
-            GetRecommendationsUseCase.Recommendations(
+        getTvShowRecommendationsUseCase(
+            GetTvShowRecommendationsUseCase.Recommendations(
                 tvShowId,
                 ++tvShowDetailViewState.value.recommendation.page
             )
@@ -267,46 +272,46 @@ class TvShowDetailViewModel @Inject constructor(
 
     /////////////
 
-    private fun getSimilarMovies() {
-        addSimilarMoviesLoading()
-        getSimilarMoviesUseCase(
-            GetSimilarMoviesUseCase.SimilarMovies(
+    private fun getSimilarTvShows() {
+        addSimilarTvShowsLoading()
+        getSimilarTvShowsUseCase(
+            GetSimilarTvShowsUseCase.SimilarTvShow(
                 tvShowId,
-                ++tvShowDetailViewState.value.similarMovie.page
+                ++tvShowDetailViewState.value.similarTvShow.page
             )
         ).doOnStatusChanged {
             initStatusState(
                 it, isShowLoading = false
             )
         }.doOnSuccess {
-            setSimilarMovieList(it)
-            isCanLoadNewItemSimilarMovies = it.totalPages > it.page
+            setSimilarTvShowList(it)
+            isCanLoadNewItemSimilarTvShows = it.totalPages > it.page
             isFavorite()
         }.launchIn(viewModelScope)
     }
 
-    fun getNewSimilarMovies() {
-        if (isCanLoadNewItemSimilarMovies) {
-            isCanLoadNewItemSimilarMovies = false
-            getSimilarMovies()
+    fun getNewSimilarTvShows() {
+        if (isCanLoadNewItemSimilarTvShows) {
+            isCanLoadNewItemSimilarTvShows = false
+            getSimilarTvShows()
         }
     }
 
-    private fun addSimilarMoviesLoading() {
-        val list = tvShowDetailViewState.value.similarMovie.posterList.toMutableList()
+    private fun addSimilarTvShowsLoading() {
+        val list = tvShowDetailViewState.value.similarTvShow.posterList.toMutableList()
         list.add(LoadingUIModel())
-        val similarMovie = tvShowDetailViewState.value.similarMovie.copy()
-        similarMovie.posterList = list
+        val similarTvShow = tvShowDetailViewState.value.similarTvShow.copy()
+        similarTvShow.posterList = list
         _tvShowDetailViewState.value =
-            tvShowDetailViewState.value.copy(similarMovie = similarMovie)
+            tvShowDetailViewState.value.copy(similarTvShow = similarTvShow)
     }
 
-    private fun setSimilarMovieList(similarMovie: PosterUIModel) {
-        val list = tvShowDetailViewState.value.similarMovie.posterList.toMutableList()
+    private fun setSimilarTvShowList(similarTvShow: PosterUIModel) {
+        val list = tvShowDetailViewState.value.similarTvShow.posterList.toMutableList()
         list.remove(LoadingUIModel())
-        list.addAll(similarMovie.posterList)
-        similarMovie.posterList = list
+        list.addAll(similarTvShow.posterList)
+        similarTvShow.posterList = list
         _tvShowDetailViewState.value =
-            tvShowDetailViewState.value.copy(similarMovie = similarMovie)
+            tvShowDetailViewState.value.copy(similarTvShow = similarTvShow)
     }
 }

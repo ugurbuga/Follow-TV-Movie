@@ -15,5 +15,5 @@ data class TvShowDetailViewState(
     val images: ArrayList<ImageUIModel> = arrayListOf(),
     val externalUrls: ExternalIdsUIModel = ExternalIdsUIModel(),
     val recommendation: PosterUIModel = PosterUIModel(),
-    val similarMovie: PosterUIModel = PosterUIModel(),
+    val similarTvShow: PosterUIModel = PosterUIModel(),
 )
