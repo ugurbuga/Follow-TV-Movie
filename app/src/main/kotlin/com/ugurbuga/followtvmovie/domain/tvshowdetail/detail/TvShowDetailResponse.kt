@@ -9,7 +9,7 @@ data class TvShowDetailResponse(
     @Json(name = "adult")
     val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @Json(name = "created_by")
     val createdBy: List<CreatedByResponse>,
     @Json(name = "episode_run_time")
@@ -29,13 +29,13 @@ data class TvShowDetailResponse(
     @Json(name = "last_air_date")
     val lastAirDate: String,
     @Json(name = "last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAirResponse,
+    val lastEpisodeToAir: EpisodeToAirResponse,
     @Json(name = "name")
     val name: String,
     @Json(name = "networks")
     val networks: List<NetworkResponse>,
     @Json(name = "next_episode_to_air")
-    val nextEpisodeToAir: NextEpisodeToAirResponse,
+    val nextEpisodeToAir: EpisodeToAirResponse?,
     @Json(name = "number_of_episodes")
     val numberOfEpisodes: Int,
     @Json(name = "number_of_seasons")
@@ -51,7 +51,7 @@ data class TvShowDetailResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "production_companies")
     val productionCompanies: List<ProductionCompanyResponse>,
     @Json(name = "production_countries")

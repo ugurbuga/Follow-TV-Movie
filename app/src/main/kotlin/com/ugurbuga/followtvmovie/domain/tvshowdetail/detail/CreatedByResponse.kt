@@ -13,5 +13,5 @@ data class CreatedByResponse(
     @Json(name = "name")
     val name: String,
     @Json(name = "profile_path")
-    val profilePath: String
+    val profilePath: String?
 )

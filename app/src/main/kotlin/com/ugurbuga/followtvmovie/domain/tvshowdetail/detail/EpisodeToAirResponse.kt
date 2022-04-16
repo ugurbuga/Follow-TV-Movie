@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.tvshowdetail.detail
 
 import com.squareup.moshi.Json
 
-data class NextEpisodeToAirResponse(
+data class EpisodeToAirResponse(
     @Json(name = "air_date")
     val airDate: String,
     @Json(name = "episode_number")
@@ -19,7 +19,7 @@ data class NextEpisodeToAirResponse(
     @Json(name = "season_number")
     val seasonNumber: Int,
     @Json(name = "still_path")
-    val stillPath: Any?,
+    val stillPath: String?,
     @Json(name = "vote_average")
     val voteAverage: Double,
     @Json(name = "vote_count")
