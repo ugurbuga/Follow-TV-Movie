@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.movies
+package com.ugurbuga.followtvmovie.ui.tvshows
 
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatImageView
@@ -13,13 +13,13 @@ import com.ugurbuga.followtvmovie.ui.favorite.FavoriteListType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WatchedMovieListFragment : FavoriteListFragment() {
+class FinishedTvShowListFragment : FavoriteListFragment() {
 
-    private val sharedViewModel: MoviesViewModel by viewModels({ requireParentFragment() })
+    private val sharedViewModel: TvShowsViewModel by viewModels({ requireParentFragment() })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setFavoriteListType(MediaType.MOVIE, FavoriteListType.WATCHED_LIST)
+        viewModel.setFavoriteListType(MediaType.TV, FavoriteListType.WATCHED_LIST)
     }
 
     override fun onInitDataBinding() {
@@ -30,7 +30,10 @@ class WatchedMovieListFragment : FavoriteListFragment() {
     override fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         val directions =
-            MoviesFragmentDirections.actionMoviesToMovieDetail(poster.id, poster.posterPath)
+            TvShowsFragmentDirections.actionTvShowsToTvShowDetail(
+                poster.id,
+                poster.posterPath
+            )
         navigate(directions, extras)
     }
 
@@ -39,6 +42,6 @@ class WatchedMovieListFragment : FavoriteListFragment() {
     }
 
     companion object {
-        fun newInstance() = WatchedMovieListFragment()
+        fun newInstance() = FinishedTvShowListFragment()
     }
 }

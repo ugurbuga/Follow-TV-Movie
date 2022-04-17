@@ -13,7 +13,7 @@ import com.ugurbuga.followtvmovie.domain.search.SearchItemResponse
 import com.ugurbuga.followtvmovie.domain.search.SearchResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
-import java.util.Calendar
+import java.util.*
 import javax.inject.Inject
 
 class PosterMapper @Inject constructor(
@@ -107,7 +107,7 @@ class PosterMapper @Inject constructor(
         id = movieDetail.id,
         name = movieDetail.title,
         posterPath = movieDetail.posterPath,
-        mediaType = MediaType.MOVIE,
+        mediaType = MediaType.TV,
         releaseDate = movieDetail.releaseDate,
         releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
         isWatched = isWatched

@@ -1,13 +1,9 @@
 package com.ugurbuga.followtvmovie.ui.tvshows
 
-import androidx.appcompat.widget.AppCompatImageView
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowsBinding
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.ui.favorite.FavoriteAdapter
-import com.ugurbuga.followtvmovie.ui.favorite.FavoriteViewState
+import com.ugurbuga.followtvmovie.ui.favorite.FavoriteTvShowsFragmentAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,18 +13,26 @@ class TvShowsFragment : FTMBaseVMFragment<TvShowsViewModel, FragmentTvShowsBindi
 
     override fun viewModelClass() = TvShowsViewModel::class.java
 
-    override fun onInitDataBinding() {
-        collect(viewModel.favoriteViewState, ::onFavoriteViewState)
+    private val adapter: FavoriteTvShowsFragmentAdapter by lazy {
+        FavoriteTvShowsFragmentAdapter(
+            requireContext(),
+            childFragmentManager
+        )
+    }
 
+    override fun onInitDataBinding() {
         with(viewBinding) {
-            tvShowListRecyclerView.adapter = FavoriteAdapter(requireContext(), ::onPosterItemClick)
+            viewPager.adapter = adapter
+
+            toolbar.setSearchView(
+                menuSearchItemId = R.id.search,
+                isExpand = false,
+                onQueryChanged = ::onQueryChanged
+            )
         }
     }
 
-    private fun onFavoriteViewState(viewState: FavoriteViewState) {
-        viewBinding.viewState = viewState
-    }
-
-    private fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
+    private fun onQueryChanged(query: String) {
+        viewModel.setQuery(query)
     }
 }

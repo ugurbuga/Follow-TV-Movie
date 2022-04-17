@@ -83,12 +83,16 @@ class PersonDetailFragment :
     private fun onPersonClicked(
         cast: CastUIModel, imageView: AppCompatImageView
     ) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+
         when (cast.mediaType) {
             MediaType.TV -> {
-                showErrorDialog(getString(R.string.coming_soon), 0)
+                val directions = PersonDetailFragmentDirections.actionPersonDetailToTvShowDetail(
+                    cast.id, cast.profilePath
+                )
+                navigate(directions, extras)
             }
             MediaType.MOVIE -> {
-                val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
                 val directions = PersonDetailFragmentDirections.actionPersonDetailToMovieDetail(
                     cast.id, cast.profilePath
                 )

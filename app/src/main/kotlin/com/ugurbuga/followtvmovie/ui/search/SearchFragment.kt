@@ -44,9 +44,7 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
                 }
             }
             toolbar.setSearchView(
-                menuSearchItemId = R.id.search,
-                isExpand = true,
-                onQueryChanged = ::onQueryChanged
+                menuSearchItemId = R.id.search, isExpand = true, onQueryChanged = ::onQueryChanged
             )
 
             toolbar.setNavigationClickListener {
@@ -62,18 +60,21 @@ class SearchFragment : FTMBaseVMFragment<SearchViewModel, FragmentSearchBinding>
     private fun onPosterItemClick(
         poster: PosterItemUIModel, imageView: AppCompatImageView
     ) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
         when (poster.mediaType) {
             MediaType.MOVIE -> {
-                val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
-                val directions =
-                    SearchFragmentDirections.actionSearchToMovieDetail(poster.id, poster.posterPath)
+                val directions = SearchFragmentDirections.actionSearchToMovieDetail(
+                    poster.id, poster.posterPath
+                )
                 navigate(directions, extras)
             }
             MediaType.TV -> {
-                showErrorDialog(R.string.coming_soon, 0)
+                val directions = SearchFragmentDirections.actionSearchToTvShowDetail(
+                    poster.id, poster.posterPath
+                )
+                navigate(directions, extras)
             }
             MediaType.PERSON -> {
-                val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
                 val directions = SearchFragmentDirections.actionSearchToPersonDetail(
                     poster.id, poster.posterPath
                 )

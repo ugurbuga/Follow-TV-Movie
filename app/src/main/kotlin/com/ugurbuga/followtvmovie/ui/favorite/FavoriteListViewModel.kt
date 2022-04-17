@@ -52,10 +52,10 @@ class FavoriteListViewModel @Inject constructor(
             R.string.empty_watch_later_movie_list
 
         } else if (mediaType == MediaType.TV && favoriteListType == FavoriteListType.WATCHED_LIST) {
-            R.string.empty_watched_tv_show_list
+            R.string.empty_finished_tv_show_list
 
         } else if (mediaType == MediaType.TV && favoriteListType == FavoriteListType.WATCH_LATER_LIST) {
-            R.string.empty_watch_later_tv_show_list
+            R.string.empty_continued_tv_show_list
 
         } else {
             Util.EMPTY_STRING

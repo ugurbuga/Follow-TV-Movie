@@ -131,7 +131,6 @@
                         android:gravity="center"
                         android:textOff=""
                         android:textOn=""
-                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/overview"
                         app:layout_constraintTop_toBottomOf="@id/progress_bar" />
@@ -279,7 +278,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/similar_movies" />
+                    android:text="@string/similar_tv_shows" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/similar_tv_shows_recycler_view"

@@ -10,7 +10,7 @@ import androidx.annotation.StringDef
 )
 annotation class FavoriteListType {
     companion object {
-        const val WATCHED_LIST = "watchedList"
-        const val WATCH_LATER_LIST = "watchLaterList"
+        const val WATCHED_LIST = "watchedList" //finished
+        const val WATCH_LATER_LIST = "watchLaterList" //continued
     }
 }

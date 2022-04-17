@@ -32,9 +32,11 @@
 
     <!-- TV Shows -->
     <string name="tv_shows">TV Shows</string>
-    <string name="empty_watched_tv_show_list">Watched Tv Show List is Empty.</string>
-    <string name="empty_watch_later_tv_show_list">Watch Later Tv Show List is Empty.</string>
+    <string name="empty_finished_tv_show_list">Finished Tv Show List is Empty.</string>
+    <string name="empty_continued_tv_show_list">Continued Tv Show List is Empty.</string>
     <string name="coming_soon">Coming Soon</string>
+    <string name="finished">Finished</string>
+    <string name="continued">Continued</string>
 
     <!-- Soon -->
     <string name="soon">Soon</string>
@@ -47,6 +49,7 @@
     <string name="release_date">Release Date:</string>
     <string name="recommendations">Recommendations</string>
     <string name="similar_movies">Similar Movies</string>
+    <string name="similar_tv_shows">Similar Tv Shows</string>
 
     <!-- Review -->
     <string name="no_reviews">No Reviews</string>

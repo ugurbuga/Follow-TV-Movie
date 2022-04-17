@@ -25,6 +25,20 @@
         </action>
 
         <action
+            android:id="@+id/action_person_detail_to_tv_show_detail"
+            app:destination="@id/tv_show_detail_nav_graph">
+
+            <argument
+                android:name="id"
+                app:argType="string" />
+
+            <argument
+                android:name="image_url"
+                app:argType="string" />
+
+        </action>
+
+        <action
             android:id="@+id/action_person_detail_to_image"
             app:destination="@id/image_nav_graph"
             app:enterAnim="@anim/slide_in_right"

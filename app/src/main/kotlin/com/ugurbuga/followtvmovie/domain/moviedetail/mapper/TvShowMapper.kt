@@ -27,7 +27,7 @@ class TvShowMapper @Inject constructor(
             id = response.id,
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
-            releaseDate = response.firstAirDate,
+            releaseDate = response.firstAirDate ?: Util.EMPTY_STRING,
             releaseDateLong = Util.getDateLong(response.firstAirDate),
             status = response.status,
             title = response.name,

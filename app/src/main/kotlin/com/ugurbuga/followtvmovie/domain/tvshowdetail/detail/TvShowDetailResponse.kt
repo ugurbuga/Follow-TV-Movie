@@ -15,7 +15,7 @@ data class TvShowDetailResponse(
     @Json(name = "episode_run_time")
     val episodeRunTime: List<Int>,
     @Json(name = "first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @Json(name = "genres")
     val genres: List<GenreResponse>,
     @Json(name = "homepage")
@@ -27,9 +27,9 @@ data class TvShowDetailResponse(
     @Json(name = "languages")
     val languages: List<String>,
     @Json(name = "last_air_date")
-    val lastAirDate: String,
+    val lastAirDate: String?,
     @Json(name = "last_episode_to_air")
-    val lastEpisodeToAir: EpisodeToAirResponse,
+    val lastEpisodeToAir: EpisodeToAirResponse?,
     @Json(name = "name")
     val name: String,
     @Json(name = "networks")

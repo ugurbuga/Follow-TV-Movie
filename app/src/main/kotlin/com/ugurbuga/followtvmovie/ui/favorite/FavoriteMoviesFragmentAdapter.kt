@@ -9,7 +9,7 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.ui.movies.WatchLaterMovieListFragment
 import com.ugurbuga.followtvmovie.ui.movies.WatchedMovieListFragment
 
-class FavoriteFragmentAdapter(
+class FavoriteMoviesFragmentAdapter(
     var context: Context,
     fm: FragmentManager
 ) : FragmentStatePagerAdapter(fm) {

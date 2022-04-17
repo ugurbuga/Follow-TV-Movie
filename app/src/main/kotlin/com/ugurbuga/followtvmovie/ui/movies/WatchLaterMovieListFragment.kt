@@ -1,7 +1,11 @@
 package com.ugurbuga.followtvmovie.ui.movies
 
 import android.os.Bundle
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.favorite.FavoriteListFragment
@@ -11,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WatchLaterMovieListFragment : FavoriteListFragment() {
 
-    private val sharedViewModel: MoviesViewModel by viewModels({requireParentFragment()})
+    private val sharedViewModel: MoviesViewModel by viewModels({ requireParentFragment() })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +24,15 @@ class WatchLaterMovieListFragment : FavoriteListFragment() {
 
     override fun onInitDataBinding() {
         super.onInitDataBinding()
-        collect(sharedViewModel.query,::onQuery)
+        collect(sharedViewModel.query, ::onQuery)
+    }
+
+    override fun onPosterItemClick(poster: PosterItemUIModel, imageView: AppCompatImageView) {
+        val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
+        val directions =
+            MoviesFragmentDirections.actionMoviesToMovieDetail(poster.id, poster.posterPath)
+        navigate(directions, extras)
+
     }
 
     private fun onQuery(query: String) {
