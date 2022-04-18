@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.image.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
@@ -17,7 +17,7 @@ class GetMovieImagesUseCase @Inject constructor(
 
     data class MovieImageParams(val movieId: String)
 
-    override fun execute(params: MovieImageParams): Flow<Resource<ArrayList<ImageUIModel>>> {
+    override fun execute(params: MovieImageParams): Flow<ApiState<ArrayList<ImageUIModel>>> {
         return movieRepository.getMovieImages(params.movieId).map {
             it.map { imageResponse ->
                 imageMapper.toMovieImageList(imageResponse)

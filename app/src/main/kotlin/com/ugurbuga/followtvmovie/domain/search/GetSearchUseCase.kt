@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.search
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
@@ -18,7 +18,7 @@ class GetSearchUseCase @Inject constructor(
 
     data class SearchParams(val query: String, val page: Int)
 
-    override fun execute(params: SearchParams): Flow<Resource<PosterUIModel>> {
+    override fun execute(params: SearchParams): Flow<ApiState<PosterUIModel>> {
         return searchRepository.getSearch(params.query, params.page).map {
             it.map { response -> posterMapper.toPosterUIModel(response) }
         }

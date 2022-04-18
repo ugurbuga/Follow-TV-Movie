@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.base
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
 import com.ugurbuga.followtvmovie.BuildConfig
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -18,42 +18,42 @@ abstract class FTMBaseRepository {
     @IoDispatcher
     lateinit var dispatcher: CoroutineDispatcher
 
-    fun <T : Any> onApiCall(call: suspend () -> T): Flow<Resource<T>> =
+    fun <T : Any> onApiCall(call: suspend () -> T): Flow<ApiState<T>> =
         flow {
-            emit(Resource.Loading)
-            emit(Resource.Success(data = call.invoke()))
+            emit(ApiState.Loading)
+            emit(ApiState.Success(data = call.invoke()))
         }.catch { error ->
             if (BuildConfig.DEBUG) {
                 error.printStackTrace()
             }
             recordException(error)
-            emit(Resource.Error(error))
+            emit(ApiState.Error(error))
         }.flowOn(dispatcher)
 
     private fun recordException(error: Throwable) {
         Firebase.crashlytics.recordException(error)
     }
 
-    fun <T : Any> onRoomCall(call: suspend () -> T): Flow<Resource<T>> =
+    fun <T : Any> onRoomCall(call: suspend () -> T): Flow<ApiState<T>> =
         flow {
-            emit(Resource.Loading)
-            emit(Resource.Success(data = call.invoke()))
+            emit(ApiState.Loading)
+            emit(ApiState.Success(data = call.invoke()))
         }.catch { error ->
             if (BuildConfig.DEBUG) {
                 error.printStackTrace()
             }
             recordException(error)
-            emit(Resource.Error(error))
+            emit(ApiState.Error(error))
         }.flowOn(dispatcher)
 
-    fun <T : Any?> onRoomFlowCall(call: Flow<T>): Flow<Resource<T>> =
+    fun <T : Any?> onRoomFlowCall(call: Flow<T>): Flow<ApiState<T>> =
         flow {
-            emit(Resource.Loading)
+            emit(ApiState.Loading)
             call.collect {
-                emit(Resource.Success(it))
+                emit(ApiState.Success(it))
             }
         }.catch {
             recordException(Throwable("onRoomFlowCall"))
-            emit(Resource.Error(it))
+            emit(ApiState.Error(it))
         }.flowOn(dispatcher)
 }

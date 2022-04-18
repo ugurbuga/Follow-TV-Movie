@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
@@ -18,7 +18,7 @@ class GetTvShowRecommendationsUseCase @Inject constructor(
 
     data class Recommendations(var tvShowId: String, val page: Int)
 
-    override fun execute(params: Recommendations): Flow<Resource<PosterUIModel>> {
+    override fun execute(params: Recommendations): Flow<ApiState<PosterUIModel>> {
         return tvShowRepository.getRecommendations(params.tvShowId, params.page).map {
             it.map { response -> posterMapper.toPosterUIModel(response) }
         }

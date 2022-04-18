@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.mapper.CreditMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -17,7 +17,7 @@ class GetMovieCastsUseCase @Inject constructor(
 
     data class CastParams(val movieId: String)
 
-    override fun execute(params: CastParams): Flow<Resource<ArrayList<CastUIModel>>> {
+    override fun execute(params: CastParams): Flow<ApiState<ArrayList<CastUIModel>>> {
         return movieRepository.getMovieCredits(params.movieId).map {
             it.map { creditResponse ->
                 creditMapper.toCastList(creditResponse)

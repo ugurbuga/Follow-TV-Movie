@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.TvShowMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
@@ -17,7 +17,7 @@ class GetTvShowTrailersUseCase @Inject constructor(
 
     data class TvShowTrailerParams(val tvShowId: String)
 
-    override fun execute(params: TvShowTrailerParams): Flow<Resource<ArrayList<TrailerUIModel>>> {
+    override fun execute(params: TvShowTrailerParams): Flow<ApiState<ArrayList<TrailerUIModel>>> {
         return tvShowRepository.getTvShowTrailers(params.tvShowId).map {
             it.map { trailersResponse ->
                 tvShowMapper.toTrailerList(trailersResponse)

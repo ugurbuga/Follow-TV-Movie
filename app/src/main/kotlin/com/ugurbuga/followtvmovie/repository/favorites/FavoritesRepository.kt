@@ -1,23 +1,23 @@
 package com.ugurbuga.followtvmovie.repository.favorites
 
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import kotlinx.coroutines.flow.Flow
 
 interface FavoritesRepository {
 
-    fun insert(note: PosterItemUIModel): Flow<Resource<Unit>>
+    fun insert(note: PosterItemUIModel): Flow<ApiState<Unit>>
 
-    fun delete(id: String): Flow<Resource<Unit>>
+    fun delete(id: String): Flow<ApiState<Unit>>
 
     fun getFavorites(
         mediaType: String,
         isWatched: Boolean
-    ): Flow<Resource<MutableList<PosterItemUIModel>>>
+    ): Flow<ApiState<MutableList<PosterItemUIModel>>>
 
-    fun getFavorite(mediaType: String, id: String): Flow<Resource<PosterItemUIModel?>>
+    fun getFavorite(mediaType: String, id: String): Flow<ApiState<PosterItemUIModel?>>
 
-    fun getSoonMovies(): Flow<Resource<MutableList<PosterItemUIModel>>>
+    fun getSoonMovies(): Flow<ApiState<MutableList<PosterItemUIModel>>>
 
     suspend fun update(note: PosterItemUIModel)
 }

@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.MovieMapper
@@ -17,7 +17,7 @@ class GetTvShowExternalUrlsUseCase @Inject constructor(
 
     data class ExternalUrlParams(val tvShowId: String)
 
-    override fun execute(params: ExternalUrlParams): Flow<Resource<ExternalIdsUIModel>> {
+    override fun execute(params: ExternalUrlParams): Flow<ApiState<ExternalIdsUIModel>> {
         return tvShowRepository.getTvShowExternalIds(params.tvShowId).map {
             it.map { imageResponse ->
                 movieMapper.toExternalUrls(imageResponse)

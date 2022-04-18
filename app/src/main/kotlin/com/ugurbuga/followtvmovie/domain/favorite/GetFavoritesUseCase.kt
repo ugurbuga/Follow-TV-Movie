@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.favorite
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.repository.favorites.FavoritesRepository
 import javax.inject.Inject
@@ -14,7 +14,7 @@ class GetFavoritesUseCase @Inject constructor(
 
     data class GetFavoriteParams(val mediaType: String, val isWatched: Boolean)
 
-    override fun execute(params: GetFavoriteParams): Flow<Resource<MutableList<PosterItemUIModel>>> {
+    override fun execute(params: GetFavoriteParams): Flow<ApiState<MutableList<PosterItemUIModel>>> {
         return favoritesRepository.getFavorites(params.mediaType, params.isWatched)
     }
 }

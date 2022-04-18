@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.repository.person
 
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.PersonService
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.PersonImageResponse
@@ -14,15 +14,15 @@ class PersonRepositoryImpl @Inject constructor(
 ) :
     PersonRepository, FTMBaseRepository() {
 
-    override fun getPersonDetail(personId: String): Flow<Resource<PersonDetailResponse>> {
+    override fun getPersonDetail(personId: String): Flow<ApiState<PersonDetailResponse>> {
         return onApiCall { personService.getPersonDetail(personId) }
     }
 
-    override fun getPersonImages(personId: String): Flow<Resource<PersonImageResponse>> {
+    override fun getPersonImages(personId: String): Flow<ApiState<PersonImageResponse>> {
         return onApiCall { personService.getPersonImages(personId) }
     }
 
-    override fun getPersonCredits(personId: String): Flow<Resource<CreditResponse>> {
+    override fun getPersonCredits(personId: String): Flow<ApiState<CreditResponse>> {
         return onApiCall { personService.getPersonCredits(personId) }
     }
 }

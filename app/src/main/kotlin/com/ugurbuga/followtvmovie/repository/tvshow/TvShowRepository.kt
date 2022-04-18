@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.repository.tvshow
 
-import com.ugurbuga.followtvmovie.common.Resource
+import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
@@ -12,27 +12,27 @@ import kotlinx.coroutines.flow.Flow
 
 interface TvShowRepository {
 
-    fun getPopularTvShows(page: Int): Flow<Resource<TvShowGeneralResponse>>
+    fun getPopularTvShows(page: Int): Flow<ApiState<TvShowGeneralResponse>>
 
-    fun getTvShowDetail(tvShowId: String): Flow<Resource<TvShowDetailResponse>>
+    fun getTvShowDetail(tvShowId: String): Flow<ApiState<TvShowDetailResponse>>
 
-    fun getTvShowReviews(movieId: String): Flow<Resource<ReviewGeneralResponse>>
+    fun getTvShowReviews(movieId: String): Flow<ApiState<ReviewGeneralResponse>>
 
-    fun getTvShowTrailers(movieId: String): Flow<Resource<TrailersResponse>>
+    fun getTvShowTrailers(movieId: String): Flow<ApiState<TrailersResponse>>
 
-    fun getTvShowCredits(movieId: String): Flow<Resource<CreditResponse>>
+    fun getTvShowCredits(movieId: String): Flow<ApiState<CreditResponse>>
 
-    fun getTvShowImages(movieId: String): Flow<Resource<ImageResponse>>
+    fun getTvShowImages(movieId: String): Flow<ApiState<ImageResponse>>
 
-    fun getTvShowExternalIds(movieId: String): Flow<Resource<ExternalIdsResponse>>
+    fun getTvShowExternalIds(movieId: String): Flow<ApiState<ExternalIdsResponse>>
 
     fun getRecommendations(
         movieId: String,
         page: Int
-    ): Flow<Resource<TvShowGeneralResponse>>
+    ): Flow<ApiState<TvShowGeneralResponse>>
 
     fun getSimilarTvShows(
         movieId: String,
         page: Int
-    ): Flow<Resource<TvShowGeneralResponse>>
+    ): Flow<ApiState<TvShowGeneralResponse>>
 }
