@@ -71,7 +71,7 @@
     <activity
         android:id="@+id/trailerActivity"
         android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
-        tools:layout="@layout/activity_trailer">
+        tools:layout="@layout/fragment_trailer">
 
         <argument
             android:name="url_key"

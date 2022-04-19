@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.webkit.URLUtil
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,6 +17,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
+import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
@@ -29,6 +32,7 @@ import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
+import com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -203,18 +207,27 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {
         viewBinding.viewState = movieDetailViewState
-        movieDetailViewState.movieDetail?.let {
-            //deepLinkPush(it.id, it.title, it.releaseDate)
+        if (movieDetailViewState.trailers.size > 0) {
+            movieDetailViewState.movieDetail?.let {
+                deepLinkPush(it.id, it.title, it.releaseDate, movieDetailViewState.trailers[0].key)
+            }
         }
     }
 
-    private fun deepLinkPush(id: String, title: String, releaseDate: String) {
+    private fun deepLinkPush(id: String, title: String, releaseDate: String, urlKey: String) {
         val context = requireContext().applicationContext
         val navController = findNavController()
 
-        val pendingIntent = navController.createDeepLink()
+        /*val pendingIntent = navController.createDeepLink()
             .setDestination(R.id.movieDetailFragment)
             .setArguments(args.toBundle())
+            .createPendingIntent()*/
+
+        val pendingIntent = NavDeepLinkBuilder(requireContext())
+            .setGraph(R.navigation.trailer_nav_graph)
+            .setDestination(R.id.trailerFragment)
+            .setArguments(bundleOf(Argument.URL_KEY to urlKey))
+            .setComponentName(TrailerActivity::class.java)
             .createPendingIntent()
 
         Notifier.postNotification(

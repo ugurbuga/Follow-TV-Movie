@@ -1,45 +1,20 @@
 package com.ugurbuga.followtvmovie.ui.trailer
 
-import androidx.navigation.navArgs
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.FTMBaseVmDbActivity
-import com.ugurbuga.followtvmovie.databinding.ActivityTrailerBinding
+import com.ugurbuga.followtvmovie.base.FTMBaseVMNavigationActivity
+import com.ugurbuga.followtvmovie.databinding.ActivityBaseNavigationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TrailerActivity : FTMBaseVmDbActivity<TrailerViewModel, ActivityTrailerBinding>() {
+class TrailerActivity :
+    FTMBaseVMNavigationActivity<TrailerViewModel, ActivityBaseNavigationBinding>() {
 
-    val args: TrailerActivityArgs by navArgs()
+    override fun getLayoutResourceId() = R.layout.activity_base_navigation
 
-    override fun getLayoutResourceId() = R.layout.activity_trailer
+    override fun getNavigationGraph() = R.navigation.trailer_nav_graph
 
     override fun onInitDataBinding() {
-        showLoading()
-        lifecycle.addObserver(viewBinding.youtubePlayerView)
-
-        viewBinding.youtubePlayerView.addYouTubePlayerListener(object :
-            AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(args.urlKey, 0f)
-            }
-
-            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                super.onError(youTubePlayer, error)
-                dismissLoading()
-            }
-
-            override fun onStateChange(
-                youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState
-            ) {
-                super.onStateChange(youTubePlayer, state)
-                if (state == PlayerConstants.PlayerState.PLAYING || state == PlayerConstants.PlayerState.BUFFERING) {
-                    dismissLoading()
-                }
-            }
-        })
+        setNavigationStartDestination(startDestination = R.id.trailerFragment, intent.extras)
     }
 }
 
