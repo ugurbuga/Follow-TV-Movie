@@ -1,8 +1,8 @@
-package com.ugurbuga.followtvmovie.ui.trailer
+package com.ugurbuga.followtvmovie.ui.video
 
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class TrailerViewModel @Inject constructor() : FTMBaseViewModel()
+class VideoViewModel @Inject constructor() : FTMBaseViewModel()

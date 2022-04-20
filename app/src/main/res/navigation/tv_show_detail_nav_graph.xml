@@ -24,7 +24,7 @@
 
         <action
             android:id="@+id/action_tv_show_detail_to_trailer"
-            app:destination="@id/trailerActivity" />
+            app:destination="@id/videoActivity" />
 
         <action
             android:id="@+id/action_tv_show_detail_to_person_detail"
@@ -69,9 +69,9 @@
     </fragment>
 
     <activity
-        android:id="@+id/trailerActivity"
-        android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
-        tools:layout="@layout/fragment_trailer">
+        android:id="@+id/videoActivity"
+        android:name="com.ugurbuga.followtvmovie.ui.video.VideoActivity"
+        tools:layout="@layout/fragment_video">
 
         <argument
             android:name="url_key"

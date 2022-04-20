@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.trailer
+package com.ugurbuga.followtvmovie.ui.video
 
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMNavigationActivity
@@ -6,15 +6,15 @@ import com.ugurbuga.followtvmovie.databinding.ActivityBaseNavigationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TrailerActivity :
-    FTMBaseVMNavigationActivity<TrailerViewModel, ActivityBaseNavigationBinding>() {
+class VideoActivity :
+    FTMBaseVMNavigationActivity<VideoViewModel, ActivityBaseNavigationBinding>() {
 
     override fun getLayoutResourceId() = R.layout.activity_base_navigation
 
-    override fun getNavigationGraph() = R.navigation.trailer_nav_graph
+    override fun getNavigationGraph() = R.navigation.video_nav_graph
 
     override fun onInitDataBinding() {
-        setNavigationStartDestination(startDestination = R.id.trailerFragment, intent.extras)
+        setNavigationStartDestination(startDestination = R.id.videoFragment, intent.extras)
     }
 }
 

@@ -32,7 +32,7 @@ import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
-import com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity
+import com.ugurbuga.followtvmovie.ui.video.VideoActivity
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -224,10 +224,10 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             .createPendingIntent()*/
 
         val pendingIntent = NavDeepLinkBuilder(requireContext())
-            .setGraph(R.navigation.trailer_nav_graph)
-            .setDestination(R.id.trailerFragment)
+            .setGraph(R.navigation.video_nav_graph)
+            .setDestination(R.id.videoFragment)
             .setArguments(bundleOf(Argument.URL_KEY to urlKey))
-            .setComponentName(TrailerActivity::class.java)
+            .setComponentName(VideoActivity::class.java)
             .createPendingIntent()
 
         Notifier.postNotification(

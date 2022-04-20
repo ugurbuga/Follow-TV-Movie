@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.ui.trailer
+package com.ugurbuga.followtvmovie.ui.video
 
 import androidx.navigation.fragment.navArgs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
@@ -6,17 +6,17 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
-import com.ugurbuga.followtvmovie.databinding.FragmentTrailerBinding
+import com.ugurbuga.followtvmovie.databinding.FragmentVideoBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TrailerFragment : FTMBaseVMFragment<TrailerViewModel, FragmentTrailerBinding>() {
+class VideoFragment : FTMBaseVMFragment<VideoViewModel, FragmentVideoBinding>() {
 
-    val args: TrailerFragmentArgs by navArgs()
+    val args: VideoFragmentArgs by navArgs()
 
-    override fun getResourceLayoutId() = R.layout.fragment_trailer
+    override fun getResourceLayoutId() = R.layout.fragment_video
 
-    override fun viewModelClass() = TrailerViewModel::class.java
+    override fun viewModelClass() = VideoViewModel::class.java
 
     override fun onInitDataBinding() {
         showLoading()

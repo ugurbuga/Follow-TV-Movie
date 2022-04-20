@@ -35,7 +35,7 @@
         </activity>
 
         <activity
-            android:name="com.ugurbuga.followtvmovie.ui.trailer.TrailerActivity"
+            android:name="com.ugurbuga.followtvmovie.ui.video.VideoActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.FollowTvMovie.FullScreen" />
 
