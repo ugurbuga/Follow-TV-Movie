@@ -302,25 +302,15 @@
                     android:layout_marginHorizontal="@dimen/margin_16"
                     android:layout_marginBottom="@dimen/margin_16">
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.ugurbuga.followtvmovie.view.FTMButton
                         android:id="@+id/reviews_button"
-                        style="@style/FTMButton"
                         visible="@{viewState.movieDetail != null}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:insetLeft="0dp"
-                        android:insetTop="0dp"
-                        android:insetRight="0dp"
-                        android:insetBottom="0dp"
                         android:text="@string/reviews"
-                        android:textColor="@color/primary_color"
-                        app:backgroundTint="@color/quaternary_color"
                         app:cornerRadius="@dimen/radius_8"
-                        app:icon="@drawable/ic_review"
-                        app:iconTint="@color/primary_color"
-                        app:strokeColor="@color/primary_color"
-                        app:strokeWidth="1dp" />
+                        app:icon="@drawable/ic_review" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/imdb_button"

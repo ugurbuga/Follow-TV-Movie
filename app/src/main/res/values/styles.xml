@@ -78,6 +78,13 @@
         <item name="android:letterSpacing">0</item>
         <item name="android:fontFamily">@font/league_spartan_semi_bold</item>
         <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:inset">@dimen/height_0</item>
+        <item name="backgroundTint">@color/quaternary_color</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="cornerRadius">@dimen/radius_8</item>
+        <item name="iconTint">@color/primary_color</item>
+        <item name="strokeColor">@color/primary_color</item>
+        <item name="strokeWidth">@dimen/width_1</item>
     </style>
 
     <style name="FTMSwitchView" parent="Widget.AppCompat.CompoundButton.Switch">
