@@ -63,13 +63,4 @@ class MovieMapper @Inject constructor(
         }
         return list
     }
-
-    fun toExternalUrls(response: ExternalIdsResponse): ExternalIdsUIModel {
-        return ExternalIdsUIModel(
-            facebookId = response.facebookId,
-            imdbId = response.imdbId,
-            instagramId = response.instagramId,
-            twitterId = response.twitterId
-        )
-    }
 }

@@ -2,8 +2,6 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.image.ImageMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
@@ -62,14 +60,5 @@ class TvShowMapper @Inject constructor(
             }
         }
         return list
-    }
-
-    fun toExternalUrls(response: ExternalIdsResponse): ExternalIdsUIModel {
-        return ExternalIdsUIModel(
-            facebookId = response.facebookId,
-            imdbId = response.imdbId,
-            instagramId = response.instagramId,
-            twitterId = response.twitterId
-        )
     }
 }

@@ -9,9 +9,9 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteMovieUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieCastsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
@@ -38,7 +38,7 @@ class MovieDetailViewModel @Inject constructor(
     private val getMovieTrailersUseCase: GetMovieTrailersUseCase,
     private val getMovieImagesUseCase: GetMovieImagesUseCase,
     private val getMovieCastsUseCase: GetMovieCastsUseCase,
-    private val getMovieExternalUrlsUseCase: GetMovieExternalUrlsUseCase,
+    private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     private val getRecommendationsUseCase: GetMovieRecommendationsUseCase,
     private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
     savedStateHandle: SavedStateHandle,
@@ -152,7 +152,7 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun getExternalUrls() {
-        getMovieExternalUrlsUseCase(GetMovieExternalUrlsUseCase.ExternalUrlParams(movieId))
+        getExternalUrlsUseCase(GetExternalUrlsUseCase.ExternalUrlParams(movieId, MediaType.MOVIE))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false

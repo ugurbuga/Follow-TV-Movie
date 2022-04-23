@@ -41,10 +41,6 @@ class MovieRepositoryImpl @Inject constructor(
         return onApiCall { movieService.getMovieImages(movieId) }
     }
 
-    override fun getMovieExternalIds(movieId: String): Flow<ApiState<ExternalIdsResponse>> {
-        return onApiCall { movieService.getMovieExternalIds(movieId) }
-    }
-
     override fun getRecommendations(
         movieId: String,
         page: Int

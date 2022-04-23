@@ -44,11 +44,6 @@ interface MovieService {
         @Query("include_image_language") includeImageLanguage: String = "null"
     ): ImageResponse
 
-    @GET("movie/{movieId}/external_ids")
-    suspend fun getMovieExternalIds(
-        @Path("movieId") movieId: String,
-    ): ExternalIdsResponse
-
     @GET("movie/{movieId}/recommendations")
     suspend fun getRecommendations(
         @Path("movieId") movieId: String,

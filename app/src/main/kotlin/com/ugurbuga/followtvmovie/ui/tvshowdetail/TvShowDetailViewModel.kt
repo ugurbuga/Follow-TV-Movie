@@ -9,12 +9,12 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteTvShowUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetSimilarTvShowsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowCastsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowImagesUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowTrailersUseCase
@@ -38,7 +38,7 @@ class TvShowDetailViewModel @Inject constructor(
     private val getTvShowTrailersUseCase: GetTvShowTrailersUseCase,
     private val getTvShowImagesUseCase: GetTvShowImagesUseCase,
     private val getTvShowCastsUseCase: GetTvShowCastsUseCase,
-    private val getTvShowExternalUrlsUseCase: GetTvShowExternalUrlsUseCase,
+    private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     private val getTvShowRecommendationsUseCase: GetTvShowRecommendationsUseCase,
     private val getSimilarTvShowsUseCase: GetSimilarTvShowsUseCase,
     savedStateHandle: SavedStateHandle,
@@ -152,7 +152,7 @@ class TvShowDetailViewModel @Inject constructor(
     }
 
     private fun getExternalUrls() {
-        getTvShowExternalUrlsUseCase(GetTvShowExternalUrlsUseCase.ExternalUrlParams(tvShowId))
+        getExternalUrlsUseCase(GetExternalUrlsUseCase.ExternalUrlParams(tvShowId, MediaType.TV))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false

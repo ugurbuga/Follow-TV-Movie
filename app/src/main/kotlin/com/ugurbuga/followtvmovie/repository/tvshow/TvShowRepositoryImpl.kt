@@ -42,10 +42,6 @@ class TvShowRepositoryImpl @Inject constructor(
         return onApiCall { tvShowService.getTvShowImages(movieId) }
     }
 
-    override fun getTvShowExternalIds(movieId: String): Flow<ApiState<ExternalIdsResponse>> {
-        return onApiCall { tvShowService.getTvShowExternalIds(movieId) }
-    }
-
     override fun getRecommendations(
         movieId: String,
         page: Int
