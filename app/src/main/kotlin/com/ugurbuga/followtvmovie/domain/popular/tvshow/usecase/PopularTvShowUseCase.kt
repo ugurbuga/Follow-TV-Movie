@@ -6,9 +6,10 @@ import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 class PopularTvShowUseCase @Inject constructor(
     private val tvShowRepository: TvShowRepository,
@@ -20,7 +21,7 @@ class PopularTvShowUseCase @Inject constructor(
 
     override fun execute(params: PopularTvShowParams): Flow<ApiState<PosterUIModel>> {
         return tvShowRepository.getPopularTvShows(params.page).map {
-            it.map { response -> posterMapper.toPosterUIModel(response) }
+            it.map { response -> posterMapper.toPosterUIModel(response, MediaType.TV) }
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
+import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -11,12 +11,12 @@ interface MovieService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int,
-    ): MovieGeneralResponse
+    ): PosterGeneralResponse
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(
         @Query("page") page: Int,
-    ): MovieGeneralResponse
+    ): PosterGeneralResponse
 
     @GET("movie/{movieId}")
     suspend fun getMovieDetail(
@@ -27,11 +27,5 @@ interface MovieService {
     suspend fun getRecommendations(
         @Path("movieId") movieId: String,
         @Query("page") page: Int,
-    ): MovieGeneralResponse
-
-    @GET("movie/{movieId}/similar")
-    suspend fun getSimilarMovies(
-        @Path("movieId") movieId: String,
-        @Query("page") page: Int,
-    ): MovieGeneralResponse
+    ): PosterGeneralResponse
 }

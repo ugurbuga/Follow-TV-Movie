@@ -7,5 +7,5 @@ data class PersonImageResponse(
     @Json(name = "id")
     val id: String,
     @Json(name = "profiles")
-    val profiles: List<PosterResponse>
+    val profiles: List<ImagePosterResponse>
 )

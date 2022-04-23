@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.repository.tvshow
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
-import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
+import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ class TvShowRepositoryImpl @Inject constructor(
 ) :
     TvShowRepository, FTMBaseRepository() {
 
-    override fun getPopularTvShows(page: Int): Flow<ApiState<TvShowGeneralResponse>> {
+    override fun getPopularTvShows(page: Int): Flow<ApiState<PosterGeneralResponse>> {
         return onApiCall { tvShowService.getPopularTvShows(page) }
     }
 
@@ -24,14 +24,7 @@ class TvShowRepositoryImpl @Inject constructor(
     override fun getRecommendations(
         tvShowId: String,
         page: Int
-    ): Flow<ApiState<TvShowGeneralResponse>> {
+    ): Flow<ApiState<PosterGeneralResponse>> {
         return onApiCall { tvShowService.getRecommendations(tvShowId, page) }
-    }
-
-    override fun getSimilarTvShows(
-        tvShowId: String,
-        page: Int
-    ): Flow<ApiState<TvShowGeneralResponse>> {
-        return onApiCall { tvShowService.getSimilarTvShows(tvShowId, page) }
     }
 }

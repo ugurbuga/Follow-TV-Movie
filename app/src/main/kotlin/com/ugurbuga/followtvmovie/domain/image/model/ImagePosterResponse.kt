@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.image.model
 
 import com.squareup.moshi.Json
 
-data class PosterResponse(
+data class ImagePosterResponse(
     @Json(name = "aspect_ratio")
     val aspectRatio: Double,
     @Json(name = "file_path")

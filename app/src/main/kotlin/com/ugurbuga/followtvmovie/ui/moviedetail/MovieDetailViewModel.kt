@@ -6,15 +6,15 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
+import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteMovieUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
-import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.image.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieRecommendationsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarMoviesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
@@ -40,7 +40,7 @@ class MovieDetailViewModel @Inject constructor(
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     private val getRecommendationsUseCase: GetMovieRecommendationsUseCase,
-    private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
+    private val getSimilarUseCase: GetSimilarUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -275,10 +275,11 @@ class MovieDetailViewModel @Inject constructor(
 
     private fun getSimilarMovies() {
         addSimilarMoviesLoading()
-        getSimilarMoviesUseCase(
-            GetSimilarMoviesUseCase.SimilarMovies(
+        getSimilarUseCase(
+            GetSimilarUseCase.Similar(
                 movieId,
-                ++movieDetailViewState.value.similarMovie.page
+                ++movieDetailViewState.value.similarMovie.page,
+                MediaType.MOVIE
             )
         ).doOnStatusChanged {
             initStatusState(

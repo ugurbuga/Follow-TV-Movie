@@ -5,6 +5,7 @@ import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
+import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -41,4 +42,11 @@ interface CommonService {
         @Path("id") id: String,
         @Path("mediaType") mediaType: String,
     ): VideosResponse
+
+    @GET("{mediaType}/{id}/similar")
+    suspend fun getSimilar(
+        @Path("id") id: String,
+        @Path("mediaType") mediaType: String,
+        @Query("page") page: Int,
+    ): PosterGeneralResponse
 }

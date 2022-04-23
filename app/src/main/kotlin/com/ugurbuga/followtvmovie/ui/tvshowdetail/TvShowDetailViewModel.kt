@@ -6,16 +6,16 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
+import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteTvShowUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
-import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.image.usecase.GetImagesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetSimilarTvShowsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
@@ -40,7 +40,7 @@ class TvShowDetailViewModel @Inject constructor(
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     private val getTvShowRecommendationsUseCase: GetTvShowRecommendationsUseCase,
-    private val getSimilarTvShowsUseCase: GetSimilarTvShowsUseCase,
+    private val getSimilarUseCase: GetSimilarUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
@@ -274,10 +274,11 @@ class TvShowDetailViewModel @Inject constructor(
 
     private fun getSimilarTvShows() {
         addSimilarTvShowsLoading()
-        getSimilarTvShowsUseCase(
-            GetSimilarTvShowsUseCase.SimilarTvShow(
+        getSimilarUseCase(
+            GetSimilarUseCase.Similar(
                 tvShowId,
-                ++tvShowDetailViewState.value.similarTvShow.page
+                ++tvShowDetailViewState.value.similarTvShow.page,
+                MediaType.TV
             )
         ).doOnStatusChanged {
             initStatusState(

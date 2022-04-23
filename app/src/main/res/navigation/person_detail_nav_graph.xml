@@ -48,7 +48,7 @@
 
             <argument
                 android:name="images"
-                app:argType="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel[]" />
+                app:argType="com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel[]" />
 
             <argument
                 android:name="position"

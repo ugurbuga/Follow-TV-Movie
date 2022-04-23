@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
+import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,7 +11,7 @@ interface TvShowService {
     @GET("tv/popular")
     suspend fun getPopularTvShows(
         @Query("page") page: Int,
-    ): TvShowGeneralResponse
+    ): PosterGeneralResponse
 
     @GET("tv/{tvShowId}")
     suspend fun getTvShowDetail(
@@ -22,11 +22,5 @@ interface TvShowService {
     suspend fun getRecommendations(
         @Path("tvShowId") tvShowId: String,
         @Query("page") page: Int,
-    ): TvShowGeneralResponse
-
-    @GET("tv/{tvShowId}/similar")
-    suspend fun getSimilarTvShows(
-        @Path("tvShowId") tvShowId: String,
-        @Query("page") page: Int,
-    ): TvShowGeneralResponse
+    ): PosterGeneralResponse
 }

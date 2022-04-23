@@ -8,6 +8,7 @@ import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
+import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
@@ -49,6 +50,14 @@ class CommonRepositoryImpl @Inject constructor(
         mediaType: String
     ): Flow<ApiState<VideosResponse>> {
         return onApiCall { commonService.getVideos(id, mediaType) }
+    }
+
+    override fun getSimilar(
+        id: String,
+        mediaType: String,
+        page: Int,
+    ): Flow<ApiState<PosterGeneralResponse>> {
+        return onApiCall { commonService.getSimilar(id, mediaType, page) }
     }
 
 }

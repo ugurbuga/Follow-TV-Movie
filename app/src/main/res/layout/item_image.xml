@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel" />
+            type="com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel" />
 
     </data>
 

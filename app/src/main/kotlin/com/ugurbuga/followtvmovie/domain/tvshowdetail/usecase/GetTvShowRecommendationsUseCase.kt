@@ -6,6 +6,7 @@ import com.ugurbuga.followtvmovie.common.map
 import com.ugurbuga.followtvmovie.domain.poster.mapper.PosterMapper
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.repository.tvshow.TvShowRepository
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -20,7 +21,7 @@ class GetTvShowRecommendationsUseCase @Inject constructor(
 
     override fun execute(params: Recommendations): Flow<ApiState<PosterUIModel>> {
         return tvShowRepository.getRecommendations(params.tvShowId, params.page).map {
-            it.map { response -> posterMapper.toPosterUIModel(response) }
+            it.map { response -> posterMapper.toPosterUIModel(response, MediaType.TV) }
         }
     }
 }
