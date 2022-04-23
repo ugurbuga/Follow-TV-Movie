@@ -17,10 +17,4 @@ interface TvShowService {
     suspend fun getTvShowDetail(
         @Path("tvShowId") tvShowId: String,
     ): TvShowDetailResponse
-
-    @GET("tv/{tvShowId}/recommendations")
-    suspend fun getRecommendations(
-        @Path("tvShowId") tvShowId: String,
-        @Query("page") page: Int,
-    ): PosterGeneralResponse
 }

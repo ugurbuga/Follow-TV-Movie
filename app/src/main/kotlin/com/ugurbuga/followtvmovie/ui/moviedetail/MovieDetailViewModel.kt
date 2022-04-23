@@ -13,7 +13,7 @@ import com.ugurbuga.followtvmovie.domain.favorite.usecase.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.image.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieRecommendationsUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
@@ -39,7 +39,7 @@ class MovieDetailViewModel @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
-    private val getRecommendationsUseCase: GetMovieRecommendationsUseCase,
+    private val getRecommendationsUseCase: GetRecommendationsUseCase,
     private val getSimilarUseCase: GetSimilarUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
@@ -231,9 +231,10 @@ class MovieDetailViewModel @Inject constructor(
     private fun getRecommendations() {
         addRecommendationLoading()
         getRecommendationsUseCase(
-            GetMovieRecommendationsUseCase.Recommendations(
+            GetRecommendationsUseCase.Recommendations(
                 movieId,
-                ++movieDetailViewState.value.recommendation.page
+                ++movieDetailViewState.value.recommendation.page,
+                MediaType.MOVIE
             )
         ).doOnStatusChanged {
             initStatusState(

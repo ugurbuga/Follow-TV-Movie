@@ -20,11 +20,4 @@ class TvShowRepositoryImpl @Inject constructor(
     override fun getTvShowDetail(tvShowId: String): Flow<ApiState<TvShowDetailResponse>> {
         return onApiCall { tvShowService.getTvShowDetail(tvShowId) }
     }
-
-    override fun getRecommendations(
-        tvShowId: String,
-        page: Int
-    ): Flow<ApiState<PosterGeneralResponse>> {
-        return onApiCall { tvShowService.getRecommendations(tvShowId, page) }
-    }
 }

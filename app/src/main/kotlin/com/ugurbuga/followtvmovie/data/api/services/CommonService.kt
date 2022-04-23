@@ -49,4 +49,11 @@ interface CommonService {
         @Path("mediaType") mediaType: String,
         @Query("page") page: Int,
     ): PosterGeneralResponse
+
+    @GET("{mediaType}/{id}/recommendations")
+    suspend fun getRecommendations(
+        @Path("id") id: String,
+        @Path("mediaType") mediaType: String,
+        @Query("page") page: Int,
+    ): PosterGeneralResponse
 }

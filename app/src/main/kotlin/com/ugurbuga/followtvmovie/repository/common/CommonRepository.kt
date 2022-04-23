@@ -22,4 +22,10 @@ interface CommonRepository {
     fun getVideos(id: String, mediaType: String): Flow<ApiState<VideosResponse>>
 
     fun getSimilar(id: String, mediaType: String, page: Int): Flow<ApiState<PosterGeneralResponse>>
+
+    fun getRecommendations(
+        id: String,
+        mediaType: String,
+        page: Int
+    ): Flow<ApiState<PosterGeneralResponse>>
 }

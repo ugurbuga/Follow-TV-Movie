@@ -12,12 +12,12 @@ import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteTvShowUseCa
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.image.usecase.GetImagesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
@@ -39,7 +39,7 @@ class TvShowDetailViewModel @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
-    private val getTvShowRecommendationsUseCase: GetTvShowRecommendationsUseCase,
+    private val getRecommendationsUseCase: GetRecommendationsUseCase,
     private val getSimilarUseCase: GetSimilarUseCase,
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
@@ -229,10 +229,11 @@ class TvShowDetailViewModel @Inject constructor(
 
     private fun getRecommendations() {
         addRecommendationLoading()
-        getTvShowRecommendationsUseCase(
-            GetTvShowRecommendationsUseCase.Recommendations(
+        getRecommendationsUseCase(
+            GetRecommendationsUseCase.Recommendations(
                 tvShowId,
-                ++tvShowDetailViewState.value.recommendation.page
+                ++tvShowDetailViewState.value.recommendation.page,
+                MediaType.TV
             )
         ).doOnStatusChanged {
             initStatusState(

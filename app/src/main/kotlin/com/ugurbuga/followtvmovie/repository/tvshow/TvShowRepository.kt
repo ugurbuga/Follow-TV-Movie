@@ -11,8 +11,4 @@ interface TvShowRepository {
 
     fun getTvShowDetail(tvShowId: String): Flow<ApiState<TvShowDetailResponse>>
 
-    fun getRecommendations(
-        tvShowId: String,
-        page: Int
-    ): Flow<ApiState<PosterGeneralResponse>>
 }

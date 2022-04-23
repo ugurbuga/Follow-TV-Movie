@@ -22,10 +22,4 @@ interface MovieService {
     suspend fun getMovieDetail(
         @Path("movieId") movieId: String,
     ): MovieDetailResponse
-
-    @GET("movie/{movieId}/recommendations")
-    suspend fun getRecommendations(
-        @Path("movieId") movieId: String,
-        @Query("page") page: Int,
-    ): PosterGeneralResponse
 }

@@ -60,4 +60,12 @@ class CommonRepositoryImpl @Inject constructor(
         return onApiCall { commonService.getSimilar(id, mediaType, page) }
     }
 
+    override fun getRecommendations(
+        id: String,
+        mediaType: String,
+        page: Int
+    ): Flow<ApiState<PosterGeneralResponse>> {
+        return onApiCall { commonService.getRecommendations(id, mediaType, page) }
+    }
+
 }

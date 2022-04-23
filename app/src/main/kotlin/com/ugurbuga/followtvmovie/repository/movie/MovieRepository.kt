@@ -12,6 +12,4 @@ interface MovieRepository {
     fun getUpcomingMovies(page: Int): Flow<ApiState<PosterGeneralResponse>>
 
     fun getMovieDetail(movieId: String): Flow<ApiState<MovieDetailResponse>>
-
-    fun getRecommendations(movieId: String, page: Int): Flow<ApiState<PosterGeneralResponse>>
 }
