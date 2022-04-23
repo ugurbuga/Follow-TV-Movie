@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.moviedetail
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 
 sealed class MovieDetailViewEvent {
 

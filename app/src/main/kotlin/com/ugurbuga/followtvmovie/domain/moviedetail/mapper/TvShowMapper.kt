@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.image.ImageMapper
+import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import javax.inject.Inject

@@ -6,7 +6,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentImageBinding
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs

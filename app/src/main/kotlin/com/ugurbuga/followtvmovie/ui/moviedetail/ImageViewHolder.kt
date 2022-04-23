@@ -7,7 +7,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.databinding.ItemImageBinding
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 
 class ImageViewHolder(
     parent: ViewGroup, inflater: LayoutInflater

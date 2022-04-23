@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.domain.person.usecase
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.mapper.CreditMapper
+import com.ugurbuga.followtvmovie.domain.credit.mapper.CreditMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.repository.person.PersonRepository
 import javax.inject.Inject

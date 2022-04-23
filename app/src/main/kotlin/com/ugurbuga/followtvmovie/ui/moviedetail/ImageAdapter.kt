@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 
 
 class ImageAdapter(

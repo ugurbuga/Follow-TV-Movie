@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.PersonImageResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditResponse
+import com.ugurbuga.followtvmovie.domain.image.model.PersonImageResponse
 import com.ugurbuga.followtvmovie.domain.person.model.PersonDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path

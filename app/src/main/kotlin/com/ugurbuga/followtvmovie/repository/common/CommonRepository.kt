@@ -1,9 +1,9 @@
 package com.ugurbuga.followtvmovie.repository.common
 
 import com.ugurbuga.followtvmovie.common.ApiState
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditResponse
+import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
+import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
 import kotlinx.coroutines.flow.Flow

@@ -3,8 +3,8 @@ package com.ugurbuga.followtvmovie.domain.person.usecase
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
-import com.ugurbuga.followtvmovie.domain.image.ImageMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.repository.person.PersonRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow

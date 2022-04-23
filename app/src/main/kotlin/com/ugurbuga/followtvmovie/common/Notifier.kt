@@ -29,7 +29,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.domain.image.ImageMapper
+import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 
 /**
  * Utility class for posting notifications.

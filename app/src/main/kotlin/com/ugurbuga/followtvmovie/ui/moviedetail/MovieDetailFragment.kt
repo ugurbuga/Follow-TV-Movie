@@ -21,7 +21,7 @@ import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel

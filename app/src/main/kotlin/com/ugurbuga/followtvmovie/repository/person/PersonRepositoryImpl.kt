@@ -3,8 +3,8 @@ package com.ugurbuga.followtvmovie.repository.person
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.PersonService
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.PersonImageResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditResponse
+import com.ugurbuga.followtvmovie.domain.image.model.PersonImageResponse
 import com.ugurbuga.followtvmovie.domain.person.model.PersonDetailResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
