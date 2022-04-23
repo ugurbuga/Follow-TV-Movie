@@ -70,22 +70,22 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     override fun onInitDataBinding() {
         with(viewBinding) {
-            imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
-            castRecyclerView.adapter = CastAdapter(::onCastClicked)
+            movieDetail.imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
+            movieDetail.videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
+            movieDetail.castRecyclerView.adapter = CastAdapter(::onCastClicked)
             genreRecyclerView.adapter = GenreAdapter()
 
-            recommendationRecyclerView.apply {
+            movieDetail.recommendationRecyclerView.apply {
                 adapter = PosterAdapter(::onMovieClicked)
                 scrollEndListener {
                     viewModel.getNewRecommendations()
                 }
             }
 
-            similarMoviesRecyclerView.apply {
+            movieDetail.similarMoviesRecyclerView.apply {
                 adapter = PosterAdapter(::onMovieClicked)
                 scrollEndListener {
-                    viewModel.getNewSimilarMovies()
+                    viewModel.getNewSimilar()
                 }
             }
 
@@ -95,32 +95,33 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 viewModel.changeFavoriteState()
             }
 
-            reviewsButton.setOnClickListener {
+            movieDetail.reviewsButton.setOnClickListener {
                 viewModel.reviewsClicked()
             }
             toolbar.setNavigationClickListener {
                 popBack()
             }
 
-            imdbButton.setOnClickListener {
+            movieDetail.imdbButton.setOnClickListener {
                 viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
             }
 
-            facebookButton.setOnClickListener {
+            movieDetail.facebookButton.setOnClickListener {
                 viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
             }
 
-            twitterButton.setOnClickListener {
+            movieDetail.twitterButton.setOnClickListener {
                 viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
             }
 
-            instagramButton.setOnClickListener {
+            movieDetail.instagramButton.setOnClickListener {
                 viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
             }
         }
 
         collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)
-        collect(viewModel.movieDetailViewEvent, ::onMovieDetailViewEvent)
+        collect(viewModel.commonViewState, ::onCommonViewState)
+        collect(viewModel.commonViewEvent, ::onMovieDetailViewEvent)
     }
 
     private fun onMovieClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
@@ -157,13 +158,13 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         navigate(MovieDetailFragmentDirections.actionMovieDetailToVideo(video.key))
     }
 
-    private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {
+    private fun onMovieDetailViewEvent(event: CommonViewEvent) {
         when (event) {
-            is MovieDetailViewEvent.ShowSnackbar -> {
+            is CommonViewEvent.ShowSnackbar -> {
                 Snackbar.make(viewBinding.root, getString(event.message), Snackbar.LENGTH_SHORT)
                     .show()
             }
-            is MovieDetailViewEvent.NavigateToReviews -> {
+            is CommonViewEvent.NavigateToReviews -> {
                 navigate(
                     MovieDetailFragmentDirections.actionReviewFragment(
                         event.movieId,
@@ -171,24 +172,24 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                     )
                 )
             }
-            is MovieDetailViewEvent.NavigateToImages -> {
+            is CommonViewEvent.NavigateToImages -> {
                 navigate(
                     MovieDetailFragmentDirections.actionMovieDetailToImage(
                         event.imageList.toTypedArray(), event.position
                     )
                 )
             }
-            is MovieDetailViewEvent.NavigateToOtherApp -> {
+            is CommonViewEvent.NavigateToOtherApp -> {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.url)))
             }
-            is MovieDetailViewEvent.NavigateToWebView -> {
+            is CommonViewEvent.NavigateToWebView -> {
                 navigate(
                     MovieDetailFragmentDirections.actionMovieDetailToWeb(
                         event.url
                     )
                 )
             }
-            is MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog -> {
+            is CommonViewEvent.ShowWatchedOrWatchLaterDialog -> {
                 showWatchedOrWatchLaterDialog(event.movieName)
             }
         }
@@ -213,11 +214,10 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {
         viewBinding.viewState = movieDetailViewState
-        if (movieDetailViewState.videos.size > 0) {
-            movieDetailViewState.movieDetail?.let {
-                deepLinkPush(it.id, it.title, it.releaseDate, movieDetailViewState.videos[0].key)
-            }
-        }
+    }
+
+    private fun onCommonViewState(commonViewState: CommonViewState) {
+        viewBinding.commonViewState = commonViewState
     }
 
     private fun deepLinkPush(id: String, title: String, releaseDate: String, urlKey: String) {

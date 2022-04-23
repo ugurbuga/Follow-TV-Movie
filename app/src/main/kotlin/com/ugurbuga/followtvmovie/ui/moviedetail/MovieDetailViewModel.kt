@@ -3,8 +3,6 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
 import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
@@ -16,16 +14,12 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCa
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
-import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
-import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 
@@ -33,77 +27,60 @@ import kotlinx.coroutines.flow.launchIn
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
     private val addFavoriteUseCase: AddFavoriteMovieUseCase,
-    private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val getVideosUseCase: GetVideosUseCase,
-    private val getImagesUseCase: GetImagesUseCase,
-    private val getCastsUseCase: GetCastsUseCase,
-    private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
-    private val getRecommendationsUseCase: GetRecommendationsUseCase,
-    private val getSimilarUseCase: GetSimilarUseCase,
+    getFavoriteUseCase: GetFavoriteUseCase,
+    getVideosUseCase: GetVideosUseCase,
+    getImagesUseCase: GetImagesUseCase,
+    getCastsUseCase: GetCastsUseCase,
+    getExternalUrlsUseCase: GetExternalUrlsUseCase,
+    getRecommendationsUseCase: GetRecommendationsUseCase,
+    getSimilarUseCase: GetSimilarUseCase,
     savedStateHandle: SavedStateHandle,
-) : FTMBaseViewModel() {
-
-    private var _movieDetailViewEvent = MutableSharedFlow<MovieDetailViewEvent>()
-    val movieDetailViewEvent: SharedFlow<MovieDetailViewEvent> = _movieDetailViewEvent
+) : CommonViewModel(
+    getFavoriteUseCase,
+    getVideosUseCase,
+    getImagesUseCase,
+    getCastsUseCase,
+    getExternalUrlsUseCase,
+    getRecommendationsUseCase,
+    getSimilarUseCase,
+    savedStateHandle
+) {
 
     private val _movieDetailViewState = MutableStateFlow(MovieDetailViewState())
     val movieDetailViewState: StateFlow<MovieDetailViewState> get() = _movieDetailViewState
 
-    private var movieId: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
-
-    private var isCanLoadNewItemRecommendations = false
-    private var isCanLoadNewItemSimilarMovies = false
+    override fun getMediaType() = MediaType.MOVIE
 
     init {
         getMovieDetail()
-        getVideos()
-        getCasts()
-        getImages()
-        getExternalUrls()
-        getRecommendations()
-        getSimilarMovies()
-    }
-
-    private fun isFavorite() {
-        getFavoriteUseCase(
-            GetFavoriteUseCase.GetFavoriteParams(
-                MediaType.MOVIE, movieId
-            )
-        ).doOnSuccess {
-            _movieDetailViewState.value = _movieDetailViewState.value.copy(
-                isFavorite = it != null
-            )
-        }.launchIn(viewModelScope)
     }
 
     private fun getMovieDetail() {
-        getMovieDetailUseCase(GetMovieDetailUseCase.MovieDetailParams(movieId))
+        getMovieDetailUseCase(GetMovieDetailUseCase.MovieDetailParams(id))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
                 )
             }.doOnSuccess {
-                _movieDetailViewState.value = _movieDetailViewState.value.copy(
-                    movieDetail = it, isFavorite = false
-                )
+                _movieDetailViewState.value = _movieDetailViewState.value.copy(movieDetail = it)
                 isFavorite()
             }.launchIn(viewModelScope)
     }
 
     fun changeFavoriteState() {
-        if (movieDetailViewState.value.isFavorite) {
+        if (commonViewState.value.isFavorite) {
             movieDetailViewState.value.movieDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(R.string.removed_movie_list))
+                    _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(R.string.removed_movie_list))
                 }.launchIn(viewModelScope)
             }
         } else {
             val isReleased =
                 Util.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
             if (isReleased) {
-                _movieDetailViewEvent.emitSuspending(
-                    MovieDetailViewEvent.ShowWatchedOrWatchLaterDialog(
+                _commonViewEvent.emitSuspending(
+                    CommonViewEvent.ShowWatchedOrWatchLaterDialog(
                         movieDetailViewState.value.movieDetail?.title ?: Util.EMPTY_STRING
                     )
                 )
@@ -115,107 +92,6 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    private fun getVideos() {
-        getVideosUseCase(GetVideosUseCase.VideoParams(movieId, MediaType.MOVIE))
-            .doOnStatusChanged {
-                initStatusState(
-                    it, isShowLoading = false
-                )
-            }.doOnSuccess {
-                _movieDetailViewState.value = movieDetailViewState.value.copy(videos = it)
-                isFavorite()
-            }.launchIn(viewModelScope)
-    }
-
-    private fun getCasts() {
-        getCastsUseCase(GetCastsUseCase.CastParams(movieId, MediaType.MOVIE))
-            .doOnStatusChanged {
-                initStatusState(
-                    it, isShowLoading = false
-                )
-            }.doOnSuccess {
-                _movieDetailViewState.value = movieDetailViewState.value.copy(casts = it)
-                isFavorite()
-            }.launchIn(viewModelScope)
-    }
-
-    private fun getImages() {
-        getImagesUseCase(GetImagesUseCase.ImageParams(movieId, MediaType.MOVIE))
-            .doOnStatusChanged {
-                initStatusState(
-                    it, isShowLoading = false
-                )
-            }.doOnSuccess {
-                _movieDetailViewState.value = movieDetailViewState.value.copy(images = it)
-                isFavorite()
-            }.launchIn(viewModelScope)
-    }
-
-    private fun getExternalUrls() {
-        getExternalUrlsUseCase(GetExternalUrlsUseCase.ExternalUrlParams(movieId, MediaType.MOVIE))
-            .doOnStatusChanged {
-                initStatusState(
-                    it, isShowLoading = false
-                )
-            }.doOnSuccess {
-                _movieDetailViewState.value = movieDetailViewState.value.copy(externalUrls = it)
-                isFavorite()
-            }.launchIn(viewModelScope)
-    }
-
-    fun reviewsClicked() {
-        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToReviews(movieId))
-
-    }
-
-    fun imageClicked(position: Int) {
-        _movieDetailViewEvent.emitSuspending(
-            MovieDetailViewEvent.NavigateToImages(
-                imageList = movieDetailViewState.value.images, position = position
-            )
-        )
-    }
-
-    fun imdbClicked(packageEnabled: Boolean) {
-        if (packageEnabled) {
-            navigateToOtherApp(movieDetailViewState.value.externalUrls.getImdbUrl())
-        } else {
-            navigateToWebView(movieDetailViewState.value.externalUrls.getImdbUrl())
-        }
-    }
-
-    fun facebookClicked(packageEnabled: Boolean) {
-        if (packageEnabled) {
-            navigateToOtherApp(movieDetailViewState.value.externalUrls.getFacebookDeeplink())
-        } else {
-            navigateToWebView(movieDetailViewState.value.externalUrls.getFacebookUrl())
-        }
-    }
-
-    fun twitterClicked(packageEnabled: Boolean) {
-        if (packageEnabled) {
-            navigateToOtherApp(movieDetailViewState.value.externalUrls.getTwitterUrl())
-        } else {
-            navigateToWebView(movieDetailViewState.value.externalUrls.getTwitterUrl())
-        }
-    }
-
-    fun instagramClicked(packageEnabled: Boolean) {
-        if (packageEnabled) {
-            navigateToOtherApp(movieDetailViewState.value.externalUrls.getInstagramUrl())
-        } else {
-            navigateToWebView(movieDetailViewState.value.externalUrls.getInstagramUrl())
-        }
-    }
-
-    private fun navigateToOtherApp(url: String) {
-        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToOtherApp(url))
-    }
-
-    private fun navigateToWebView(url: String) {
-        _movieDetailViewEvent.emitSuspending(MovieDetailViewEvent.NavigateToWebView(url))
-    }
-
     fun addFavorite(isWatched: Boolean) {
         val message =
             if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
@@ -223,98 +99,8 @@ class MovieDetailViewModel @Inject constructor(
         movieDetailViewState.value.movieDetail?.let {
             addFavoriteUseCase(AddFavoriteMovieUseCase.AddFavoriteParams(it, isWatched))
                 .doOnSuccess {
-                    _movieDetailViewEvent.emit(MovieDetailViewEvent.ShowSnackbar(message))
+                    _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(message))
                 }.launchIn(viewModelScope)
         }
-    }
-
-    private fun getRecommendations() {
-        addRecommendationLoading()
-        getRecommendationsUseCase(
-            GetRecommendationsUseCase.Recommendations(
-                movieId,
-                ++movieDetailViewState.value.recommendation.page,
-                MediaType.MOVIE
-            )
-        ).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            setRecommendationList(it)
-            isCanLoadNewItemRecommendations = it.totalPages > it.page
-            isFavorite()
-        }.launchIn(viewModelScope)
-    }
-
-    fun getNewRecommendations() {
-        if (isCanLoadNewItemRecommendations) {
-            isCanLoadNewItemRecommendations = false
-            getRecommendations()
-        }
-    }
-
-    private fun addRecommendationLoading() {
-        val list = movieDetailViewState.value.recommendation.posterList.toMutableList()
-        list.add(LoadingUIModel())
-        val recommendation = movieDetailViewState.value.recommendation.copy()
-        recommendation.posterList = list
-        _movieDetailViewState.value =
-            movieDetailViewState.value.copy(recommendation = recommendation)
-    }
-
-    private fun setRecommendationList(recommendation: PosterUIModel) {
-        val list = movieDetailViewState.value.recommendation.posterList.toMutableList()
-        list.remove(LoadingUIModel())
-        list.addAll(recommendation.posterList)
-        recommendation.posterList = list
-        _movieDetailViewState.value =
-            movieDetailViewState.value.copy(recommendation = recommendation)
-    }
-
-    /////////////
-
-    private fun getSimilarMovies() {
-        addSimilarMoviesLoading()
-        getSimilarUseCase(
-            GetSimilarUseCase.Similar(
-                movieId,
-                ++movieDetailViewState.value.similarMovie.page,
-                MediaType.MOVIE
-            )
-        ).doOnStatusChanged {
-            initStatusState(
-                it, isShowLoading = false
-            )
-        }.doOnSuccess {
-            setSimilarMovieList(it)
-            isCanLoadNewItemSimilarMovies = it.totalPages > it.page
-            isFavorite()
-        }.launchIn(viewModelScope)
-    }
-
-    fun getNewSimilarMovies() {
-        if (isCanLoadNewItemSimilarMovies) {
-            isCanLoadNewItemSimilarMovies = false
-            getSimilarMovies()
-        }
-    }
-
-    private fun addSimilarMoviesLoading() {
-        val list = movieDetailViewState.value.similarMovie.posterList.toMutableList()
-        list.add(LoadingUIModel())
-        val similarMovie = movieDetailViewState.value.similarMovie.copy()
-        similarMovie.posterList = list
-        _movieDetailViewState.value =
-            movieDetailViewState.value.copy(similarMovie = similarMovie)
-    }
-
-    private fun setSimilarMovieList(similarMovie: PosterUIModel) {
-        val list = movieDetailViewState.value.similarMovie.posterList.toMutableList()
-        list.remove(LoadingUIModel())
-        list.addAll(similarMovie.posterList)
-        similarMovie.posterList = list
-        _movieDetailViewState.value =
-            movieDetailViewState.value.copy(similarMovie = similarMovie)
     }
 }
