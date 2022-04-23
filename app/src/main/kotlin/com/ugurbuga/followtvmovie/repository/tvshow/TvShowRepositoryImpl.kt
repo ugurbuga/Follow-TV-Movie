@@ -3,9 +3,6 @@ package com.ugurbuga.followtvmovie.repository.tvshow
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
@@ -32,10 +29,6 @@ class TvShowRepositoryImpl @Inject constructor(
 
     override fun getTvShowTrailers(movieId: String): Flow<ApiState<TrailersResponse>> {
         return onApiCall { tvShowService.getTvShowTrailers(movieId) }
-    }
-
-    override fun getTvShowCredits(movieId: String): Flow<ApiState<CreditResponse>> {
-        return onApiCall { tvShowService.getTvShowCredits(movieId) }
     }
 
     override fun getRecommendations(

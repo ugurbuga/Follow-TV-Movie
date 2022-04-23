@@ -1,6 +1,5 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
@@ -30,11 +29,6 @@ interface TvShowService {
     suspend fun getTvShowTrailers(
         @Path("tvShowId") tvShowId: String,
     ): TrailersResponse
-
-    @GET("tv/{tvShowId}/credits")
-    suspend fun getTvShowCredits(
-        @Path("tvShowId") tvShowId: String,
-    ): CreditResponse
 
     @GET("tv/{tvShowId}/recommendations")
     suspend fun getRecommendations(

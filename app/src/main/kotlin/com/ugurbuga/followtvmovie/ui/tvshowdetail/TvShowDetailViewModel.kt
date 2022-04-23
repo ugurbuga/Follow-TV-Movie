@@ -9,12 +9,12 @@ import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.favorite.AddFavoriteTvShowUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetCastsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetSimilarTvShowsUseCase
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowCastsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowTrailersUseCase
@@ -37,7 +37,7 @@ class TvShowDetailViewModel @Inject constructor(
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     private val getTvShowTrailersUseCase: GetTvShowTrailersUseCase,
     private val getImagesUseCase: GetImagesUseCase,
-    private val getTvShowCastsUseCase: GetTvShowCastsUseCase,
+    private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
     private val getTvShowRecommendationsUseCase: GetTvShowRecommendationsUseCase,
     private val getSimilarTvShowsUseCase: GetSimilarTvShowsUseCase,
@@ -128,7 +128,7 @@ class TvShowDetailViewModel @Inject constructor(
     }
 
     private fun getCasts() {
-        getTvShowCastsUseCase(GetTvShowCastsUseCase.CastParams(tvShowId))
+        getCastsUseCase(GetCastsUseCase.CastParams(tvShowId, MediaType.TV))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false

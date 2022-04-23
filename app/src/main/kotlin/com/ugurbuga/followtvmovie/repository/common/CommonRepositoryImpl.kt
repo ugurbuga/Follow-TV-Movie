@@ -3,6 +3,7 @@ package com.ugurbuga.followtvmovie.repository.common
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.CommonService
+import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
@@ -33,6 +34,13 @@ class CommonRepositoryImpl @Inject constructor(
         mediaType: String
     ): Flow<ApiState<ImageResponse>> {
         return onApiCall { commonService.getImages(id, mediaType) }
+    }
+
+    override fun getCredits(
+        id: String,
+        mediaType: String
+    ): Flow<ApiState<CreditResponse>> {
+        return onApiCall { commonService.getCredits(id, mediaType) }
     }
 
 }

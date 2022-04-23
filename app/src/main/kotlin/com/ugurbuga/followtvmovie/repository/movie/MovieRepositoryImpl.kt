@@ -33,10 +33,6 @@ class MovieRepositoryImpl @Inject constructor(
         return onApiCall { movieService.getMovieTrailers(movieId) }
     }
 
-    override fun getMovieCredits(movieId: String): Flow<ApiState<CreditResponse>> {
-        return onApiCall { movieService.getMovieCredits(movieId) }
-    }
-
     override fun getRecommendations(
         movieId: String,
         page: Int

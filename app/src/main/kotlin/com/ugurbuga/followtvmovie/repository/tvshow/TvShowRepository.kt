@@ -1,7 +1,6 @@
 package com.ugurbuga.followtvmovie.repository.tvshow
 
 import com.ugurbuga.followtvmovie.common.ApiState
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
@@ -17,8 +16,6 @@ interface TvShowRepository {
     fun getTvShowReviews(movieId: String): Flow<ApiState<ReviewGeneralResponse>>
 
     fun getTvShowTrailers(movieId: String): Flow<ApiState<TrailersResponse>>
-
-    fun getTvShowCredits(movieId: String): Flow<ApiState<CreditResponse>>
 
     fun getRecommendations(
         movieId: String,

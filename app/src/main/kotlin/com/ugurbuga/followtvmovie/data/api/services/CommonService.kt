@@ -1,5 +1,6 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
+import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
@@ -27,4 +28,10 @@ interface CommonService {
         @Path("mediaType") mediaType: String,
         @Query("include_image_language") includeImageLanguage: String = "null"
     ): ImageResponse
+
+    @GET("{mediaType}/{id}/credits")
+    suspend fun getCredits(
+        @Path("id") id: String,
+        @Path("mediaType") mediaType: String,
+    ): CreditResponse
 }
