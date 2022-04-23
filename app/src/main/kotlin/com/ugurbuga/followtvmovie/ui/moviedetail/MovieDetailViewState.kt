@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.ui.moviedetail
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
+import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsUIModel
+import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel

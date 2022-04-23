@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.poster.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.image.ImageMapper
+import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieResponse

@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.external
+package com.ugurbuga.followtvmovie.domain.external.model
 
 data class ExternalIdsUIModel(
     val facebookId: String? = null,

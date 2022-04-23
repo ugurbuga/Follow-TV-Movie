@@ -1,7 +1,7 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
+package com.ugurbuga.followtvmovie.domain.external.mapper
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
+import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
+import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsUIModel
 import javax.inject.Inject
 
 class ExternalUrlsMapper @Inject constructor() {

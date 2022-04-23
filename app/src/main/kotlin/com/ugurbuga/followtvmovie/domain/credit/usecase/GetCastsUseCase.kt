@@ -1,9 +1,9 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.usecase
+package com.ugurbuga.followtvmovie.domain.credit.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.mapper.CreditMapper
+import com.ugurbuga.followtvmovie.domain.credit.mapper.CreditMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.repository.common.CommonRepository
 import javax.inject.Inject

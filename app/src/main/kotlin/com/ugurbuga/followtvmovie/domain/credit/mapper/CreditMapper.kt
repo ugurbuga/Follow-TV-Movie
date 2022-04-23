@@ -1,9 +1,9 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.credit.mapper
+package com.ugurbuga.followtvmovie.domain.credit.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
-import com.ugurbuga.followtvmovie.domain.image.ImageMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CastResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
+import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
+import com.ugurbuga.followtvmovie.domain.credit.model.CastResponse
+import com.ugurbuga.followtvmovie.domain.credit.model.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import javax.inject.Inject
 

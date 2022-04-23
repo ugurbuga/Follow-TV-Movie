@@ -1,10 +1,10 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.usecase
+package com.ugurbuga.followtvmovie.domain.external.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.common.map
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.ExternalUrlsMapper
+import com.ugurbuga.followtvmovie.domain.external.mapper.ExternalUrlsMapper
+import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.repository.common.CommonRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow

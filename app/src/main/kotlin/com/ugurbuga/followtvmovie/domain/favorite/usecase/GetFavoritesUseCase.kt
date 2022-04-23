@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.favorite
+package com.ugurbuga.followtvmovie.domain.favorite.usecase
 
 import com.ugurbuga.followtvmovie.base.FTMUseCase
 import com.ugurbuga.followtvmovie.common.ApiState

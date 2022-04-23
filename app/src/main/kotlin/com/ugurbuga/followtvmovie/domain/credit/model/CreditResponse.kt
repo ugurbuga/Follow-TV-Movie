@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.credit
+package com.ugurbuga.followtvmovie.domain.credit.model
 
 
 import com.squareup.moshi.Json
