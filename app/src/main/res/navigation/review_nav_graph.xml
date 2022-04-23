@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/review_nav_graph"
+    app:startDestination="@id/reviewBottomSheet">
+
+    <dialog
+        android:id="@+id/reviewBottomSheet"
+        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.review.ReviewBottomSheet"
+        tools:layout="@layout/bottom_sheet_review">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+        <argument
+            android:name="media_type"
+            app:argType="string" />
+
+    </dialog>
+
+</navigation>

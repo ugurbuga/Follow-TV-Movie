@@ -28,11 +28,6 @@ interface MovieService {
         @Path("movieId") movieId: String,
     ): MovieDetailResponse
 
-    @GET("movie/{movieId}/reviews")
-    suspend fun getMovieReviews(
-        @Path("movieId") movieId: String,
-    ): ReviewGeneralResponse
-
     @GET("movie/{movieId}/videos")
     suspend fun getMovieTrailers(
         @Path("movieId") movieId: String,

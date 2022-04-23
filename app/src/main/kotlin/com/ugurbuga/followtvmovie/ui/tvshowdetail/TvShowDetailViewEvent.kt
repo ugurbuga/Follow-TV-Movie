@@ -6,7 +6,7 @@ sealed class TvShowDetailViewEvent {
 
     data class ShowSnackbar(val message: Int) : TvShowDetailViewEvent()
 
-    data class NavigateToReviews(val tvShowI: String) : TvShowDetailViewEvent()
+    data class NavigateToReviews(val tvShowId: String) : TvShowDetailViewEvent()
 
     data class NavigateToImages(val imageList: ArrayList<ImageUIModel>, val position: Int) :
         TvShowDetailViewEvent()

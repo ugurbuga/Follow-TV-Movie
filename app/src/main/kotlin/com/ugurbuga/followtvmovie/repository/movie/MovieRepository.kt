@@ -5,7 +5,6 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
 import kotlinx.coroutines.flow.Flow
@@ -17,8 +16,6 @@ interface MovieRepository {
     fun getUpcomingMovies(page: Int): Flow<ApiState<MovieGeneralResponse>>
 
     fun getMovieDetail(movieId: String): Flow<ApiState<MovieDetailResponse>>
-
-    fun getMovieReviews(movieId: String): Flow<ApiState<ReviewGeneralResponse>>
 
     fun getMovieTrailers(movieId: String): Flow<ApiState<TrailersResponse>>
 

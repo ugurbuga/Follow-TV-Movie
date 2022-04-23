@@ -8,4 +8,5 @@ object Argument {
     const val URL_KEY = "url_key"
     const val IMAGES = "images"
     const val POSITION = "position"
+    const val MEDIA_TYPE = "media_type"
 }

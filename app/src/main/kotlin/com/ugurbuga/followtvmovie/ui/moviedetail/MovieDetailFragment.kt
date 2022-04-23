@@ -28,6 +28,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
@@ -163,7 +164,12 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                     .show()
             }
             is MovieDetailViewEvent.NavigateToReviews -> {
-                navigate(MovieDetailFragmentDirections.actionReviewFragment(event.movieId))
+                navigate(
+                    MovieDetailFragmentDirections.actionReviewFragment(
+                        event.movieId,
+                        MediaType.MOVIE
+                    )
+                )
             }
             is MovieDetailViewEvent.NavigateToImages -> {
                 navigate(

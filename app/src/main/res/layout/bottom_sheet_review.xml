@@ -73,7 +73,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.Light.13"
-                    visible="@{viewState.reviewList.size() == 0}"
+                    visible="@{viewState.isEmpty()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_16"

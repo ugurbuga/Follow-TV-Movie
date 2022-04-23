@@ -20,7 +20,17 @@
 
         <action
             android:id="@+id/action_review_fragment"
-            app:destination="@id/reviewBottomSheet" />
+            app:destination="@id/review_nav_graph">
+
+            <argument
+                android:name="id"
+                app:argType="string" />
+
+            <argument
+                android:name="media_type"
+                app:argType="string" />
+
+        </action>
 
         <action
             android:id="@+id/action_tv_show_detail_to_trailer"
@@ -80,16 +90,7 @@
 
     <include app:graph="@navigation/image_nav_graph" />
 
-    <dialog
-        android:id="@+id/reviewBottomSheet"
-        android:name="com.ugurbuga.followtvmovie.ui.moviedetail.review.ReviewBottomSheet"
-        tools:layout="@layout/bottom_sheet_review">
-
-        <argument
-            android:name="id"
-            app:argType="string" />
-
-    </dialog>
+    <include app:graph="@navigation/review_nav_graph" />
 
     <fragment
         android:id="@+id/webViewFragment"

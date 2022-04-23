@@ -25,6 +25,7 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
@@ -34,7 +35,8 @@ import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTvShowDetailBinding>() {
+class TvShowDetailFragment :
+    FTMBaseVMFragment<TvShowDetailViewModel, FragmentTvShowDetailBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_tv_show_detail
 
@@ -160,7 +162,12 @@ class TvShowDetailFragment : FTMBaseVMFragment<TvShowDetailViewModel, FragmentTv
                     .show()
             }
             is TvShowDetailViewEvent.NavigateToReviews -> {
-                navigate(TvShowDetailFragmentDirections.actionReviewFragment(event.tvShowI))
+                navigate(
+                    TvShowDetailFragmentDirections.actionReviewFragment(
+                        event.tvShowId,
+                        MediaType.TV
+                    )
+                )
             }
             is TvShowDetailViewEvent.NavigateToImages -> {
                 navigate(

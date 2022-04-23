@@ -8,6 +8,7 @@ import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
 import com.ugurbuga.followtvmovie.data.api.interceptor.LanguageInterceptor
+import com.ugurbuga.followtvmovie.data.api.services.CommonService
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.api.services.PersonService
 import com.ugurbuga.followtvmovie.data.api.services.SearchService
@@ -99,5 +100,11 @@ object NetworkModule {
     @Singleton
     fun provideSearchService(retrofit: Retrofit): SearchService {
         return retrofit.create(SearchService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCommonService(retrofit: Retrofit): CommonService {
+        return retrofit.create(CommonService::class.java)
     }
 }
