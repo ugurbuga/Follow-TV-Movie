@@ -2,7 +2,6 @@ package com.ugurbuga.followtvmovie.repository.movie
 
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.movie.model.MovieGeneralResponse
@@ -19,8 +18,6 @@ interface MovieRepository {
     fun getMovieTrailers(movieId: String): Flow<ApiState<TrailersResponse>>
 
     fun getMovieCredits(movieId: String): Flow<ApiState<CreditResponse>>
-
-    fun getMovieImages(movieId: String): Flow<ApiState<ImageResponse>>
 
     fun getRecommendations(movieId: String, page: Int): Flow<ApiState<MovieGeneralResponse>>
 

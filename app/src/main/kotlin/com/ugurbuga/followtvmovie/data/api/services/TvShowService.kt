@@ -1,7 +1,6 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
@@ -36,12 +35,6 @@ interface TvShowService {
     suspend fun getTvShowCredits(
         @Path("tvShowId") tvShowId: String,
     ): CreditResponse
-
-    @GET("tv/{tvShowId}/images")
-    suspend fun getTvShowImages(
-        @Path("tvShowId") tvShowId: String,
-        @Query("include_image_language") includeImageLanguage: String = "null"
-    ): ImageResponse
 
     @GET("tv/{tvShowId}/recommendations")
     suspend fun getRecommendations(
