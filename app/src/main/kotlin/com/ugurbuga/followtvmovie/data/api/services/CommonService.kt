@@ -4,6 +4,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -34,4 +35,10 @@ interface CommonService {
         @Path("id") id: String,
         @Path("mediaType") mediaType: String,
     ): CreditResponse
+
+    @GET("{mediaType}/{id}/videos")
+    suspend fun getVideos(
+        @Path("id") id: String,
+        @Path("mediaType") mediaType: String,
+    ): VideosResponse
 }

@@ -23,7 +23,7 @@ import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
@@ -32,7 +32,7 @@ import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
-import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
+import com.ugurbuga.followtvmovie.ui.moviedetail.video.VideoAdapter
 import com.ugurbuga.followtvmovie.ui.video.VideoActivity
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,7 +71,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
     override fun onInitDataBinding() {
         with(viewBinding) {
             imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            trailerRecyclerView.adapter = TrailerAdapter(::onTrailerClicked)
+            videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
             castRecyclerView.adapter = CastAdapter(::onCastClicked)
             genreRecyclerView.adapter = GenreAdapter()
 
@@ -153,8 +153,8 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         navigate(directions, extras)
     }
 
-    private fun onTrailerClicked(trailer: TrailerUIModel) {
-        navigate(MovieDetailFragmentDirections.actionMovieDetailToTrailer(trailer.key))
+    private fun onVideoClicked(video: VideoUIModel) {
+        navigate(MovieDetailFragmentDirections.actionMovieDetailToVideo(video.key))
     }
 
     private fun onMovieDetailViewEvent(event: MovieDetailViewEvent) {
@@ -213,9 +213,9 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     private fun onMovieDetailViewState(movieDetailViewState: MovieDetailViewState) {
         viewBinding.viewState = movieDetailViewState
-        if (movieDetailViewState.trailers.size > 0) {
+        if (movieDetailViewState.videos.size > 0) {
             movieDetailViewState.movieDetail?.let {
-                deepLinkPush(it.id, it.title, it.releaseDate, movieDetailViewState.trailers[0].key)
+                deepLinkPush(it.id, it.title, it.releaseDate, movieDetailViewState.videos[0].key)
             }
         }
     }

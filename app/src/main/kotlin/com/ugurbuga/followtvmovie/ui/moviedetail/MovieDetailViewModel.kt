@@ -14,8 +14,8 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseC
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetImagesUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieRecommendationsUseCase
-import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieTrailersUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarMoviesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
@@ -35,7 +35,7 @@ class MovieDetailViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteMovieUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val getMovieTrailersUseCase: GetMovieTrailersUseCase,
+    private val getVideosUseCase: GetVideosUseCase,
     private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
@@ -57,7 +57,7 @@ class MovieDetailViewModel @Inject constructor(
 
     init {
         getMovieDetail()
-        getTrailers()
+        getVideos()
         getCasts()
         getImages()
         getExternalUrls()
@@ -115,14 +115,14 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    private fun getTrailers() {
-        getMovieTrailersUseCase(GetMovieTrailersUseCase.MovieTrailerParams(movieId))
+    private fun getVideos() {
+        getVideosUseCase(GetVideosUseCase.VideoParams(movieId, MediaType.MOVIE))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
                 )
             }.doOnSuccess {
-                _movieDetailViewState.value = movieDetailViewState.value.copy(trailers = it)
+                _movieDetailViewState.value = movieDetailViewState.value.copy(videos = it)
                 isFavorite()
             }.launchIn(viewModelScope)
     }

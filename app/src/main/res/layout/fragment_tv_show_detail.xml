@@ -178,19 +178,19 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.trailers.size() > 0}"
+                    visible="@{viewState.videos.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
                     android:text="@string/videos" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/trailer_recycler_view"
+                    android:id="@+id/video_recycler_view"
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.trailers}"
-                    visible="@{viewState.trailers.size() > 0}"
+                    submitList="@{viewState.videos}"
+                    visible="@{viewState.videos.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
@@ -198,7 +198,7 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/padding_8"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_trailer" />
+                    tools:listitem="@layout/item_video" />
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"

@@ -5,6 +5,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
 import kotlinx.coroutines.flow.Flow
 
 interface CommonRepository {
@@ -16,4 +17,6 @@ interface CommonRepository {
     fun getImages(id: String, mediaType: String): Flow<ApiState<ImageResponse>>
 
     fun getCredits(id: String, mediaType: String): Flow<ApiState<CreditResponse>>
+
+    fun getVideos(id: String, mediaType: String): Flow<ApiState<VideosResponse>>
 }

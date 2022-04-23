@@ -2,17 +2,13 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.image.ImageMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import javax.inject.Inject
 
 class MovieMapper @Inject constructor(
@@ -52,15 +48,5 @@ class MovieMapper @Inject constructor(
             createdAt = response.createdAt,
             id = response.id
         )
-    }
-
-    fun toTrailerList(response: TrailersResponse): ArrayList<TrailerUIModel> {
-        val list = arrayListOf<TrailerUIModel>()
-        response.results.forEach {
-            if (it.site == "YouTube") {
-                list.add(TrailerUIModel(key = it.key, name = it.name))
-            }
-        }
-        return list
     }
 }

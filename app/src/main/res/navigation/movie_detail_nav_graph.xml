@@ -33,7 +33,7 @@
         </action>
 
         <action
-            android:id="@+id/action_movie_detail_to_trailer"
+            android:id="@+id/action_movie_detail_to_video"
             app:destination="@id/videoActivity" />
 
         <action

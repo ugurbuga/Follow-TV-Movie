@@ -12,12 +12,12 @@ import com.ugurbuga.followtvmovie.domain.favorite.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetCastsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetImagesUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetSimilarTvShowsUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowRecommendationsUseCase
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowTrailersUseCase
 import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
@@ -35,7 +35,7 @@ class TvShowDetailViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteTvShowUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val getTvShowTrailersUseCase: GetTvShowTrailersUseCase,
+    private val getVideosUseCase: GetVideosUseCase,
     private val getImagesUseCase: GetImagesUseCase,
     private val getCastsUseCase: GetCastsUseCase,
     private val getExternalUrlsUseCase: GetExternalUrlsUseCase,
@@ -57,7 +57,7 @@ class TvShowDetailViewModel @Inject constructor(
 
     init {
         getTvShowDetail()
-        getTrailers()
+        getVideos()
         getCasts()
         getImages()
         getExternalUrls()
@@ -115,14 +115,14 @@ class TvShowDetailViewModel @Inject constructor(
         }
     }
 
-    private fun getTrailers() {
-        getTvShowTrailersUseCase(GetTvShowTrailersUseCase.TvShowTrailerParams(tvShowId))
+    private fun getVideos() {
+        getVideosUseCase(GetVideosUseCase.VideoParams(tvShowId, MediaType.TV))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
                 )
             }.doOnSuccess {
-                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(trailers = it)
+                _tvShowDetailViewState.value = tvShowDetailViewState.value.copy(videos = it)
                 isFavorite()
             }.launchIn(viewModelScope)
     }

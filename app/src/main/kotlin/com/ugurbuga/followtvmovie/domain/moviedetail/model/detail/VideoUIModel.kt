@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
 
 import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
 
-data class TrailerUIModel(
+data class VideoUIModel(
     val key: String,
     val name: String
 ) : ListAdapterItem {

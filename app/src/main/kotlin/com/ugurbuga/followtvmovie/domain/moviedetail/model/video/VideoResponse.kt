@@ -1,9 +1,9 @@
-package com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer
+package com.ugurbuga.followtvmovie.domain.moviedetail.model.video
 
 
 import com.squareup.moshi.Json
 
-data class TrailerResponse(
+data class VideoResponse(
     @Json(name = "id")
     val id: String,
     @Json(name = "iso_3166_1")

@@ -2,7 +2,6 @@ package com.ugurbuga.followtvmovie.repository.tvshow
 
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import kotlinx.coroutines.flow.Flow
@@ -14,8 +13,6 @@ interface TvShowRepository {
     fun getTvShowDetail(tvShowId: String): Flow<ApiState<TvShowDetailResponse>>
 
     fun getTvShowReviews(movieId: String): Flow<ApiState<ReviewGeneralResponse>>
-
-    fun getTvShowTrailers(movieId: String): Flow<ApiState<TrailersResponse>>
 
     fun getRecommendations(
         movieId: String,

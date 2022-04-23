@@ -4,7 +4,6 @@ import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.trailer.TrailersResponse
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.model.TvShowGeneralResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import javax.inject.Inject
@@ -25,10 +24,6 @@ class TvShowRepositoryImpl @Inject constructor(
 
     override fun getTvShowReviews(movieId: String): Flow<ApiState<ReviewGeneralResponse>> {
         return onApiCall { tvShowService.getTvShowReviews(movieId) }
-    }
-
-    override fun getTvShowTrailers(movieId: String): Flow<ApiState<TrailersResponse>> {
-        return onApiCall { tvShowService.getTvShowTrailers(movieId) }
     }
 
     override fun getRecommendations(

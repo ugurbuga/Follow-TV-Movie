@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel" />
+            type="com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel" />
     </data>
 
     <com.ugurbuga.followtvmovie.view.FTMCardView
@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/movie_trailer_image"
+                android:id="@+id/movie_video_image"
                 imageUrl="@{item.videoUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -36,12 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_0"
                 android:layout_gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/movie_trailer_name"
+                app:layout_constraintBottom_toTopOf="@id/movie_video_name"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_play_arrow" />
 
             <com.ugurbuga.followtvmovie.view.FTMTextView
-                android:id="@+id/movie_trailer_name"
+                android:id="@+id/movie_video_name"
                 style="@style/FTMText.Light.13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

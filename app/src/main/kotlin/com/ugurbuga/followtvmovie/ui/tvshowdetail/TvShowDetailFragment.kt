@@ -20,7 +20,7 @@ import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.TrailerUIModel
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
@@ -30,7 +30,7 @@ import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
-import com.ugurbuga.followtvmovie.ui.moviedetail.trailer.TrailerAdapter
+import com.ugurbuga.followtvmovie.ui.moviedetail.video.VideoAdapter
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -69,7 +69,7 @@ class TvShowDetailFragment :
     override fun onInitDataBinding() {
         with(viewBinding) {
             imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            trailerRecyclerView.adapter = TrailerAdapter(::onTrailerClicked)
+            videoRecyclerView.adapter = VideoAdapter(::onVideoClicked)
             castRecyclerView.adapter = CastAdapter(::onCastClicked)
             genreRecyclerView.adapter = GenreAdapter()
 
@@ -151,8 +151,8 @@ class TvShowDetailFragment :
         navigate(directions, extras)
     }
 
-    private fun onTrailerClicked(trailer: TrailerUIModel) {
-        navigate(TvShowDetailFragmentDirections.actionTvShowDetailToTrailer(trailer.key))
+    private fun onVideoClicked(video: VideoUIModel) {
+        navigate(TvShowDetailFragmentDirections.actionTvShowDetailToVideo(video.key))
     }
 
     private fun onTvShowDetailViewEvent(event: TvShowDetailViewEvent) {

@@ -7,6 +7,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
+import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
@@ -41,6 +42,13 @@ class CommonRepositoryImpl @Inject constructor(
         mediaType: String
     ): Flow<ApiState<CreditResponse>> {
         return onApiCall { commonService.getCredits(id, mediaType) }
+    }
+
+    override fun getVideos(
+        id: String,
+        mediaType: String
+    ): Flow<ApiState<VideosResponse>> {
+        return onApiCall { commonService.getVideos(id, mediaType) }
     }
 
 }
