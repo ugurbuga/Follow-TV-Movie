@@ -2,24 +2,20 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.image.ImageMapper
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import javax.inject.Inject
 
 class TvShowMapper @Inject constructor(
-    private val imageMapper: ImageMapper
+    private val imageMapper: ImageMapper,
+    private val genreMapper: GenreMapper
 ) {
 
     fun toTvShowDetailUIModel(response: TvShowDetailResponse): TvShowDetailUIModel {
 
         return TvShowDetailUIModel(
             adult = response.adult,
-            genres = response.genres.map { toGenresUIModel(it) },
+            genres = response.genres.map { genreMapper.toGenresUIModel(it) },
             id = response.id,
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
@@ -28,25 +24,6 @@ class TvShowMapper @Inject constructor(
             status = response.status,
             title = response.name,
             voteAverage = response.voteAverage,
-        )
-    }
-
-    private fun toGenresUIModel(response: GenreResponse): GenreUIModel {
-        return GenreUIModel(
-            id = response.id, name = response.name
-        )
-    }
-
-    fun toReviewUIModelList(response: ReviewGeneralResponse): List<ReviewUIModel> {
-        return response.results.map { toReviewUI(it) }
-    }
-
-    private fun toReviewUI(response: ReviewResponse): ReviewUIModel {
-        return ReviewUIModel(
-            author = response.author,
-            content = response.content,
-            createdAt = response.createdAt,
-            id = response.id
         )
     }
 }
