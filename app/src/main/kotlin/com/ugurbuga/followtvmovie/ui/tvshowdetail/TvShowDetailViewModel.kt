@@ -66,14 +66,14 @@ class TvShowDetailViewModel @Inject constructor(
                 )
             }.doOnSuccess {
                 _tvShowDetailViewState.value = _tvShowDetailViewState.value.copy(
-                    tvShowDetail = it, isFavorite = false
+                    tvShowDetail = it
                 )
                 isFavorite()
             }.launchIn(viewModelScope)
     }
 
     fun changeFavoriteState() {
-        if (tvShowDetailViewState.value.isFavorite) {
+        if (commonViewState.value.isFavorite) {
             tvShowDetailViewState.value.tvShowDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
                     _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(R.string.removed_movie_list))

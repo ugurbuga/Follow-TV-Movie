@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,24 +15,24 @@
     <com.ugurbuga.followtvmovie.view.FTMCardView
         android:id="@+id/posterLayout"
         android:layout_width="match_parent"
-        app:cardElevation="@dimen/elevation_0"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@android:color/transparent">
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="@dimen/elevation_0">
 
         <com.jsibbold.zoomage.ZoomageView
-            imageUrl="@{item.imageUrl}"
             android:id="@+id/posterImage"
+            imageUrl="@{item.imageUrl}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
-            app:zoomage_autoResetMode="UNDER"
             app:zoomage_autoCenter="true"
-            app:zoomage_zoomable="true"
-            app:zoomage_translatable="true"
-            app:zoomage_minScale="0.6"
+            app:zoomage_autoResetMode="UNDER"
             app:zoomage_maxScale="8"
-            />
+            app:zoomage_minScale="0.6"
+            app:zoomage_restrictBounds="false"
+            app:zoomage_translatable="true"
+            app:zoomage_zoomable="true"
+            tools:src="@tools:sample/avatars" />
 
     </com.ugurbuga.followtvmovie.view.FTMCardView>
 

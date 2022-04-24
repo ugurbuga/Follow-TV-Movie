@@ -50,6 +50,7 @@
     <string name="recommendations">Recommendations</string>
     <string name="similar_movies">Similar Movies</string>
     <string name="similar_tv_shows">Similar Tv Shows</string>
+    <string name="seasons">Seasons</string>
 
     <!-- Review -->
     <string name="no_reviews">No Reviews</string>

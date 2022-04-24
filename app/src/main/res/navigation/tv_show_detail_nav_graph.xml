@@ -37,6 +37,10 @@
             app:destination="@id/videoActivity" />
 
         <action
+            android:id="@+id/action_tv_show_detail_to_seaons"
+            app:destination="@id/seasonsFragment" />
+
+        <action
             android:id="@+id/action_tv_show_detail_to_person_detail"
             app:destination="@id/person_detail_nav_graph">
 
@@ -102,5 +106,10 @@
             app:argType="string" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/seasonsFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.seasons.SeasonsFragment"
+        tools:layout="@layout/fragment_seasons" />
 
 </navigation>

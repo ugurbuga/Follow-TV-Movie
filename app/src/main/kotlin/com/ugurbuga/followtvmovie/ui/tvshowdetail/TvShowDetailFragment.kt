@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.navGraphViewModels
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
@@ -45,6 +46,10 @@ class TvShowDetailFragment :
 
     private val args: TvShowDetailFragmentArgs by navArgs()
 
+    private val sharedViewModel: SharedTvShowViewModel by navGraphViewModels(R.id.tv_show_detail_nav_graph) {
+        defaultViewModelProviderFactory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,6 +84,10 @@ class TvShowDetailFragment :
 
             toolbar.setNavigationClickListener {
                 popBack()
+            }
+
+            seasonsButton.setOnClickListener {
+                navigate(TvShowDetailFragmentDirections.actionTvShowDetailToSeaons())
             }
 
             with(tvShowDetail) {
@@ -217,9 +226,7 @@ class TvShowDetailFragment :
 
     private fun onTvShowDetailViewState(movieDetailViewState: TvShowDetailViewState) {
         viewBinding.viewState = movieDetailViewState
-        movieDetailViewState.tvShowDetail?.let {
-            //deepLinkPush(it.id, it.title, it.releaseDate)
-        }
+        sharedViewModel.setTvShowDetailViewState(movieDetailViewState)
     }
 
     private fun onCommonViewState(commonViewState: CommonViewState) {

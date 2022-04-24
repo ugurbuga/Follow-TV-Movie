@@ -147,7 +147,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/reviews"
-                app:cornerRadius="@dimen/radius_8"
                 app:icon="@drawable/ic_review" />
 
             <com.google.android.material.imageview.ShapeableImageView

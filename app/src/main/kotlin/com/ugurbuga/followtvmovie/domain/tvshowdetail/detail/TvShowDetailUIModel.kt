@@ -13,6 +13,7 @@ data class TvShowDetailUIModel(
     val status: String,
     val title: String,
     val voteAverage: Double,
+    val seasons: List<SeasonUIModel>
 ) {
     fun getProgressValue(): Int {
         return (voteAverage.times(10.0)).toInt()
