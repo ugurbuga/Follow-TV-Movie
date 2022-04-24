@@ -44,7 +44,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     override fun viewModelClass() = MovieDetailViewModel::class.java
 
-    val args: MovieDetailFragmentArgs by navArgs()
+    private val args: MovieDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,24 +70,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     override fun onInitDataBinding() {
         with(viewBinding) {
-            movieDetail.imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            movieDetail.videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
-            movieDetail.castRecyclerView.adapter = CastAdapter(::onCastClicked)
             genreRecyclerView.adapter = GenreAdapter()
-
-            movieDetail.recommendationRecyclerView.apply {
-                adapter = PosterAdapter(::onMovieClicked)
-                scrollEndListener {
-                    viewModel.getNewRecommendations()
-                }
-            }
-
-            movieDetail.similarMoviesRecyclerView.apply {
-                adapter = PosterAdapter(::onMovieClicked)
-                scrollEndListener {
-                    viewModel.getNewSimilar()
-                }
-            }
 
             imageView.setImageUrl(getImageUrl())
 
@@ -95,33 +78,54 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 viewModel.changeFavoriteState()
             }
 
-            movieDetail.reviewsButton.setOnClickListener {
-                viewModel.reviewsClicked()
-            }
             toolbar.setNavigationClickListener {
                 popBack()
             }
 
-            movieDetail.imdbButton.setOnClickListener {
-                viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
-            }
+            with(movieDetail) {
+                imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
+                videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
+                castRecyclerView.adapter = CastAdapter(::onCastClicked)
 
-            movieDetail.facebookButton.setOnClickListener {
-                viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
-            }
+                recommendationRecyclerView.apply {
+                    adapter = PosterAdapter(::onMovieClicked)
+                    scrollEndListener {
+                        viewModel.getNewRecommendations()
+                    }
+                }
 
-            movieDetail.twitterButton.setOnClickListener {
-                viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
-            }
+                similarMoviesRecyclerView.apply {
+                    adapter = PosterAdapter(::onMovieClicked)
+                    scrollEndListener {
+                        viewModel.getNewSimilar()
+                    }
+                }
 
-            movieDetail.instagramButton.setOnClickListener {
-                viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
+                reviewsButton.setOnClickListener {
+                    viewModel.reviewsClicked()
+                }
+
+                imdbButton.setOnClickListener {
+                    viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
+                }
+
+                facebookButton.setOnClickListener {
+                    viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
+                }
+
+                twitterButton.setOnClickListener {
+                    viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
+                }
+
+                instagramButton.setOnClickListener {
+                    viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
+                }
             }
         }
 
         collect(viewModel.movieDetailViewState, ::onMovieDetailViewState)
         collect(viewModel.commonViewState, ::onCommonViewState)
-        collect(viewModel.commonViewEvent, ::onMovieDetailViewEvent)
+        collect(viewModel.commonViewEvent, ::onCommonViewEvent)
     }
 
     private fun onMovieClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
@@ -158,7 +162,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         navigate(MovieDetailFragmentDirections.actionMovieDetailToVideo(video.key))
     }
 
-    private fun onMovieDetailViewEvent(event: CommonViewEvent) {
+    private fun onCommonViewEvent(event: CommonViewEvent) {
         when (event) {
             is CommonViewEvent.ShowSnackbar -> {
                 Snackbar.make(viewBinding.root, getString(event.message), Snackbar.LENGTH_SHORT)
@@ -167,7 +171,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
             is CommonViewEvent.NavigateToReviews -> {
                 navigate(
                     MovieDetailFragmentDirections.actionReviewFragment(
-                        event.movieId,
+                        event.id,
                         MediaType.MOVIE
                     )
                 )
@@ -190,7 +194,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
                 )
             }
             is CommonViewEvent.ShowWatchedOrWatchLaterDialog -> {
-                showWatchedOrWatchLaterDialog(event.movieName)
+                showWatchedOrWatchLaterDialog(event.name)
             }
         }
     }

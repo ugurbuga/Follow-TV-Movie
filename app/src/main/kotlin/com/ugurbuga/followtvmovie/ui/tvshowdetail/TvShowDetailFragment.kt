@@ -14,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
-import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
@@ -27,6 +26,8 @@ import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
+import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewEvent
+import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewState
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
@@ -42,7 +43,7 @@ class TvShowDetailFragment :
 
     override fun viewModelClass() = TvShowDetailViewModel::class.java
 
-    val args: TvShowDetailFragmentArgs by navArgs()
+    private val args: TvShowDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,24 +69,7 @@ class TvShowDetailFragment :
 
     override fun onInitDataBinding() {
         with(viewBinding) {
-            imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            videoRecyclerView.adapter = VideoAdapter(::onVideoClicked)
-            castRecyclerView.adapter = CastAdapter(::onCastClicked)
             genreRecyclerView.adapter = GenreAdapter()
-
-            recommendationRecyclerView.apply {
-                adapter = PosterAdapter(::onTvShowClicked)
-                scrollEndListener {
-                    viewModel.getNewRecommendations()
-                }
-            }
-
-            similarTvShowsRecyclerView.apply {
-                adapter = PosterAdapter(::onTvShowClicked)
-                scrollEndListener {
-                    viewModel.getNewSimilarTvShows()
-                }
-            }
 
             imageView.setImageUrl(getImageUrl())
 
@@ -93,32 +77,54 @@ class TvShowDetailFragment :
                 viewModel.changeFavoriteState()
             }
 
-            reviewsButton.setOnClickListener {
-                viewModel.reviewsClicked()
-            }
             toolbar.setNavigationClickListener {
                 popBack()
             }
 
-            imdbButton.setOnClickListener {
-                viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
-            }
+            with(tvShowDetail) {
+                imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
+                videosRecyclerView.adapter = VideoAdapter(::onVideoClicked)
+                castRecyclerView.adapter = CastAdapter(::onCastClicked)
 
-            facebookButton.setOnClickListener {
-                viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
-            }
+                recommendationRecyclerView.apply {
+                    adapter = PosterAdapter(::onTvShowClicked)
+                    scrollEndListener {
+                        viewModel.getNewRecommendations()
+                    }
+                }
 
-            twitterButton.setOnClickListener {
-                viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
-            }
+                similarMoviesRecyclerView.apply {
+                    adapter = PosterAdapter(::onTvShowClicked)
+                    scrollEndListener {
+                        viewModel.getNewSimilar()
+                    }
+                }
 
-            instagramButton.setOnClickListener {
-                viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
+                reviewsButton.setOnClickListener {
+                    viewModel.reviewsClicked()
+                }
+
+                imdbButton.setOnClickListener {
+                    viewModel.imdbClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.IMDB))
+                }
+
+                facebookButton.setOnClickListener {
+                    viewModel.facebookClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.FACEBOOK))
+                }
+
+                twitterButton.setOnClickListener {
+                    viewModel.twitterClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.TWITTER))
+                }
+
+                instagramButton.setOnClickListener {
+                    viewModel.instagramClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.INSTAGRAM))
+                }
             }
         }
 
         collect(viewModel.tvShowDetailViewState, ::onTvShowDetailViewState)
-        collect(viewModel.tvShowDetailViewEvent, ::onTvShowDetailViewEvent)
+        collect(viewModel.commonViewState, ::onCommonViewState)
+        collect(viewModel.commonViewEvent, ::onCommonViewEvent)
     }
 
     private fun onTvShowClicked(poster: PosterItemUIModel, imageView: AppCompatImageView) {
@@ -155,39 +161,39 @@ class TvShowDetailFragment :
         navigate(TvShowDetailFragmentDirections.actionTvShowDetailToVideo(video.key))
     }
 
-    private fun onTvShowDetailViewEvent(event: TvShowDetailViewEvent) {
+    private fun onCommonViewEvent(event: CommonViewEvent) {
         when (event) {
-            is TvShowDetailViewEvent.ShowSnackbar -> {
+            is CommonViewEvent.ShowSnackbar -> {
                 Snackbar.make(viewBinding.root, getString(event.message), Snackbar.LENGTH_SHORT)
                     .show()
             }
-            is TvShowDetailViewEvent.NavigateToReviews -> {
+            is CommonViewEvent.NavigateToReviews -> {
                 navigate(
                     TvShowDetailFragmentDirections.actionReviewFragment(
-                        event.tvShowId,
+                        event.id,
                         MediaType.TV
                     )
                 )
             }
-            is TvShowDetailViewEvent.NavigateToImages -> {
+            is CommonViewEvent.NavigateToImages -> {
                 navigate(
                     TvShowDetailFragmentDirections.actionTvShowDetailToImage(
                         event.imageList.toTypedArray(), event.position
                     )
                 )
             }
-            is TvShowDetailViewEvent.NavigateToOtherApp -> {
+            is CommonViewEvent.NavigateToOtherApp -> {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.url)))
             }
-            is TvShowDetailViewEvent.NavigateToWebView -> {
+            is CommonViewEvent.NavigateToWebView -> {
                 navigate(
                     TvShowDetailFragmentDirections.actionTvShowDetailToWeb(
                         event.url
                     )
                 )
             }
-            is TvShowDetailViewEvent.ShowWatchedOrWatchLaterDialog -> {
-                showWatchedOrWatchLaterDialog(event.tvShowName)
+            is CommonViewEvent.ShowWatchedOrWatchLaterDialog -> {
+                showWatchedOrWatchLaterDialog(event.name)
             }
         }
     }
@@ -214,6 +220,10 @@ class TvShowDetailFragment :
         movieDetailViewState.tvShowDetail?.let {
             //deepLinkPush(it.id, it.title, it.releaseDate)
         }
+    }
+
+    private fun onCommonViewState(commonViewState: CommonViewState) {
+        viewBinding.commonViewState = commonViewState
     }
 
     private fun deepLinkPush(id: String, title: String, releaseDate: String) {

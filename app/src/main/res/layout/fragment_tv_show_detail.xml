@@ -8,6 +8,10 @@
         <variable
             name="viewState"
             type="com.ugurbuga.followtvmovie.ui.tvshowdetail.TvShowDetailViewState" />
+
+        <variable
+            name="commonViewState"
+            type="com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewState" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -171,187 +175,12 @@
                     app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                     tools:listitem="@layout/item_genre" />
 
-                <LinearLayout
+                <include
+                    android:id="@+id/tv_show_detail"
+                    commonViewState="@{commonViewState}"
+                    layout="@layout/view_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16" />
-
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.videos.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/videos" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/video_recycler_view"
-                    spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingStart="@{@dimen/padding_8}"
-                    spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.videos}"
-                    visible="@{viewState.videos.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_8"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_video" />
-
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.images.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/images" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/image_recycler_view"
-                    spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingStart="@{@dimen/padding_8}"
-                    spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.images}"
-                    visible="@{viewState.images.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_8"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_image" />
-
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.casts.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/cast" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/cast_recycler_view"
-                    spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingStart="@{@dimen/padding_8}"
-                    spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.casts}"
-                    visible="@{viewState.casts.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_8"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_cast" />
-
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.recommendation.posterList.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/recommendations" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recommendation_recycler_view"
-                    spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingStart="@{@dimen/padding_8}"
-                    spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.recommendation.posterList}"
-                    visible="@{viewState.recommendation.posterList.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_8"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_poster" />
-
-                <com.ugurbuga.followtvmovie.view.FTMTextView
-                    style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.similarTvShow.posterList.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:text="@string/similar_tv_shows" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/similar_tv_shows_recycler_view"
-                    spacePaddingBottom="@{@dimen/padding_8}"
-                    spacePaddingStart="@{@dimen/padding_8}"
-                    spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.similarTvShow.posterList}"
-                    visible="@{viewState.similarTvShow.posterList.size() > 0}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_8"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_poster" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
-                    android:layout_marginBottom="@dimen/margin_16">
-
-                    <com.ugurbuga.followtvmovie.view.FTMButton
-                        android:id="@+id/reviews_button"
-                        visible="@{viewState.tvShowDetail != null}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/reviews"
-                        app:cornerRadius="@dimen/radius_8"
-                        app:icon="@drawable/ic_review"/>
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imdb_button"
-                        visible="@{viewState.externalUrls.hasImdbId()}"
-                        android:layout_width="@dimen/width_30"
-                        android:layout_height="@dimen/height_30"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin_8"
-                        android:src="@drawable/imdb_logo"
-                        app:shapeAppearance="@style/RadiusShapeableImageView" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/facebook_button"
-                        visible="@{viewState.externalUrls.hasFacebookId()}"
-                        android:layout_width="@dimen/width_30"
-                        android:layout_height="@dimen/height_30"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin_8"
-                        android:src="@drawable/facebook_logo"
-                        app:shapeAppearance="@style/RadiusShapeableImageView" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/twitter_button"
-                        visible="@{viewState.externalUrls.hasTwitterId()}"
-                        android:layout_width="@dimen/width_30"
-                        android:layout_height="@dimen/height_30"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin_8"
-                        android:src="@drawable/twitter_logo"
-                        app:shapeAppearance="@style/RadiusShapeableImageView" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/instagram_button"
-                        visible="@{viewState.externalUrls.hasInstagramId()}"
-                        android:layout_width="@dimen/width_30"
-                        android:layout_height="@dimen/height_30"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin_8"
-                        android:src="@drawable/instagram_logo"
-                        app:shapeAppearance="@style/RadiusShapeableImageView" />
-                </LinearLayout>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
