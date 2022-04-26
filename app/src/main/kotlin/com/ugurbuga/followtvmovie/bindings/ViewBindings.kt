@@ -1,11 +1,10 @@
 package com.ugurbuga.followtvmovie.bindings
 
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 
-@set:BindingAdapter("visible")
-var View.visible: Boolean
-    get() = visibility == View.VISIBLE
-    set(value) {
-        visibility = if (value) View.VISIBLE else View.GONE
-    }
+@BindingAdapter("isVisible")
+fun isVisible(view: View, isVisible: Boolean) {
+    view.isVisible = isVisible
+}

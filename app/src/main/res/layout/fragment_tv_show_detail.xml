@@ -73,7 +73,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_vieww"
-            visible="@{viewState.tvShowDetail != null}"
+            isVisible="@{viewState.tvShowDetail != null}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -177,7 +177,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMButton
                     android:id="@+id/seasons_button"
-                    visible="@{viewState.hasSeason()}"
+                    isVisible="@{viewState.hasSeason()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"

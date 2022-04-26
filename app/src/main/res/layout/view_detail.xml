@@ -17,7 +17,7 @@
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             style="@style/FTMText.SemiBold.20.Primary"
-            visible="@{commonViewState.videos.size() > 0}"
+            isVisible="@{commonViewState.videos.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16"
@@ -29,7 +29,7 @@
             spacePaddingStart="@{@dimen/padding_8}"
             spacePaddingTop="@{@dimen/padding_8}"
             submitList="@{commonViewState.videos}"
-            visible="@{commonViewState.videos.size() > 0}"
+            isVisible="@{commonViewState.videos.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -41,7 +41,7 @@
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             style="@style/FTMText.SemiBold.20.Primary"
-            visible="@{commonViewState.images.size() > 0}"
+            isVisible="@{commonViewState.images.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16"
@@ -53,7 +53,7 @@
             spacePaddingStart="@{@dimen/padding_8}"
             spacePaddingTop="@{@dimen/padding_8}"
             submitList="@{commonViewState.images}"
-            visible="@{commonViewState.images.size() > 0}"
+            isVisible="@{commonViewState.images.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -65,7 +65,7 @@
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             style="@style/FTMText.SemiBold.20.Primary"
-            visible="@{commonViewState.casts.size() > 0}"
+            isVisible="@{commonViewState.casts.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16"
@@ -77,7 +77,7 @@
             spacePaddingStart="@{@dimen/padding_8}"
             spacePaddingTop="@{@dimen/padding_8}"
             submitList="@{commonViewState.casts}"
-            visible="@{commonViewState.casts.size() > 0}"
+            isVisible="@{commonViewState.casts.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -89,7 +89,7 @@
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             style="@style/FTMText.SemiBold.20.Primary"
-            visible="@{commonViewState.recommendation.posterList.size() > 0}"
+            isVisible="@{commonViewState.recommendation.posterList.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16"
@@ -101,7 +101,7 @@
             spacePaddingStart="@{@dimen/padding_8}"
             spacePaddingTop="@{@dimen/padding_8}"
             submitList="@{commonViewState.recommendation.posterList}"
-            visible="@{commonViewState.recommendation.posterList.size() > 0}"
+            isVisible="@{commonViewState.recommendation.posterList.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -113,7 +113,7 @@
 
         <com.ugurbuga.followtvmovie.view.FTMTextView
             style="@style/FTMText.SemiBold.20.Primary"
-            visible="@{commonViewState.similar.posterList.size() > 0}"
+            isVisible="@{commonViewState.similar.posterList.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_16"
@@ -125,7 +125,7 @@
             spacePaddingStart="@{@dimen/padding_8}"
             spacePaddingTop="@{@dimen/padding_8}"
             submitList="@{commonViewState.similar.posterList}"
-            visible="@{commonViewState.similar.posterList.size() > 0}"
+            isVisible="@{commonViewState.similar.posterList.size() > 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -151,7 +151,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imdb_button"
-                visible="@{commonViewState.externalUrls.hasImdbId()}"
+                isVisible="@{commonViewState.externalUrls.hasImdbId()}"
                 android:layout_width="@dimen/width_30"
                 android:layout_height="@dimen/height_30"
                 android:layout_gravity="center"
@@ -161,7 +161,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/facebook_button"
-                visible="@{commonViewState.externalUrls.hasFacebookId()}"
+                isVisible="@{commonViewState.externalUrls.hasFacebookId()}"
                 android:layout_width="@dimen/width_30"
                 android:layout_height="@dimen/height_30"
                 android:layout_gravity="center"
@@ -171,7 +171,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/twitter_button"
-                visible="@{commonViewState.externalUrls.hasTwitterId()}"
+                isVisible="@{commonViewState.externalUrls.hasTwitterId()}"
                 android:layout_width="@dimen/width_30"
                 android:layout_height="@dimen/height_30"
                 android:layout_gravity="center"
@@ -181,7 +181,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/instagram_button"
-                visible="@{commonViewState.externalUrls.hasInstagramId()}"
+                isVisible="@{commonViewState.externalUrls.hasInstagramId()}"
                 android:layout_width="@dimen/width_30"
                 android:layout_height="@dimen/height_30"
                 android:layout_gravity="center"

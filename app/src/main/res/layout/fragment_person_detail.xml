@@ -88,7 +88,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.casts.size() > 0}"
+                    isVisible="@{viewState.casts.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
@@ -100,7 +100,7 @@
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.casts}"
-                    visible="@{viewState.casts.size() > 0}"
+                    isVisible="@{viewState.casts.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
@@ -112,7 +112,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    visible="@{viewState.images.size() > 0}"
+                    isVisible="@{viewState.images.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
@@ -124,7 +124,7 @@
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
                     submitList="@{viewState.images}"
-                    visible="@{viewState.images.size() > 0}"
+                    isVisible="@{viewState.images.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"

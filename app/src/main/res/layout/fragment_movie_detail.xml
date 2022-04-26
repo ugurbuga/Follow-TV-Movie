@@ -73,7 +73,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_vieww"
-            visible="@{viewState.movieDetail != null}"
+            isVisible="@{viewState.movieDetail != null}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">

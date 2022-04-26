@@ -64,7 +64,7 @@
             tools:text="name" />
 
         <View
-            visible="@{!isFirst}"
+            isVisible="@{!isFirst}"
             android:layout_width="@dimen/width_4"
             android:layout_height="@dimen/height_0"
             android:layout_marginEnd="@dimen/margin_31"
@@ -74,7 +74,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            visible="@{!isLast}"
+            isVisible="@{!isLast}"
             android:layout_width="@dimen/width_4"
             android:layout_height="@dimen/height_0"
             android:layout_marginEnd="@dimen/margin_31"
