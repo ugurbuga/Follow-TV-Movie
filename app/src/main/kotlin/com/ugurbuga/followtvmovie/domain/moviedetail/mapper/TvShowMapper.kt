@@ -2,9 +2,9 @@ package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonResponse
+import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.SeasonResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
+import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import javax.inject.Inject
 

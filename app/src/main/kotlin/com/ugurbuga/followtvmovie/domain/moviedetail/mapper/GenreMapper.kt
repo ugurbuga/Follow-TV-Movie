@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreResponse
+import com.ugurbuga.followtvmovie.data.model.response.moviedetail.GenreResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.GenreUIModel
 import javax.inject.Inject
 

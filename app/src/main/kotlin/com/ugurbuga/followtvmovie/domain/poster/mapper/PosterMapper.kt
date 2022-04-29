@@ -3,12 +3,12 @@ package com.ugurbuga.followtvmovie.domain.poster.mapper
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterResponse
+import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
+import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterResponse
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
-import com.ugurbuga.followtvmovie.domain.search.SearchItemResponse
-import com.ugurbuga.followtvmovie.domain.search.SearchResponse
+import com.ugurbuga.followtvmovie.data.model.response.search.SearchItemResponse
+import com.ugurbuga.followtvmovie.data.model.response.search.SearchResponse
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import java.util.Calendar

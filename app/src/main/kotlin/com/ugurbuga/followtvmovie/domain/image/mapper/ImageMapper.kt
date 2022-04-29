@@ -2,9 +2,9 @@ package com.ugurbuga.followtvmovie.domain.image.mapper
 
 import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
-import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
+import com.ugurbuga.followtvmovie.data.model.response.image.ImageResponse
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
-import com.ugurbuga.followtvmovie.domain.image.model.PersonImageResponse
+import com.ugurbuga.followtvmovie.data.model.response.image.PersonImageResponse
 import javax.inject.Inject
 
 class ImageMapper @Inject constructor() {

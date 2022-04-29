@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.data.api.services
 
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
+import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
+import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

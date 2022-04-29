@@ -3,8 +3,8 @@ package com.ugurbuga.followtvmovie.repository.tvshow
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.TvShowService
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailResponse
+import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
+import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 

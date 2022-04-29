@@ -5,10 +5,10 @@ import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.CommonService
 import com.ugurbuga.followtvmovie.data.model.response.credit.CreditResponse
 import com.ugurbuga.followtvmovie.data.model.response.external.ExternalIdsResponse
-import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
-import com.ugurbuga.followtvmovie.domain.popular.movie.model.PosterGeneralResponse
+import com.ugurbuga.followtvmovie.data.model.response.image.ImageResponse
+import com.ugurbuga.followtvmovie.data.model.response.review.ReviewGeneralResponse
+import com.ugurbuga.followtvmovie.data.model.response.video.VideosResponse
+import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 

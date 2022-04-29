@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse
+import com.ugurbuga.followtvmovie.data.model.response.video.VideosResponse
 import javax.inject.Inject
 
 class VideoMapper @Inject constructor() {
