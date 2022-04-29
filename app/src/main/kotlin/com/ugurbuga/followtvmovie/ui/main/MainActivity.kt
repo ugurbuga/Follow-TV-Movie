@@ -10,8 +10,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVmDbActivity
-import com.ugurbuga.followtvmovie.data.preferences.FTMPreferenceManager
 import com.ugurbuga.followtvmovie.databinding.ActivityMainBinding
+import com.ugurbuga.followtvmovie.di.preferences.FTMPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

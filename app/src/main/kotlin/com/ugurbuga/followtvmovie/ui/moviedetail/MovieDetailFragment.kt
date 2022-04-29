@@ -19,7 +19,6 @@ import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
-import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -142,7 +141,8 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         return if (URLUtil.isValidUrl(args.imageUrl)) {
             args.imageUrl
         } else {
-            ApiConstants.BASE_IMAGE_URL + "/" + args.imageUrl
+            //FIXME:Toparlanacak
+           "https://image.tmdb.org/t/p/w500" + "/" + args.imageUrl
         }
     }
 

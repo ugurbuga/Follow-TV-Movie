@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.discover.adapter
 
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 
 data class PosterViewState(
     val popularMovieList: MutableList<ListAdapterItem> = arrayListOf(),

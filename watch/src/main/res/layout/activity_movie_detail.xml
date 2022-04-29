@@ -11,7 +11,7 @@
     </data>
 
     <ScrollView
-        isVisible="@{viewState.movieDetail != null}"
+        visible="@{viewState.movieDetail != null}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
@@ -46,7 +46,7 @@
 
             <LinearLayout
                 android:id="@+id/tile_view"
-                isVisible="@{viewState.movieDetail.isReleaseInFuture()}"
+                visible="@{viewState.movieDetail.isReleaseInFuture()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">

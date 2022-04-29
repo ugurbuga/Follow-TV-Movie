@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
+import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemImageBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 
 class ImageViewHolder(
     parent: ViewGroup, inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemImageBinding>(
+) : BaseViewHolder<ItemImageBinding>(
     binding = ItemImageBinding.inflate(inflater, parent, false)
 ) {
     fun bind(

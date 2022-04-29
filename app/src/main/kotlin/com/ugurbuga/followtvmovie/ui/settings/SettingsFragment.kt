@@ -4,8 +4,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
-import com.ugurbuga.followtvmovie.data.preferences.FTMPreferenceManager
 import com.ugurbuga.followtvmovie.databinding.FragmentSettingsBinding
+import com.ugurbuga.followtvmovie.di.preferences.FTMPreferenceManager
 import com.ugurbuga.followtvmovie.ui.main.MainActivity
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint

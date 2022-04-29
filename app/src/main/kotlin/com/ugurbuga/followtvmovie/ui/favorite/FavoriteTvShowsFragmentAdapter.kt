@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.Util
 import com.ugurbuga.followtvmovie.ui.tvshows.ContinuedTvShowListFragment
 import com.ugurbuga.followtvmovie.ui.tvshows.FinishedTvShowListFragment
 
@@ -34,7 +33,7 @@ class FavoriteTvShowsFragmentAdapter(
 
             1 -> context.getString(R.string.finished)
 
-            else -> Util.EMPTY_STRING
+            else -> com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
         }
     }
 }

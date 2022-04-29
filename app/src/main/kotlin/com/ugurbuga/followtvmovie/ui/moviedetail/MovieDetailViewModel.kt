@@ -3,7 +3,8 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
 import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteMovieUseCase
@@ -14,14 +15,12 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCa
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
-import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
@@ -77,11 +76,11 @@ class MovieDetailViewModel @Inject constructor(
             }
         } else {
             val isReleased =
-                Util.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
+                com.ugurbuga.followtvmovie.core.common.Util.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
             if (isReleased) {
                 _commonViewEvent.emitSuspending(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
-                        movieDetailViewState.value.movieDetail?.title ?: Util.EMPTY_STRING
+                        movieDetailViewState.value.movieDetail?.title ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
                     )
                 )
 

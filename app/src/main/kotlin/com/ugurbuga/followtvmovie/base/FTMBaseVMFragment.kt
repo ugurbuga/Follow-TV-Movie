@@ -10,7 +10,8 @@ import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
-import com.ugurbuga.followtvmovie.base.base.BaseVmDbFragment
+
+import com.ugurbuga.followtvmovie.core.base.BaseVmDbFragment
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
 

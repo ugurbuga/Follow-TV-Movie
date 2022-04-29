@@ -8,10 +8,8 @@ import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.common.Notifier
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoritesUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
@@ -19,12 +17,12 @@ import dagger.assisted.AssistedInject
 class MovieWorker @AssistedInject constructor(
     @Assisted appContext: Context,
     @Assisted workerParams: WorkerParameters,
-    private val favoritesDao: FavoritesDao
+    private val getFavoritesUseCase: GetFavoritesUseCase
 ) : Worker(appContext, workerParams) {
 
     override fun doWork(): Result {
 
-        val list = favoritesDao.getFutureMovies()
+      /*  val list = favoritesDao.getFutureMovies()
 
         list.forEach {
             Notifier.postNotification(
@@ -35,7 +33,7 @@ class MovieWorker @AssistedInject constructor(
                 context = applicationContext,
                 intent = getIntent(it.id, it.posterPath),
             )
-        }
+        }*/
 
         return Result.success()
     }

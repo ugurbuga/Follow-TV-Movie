@@ -4,15 +4,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetReviewsUseCase
-import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import javax.inject.Inject
 
 @HiltViewModel
 class ReviewViewModel @Inject constructor(
@@ -23,8 +22,8 @@ class ReviewViewModel @Inject constructor(
     private val _movieReviewViewState = MutableStateFlow(MovieReviewViewState())
     val movieReviewViewState: StateFlow<MovieReviewViewState> get() = _movieReviewViewState
 
-    private var id: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
-    private var mediaType: String = savedStateHandle[Argument.MEDIA_TYPE] ?: Util.EMPTY_STRING
+    private var id: String = savedStateHandle[Argument.ID] ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+    private var mediaType: String = savedStateHandle[Argument.MEDIA_TYPE] ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
 
     init {
         getReviews()

@@ -3,7 +3,8 @@ package com.ugurbuga.followtvmovie.ui.tvshowdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
 import com.ugurbuga.followtvmovie.domain.external.usecase.GetExternalUrlsUseCase
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteTvShowUseCase
@@ -14,16 +15,14 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetRecommendationsU
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.usecase.GetTvShowDetailUseCase
-import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewEvent
 import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
+import javax.inject.Inject
 
 @HiltViewModel
 class TvShowDetailViewModel @Inject constructor(
@@ -81,11 +80,11 @@ class TvShowDetailViewModel @Inject constructor(
             }
         } else {
             val isReleased =
-                Util.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
+                com.ugurbuga.followtvmovie.core.common.Util.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
             if (isReleased) {
                 _commonViewEvent.emitSuspending(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
-                        tvShowDetailViewState.value.tvShowDetail?.title ?: Util.EMPTY_STRING
+                        tvShowDetailViewState.value.tvShowDetail?.title ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
                     )
                 )
 

@@ -4,19 +4,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonCastsUseCase
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonDetailUseCase
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonImagesUseCase
-import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
 
 @HiltViewModel
 class PersonDetailViewModel @Inject constructor(
@@ -26,7 +21,7 @@ class PersonDetailViewModel @Inject constructor(
     private val getPersonCastsUseCase: GetPersonCastsUseCase
 ) : FTMBaseViewModel() {
 
-    private var personId: String = savedStateHandle[Argument.PERSON_ID] ?: Util.EMPTY_STRING
+    private var personId: String = savedStateHandle[Argument.PERSON_ID] ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
 
     private val _personDetailViewState = MutableStateFlow(PersonDetailViewState())
     val personDetailViewState: StateFlow<PersonDetailViewState> get() = _personDetailViewState

@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.ui.discover.adapter.EmptyViewHolder
@@ -14,7 +13,7 @@ import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterHolderType
 
 class SoonAdapter(
     private val onPosterClick: ((poster: PosterItemUIModel, imageView: AppCompatImageView) -> Unit)? = null,
-) : FTMBaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
+) : BaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }) {
 
     override fun onCreateViewHolder(
@@ -62,7 +61,7 @@ class SoonAdapter(
                 PosterHolderType.EMPTY
             }
             else -> {
-                Util.INVALID_INDEX
+                com.ugurbuga.followtvmovie.core.common.Util.INVALID_INDEX
             }
         }
     }
