@@ -3,8 +3,8 @@ package com.ugurbuga.followtvmovie.repository.common
 import com.ugurbuga.followtvmovie.base.FTMBaseRepository
 import com.ugurbuga.followtvmovie.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.CommonService
-import com.ugurbuga.followtvmovie.domain.credit.model.CreditResponse
-import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
+import com.ugurbuga.followtvmovie.data.model.response.credit.CreditResponse
+import com.ugurbuga.followtvmovie.data.model.response.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.image.model.ImageResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewGeneralResponse
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.video.VideosResponse

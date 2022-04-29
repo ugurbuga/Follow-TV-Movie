@@ -1,5 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.external.model
-
+package com.ugurbuga.followtvmovie.data.model.response.external
 
 import com.squareup.moshi.Json
 

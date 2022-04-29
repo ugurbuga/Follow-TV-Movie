@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.external.mapper
 
-import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsResponse
+import com.ugurbuga.followtvmovie.data.model.response.external.ExternalIdsResponse
 import com.ugurbuga.followtvmovie.domain.external.model.ExternalIdsUIModel
 import javax.inject.Inject
 
