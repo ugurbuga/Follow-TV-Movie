@@ -100,4 +100,37 @@ class PosterMapper @Inject constructor(
             isWatched = isWatched
         )
 
+    fun toPosterItemUIModelList(item: MutableList<PosterItemModel>): MutableList<PosterItemUIModel> {
+        return item.map {
+            toPosterItemUIModel(it)
+        }.toMutableList()
+    }
+
+    fun toPosterItemUIModel(item: PosterItemModel): PosterItemUIModel {
+        return PosterItemUIModel(
+            item.id,
+            item.name,
+            item.posterPath,
+            item.mediaType,
+            item.releaseDate,
+            item.releaseDateLong,
+            item.isWatched
+        )
+    }
+
+    fun toNullablePosterItemUIModel(item: PosterItemModel?): PosterItemUIModel? {
+        return item?.let {
+            PosterItemUIModel(
+                item.id,
+                item.name,
+                item.posterPath,
+                item.mediaType,
+                item.releaseDate,
+                item.releaseDateLong,
+                item.isWatched
+            )
+        } ?: run {
+            null
+        }
+    }
 }
