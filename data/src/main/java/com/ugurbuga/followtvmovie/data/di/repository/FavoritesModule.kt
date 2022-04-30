@@ -1,20 +1,16 @@
 package com.ugurbuga.followtvmovie.data.di.repository
 
-import com.ugurbuga.followtvmovie.data.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.data.repository.favorites.FavoritesRepository
 import com.ugurbuga.followtvmovie.data.repository.favorites.FavoritesRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object FavoritesModule {
+abstract class FavoritesModule {
 
-
-    @Provides
-    internal fun provideFavoriteRepository(favoritesDao: FavoritesDao): FavoritesRepository {
-        return FavoritesRepositoryImpl(favoritesDao)
-    }
+    @Binds
+    abstract fun provideFavoriteRepository(apiDataRepositoryImpl: FavoritesRepositoryImpl): FavoritesRepository
 }
