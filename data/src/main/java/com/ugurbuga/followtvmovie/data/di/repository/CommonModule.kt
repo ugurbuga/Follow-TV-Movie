@@ -1,27 +1,20 @@
 package com.ugurbuga.followtvmovie.data.di.repository
 
-import com.ugurbuga.followtvmovie.data.api.services.CommonService
 import com.ugurbuga.followtvmovie.data.repository.common.CommonRepository
 import com.ugurbuga.followtvmovie.data.repository.common.CommonRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import retrofit2.Retrofit
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object CommonModule {
-
-    @Provides
-    internal fun provideCommonService(retrofit: Retrofit): CommonService {
-        return retrofit.create(CommonService::class.java)
-    }
+abstract class CommonModule {
 
 
-    @Provides
-    internal fun provideCommonRepository(service: CommonService): CommonRepository {
-        return CommonRepositoryImpl(service)
-    }
+    @Binds
+    @ViewModelScoped
+    abstract fun bindApiRepository(apiDataRepositoryImpl: CommonRepositoryImpl): CommonRepository
 
 }

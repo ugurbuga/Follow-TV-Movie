@@ -8,6 +8,7 @@ import com.ugurbuga.followtvmovie.data.BuildConfig
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
 import com.ugurbuga.followtvmovie.data.api.interceptor.LanguageInterceptor
+import com.ugurbuga.followtvmovie.data.api.services.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -72,5 +73,36 @@ object NetworkModule {
     fun providerChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
         return ChuckerInterceptor.Builder(context = context).build()
     }
+
+    @Provides
+    @Singleton
+    internal fun provideCommonService(retrofit: Retrofit): CommonService {
+        return retrofit.create(CommonService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun providePersonService(retrofit: Retrofit): PersonService {
+        return retrofit.create(PersonService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideSearchService(retrofit: Retrofit): SearchService {
+        return retrofit.create(SearchService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideTvShowService(retrofit: Retrofit): TvShowService {
+        return retrofit.create(TvShowService::class.java)
+    }
+
 
 }
