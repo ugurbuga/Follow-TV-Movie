@@ -2,16 +2,19 @@ package com.ugurbuga.followtvmovie.core.base
 
 import com.ugurbuga.followtvmovie.core.BuildConfig
 import com.ugurbuga.followtvmovie.core.common.ApiState
-import kotlinx.coroutines.Dispatchers
+import com.ugurbuga.followtvmovie.core.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
 abstract class BaseRepository {
 
-
-     var dispatcher= Dispatchers.IO
+    @Inject
+    @IoDispatcher
+    lateinit var dispatcher: CoroutineDispatcher
 
     fun <T : Any> onApiCall(call: suspend () -> T): Flow<ApiState<T>> =
         flow {

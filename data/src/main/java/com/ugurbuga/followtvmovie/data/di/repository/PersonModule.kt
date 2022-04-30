@@ -1,27 +1,20 @@
 package com.ugurbuga.followtvmovie.data.di.repository
 
-import com.ugurbuga.followtvmovie.data.api.services.PersonService
 import com.ugurbuga.followtvmovie.data.repository.person.PersonRepository
 import com.ugurbuga.followtvmovie.data.repository.person.PersonRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import retrofit2.Retrofit
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object PersonModule {
+abstract class PersonModule {
 
 
-    @Provides
-    internal fun providePersonService(retrofit: Retrofit): PersonService {
-        return retrofit.create(PersonService::class.java)
-    }
+    @Binds
+    abstract fun providePersonRepository(apiDataRepositoryImpl: PersonRepositoryImpl): PersonRepository
 
-    @Provides
-    internal fun providePersonRepository(service: PersonService): PersonRepository {
-        return PersonRepositoryImpl(service)
-    }
+
 
 }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
-    private val movieService: MovieService
+    private val movieService: MovieService,
 ) :
     MovieRepository, BaseRepository() {
 
