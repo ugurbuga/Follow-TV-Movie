@@ -2,6 +2,7 @@ package com.ugurbuga.followtvmovie.core.extensions
 
 
 import com.ugurbuga.followtvmovie.core.common.ApiState
+import com.ugurbuga.followtvmovie.core.common.Status
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 
@@ -21,12 +22,12 @@ fun <T> Flow<ApiState<T>>.doOnError(action: suspend (Throwable) -> Unit): Flow<A
         return@transform emit(value)
     }
 
-fun <T> Flow<ApiState<T>>.doOnStatusChanged(action: suspend (com.ugurbuga.followtvmovie.core.common.Status) -> Unit): Flow<ApiState<T>> =
+fun <T> Flow<ApiState<T>>.doOnStatusChanged(action: suspend (Status) -> Unit): Flow<ApiState<T>> =
     transform { value ->
         when (value) {
-            is ApiState.Success -> action(com.ugurbuga.followtvmovie.core.common.Status.Success)
-            is ApiState.Error -> action(com.ugurbuga.followtvmovie.core.common.Status.Error(value.exception))
-            ApiState.Loading -> action(com.ugurbuga.followtvmovie.core.common.Status.Loading)
+            is ApiState.Success -> action(Status.Success)
+            is ApiState.Error -> action(Status.Error(value.exception))
+            ApiState.Loading -> action(Status.Loading)
         }
         return@transform emit(value)
     }

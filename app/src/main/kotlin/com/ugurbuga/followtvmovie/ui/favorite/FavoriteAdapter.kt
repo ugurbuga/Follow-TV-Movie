@@ -9,6 +9,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.core.common.CommonUtil
+import com.ugurbuga.followtvmovie.core.common.DisplayHelper
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
@@ -23,7 +24,7 @@ class FavoriteAdapter(
     contentsSame = { old, new -> old == new }) {
 
     private var imageHeight: Double? =
-        com.ugurbuga.followtvmovie.core.common.DisplayHelper.getHeightFromRatio(context, R.dimen.padding_48, 1.5, 2)
+        DisplayHelper.getHeightFromRatio(context, R.dimen.padding_48, 1.5, 2)
 
     override fun onCreateViewHolder(
         parent: ViewGroup, inflater: LayoutInflater, viewType: Int

@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
+import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Notifier
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
@@ -113,19 +114,19 @@ class TvShowDetailFragment :
                 }
 
                 imdbButton.setOnClickListener {
-                    viewModel.imdbClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.IMDB))
+                    viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
                 }
 
                 facebookButton.setOnClickListener {
-                    viewModel.facebookClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.FACEBOOK))
+                    viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
                 }
 
                 twitterButton.setOnClickListener {
-                    viewModel.twitterClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.TWITTER))
+                    viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
                 }
 
                 instagramButton.setOnClickListener {
-                    viewModel.instagramClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.INSTAGRAM))
+                    viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
                 }
             }
         }
