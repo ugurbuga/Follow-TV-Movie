@@ -3,6 +3,7 @@ package com.ugurbuga.followtvmovie.ui.tvshowdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.core.common.Util
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
@@ -19,10 +20,10 @@ import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewEvent
 import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class TvShowDetailViewModel @Inject constructor(
@@ -80,11 +81,11 @@ class TvShowDetailViewModel @Inject constructor(
             }
         } else {
             val isReleased =
-                com.ugurbuga.followtvmovie.core.common.Util.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
+                Util.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
             if (isReleased) {
                 _commonViewEvent.emitSuspending(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
-                        tvShowDetailViewState.value.tvShowDetail?.title ?: com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+                        tvShowDetailViewState.value.tvShowDetail?.title ?: Util.EMPTY_STRING
                     )
                 )
 
@@ -99,7 +100,13 @@ class TvShowDetailViewModel @Inject constructor(
         val message =
             if (isWatched) R.string.added_watched_list else R.string.added_watch_later_list
         tvShowDetailViewState.value.tvShowDetail?.let {
-            addFavoriteUseCase(AddFavoriteTvShowUseCase.AddFavoriteParams(it, isWatched))
+            addFavoriteUseCase(
+                AddFavoriteTvShowUseCase.AddFavoriteParams(
+                    MediaType.TV,
+                    it,
+                    isWatched
+                )
+            )
                 .doOnSuccess {
                     _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(message))
                 }.launchIn(viewModelScope)

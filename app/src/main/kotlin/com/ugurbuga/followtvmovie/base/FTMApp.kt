@@ -8,7 +8,7 @@ import androidx.work.*
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import com.ugurbuga.followtvmovie.worker.MovieWorker
 import dagger.hilt.android.HiltAndroidApp
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

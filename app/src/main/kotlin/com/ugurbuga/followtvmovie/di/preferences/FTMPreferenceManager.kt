@@ -14,7 +14,6 @@ class FTMPreferenceManager @Inject constructor(
 
     companion object {
         const val KEY_THEME = "theme"
-
     }
 
     override fun getPrefName() = "FTMPref"

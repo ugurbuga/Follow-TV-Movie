@@ -1,7 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.poster.mapper
 
 import com.ugurbuga.followtvmovie.core.common.Util
-import com.ugurbuga.followtvmovie.data.model.MediaType
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterResponse
@@ -12,7 +11,7 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIM
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
-import java.util.*
+import java.util.Calendar
 import javax.inject.Inject
 
 class PosterMapper @Inject constructor(
@@ -31,10 +30,10 @@ class PosterMapper @Inject constructor(
         )
     }
 
-    fun upcomingToPosterUIModel(response: PosterGeneralResponse): PosterUIModel {
+    fun upcomingToPosterUIModel(response: PosterGeneralResponse, mediaType: String): PosterUIModel {
         return PosterUIModel(
             page = response.page,
-            posterList = response.results.map { toPosterItemUIModel(it, MediaType.MOVIE) }
+            posterList = response.results.map { toPosterItemUIModel(it, mediaType) }
                 .filter { it.releaseDateLong > Calendar.getInstance().time.time }.toMutableList(),
             totalPages = response.totalPages,
         )
@@ -79,24 +78,26 @@ class PosterMapper @Inject constructor(
         )
     }
 
-    fun toPosterUIModel(movieDetail: MovieDetailUIModel, isWatched: Boolean) = PosterItemModel(
-        id = movieDetail.id,
-        name = movieDetail.title,
-        posterPath = movieDetail.posterPath,
-        mediaType = MediaType.MOVIE,
-        releaseDate = movieDetail.releaseDate,
-        releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
-        isWatched = isWatched
-    )
+    fun toPosterUIModel(movieDetail: MovieDetailUIModel, isWatched: Boolean, mediaType: String) =
+        PosterItemModel(
+            id = movieDetail.id,
+            name = movieDetail.title,
+            posterPath = movieDetail.posterPath,
+            mediaType = mediaType,
+            releaseDate = movieDetail.releaseDate,
+            releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
+            isWatched = isWatched
+        )
 
-    fun toPosterUIModel(movieDetail: TvShowDetailUIModel, isWatched: Boolean) = PosterItemModel(
-        id = movieDetail.id,
-        name = movieDetail.title,
-        posterPath = movieDetail.posterPath,
-        mediaType = MediaType.TV,
-        releaseDate = movieDetail.releaseDate,
-        releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
-        isWatched = isWatched
-    )
+    fun toPosterUIModel(movieDetail: TvShowDetailUIModel, isWatched: Boolean, mediaType: String) =
+        PosterItemModel(
+            id = movieDetail.id,
+            name = movieDetail.title,
+            posterPath = movieDetail.posterPath,
+            mediaType = mediaType,
+            releaseDate = movieDetail.releaseDate,
+            releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
+            isWatched = isWatched
+        )
 
 }

@@ -17,7 +17,7 @@ interface FavoritesRepository {
 
     fun getFavorite(mediaType: String, id: String): Flow<ApiState<PosterItemModel?>>
 
-    fun getSoonMovies(): Flow<ApiState<MutableList<PosterItemModel>>>
+    fun getSoonMovies(mediaType: String): Flow<ApiState<MutableList<PosterItemModel>>>
 
     suspend fun update(note: PosterItemModel)
 }

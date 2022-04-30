@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.common.Util
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
@@ -72,7 +73,7 @@ class FavoriteAdapter(
                 PosterHolderType.LOADING
             }
             else -> {
-                com.ugurbuga.followtvmovie.core.common.Util.INVALID_INDEX
+                Util.INVALID_INDEX
             }
         }
     }

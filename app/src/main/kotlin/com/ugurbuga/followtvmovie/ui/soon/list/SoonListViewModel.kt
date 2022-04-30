@@ -7,11 +7,12 @@ import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSoonMoviesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class SoonListViewModel @Inject constructor(
@@ -24,7 +25,7 @@ class SoonListViewModel @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     fun getSoonMovies() {
-        getSoonMoviesUseCase(com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING)
+        getSoonMoviesUseCase(GetSoonMoviesUseCase.SoonMovies(MediaType.MOVIE))
             .doOnSuccess {
                 setList(it as ArrayList<ListAdapterItem>)
             }.launchIn(viewModelScope)

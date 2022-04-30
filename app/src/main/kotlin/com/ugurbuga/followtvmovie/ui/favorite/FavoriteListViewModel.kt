@@ -4,16 +4,17 @@ import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.common.Util
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoritesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteListViewModel @Inject constructor(
@@ -25,9 +26,9 @@ class FavoriteListViewModel @Inject constructor(
     val favoriteViewState: StateFlow<FavoriteViewState>
         get() = _favoriteViewState
 
-    var searchQuery: String = com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
-    private var mediaType: String = com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
-    private var favoriteListType: String = com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+    var searchQuery: String = Util.EMPTY_STRING
+    private var mediaType: String = Util.EMPTY_STRING
+    private var favoriteListType: String = Util.EMPTY_STRING
 
     fun setFavoriteListType(mediaType: String, favoriteListType: String) {
         this.mediaType = mediaType
@@ -57,7 +58,7 @@ class FavoriteListViewModel @Inject constructor(
             R.string.empty_continued_tv_show_list
 
         } else {
-            com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+            Util.EMPTY_STRING
         }
 
     }

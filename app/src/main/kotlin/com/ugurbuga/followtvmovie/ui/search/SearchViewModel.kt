@@ -3,6 +3,7 @@ package com.ugurbuga.followtvmovie.ui.search
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
+import com.ugurbuga.followtvmovie.core.common.Util
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
@@ -28,7 +29,7 @@ class SearchViewModel @Inject constructor(
 
     var isCanLoadNewItem = false
     var currentPage = 1
-    private var currentText = com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+    private var currentText = Util.EMPTY_STRING
 
     fun onTextChanged(text: CharSequence?) {
         currentPage = 1

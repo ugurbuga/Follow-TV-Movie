@@ -12,7 +12,7 @@ fun Any.getString(context: Context): String {
             context.getString(this)
         }
         else -> {
-            com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+            Util.EMPTY_STRING
         }
     }
 }

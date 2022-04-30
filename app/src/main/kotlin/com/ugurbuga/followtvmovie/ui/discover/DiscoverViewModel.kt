@@ -12,10 +12,10 @@ import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
@@ -45,7 +45,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularMovies() {
         popularMoviePage++
         addLoadingPopularMovie()
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(popularMoviePage))
+        popularMovieUseCase(
+            PopularMovieUseCase.PopularMovieParams(
+                MediaType.MOVIE,
+                popularMoviePage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
@@ -89,7 +94,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getUpcomingMovies() {
         upComingMoviePage++
         addLoadingUpcomingMovie()
-        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(upComingMoviePage))
+        upcomingMovieUseCase(
+            UpcomingMovieUseCase.UpcomingMovieParams(
+                MediaType.MOVIE,
+                upComingMoviePage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
@@ -136,7 +146,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularTvShows() {
         popularTvShowPage++
         addLoadingPopularTvShow()
-        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage))
+        popularTvShowUseCase(
+            PopularTvShowUseCase.PopularTvShowParams(
+                MediaType.TV,
+                popularTvShowPage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false

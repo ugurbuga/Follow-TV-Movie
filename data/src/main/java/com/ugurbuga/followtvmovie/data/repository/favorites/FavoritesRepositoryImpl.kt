@@ -4,8 +4,8 @@ import com.ugurbuga.followtvmovie.core.base.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 
 class FavoritesRepositoryImpl @Inject constructor(
@@ -32,8 +32,8 @@ class FavoritesRepositoryImpl @Inject constructor(
         return onRoomFlowCall(favoritesDao.getFavorite(mediaType, id))
     }
 
-    override fun getSoonMovies(): Flow<ApiState<MutableList<PosterItemModel>>> {
-        return onRoomFlowCall(favoritesDao.getSoonMovies())
+    override fun getSoonMovies(mediaType: String): Flow<ApiState<MutableList<PosterItemModel>>> {
+        return onRoomFlowCall(favoritesDao.getSoonMovies(mediaType))
     }
 
     override suspend fun update(note: PosterItemModel) {

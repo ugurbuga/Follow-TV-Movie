@@ -9,9 +9,15 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.Argument
+import com.ugurbuga.followtvmovie.common.Notifier
+import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoritesUseCase
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.launchIn
 
 @HiltWorker
 class MovieWorker @AssistedInject constructor(
@@ -22,18 +28,23 @@ class MovieWorker @AssistedInject constructor(
 
     override fun doWork(): Result {
 
-      /*  val list = favoritesDao.getFutureMovies()
-
-        list.forEach {
-            Notifier.postNotification(
-                id = it.id.toInt(),
-                title = it.name,
-                imageUrl = it.posterPath,
-                content = Util.getDateString(it.releaseDateLong),
-                context = applicationContext,
-                intent = getIntent(it.id, it.posterPath),
+        getFavoritesUseCase(
+            GetFavoritesUseCase.GetFavoriteParams(
+                MediaType.MOVIE,
+                false
             )
-        }*/
+        ).doOnSuccess {
+            it.forEach {
+                Notifier.postNotification(
+                    id = it.id.toInt(),
+                    title = it.name,
+                    imageUrl = it.posterPath,
+                    content = Util.getDateString(it.releaseDateLong),
+                    context = applicationContext,
+                    intent = getIntent(it.id, it.posterPath),
+                )
+            }
+        }.launchIn(GlobalScope)
 
         return Result.success()
     }

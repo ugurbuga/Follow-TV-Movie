@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.core.common.Util
 import com.ugurbuga.followtvmovie.ui.movies.WatchLaterMovieListFragment
 import com.ugurbuga.followtvmovie.ui.movies.WatchedMovieListFragment
 
@@ -33,7 +34,7 @@ class FavoriteMoviesFragmentAdapter(
 
             1 -> context.getString(R.string.watched)
 
-            else -> com.ugurbuga.followtvmovie.core.common.Util.EMPTY_STRING
+            else -> Util.EMPTY_STRING
         }
     }
 }

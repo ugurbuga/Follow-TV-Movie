@@ -1,10 +1,13 @@
 package com.ugurbuga.followtvmovie.data.dao
 
-import androidx.room.*
-import com.ugurbuga.followtvmovie.data.model.MediaType
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
+import java.util.Calendar
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 
 @Dao
 interface FavoritesDao {
@@ -24,16 +27,9 @@ interface FavoritesDao {
     @Update
     suspend fun update(note: PosterItemModel)
 
-    @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong DESC")
-    fun getFutureMovies(
-        mediaType: String = MediaType.MOVIE,
-        isWatched: Boolean = false,
-        date: Long = Calendar.getInstance().time.time
-    ): MutableList<PosterItemModel>
-
     @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong ASC")
     fun getSoonMovies(
-        mediaType: String = MediaType.MOVIE,
+        mediaType: String,
         isWatched: Boolean = false,
         date: Long = Calendar.getInstance().time.time
     ): Flow<MutableList<PosterItemModel>>
