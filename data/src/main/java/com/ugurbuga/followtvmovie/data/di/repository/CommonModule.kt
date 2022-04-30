@@ -18,6 +18,7 @@ object CommonModule {
         return retrofit.create(CommonService::class.java)
     }
 
+
     @Provides
     internal fun provideCommonRepository(service: CommonService): CommonRepository {
         return CommonRepositoryImpl(service)

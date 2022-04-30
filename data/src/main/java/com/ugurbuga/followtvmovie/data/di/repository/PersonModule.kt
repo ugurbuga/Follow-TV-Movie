@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 @InstallIn(ViewModelComponent::class)
 object PersonModule {
 
+
     @Provides
     internal fun providePersonService(retrofit: Retrofit): PersonService {
         return retrofit.create(PersonService::class.java)
