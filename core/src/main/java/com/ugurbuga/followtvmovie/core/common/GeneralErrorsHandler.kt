@@ -1,9 +1,10 @@
 package com.ugurbuga.followtvmovie.core.common
 
-import retrofit2.HttpException
+import com.ugurbuga.followtvmovie.core.R
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import retrofit2.HttpException
 
 class GeneralErrorsHandler(
     private var onErrorMessage: ((Any, Int) -> Unit?)? = null,
@@ -14,7 +15,7 @@ class GeneralErrorsHandler(
 
     init {
         if (isNetworkError(throwable)) {
-            onErrorMessage?.invoke("R.string.generic_error_message", 400)
+            onErrorMessage?.invoke(R.string.generic_error_message, 400)
         } else if (throwable is HttpException) {
             errorBody = ErrorBody.parseError(throwable.response())
             if (errorBody != null) {
@@ -40,7 +41,7 @@ class GeneralErrorsHandler(
 
             errorMessage?.let {
                 onErrorMessage?.invoke(it, errorBody.code)
-            } ?: run { onErrorMessage?.invoke("R.string.generic_error_message", errorBody.code) }
+            } ?: run { onErrorMessage?.invoke(R.string.generic_error_message, errorBody.code) }
         }
     }
 

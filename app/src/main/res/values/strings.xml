@@ -2,7 +2,6 @@
 
     <!-- General -->
     <string name="app_name">Follow Tv / Movie</string>
-    <string name="generic_error_message">General Error Message</string>
     <string name="warning">Warning</string>
     <string name="ok">OK</string>
     <string name="default_channel">Default Channel</string>
