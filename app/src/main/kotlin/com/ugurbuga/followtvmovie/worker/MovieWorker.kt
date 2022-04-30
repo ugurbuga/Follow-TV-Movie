@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.core.os.bundleOf
 import androidx.hilt.work.HiltWorker
 import androidx.navigation.NavDeepLinkBuilder
-import androidx.work.Worker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.Argument
@@ -24,9 +24,9 @@ class MovieWorker @AssistedInject constructor(
     @Assisted appContext: Context,
     @Assisted workerParams: WorkerParameters,
     private val getFavoritesUseCase: GetFavoritesUseCase
-) : Worker(appContext, workerParams) {
+) : CoroutineWorker(appContext, workerParams) {
 
-    override fun doWork(): Result {
+    override suspend fun doWork(): Result {
 
         getFavoritesUseCase(
             GetFavoritesUseCase.GetFavoriteParams(
