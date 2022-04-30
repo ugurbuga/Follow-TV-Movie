@@ -22,6 +22,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         flavorDimensions "default"
+        buildConfigField "String", "API_IMAGE_URL", "$API_IMAGE_URL"
     }
 
     signingConfigs {
@@ -67,13 +68,7 @@ android {
 
     productFlavors {
         dev {
-            buildConfigField "String", "API_KEY", "$API_KEY"
-            buildConfigField "String", "API_URL", "$API_URL"
             applicationIdSuffix '.dev'
-        }
-        prod {
-            buildConfigField "String", "API_KEY", "$API_KEY"
-            buildConfigField "String", "API_URL", "$API_URL"
         }
     }
 }
@@ -99,14 +94,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-
     implementation 'com.akexorcist:localization:1.2.11'
 
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     kapt 'com.github.bumptech.glide:compiler:4.13.0'
 
     implementation "com.facebook.shimmer:shimmer:0.5.0"
-
 
 
     implementation "com.airbnb.android:lottie:4.2.2"

@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.data.api
 
+import com.ugurbuga.followtvmovie.data.BuildConfig
+
 
 object ApiConstants {
     const val CONNECT_TIMEOUT = 20L
@@ -8,7 +10,7 @@ object ApiConstants {
     const val API_KEY = "api_key"
     const val LANGUAGE = "language"
 
-    const val BASE_URL = "https://api.themoviedb.org/3/"
-    const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+    const val BASE_URL = BuildConfig.API_URL
+    const val BASE_IMAGE_URL = BuildConfig.API_IMAGE_URL
 
 }

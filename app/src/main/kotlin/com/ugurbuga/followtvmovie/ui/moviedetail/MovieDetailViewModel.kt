@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.ui.moviedetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.common.AppUtil
+import com.ugurbuga.followtvmovie.common.FTMUtil
 import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
@@ -78,7 +78,7 @@ class MovieDetailViewModel @Inject constructor(
             }
         } else {
             val isReleased =
-                AppUtil.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
+                FTMUtil.isReleased(movieDetailViewState.value.movieDetail?.releaseDateLong)
             if (isReleased) {
                 _commonViewEvent.emitSuspending(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(

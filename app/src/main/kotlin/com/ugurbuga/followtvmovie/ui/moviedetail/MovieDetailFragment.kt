@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
+import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
@@ -141,8 +142,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         return if (URLUtil.isValidUrl(args.imageUrl)) {
             args.imageUrl
         } else {
-            //FIXME:Toparlanacak
-           "https://image.tmdb.org/t/p/w500" + "/" + args.imageUrl
+           BuildConfig.API_IMAGE_URL + "/" + args.imageUrl
         }
     }
 

@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.common
 
 import java.util.Calendar
 
-object AppUtil {
+object FTMUtil {
 
     fun isReleased(releaseDate: Long?): Boolean {
         return if (releaseDate != null) {
