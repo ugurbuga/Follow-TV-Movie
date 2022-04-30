@@ -3,28 +3,27 @@ package com.ugurbuga.followtvmovie.base
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
-import androidx.work.BackoffPolicy
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequest
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.*
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import com.ugurbuga.followtvmovie.worker.MovieWorker
 import dagger.hilt.android.HiltAndroidApp
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 
 @HiltAndroidApp
-class FTMApp : Application() {
+class FTMApp : Application(), Configuration.Provider {
 
-   /* @Inject
+    @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
     override fun getWorkManagerConfiguration() =
         Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
-*/
+
     private val localizationDelegate = LocalizationApplicationDelegate()
 
     override fun attachBaseContext(base: Context) {
@@ -68,13 +67,13 @@ class FTMApp : Application() {
                 )
                 .build()
 
-      //  val mWorkManager = WorkManager.getInstance(this)
+       val mWorkManager = WorkManager.getInstance(this)
 
-  /*      mWorkManager.enqueueUniquePeriodicWork(
+        mWorkManager.enqueueUniquePeriodicWork(
             MovieWorker.MOVIE_WORKER,
             ExistingPeriodicWorkPolicy.KEEP,
             periodicMovieWork
-        )*/
+        )
     }
 
 
