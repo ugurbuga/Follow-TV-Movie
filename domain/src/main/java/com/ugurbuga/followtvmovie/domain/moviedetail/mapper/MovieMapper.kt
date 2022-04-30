@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.data.model.response.moviedetail.MovieDetailResponse
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
@@ -20,7 +20,7 @@ class MovieMapper @Inject constructor(
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             releaseDate = response.releaseDate,
-            releaseDateLong = Util.getDateLong(response.releaseDate),
+            releaseDateLong = CommonUtil.getDateLong(response.releaseDate),
             status = response.status,
             title = response.title,
             voteAverage = response.voteAverage,

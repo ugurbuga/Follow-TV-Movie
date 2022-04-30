@@ -4,12 +4,11 @@ import android.content.Context
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 
-object Util {
+object CommonUtil {
 
     const val EMPTY_STRING = ""
     const val INVALID_INDEX = -1
@@ -37,13 +36,5 @@ object Util {
         val sdf = SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
 
         return sdf.format(Date(millisecond)).toString()
-    }
-
-    fun isReleased(releaseDate: Long?): Boolean {
-        return if (releaseDate != null) {
-            Calendar.getInstance().time.time > releaseDate
-        } else {
-            false
-        }
     }
 }

@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.mapper
 
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.SeasonResponse
 import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
@@ -21,8 +21,8 @@ class TvShowMapper @Inject constructor(
             id = response.id,
             overview = response.overview,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
-            releaseDate = response.firstAirDate ?: Util.EMPTY_STRING,
-            releaseDateLong = Util.getDateLong(response.firstAirDate),
+            releaseDate = response.firstAirDate ?: CommonUtil.EMPTY_STRING,
+            releaseDateLong = CommonUtil.getDateLong(response.firstAirDate),
             status = response.status,
             title = response.name,
             voteAverage = response.voteAverage,

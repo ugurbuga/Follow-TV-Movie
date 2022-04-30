@@ -6,7 +6,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.ui.discover.adapter.EmptyViewHolder
@@ -62,7 +62,7 @@ class SoonAdapter(
                 PosterHolderType.EMPTY
             }
             else -> {
-                Util.INVALID_INDEX
+                CommonUtil.INVALID_INDEX
             }
         }
     }

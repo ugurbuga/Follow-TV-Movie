@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonCastsUseCase
@@ -26,7 +26,7 @@ class PersonDetailViewModel @Inject constructor(
     private val getPersonCastsUseCase: GetPersonCastsUseCase
 ) : FTMBaseViewModel() {
 
-    private var personId: String = savedStateHandle[Argument.PERSON_ID] ?: Util.EMPTY_STRING
+    private var personId: String = savedStateHandle[Argument.PERSON_ID] ?: CommonUtil.EMPTY_STRING
 
     private val _personDetailViewState = MutableStateFlow(PersonDetailViewState())
     val personDetailViewState: StateFlow<PersonDetailViewState> get() = _personDetailViewState

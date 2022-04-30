@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.image.mapper
 
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.model.response.image.ImageResponse
 import com.ugurbuga.followtvmovie.data.model.response.image.PersonImageResponse
@@ -14,7 +14,7 @@ class ImageMapper @Inject constructor() {
             return if (!path.isNullOrBlank()) {
                 ApiConstants.BASE_IMAGE_URL + path
             } else {
-                Util.EMPTY_STRING
+                CommonUtil.EMPTY_STRING
             }
         }
     }
@@ -59,9 +59,9 @@ class ImageMapper @Inject constructor() {
 
 
     fun getPosterUrl(
-        posterPath: String? = Util.EMPTY_STRING,
-        backdropPath: String? = Util.EMPTY_STRING,
-        profilePath: String? = Util.EMPTY_STRING
+        posterPath: String? = CommonUtil.EMPTY_STRING,
+        backdropPath: String? = CommonUtil.EMPTY_STRING,
+        profilePath: String? = CommonUtil.EMPTY_STRING
     ): String {
 
         return if (!posterPath.isNullOrBlank()) {
@@ -74,7 +74,7 @@ class ImageMapper @Inject constructor() {
             ApiConstants.BASE_IMAGE_URL + profilePath
 
         } else {
-            Util.EMPTY_STRING
+            CommonUtil.EMPTY_STRING
         }
     }
 

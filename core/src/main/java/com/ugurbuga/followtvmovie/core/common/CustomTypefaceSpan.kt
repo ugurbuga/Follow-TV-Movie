@@ -5,7 +5,7 @@ import android.graphics.Typeface
 import android.text.TextPaint
 import android.text.style.TypefaceSpan
 
-class CustomTypefaceSpan(private val newType: Typeface, family: String? = Util.EMPTY_STRING) :
+class CustomTypefaceSpan(private val newType: Typeface, family: String? = CommonUtil.EMPTY_STRING) :
     TypefaceSpan(family) {
     override fun updateDrawState(ds: TextPaint) {
         applyCustomTypeFace(ds, newType)

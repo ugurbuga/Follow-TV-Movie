@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetReviewsUseCase
@@ -23,8 +23,8 @@ class ReviewViewModel @Inject constructor(
     private val _movieReviewViewState = MutableStateFlow(MovieReviewViewState())
     val movieReviewViewState: StateFlow<MovieReviewViewState> get() = _movieReviewViewState
 
-    private var id: String = savedStateHandle[Argument.ID] ?: Util.EMPTY_STRING
-    private var mediaType: String = savedStateHandle[Argument.MEDIA_TYPE] ?: Util.EMPTY_STRING
+    private var id: String = savedStateHandle[Argument.ID] ?: CommonUtil.EMPTY_STRING
+    private var mediaType: String = savedStateHandle[Argument.MEDIA_TYPE] ?: CommonUtil.EMPTY_STRING
 
     init {
         getReviews()

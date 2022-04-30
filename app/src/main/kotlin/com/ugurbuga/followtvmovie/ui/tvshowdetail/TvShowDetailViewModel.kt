@@ -3,7 +3,8 @@ package com.ugurbuga.followtvmovie.ui.tvshowdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.common.AppUtil
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
@@ -81,11 +82,11 @@ class TvShowDetailViewModel @Inject constructor(
             }
         } else {
             val isReleased =
-                Util.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
+                AppUtil.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
             if (isReleased) {
                 _commonViewEvent.emitSuspending(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
-                        tvShowDetailViewState.value.tvShowDetail?.title ?: Util.EMPTY_STRING
+                        tvShowDetailViewState.value.tvShowDetail?.title ?: CommonUtil.EMPTY_STRING
                     )
                 )
 

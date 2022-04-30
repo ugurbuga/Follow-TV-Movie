@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.domain.poster.mapper
 
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterGeneralResponse
 import com.ugurbuga.followtvmovie.data.model.response.popularmovie.PosterResponse
@@ -51,30 +51,30 @@ class PosterMapper @Inject constructor(
         response: PosterResponse,
         mediaType: String
     ): PosterItemUIModel {
-        val releaseDate = response.releaseDate ?: response.firstAirDate ?: Util.EMPTY_STRING
+        val releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING
 
         return PosterItemUIModel(
             id = response.id,
-            name = response.title ?: response.name ?: Util.EMPTY_STRING,
+            name = response.title ?: response.name ?: CommonUtil.EMPTY_STRING,
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             mediaType = mediaType,
             releaseDate = releaseDate,
-            releaseDateLong = Util.getDateLong(releaseDate)
+            releaseDateLong = CommonUtil.getDateLong(releaseDate)
         )
     }
 
     private fun toPosterItemUIModel(response: SearchItemResponse): PosterItemUIModel {
         return PosterItemUIModel(
             id = response.id,
-            name = response.name ?: response.title ?: Util.EMPTY_STRING,
+            name = response.name ?: response.title ?: CommonUtil.EMPTY_STRING,
             posterPath = imageMapper.getPosterUrl(
                 response.posterPath,
                 response.backdropPath,
                 response.profilePath
             ),
             mediaType = response.mediaType,
-            releaseDate = response.releaseDate ?: response.firstAirDate ?: Util.EMPTY_STRING,
-            releaseDateLong = Util.getDateLong(response.releaseDate ?: response.firstAirDate)
+            releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING,
+            releaseDateLong = CommonUtil.getDateLong(response.releaseDate ?: response.firstAirDate)
         )
     }
 
@@ -85,7 +85,7 @@ class PosterMapper @Inject constructor(
             posterPath = movieDetail.posterPath,
             mediaType = mediaType,
             releaseDate = movieDetail.releaseDate,
-            releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
+            releaseDateLong = CommonUtil.getDateLong(movieDetail.releaseDate),
             isWatched = isWatched
         )
 
@@ -96,7 +96,7 @@ class PosterMapper @Inject constructor(
             posterPath = movieDetail.posterPath,
             mediaType = mediaType,
             releaseDate = movieDetail.releaseDate,
-            releaseDateLong = Util.getDateLong(movieDetail.releaseDate),
+            releaseDateLong = CommonUtil.getDateLong(movieDetail.releaseDate),
             isWatched = isWatched
         )
 

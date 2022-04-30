@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.core.extensions
 
 import android.content.Context
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 
 fun Any.getString(context: Context): String {
     return when (this) {
@@ -12,7 +12,7 @@ fun Any.getString(context: Context): String {
             context.getString(this)
         }
         else -> {
-            Util.EMPTY_STRING
+            CommonUtil.EMPTY_STRING
         }
     }
 }

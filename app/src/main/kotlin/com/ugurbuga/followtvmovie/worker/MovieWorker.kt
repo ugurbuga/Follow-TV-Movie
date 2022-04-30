@@ -10,7 +10,7 @@ import androidx.work.WorkerParameters
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
-import com.ugurbuga.followtvmovie.core.common.Util
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoritesUseCase
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
@@ -39,7 +39,7 @@ class MovieWorker @AssistedInject constructor(
                     id = it.id.toInt(),
                     title = it.name,
                     imageUrl = it.posterPath,
-                    content = Util.getDateString(it.releaseDateLong),
+                    content = CommonUtil.getDateString(it.releaseDateLong),
                     context = applicationContext,
                     intent = getIntent(it.id, it.posterPath),
                 )
