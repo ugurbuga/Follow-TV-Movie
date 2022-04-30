@@ -2,14 +2,14 @@ package com.ugurbuga.followtvmovie.ui.seasons
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
+import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemSeasonBinding
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
 
 class SeasonViewHolder(
     parent: ViewGroup, inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemSeasonBinding>(
+) : BaseViewHolder<ItemSeasonBinding>(
     binding = ItemSeasonBinding.inflate(inflater, parent, false)
 ) {
     fun bind(

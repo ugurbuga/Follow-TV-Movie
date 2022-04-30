@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.di
 
-import com.ugurbuga.followtvmovie.data.preferences.FTMPreferenceManager
-import com.ugurbuga.followtvmovie.data.preferences.Preferences
+import com.ugurbuga.followtvmovie.di.preferences.FTMPreferenceManager
+import com.ugurbuga.followtvmovie.di.preferences.Preferences
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

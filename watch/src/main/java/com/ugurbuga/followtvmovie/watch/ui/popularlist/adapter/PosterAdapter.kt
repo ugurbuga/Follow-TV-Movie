@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.watch.ui.popularlist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ugurbuga.followtvmovie.watch.base.FTMBaseListAdapter
+import com.ugurbuga.followtvmovie.watch.base.BaseListAdapter
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.PosterHolderType
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
@@ -12,7 +12,7 @@ import com.ugurbuga.followtvmovie.watch.util.Util
 
 class PosterAdapter(
     private val onPosterClick: ((poster: MovieResponse) -> Unit)? = null,
-) : FTMBaseListAdapter<ListAdapterItem>(
+) : BaseListAdapter<ListAdapterItem>(
     itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }
 ) {

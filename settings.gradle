@@ -17,3 +17,6 @@ dependencyResolutionManagement {
 rootProject.name = "Follow Tv Movie"
 include ':app'
 include ':watch'
+include ':data'
+include ':domain'
+include ':core'

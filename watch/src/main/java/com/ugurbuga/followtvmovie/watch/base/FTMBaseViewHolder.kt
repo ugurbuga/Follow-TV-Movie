@@ -9,6 +9,6 @@ import androidx.viewbinding.ViewBinding
  * @param binding View data binding generated class instance.
  * @see RecyclerView.ViewHolder
  */
-abstract class FTMBaseViewHolder<T : ViewBinding>(
+abstract class BaseViewHolder<T : ViewBinding>(
     val binding: T
 ) : RecyclerView.ViewHolder(binding.root)

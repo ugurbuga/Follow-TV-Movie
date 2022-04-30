@@ -3,13 +3,13 @@ package com.ugurbuga.followtvmovie.ui.seasons
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
 
 class SeasonAdapter(
     private val onSeasonClicked: ((season: SeasonUIModel) -> Unit)? = null,
-) : FTMBaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
+) : BaseListAdapter<ListAdapterItem>(itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }) {
 
     override fun onCreateViewHolder(

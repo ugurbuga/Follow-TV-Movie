@@ -16,7 +16,6 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.Notifier
-import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -150,7 +149,8 @@ class TvShowDetailFragment :
         return if (URLUtil.isValidUrl(args.imageUrl)) {
             args.imageUrl
         } else {
-            ApiConstants.BASE_IMAGE_URL + "/" + args.imageUrl
+            //FIXME:Duzeltilicek
+            "https://image.tmdb.org/t/p/w500" + "/" + args.imageUrl
         }
     }
 

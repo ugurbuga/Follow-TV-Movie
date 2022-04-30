@@ -3,11 +3,11 @@ package com.ugurbuga.followtvmovie.ui.moviedetail.review
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.review.ReviewUIModel
 
-class ReviewAdapter : FTMBaseListAdapter<ListAdapterItem>(
+class ReviewAdapter : BaseListAdapter<ListAdapterItem>(
     itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }
 ) {

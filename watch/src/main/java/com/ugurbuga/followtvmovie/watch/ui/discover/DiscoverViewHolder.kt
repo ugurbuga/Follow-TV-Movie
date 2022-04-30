@@ -2,14 +2,14 @@ package com.ugurbuga.followtvmovie.watch.ui.discover
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.ugurbuga.followtvmovie.watch.base.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.watch.base.BaseViewHolder
 import com.ugurbuga.followtvmovie.watch.databinding.ItemDiscoverBinding
 import com.ugurbuga.followtvmovie.watch.extensions.setImageUrl
 
 class DiscoverViewHolder(
     parent: ViewGroup,
     inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemDiscoverBinding>(
+) : BaseViewHolder<ItemDiscoverBinding>(
     binding = ItemDiscoverBinding.inflate(inflater, parent, false)
 ) {
 
