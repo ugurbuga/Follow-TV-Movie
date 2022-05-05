@@ -2,20 +2,20 @@ package com.ugurbuga.followtvmovie.ui.discover
 
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.PopularMovieUseCase
 import com.ugurbuga.followtvmovie.domain.popular.movie.usecase.UpcomingMovieUseCase
 import com.ugurbuga.followtvmovie.domain.popular.tvshow.usecase.PopularTvShowUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
-import com.ugurbuga.followtvmovie.extensions.doOnStatusChanged
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
-import javax.inject.Inject
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
@@ -45,7 +45,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularMovies() {
         popularMoviePage++
         addLoadingPopularMovie()
-        popularMovieUseCase(PopularMovieUseCase.PopularMovieParams(popularMoviePage))
+        popularMovieUseCase(
+            PopularMovieUseCase.PopularMovieParams(
+                MediaType.MOVIE,
+                popularMoviePage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
@@ -89,7 +94,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getUpcomingMovies() {
         upComingMoviePage++
         addLoadingUpcomingMovie()
-        upcomingMovieUseCase(UpcomingMovieUseCase.UpcomingMovieParams(upComingMoviePage))
+        upcomingMovieUseCase(
+            UpcomingMovieUseCase.UpcomingMovieParams(
+                MediaType.MOVIE,
+                upComingMoviePage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
@@ -136,7 +146,12 @@ class DiscoverViewModel @Inject constructor(
     private fun getPopularTvShows() {
         popularTvShowPage++
         addLoadingPopularTvShow()
-        popularTvShowUseCase(PopularTvShowUseCase.PopularTvShowParams(popularTvShowPage))
+        popularTvShowUseCase(
+            PopularTvShowUseCase.PopularTvShowParams(
+                MediaType.TV,
+                popularTvShowPage
+            )
+        )
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false

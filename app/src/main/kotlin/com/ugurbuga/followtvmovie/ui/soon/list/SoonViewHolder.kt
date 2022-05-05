@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.ViewCompat
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
+import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemSoonBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class SoonViewHolder(
     parent: ViewGroup,
     inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemSoonBinding>(
+) : BaseViewHolder<ItemSoonBinding>(
     binding = ItemSoonBinding.inflate(inflater, parent, false)
 ) {
     fun bind(

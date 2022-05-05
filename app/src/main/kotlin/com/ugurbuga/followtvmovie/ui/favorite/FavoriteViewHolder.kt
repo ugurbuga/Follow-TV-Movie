@@ -6,15 +6,15 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import com.ugurbuga.followtvmovie.R
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseViewHolder
 import com.ugurbuga.followtvmovie.bindings.executeAfter
+import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemFavoriteBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class FavoriteViewHolder(
     parent: ViewGroup,
     inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemFavoriteBinding>(
+) : BaseViewHolder<ItemFavoriteBinding>(
     binding = ItemFavoriteBinding.inflate(inflater, parent, false)
 ) {
     fun bind(

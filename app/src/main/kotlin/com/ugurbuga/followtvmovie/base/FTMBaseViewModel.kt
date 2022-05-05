@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.viewbinding.BuildConfig
-import com.ugurbuga.followtvmovie.base.base.BaseViewModel
-import com.ugurbuga.followtvmovie.common.Status
+import com.ugurbuga.followtvmovie.core.base.BaseViewModel
+import com.ugurbuga.followtvmovie.core.common.GeneralErrorsHandler
+import com.ugurbuga.followtvmovie.core.common.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

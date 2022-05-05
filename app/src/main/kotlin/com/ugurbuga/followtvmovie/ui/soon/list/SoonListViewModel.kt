@@ -3,11 +3,11 @@ package com.ugurbuga.followtvmovie.ui.soon.list
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSoonMoviesUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.EmptyUIModel
-import com.ugurbuga.followtvmovie.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.ui.soon.GetSoonMoviesUseCase
+import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +25,7 @@ class SoonListViewModel @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     fun getSoonMovies() {
-        getSoonMoviesUseCase(Util.EMPTY_STRING)
+        getSoonMoviesUseCase(GetSoonMoviesUseCase.SoonMovies(MediaType.MOVIE))
             .doOnSuccess {
                 setList(it as ArrayList<ListAdapterItem>)
             }.launchIn(viewModelScope)

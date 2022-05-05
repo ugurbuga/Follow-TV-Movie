@@ -2,7 +2,6 @@
 
     <!-- General -->
     <string name="app_name">Follow Tv / Movie</string>
-    <string name="generic_error_message">General Error Message</string>
     <string name="warning">Warning</string>
     <string name="ok">OK</string>
     <string name="default_channel">Default Channel</string>
@@ -41,8 +40,6 @@
     <!-- Soon -->
     <string name="soon">Soon</string>
     <string name="empty_soon_movie_list">Soon Movie List is Empty.</string>
-    <string name="x_days">%d\ndays</string>
-    <string name="one_day">1\nday</string>
 
     <!-- Movie Detail -->
     <string name="reviews">Reviews</string>

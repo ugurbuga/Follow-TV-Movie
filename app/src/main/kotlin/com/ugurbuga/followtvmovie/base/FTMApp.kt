@@ -4,13 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Resources
 import androidx.hilt.work.HiltWorkerFactory
-import androidx.work.BackoffPolicy
-import androidx.work.Configuration
-import androidx.work.Constraints
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import com.ugurbuga.followtvmovie.worker.MovieWorker
 import dagger.hilt.android.HiltAndroidApp
@@ -73,7 +67,7 @@ class FTMApp : Application(), Configuration.Provider {
                 )
                 .build()
 
-        val mWorkManager = WorkManager.getInstance(this)
+       val mWorkManager = WorkManager.getInstance(this)
 
         mWorkManager.enqueueUniquePeriodicWork(
             MovieWorker.MOVIE_WORKER,

@@ -18,6 +18,10 @@ android {
         versionName "1.0"
 
         flavorDimensions "default"
+
+        buildConfigField "String", "API_KEY", "$API_KEY"
+        buildConfigField "String", "API_URL", "$API_URL"
+        buildConfigField "String", "API_IMAGE_URL", "$API_IMAGE_URL"
     }
 
     signingConfigs {
@@ -44,12 +48,7 @@ android {
 
     productFlavors {
         dev {
-            buildConfigField "String", "API_KEY", "$API_KEY"
-            buildConfigField "String", "API_URL", "$API_URL"
-        }
-        prod {
-            buildConfigField "String", "API_KEY", "$API_KEY"
-            buildConfigField "String", "API_URL", "$API_URL"
+            applicationIdSuffix '.dev'
         }
     }
 }

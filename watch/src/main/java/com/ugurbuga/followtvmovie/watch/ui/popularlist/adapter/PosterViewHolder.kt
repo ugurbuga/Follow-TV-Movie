@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.watch.ui.popularlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.ugurbuga.followtvmovie.watch.base.FTMBaseViewHolder
+import com.ugurbuga.followtvmovie.watch.base.BaseViewHolder
 import com.ugurbuga.followtvmovie.watch.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.watch.databinding.ItemPosterBinding
 import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
@@ -11,7 +11,7 @@ import com.ugurbuga.followtvmovie.watch.extensions.setImageUrl
 class PosterViewHolder(
     parent: ViewGroup,
     inflater: LayoutInflater
-) : FTMBaseViewHolder<ItemPosterBinding>(
+) : BaseViewHolder<ItemPosterBinding>(
     binding = ItemPosterBinding.inflate(inflater, parent, false)
 ) {
 

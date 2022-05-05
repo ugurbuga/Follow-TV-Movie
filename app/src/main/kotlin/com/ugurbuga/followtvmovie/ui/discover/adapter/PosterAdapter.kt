@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.ugurbuga.followtvmovie.base.adapter.FTMBaseListAdapter
-import com.ugurbuga.followtvmovie.base.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
 class PosterAdapter(
     private val onPosterClick: ((poster: PosterItemUIModel, imageView: AppCompatImageView) -> Unit)? = null,
-) : FTMBaseListAdapter<ListAdapterItem>(
+) : BaseListAdapter<ListAdapterItem>(
     itemsSame = { old, new -> old == new },
     contentsSame = { old, new -> old == new }
 ) {
@@ -55,7 +55,7 @@ class PosterAdapter(
                 PosterHolderType.LOADING
             }
             else -> {
-                Util.INVALID_INDEX
+                CommonUtil.INVALID_INDEX
             }
         }
     }

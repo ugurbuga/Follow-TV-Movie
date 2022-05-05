@@ -12,11 +12,12 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
+import com.ugurbuga.followtvmovie.BuildConfig
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
+import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Notifier
-import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -114,19 +115,19 @@ class TvShowDetailFragment :
                 }
 
                 imdbButton.setOnClickListener {
-                    viewModel.imdbClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.IMDB))
+                    viewModel.imdbClicked(requireContext().isPackageEnabled(AppPackageName.IMDB))
                 }
 
                 facebookButton.setOnClickListener {
-                    viewModel.facebookClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.FACEBOOK))
+                    viewModel.facebookClicked(requireContext().isPackageEnabled(AppPackageName.FACEBOOK))
                 }
 
                 twitterButton.setOnClickListener {
-                    viewModel.twitterClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.TWITTER))
+                    viewModel.twitterClicked(requireContext().isPackageEnabled(AppPackageName.TWITTER))
                 }
 
                 instagramButton.setOnClickListener {
-                    viewModel.instagramClicked(requireContext().isPackageEnabled(com.ugurbuga.followtvmovie.common.AppPackageName.INSTAGRAM))
+                    viewModel.instagramClicked(requireContext().isPackageEnabled(AppPackageName.INSTAGRAM))
                 }
             }
         }
@@ -150,7 +151,7 @@ class TvShowDetailFragment :
         return if (URLUtil.isValidUrl(args.imageUrl)) {
             args.imageUrl
         } else {
-            ApiConstants.BASE_IMAGE_URL + "/" + args.imageUrl
+            BuildConfig.API_IMAGE_URL + "/" + args.imageUrl
         }
     }
 

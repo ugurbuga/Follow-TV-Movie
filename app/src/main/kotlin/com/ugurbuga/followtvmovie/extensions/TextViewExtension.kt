@@ -4,11 +4,12 @@ import android.graphics.Paint
 import android.text.SpannableString
 import android.widget.TextView
 import androidx.annotation.FontRes
-import com.ugurbuga.followtvmovie.common.CustomTypefaceSpan
-import com.ugurbuga.followtvmovie.common.Util
+import com.ugurbuga.followtvmovie.core.common.CustomTypefaceSpan
+import com.ugurbuga.followtvmovie.core.common.CommonUtil
+
 
 fun TextView.setTypeface(@FontRes font: Int) {
-    typeface = Util.getTypefaceFromFontRes(context, font)
+    typeface = CommonUtil.getTypefaceFromFontRes(context, font)
 }
 
 fun TextView.setSpannableTextFromResource(
@@ -19,10 +20,13 @@ fun TextView.setSpannableTextFromResource(
     flag: Int
 ) {
     val spannableString = SpannableString(title)
-    val newTypeface = Util.getTypefaceFromFontRes(context, fontRes)
+    val newTypeface = CommonUtil.getTypefaceFromFontRes(context, fontRes)
 
     newTypeface?.let {
-        spannableString.setSpan(CustomTypefaceSpan(newTypeface), start, end, flag)
+        spannableString.setSpan(
+            CustomTypefaceSpan(
+                newTypeface
+            ), start, end, flag)
     }
     text = spannableString
 }

@@ -1,10 +1,10 @@
 package com.ugurbuga.followtvmovie.ui.tvshowdetail
 
-import com.ugurbuga.followtvmovie.base.base.BaseViewModel
+import com.ugurbuga.followtvmovie.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
 @HiltViewModel
 class SharedTvShowViewModel @Inject constructor() : BaseViewModel() {
