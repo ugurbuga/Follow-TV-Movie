@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="com.ugurbuga.followtvmovie.ui.tvshowdetail.TvShowDetailViewState" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_350"
+                android:elevation="@dimen/elevation_8"
+                app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
+                app:collapsedTitleTextColor="@color/primary_color"
+                app:contentInsetStartWithNavigation="0dp"
+                app:contentScrim="@color/quaternary_color"
+                app:expandedTitleGravity="center|bottom"
+                app:expandedTitleTextAppearance="@style/ExpandedAppBar"
+                app:expandedTitleTextColor="@color/always_white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:toolbarId="@id/toolbar">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:foreground="@drawable/background_item_poster"
+                    android:scaleType="centerCrop"
+                    android:transitionName="@string/image_big"
+                    app:layout_collapseMode="parallax"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <com.ugurbuga.followtvmovie.view.toolbar.FTMToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    android:elevation="@dimen/elevation_0"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:navigation_type="back_button"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="@{viewState.tvShowDetail.title}" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_vieww"
+            isVisible="@{viewState.tvShowDetail != null}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.ugurbuga.followtvmovie.view.FTMTextView
+                    android:id="@+id/overview"
+                    style="@style/FTMText.Regular.14"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="@{viewState.tvShowDetail.overview}"
+                    app:layout_constraintEnd_toStartOf="@id/progress_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Açıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama \nAçıklama" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:orientation="horizontal">
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        style="@style/FTMText.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/release_date" />
+
+                    <com.ugurbuga.followtvmovie.view.FTMTextView
+                        style="@style/FTMText.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewState.tvShowDetail.releaseDate}" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/episodes_recyclerview"
+                    android:layout_marginTop="@dimen/margin_16"
+                    submitList="@{viewState.tvShowDetail.genres}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_8"
+                    tools:listitem="@layout/item_season" />
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

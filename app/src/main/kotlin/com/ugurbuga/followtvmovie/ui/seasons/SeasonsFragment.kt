@@ -31,7 +31,7 @@ class SeasonsFragment : FTMBaseVMFragment<SeasonsViewModel, FragmentSeasonsBindi
     }
 
     private fun onSeasonClicked(season: SeasonUIModel) {
-
+        navigate(SeasonsFragmentDirections.actionSeasonsToSeasonDetail(season.seasonNumber))
     }
 
     private fun onViewState(viewState: TvShowDetailViewState) {

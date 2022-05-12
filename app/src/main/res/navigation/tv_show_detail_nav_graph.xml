@@ -110,6 +110,22 @@
     <fragment
         android:id="@+id/seasonsFragment"
         android:name="com.ugurbuga.followtvmovie.ui.seasons.SeasonsFragment"
-        tools:layout="@layout/fragment_seasons" />
+        tools:layout="@layout/fragment_seasons">
+        <action
+            android:id="@+id/action_seasons_to_season_detail"
+            app:destination="@id/seasonDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/seasonDetailFragment"
+        android:name="com.ugurbuga.followtvmovie.ui.seasondetail.SeasonDetailFragment"
+        tools:layout="@layout/fragment_season_detail">
+
+        <argument
+            android:name="id"
+            app:argType="integer" />
+
+    </fragment>
 
 </navigation>
