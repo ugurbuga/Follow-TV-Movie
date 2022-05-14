@@ -2,25 +2,38 @@ package com.ugurbuga.followtvmovie.ui.seasondetail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
+import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
-import com.ugurbuga.followtvmovie.databinding.ItemSeasonBinding
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
+import com.ugurbuga.followtvmovie.databinding.ItemEpisodePosterBinding
+import com.ugurbuga.followtvmovie.domain.seasondetail.model.EpisodeUIModel
 
 class EpisodeViewHolder(
-    parent: ViewGroup, inflater: LayoutInflater
-) : BaseViewHolder<ItemSeasonBinding>(
-    binding = ItemSeasonBinding.inflate(inflater, parent, false)
+    parent: ViewGroup,
+    inflater: LayoutInflater
+) : BaseViewHolder<ItemEpisodePosterBinding>(
+    binding = ItemEpisodePosterBinding.inflate(inflater, parent, false)
 ) {
     fun bind(
-        season: SeasonUIModel,
-        onSeasonClicked: ((season: SeasonUIModel) -> Unit)?,
+        episode: EpisodeUIModel,
+        imageHeight: Double?,
+        onEpisodeClicked: ((episode: EpisodeUIModel, imageView: AppCompatImageView) -> Unit)? = null,
     ) {
         binding.executeAfter {
-            this.item = season
-            root.setOnClickListener {
-                onSeasonClicked?.invoke(season)
-            }
+            this.item = episode
+
+            val imageViewParams = ConstraintLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                imageHeight?.toInt()
+                    ?: posterImage.context.resources.getDimensionPixelSize(R.dimen.height_210)
+            )
+            posterImage.layoutParams = imageViewParams
+            ViewCompat.setTransitionName(posterImage, episode.name)
+
+            root.setOnClickListener { onEpisodeClicked?.invoke(episode, posterImage) }
         }
     }
 }

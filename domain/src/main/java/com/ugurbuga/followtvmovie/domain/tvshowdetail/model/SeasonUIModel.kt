@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.domain.tvshowdetail.detail
+package com.ugurbuga.followtvmovie.domain.tvshowdetail.model
 
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 

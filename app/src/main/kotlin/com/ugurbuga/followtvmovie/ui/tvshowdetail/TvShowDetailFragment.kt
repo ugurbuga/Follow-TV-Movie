@@ -23,7 +23,7 @@ import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
@@ -260,6 +260,7 @@ class TvShowDetailFragment :
         navigate(
             TvShowDetailFragmentDirections.actionTvShowDetailToSeasonDetail(
                 args.id,
+                args.imageUrl,
                 season.seasonNumber
             )
         )

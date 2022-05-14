@@ -5,10 +5,10 @@ import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.core.common.map
 import com.ugurbuga.followtvmovie.data.repository.tvshow.TvShowRepository
 import com.ugurbuga.followtvmovie.domain.moviedetail.mapper.TvShowMapper
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.TvShowDetailUIModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 class GetTvShowDetailUseCase @Inject constructor(
     private val tvShowRepository: TvShowRepository,

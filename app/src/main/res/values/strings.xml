@@ -43,7 +43,7 @@
 
     <!-- Movie Detail -->
     <string name="reviews">Reviews</string>
-    <string name="release_date">Release Date:</string>
+    <string name="release_date_with_space">Release Date: </string>
     <string name="recommendations">Recommendations</string>
     <string name="similar_movies">Similar Movies</string>
     <string name="similar_tv_shows">Similar Tv Shows</string>

@@ -151,7 +151,7 @@
                         style="@style/FTMText.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/release_date" />
+                        android:text="@string/release_date_with_space" />
 
                     <com.ugurbuga.followtvmovie.view.FTMTextView
                         style="@style/FTMText.Regular.14"

@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel" />
+            type="com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel" />
 
     </data>
 

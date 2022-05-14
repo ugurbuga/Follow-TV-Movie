@@ -117,6 +117,10 @@
             app:argType="string" />
 
         <argument
+            android:name="image_url"
+            app:argType="string" />
+
+        <argument
             android:name="season_number"
             app:argType="integer" />
 

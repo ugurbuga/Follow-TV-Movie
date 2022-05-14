@@ -4,8 +4,8 @@ import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.SeasonResponse
 import com.ugurbuga.followtvmovie.data.model.response.tvshowdetail.TvShowDetailResponse
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.TvShowDetailUIModel
 import javax.inject.Inject
 
 class TvShowMapper @Inject constructor(

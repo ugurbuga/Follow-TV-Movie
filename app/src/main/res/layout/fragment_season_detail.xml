@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="com.ugurbuga.followtvmovie.ui.tvshowdetail.TvShowDetailViewState" />
+            type="com.ugurbuga.followtvmovie.ui.seasondetail.SeasonDetailViewState" />
 
     </data>
 
@@ -42,6 +42,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_view"
+                    imageUrl="@{viewState.getPosterUrl()}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -62,7 +63,7 @@
                     app:layout_collapseMode="pin"
                     app:navigation_type="back_button"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:title="@{viewState.tvShowDetail.title}" />
+                    app:title="@{viewState.seasonDetail.name}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -70,7 +71,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_vieww"
-            isVisible="@{viewState.tvShowDetail != null}"
+            isVisible="@{viewState.seasonDetail != null}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -83,11 +84,11 @@
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     android:id="@+id/overview"
                     style="@style/FTMText.Regular.14"
-                    android:layout_margin="@dimen/margin_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
                     android:ellipsize="end"
-                    android:text="@{viewState.tvShowDetail.overview}"
+                    android:text="@{viewState.seasonDetail.overview}"
                     app:layout_constraintEnd_toStartOf="@id/progress_bar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -103,27 +104,32 @@
                         style="@style/FTMText.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/release_date" />
+                        android:text="@string/release_date_with_space" />
 
                     <com.ugurbuga.followtvmovie.view.FTMTextView
                         style="@style/FTMText.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewState.tvShowDetail.releaseDate}" />
+                        android:text="@{viewState.seasonDetail.airDate}" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/episodes_recyclerview"
-                    android:layout_marginTop="@dimen/margin_16"
-                    submitList="@{viewState.tvShowDetail.genres}"
+                    spacePaddingBottom="@{@dimen/padding_8}"
+                    spacePaddingEnd="@{@dimen/padding_8}"
+                    spacePaddingStart="@{@dimen/padding_8}"
+                    spacePaddingTop="@{@dimen/padding_8}"
+                    submitList="@{viewState.seasonDetail.episodes}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16"
                     android:clipToPadding="false"
                     android:nestedScrollingEnabled="false"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/padding_8"
-                    tools:listitem="@layout/item_season" />
-
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_favorite" />
 
             </LinearLayout>
 

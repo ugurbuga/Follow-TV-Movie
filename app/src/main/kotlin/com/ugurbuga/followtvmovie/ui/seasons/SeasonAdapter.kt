@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
 
 class SeasonAdapter(
     private val onSeasonClicked: ((season: SeasonUIModel) -> Unit)? = null,

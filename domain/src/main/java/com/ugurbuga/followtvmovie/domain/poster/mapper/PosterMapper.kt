@@ -10,7 +10,7 @@ import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.MovieDetailUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.TvShowDetailUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.TvShowDetailUIModel
 import java.util.Calendar
 import javax.inject.Inject
 

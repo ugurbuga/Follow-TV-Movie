@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
 import com.ugurbuga.followtvmovie.databinding.ItemSeasonBinding
-import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
 
 class SeasonViewHolder(
     parent: ViewGroup, inflater: LayoutInflater

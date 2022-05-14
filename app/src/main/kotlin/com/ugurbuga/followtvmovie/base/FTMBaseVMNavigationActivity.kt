@@ -11,7 +11,7 @@ abstract class FTMBaseVMNavigationActivity<VM : FTMBaseViewModel, DB : ViewDataB
     @NavigationRes
     abstract fun getNavigationGraph(): Int
 
-    fun findNavHostFragment(navHostId: Int) =
+    private fun findNavHostFragment(navHostId: Int) =
         supportFragmentManager.findFragmentById(navHostId) as NavHostFragment
 
     fun setNavigationStartDestination(

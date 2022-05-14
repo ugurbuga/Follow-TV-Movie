@@ -10,17 +10,23 @@ import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.seasondetail.usecase.GetTvShowSeasonDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 
 @HiltViewModel
-class SeasonDetailViewModel @Inject constructor(
+open class SeasonDetailViewModel @Inject constructor(
     private val getTvShowSeasonDetailUseCase: GetTvShowSeasonDetailUseCase,
     savedStateHandle: SavedStateHandle
 ) : FTMBaseViewModel() {
 
-    protected var id: String = savedStateHandle[Argument.ID] ?: CommonUtil.EMPTY_STRING
-    protected var seasonNumber: Int =
+    private var id: String = savedStateHandle[Argument.ID] ?: CommonUtil.EMPTY_STRING
+    private var imageUrl: String = savedStateHandle[Argument.IMAGE_URL] ?: CommonUtil.EMPTY_STRING
+    private var seasonNumber: Int =
         savedStateHandle[Argument.SEASON_NUMBER] ?: CommonUtil.INVALID_INDEX
+
+    private val _seasonDetailViewState = MutableStateFlow(SeasonDetailViewState())
+    val seasonDetailViewState: StateFlow<SeasonDetailViewState> get() = _seasonDetailViewState
 
     init {
         getTvShowSeasonDetail()
@@ -33,7 +39,9 @@ class SeasonDetailViewModel @Inject constructor(
                 seasonNumber
             )
         ).doOnStatusChanged { initStatusState(it) }
-            .doOnSuccess { }
+            .doOnSuccess {
+                _seasonDetailViewState.value = SeasonDetailViewState(it, imageUrl)
+            }
             .launchIn(viewModelScope)
     }
 }

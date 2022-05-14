@@ -44,7 +44,7 @@
         <item name="postSplashScreenTheme">@style/Theme.FollowTvMovie</item>
     </style>
 
-    <style name="Theme.FollowTvMovie.FullScreen">
+    <style name="Theme.FollowTvMovie.FullScreen" parent="Theme.FollowTvMovie">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
