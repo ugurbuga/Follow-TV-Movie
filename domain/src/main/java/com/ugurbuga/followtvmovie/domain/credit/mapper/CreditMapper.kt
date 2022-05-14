@@ -5,6 +5,7 @@ import com.ugurbuga.followtvmovie.data.model.response.credit.CastResponse
 import com.ugurbuga.followtvmovie.data.model.response.credit.CreditResponse
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import javax.inject.Inject
 
 class CreditMapper @Inject constructor(
@@ -27,6 +28,27 @@ class CreditMapper @Inject constructor(
                 response.profilePath
             ),
             mediaType = response.mediaType ?: CommonUtil.EMPTY_STRING
+        )
+    }
+
+    fun toPosterList(response: CreditResponse): ArrayList<PosterItemUIModel> {
+        return ArrayList(response.cast.sortedByDescending { getReleaseDate(it) }
+            .map { getPoster(it) })
+    }
+
+    private fun getReleaseDate(cast: CastResponse): Long {
+        val releaseDate = cast.releaseDate ?: cast.firstAirDate ?: CommonUtil.EMPTY_STRING
+        return CommonUtil.getDateLong(releaseDate)
+    }
+
+    private fun getPoster(response: CastResponse): PosterItemUIModel {
+        return PosterItemUIModel(
+            id = response.id,
+            name = response.title ?: response.name ?: CommonUtil.EMPTY_STRING,
+            posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
+            mediaType = response.mediaType ?: CommonUtil.EMPTY_STRING,
+            releaseDate = response.releaseDate ?: CommonUtil.EMPTY_STRING,
+            releaseDateLong = CommonUtil.getDateLong(response.releaseDate)
         )
     }
 

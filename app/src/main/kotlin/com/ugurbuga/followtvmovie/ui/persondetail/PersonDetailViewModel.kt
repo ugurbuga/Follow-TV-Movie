@@ -70,7 +70,7 @@ class PersonDetailViewModel @Inject constructor(
                     it, isShowLoading = false
                 )
             }.doOnSuccess {
-                _personDetailViewState.value = personDetailViewState.value.copy(casts = it)
+                _personDetailViewState.value = personDetailViewState.value.copy(posters = it)
             }.launchIn(viewModelScope)
     }
 

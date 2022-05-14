@@ -11,11 +11,11 @@ import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.databinding.FragmentPersonDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
-import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
+import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
-import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,7 +56,7 @@ class PersonDetailFragment :
         with(viewBinding) {
             imageView.setImageUrl(args.imageUrl)
             imageRecyclerView.adapter = ImageAdapter(::onImageClicked)
-            knownForRecyclerView.adapter = CastAdapter(::onPersonClicked)
+            knownForRecyclerView.adapter = PosterAdapter(::onPosterClicked)
 
             toolbar.setNavigationClickListener {
                 popBack()
@@ -80,21 +80,22 @@ class PersonDetailFragment :
         viewModel.imageClicked(position)
     }
 
-    private fun onPersonClicked(
-        cast: CastUIModel, imageView: AppCompatImageView
+    private fun onPosterClicked(
+        poster: PosterItemUIModel,
+        imageView: AppCompatImageView
     ) {
         val extras = FragmentNavigatorExtras(imageView to getString(R.string.image_big))
 
-        when (cast.mediaType) {
+        when (poster.mediaType) {
             MediaType.TV -> {
                 val directions = PersonDetailFragmentDirections.actionPersonDetailToTvShowDetail(
-                    cast.id, cast.profilePath
+                    poster.id, poster.posterPath
                 )
                 navigate(directions, extras)
             }
             MediaType.MOVIE -> {
                 val directions = PersonDetailFragmentDirections.actionPersonDetailToMovieDetail(
-                    cast.id, cast.profilePath
+                    poster.id, poster.posterPath
                 )
                 navigate(directions, extras)
             }

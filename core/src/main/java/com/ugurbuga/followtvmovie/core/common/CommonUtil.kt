@@ -12,6 +12,7 @@ object CommonUtil {
 
     const val EMPTY_STRING = ""
     const val INVALID_INDEX = -1
+    const val ZERO = 0
     private const val DATE_PATTERN = "yyyy-MM-dd"
 
     fun getTypefaceFromFontRes(context: Context, font: Int): Typeface? {
@@ -19,7 +20,7 @@ object CommonUtil {
     }
 
     fun getDateLong(date: String?): Long {
-        return if (date != null) {
+        return if (!date.isNullOrEmpty()) {
             val sdf = SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
             try {
                 sdf.parse(date)?.time ?: 0
