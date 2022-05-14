@@ -7,5 +7,5 @@ import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 data class PersonDetailViewState(
     val personDetail: PersonDetailUIModel? = null,
     val images: ArrayList<ImageUIModel> = arrayListOf(),
-    val posters: ArrayList<PosterItemUIModel> = arrayListOf(),
+    val knownFor: ArrayList<PosterItemUIModel> = arrayListOf(),
 )

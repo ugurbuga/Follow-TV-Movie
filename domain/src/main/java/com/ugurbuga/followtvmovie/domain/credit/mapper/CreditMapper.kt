@@ -32,8 +32,10 @@ class CreditMapper @Inject constructor(
     }
 
     fun toPosterList(response: CreditResponse): ArrayList<PosterItemUIModel> {
-        return ArrayList(response.cast.sortedByDescending { getReleaseDate(it) }
-            .map { getPoster(it) })
+        return ArrayList(response.cast
+            .sortedByDescending { getReleaseDate(it) }
+            .map { getPoster(it) }
+            .distinctBy { it.name })
     }
 
     private fun getReleaseDate(cast: CastResponse): Long {
@@ -42,13 +44,18 @@ class CreditMapper @Inject constructor(
     }
 
     private fun getPoster(response: CastResponse): PosterItemUIModel {
+        val releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING
         return PosterItemUIModel(
             id = response.id,
             name = response.title ?: response.name ?: CommonUtil.EMPTY_STRING,
-            posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
+            posterPath = imageMapper.getPosterUrl(
+                response.posterPath,
+                response.backdropPath,
+                response.profilePath
+            ),
             mediaType = response.mediaType ?: CommonUtil.EMPTY_STRING,
-            releaseDate = response.releaseDate ?: CommonUtil.EMPTY_STRING,
-            releaseDateLong = CommonUtil.getDateLong(response.releaseDate)
+            releaseDate = releaseDate,
+            releaseDateLong = CommonUtil.getDateLong(releaseDate)
         )
     }
 

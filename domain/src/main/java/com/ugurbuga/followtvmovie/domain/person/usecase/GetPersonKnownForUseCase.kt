@@ -10,14 +10,14 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class GetPersonCastsUseCase @Inject constructor(
+class GetPersonKnownForUseCase @Inject constructor(
     private val personRepository: PersonRepository,
     private val creditMapper: CreditMapper
-) : UseCase<GetPersonCastsUseCase.PersonCastParams, ArrayList<PosterItemUIModel>>() {
+) : UseCase<GetPersonKnownForUseCase.PersonKnownForParams, ArrayList<PosterItemUIModel>>() {
 
-    data class PersonCastParams(val personId: String)
+    data class PersonKnownForParams(val personId: String)
 
-    override fun execute(params: PersonCastParams): Flow<ApiState<ArrayList<PosterItemUIModel>>> {
+    override fun execute(params: PersonKnownForParams): Flow<ApiState<ArrayList<PosterItemUIModel>>> {
         return personRepository.getPersonCredits(params.personId).map {
             it.map { creditResponse ->
                 creditMapper.toPosterList(creditResponse)

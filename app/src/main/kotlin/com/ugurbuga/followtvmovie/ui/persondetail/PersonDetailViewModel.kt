@@ -7,9 +7,9 @@ import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
-import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonCastsUseCase
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonDetailUseCase
 import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonImagesUseCase
+import com.ugurbuga.followtvmovie.domain.person.usecase.GetPersonKnownForUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -23,7 +23,7 @@ class PersonDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val getPersonDetailUseCase: GetPersonDetailUseCase,
     private val getPersonImagesUseCase: GetPersonImagesUseCase,
-    private val getPersonCastsUseCase: GetPersonCastsUseCase
+    private val getPersonKnownForUseCase: GetPersonKnownForUseCase
 ) : FTMBaseViewModel() {
 
     private var personId: String = savedStateHandle[Argument.PERSON_ID] ?: CommonUtil.EMPTY_STRING
@@ -64,13 +64,13 @@ class PersonDetailViewModel @Inject constructor(
 
 
     private fun getPersonCasts() {
-        getPersonCastsUseCase(GetPersonCastsUseCase.PersonCastParams(personId))
+        getPersonKnownForUseCase(GetPersonKnownForUseCase.PersonKnownForParams(personId))
             .doOnStatusChanged {
                 initStatusState(
                     it, isShowLoading = false
                 )
             }.doOnSuccess {
-                _personDetailViewState.value = personDetailViewState.value.copy(posters = it)
+                _personDetailViewState.value = personDetailViewState.value.copy(knownFor = it)
             }.launchIn(viewModelScope)
     }
 

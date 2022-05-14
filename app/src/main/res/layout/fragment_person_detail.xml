@@ -88,7 +88,7 @@
 
                 <com.ugurbuga.followtvmovie.view.FTMTextView
                     style="@style/FTMText.SemiBold.20.Primary"
-                    isVisible="@{viewState.posters.size() > 0}"
+                    isVisible="@{viewState.knownFor.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16"
@@ -99,8 +99,8 @@
                     spacePaddingBottom="@{@dimen/padding_8}"
                     spacePaddingStart="@{@dimen/padding_8}"
                     spacePaddingTop="@{@dimen/padding_8}"
-                    submitList="@{viewState.posters}"
-                    isVisible="@{viewState.posters.size() > 0}"
+                    submitList="@{viewState.knownFor}"
+                    isVisible="@{viewState.knownFor.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
