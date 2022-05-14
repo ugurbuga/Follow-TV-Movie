@@ -113,4 +113,12 @@ class TvShowDetailViewModel @Inject constructor(
                 }.launchIn(viewModelScope)
         }
     }
+
+    fun updateSeasonsState() {
+        _tvShowDetailViewState.emitSuspending(
+            tvShowDetailViewState.value.copy(
+                isSeasonExpanded = !tvShowDetailViewState.value.isSeasonExpanded
+            )
+        )
+    }
 }

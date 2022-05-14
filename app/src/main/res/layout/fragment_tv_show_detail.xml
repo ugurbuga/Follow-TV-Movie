@@ -81,6 +81,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -175,15 +176,26 @@
                     app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                     tools:listitem="@layout/item_genre" />
 
-                <com.ugurbuga.followtvmovie.view.FTMButton
+                <com.ugurbuga.followtvmovie.view.FTMTextView
                     android:id="@+id/seasons_button"
-                    isVisible="@{viewState.hasSeason()}"
+                    style="@style/FTMText.SemiBold.20.Primary"
+                    isVisible="@{commonViewState.images.size() > 0}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:drawableEnd="@{viewState.isSeasonExpanded() ? @drawable/ic_arrow_up : @drawable/ic_arrow_down}"
+                    android:padding="@dimen/padding_16"
                     android:text="@string/seasons"
-                    app:icon="@drawable/ic_arrow_right"
-                    app:iconGravity="end" />
+                    tools:drawableEnd="@drawable/ic_arrow_down" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/season_list_recycler_view"
+                    isVisible="@{viewState.isSeasonExpanded()}"
+                    submitList="@{viewState.tvShowDetail.seasons}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_season" />
 
                 <include
                     android:id="@+id/tv_show_detail"

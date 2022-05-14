@@ -23,14 +23,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableEnd="@drawable/ic_arrow_right"
-            android:padding="@dimen/margin_16"
+            android:padding="@dimen/margin_12"
             android:text="@{item.name}"
             tools:text="@string/seasons" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_1"
-            android:background="@color/grey_400" />
+            android:layout_height="@dimen/height_0_5"
+            android:background="@color/grey_200" />
 
     </LinearLayout>
 </layout>

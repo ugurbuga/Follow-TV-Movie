@@ -11,7 +11,7 @@
 
     <color name="grey_100">#F2F2F2</color>
     <color name="grey_200">#E6E6E2</color>
-    <!--<color name="grey_300">#C6C6C1</color>-->
+    <color name="grey_300">#C6C6C1</color>
     <color name="grey_400">#B5B5AD</color>
     <color name="grey_500">#787873</color>
     <color name="grey_600">#54544F</color>

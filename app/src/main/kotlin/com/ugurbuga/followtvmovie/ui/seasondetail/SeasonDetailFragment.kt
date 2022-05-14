@@ -7,11 +7,11 @@ import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SeasonDetailFragment : FTMBaseVMFragment<SeasonsDetailViewModel, FragmentSeasonDetailBinding>() {
+class SeasonDetailFragment : FTMBaseVMFragment<SeasonDetailViewModel, FragmentSeasonDetailBinding>() {
 
     override fun getResourceLayoutId() = R.layout.fragment_season_detail
 
-    override fun viewModelClass() = SeasonsDetailViewModel::class.java
+    override fun viewModelClass() = SeasonDetailViewModel::class.java
 
     override fun onInitDataBinding() {
         viewBinding.episodesRecyclerview.adapter = EpisodeAdapter(::onEpisodeClicked)

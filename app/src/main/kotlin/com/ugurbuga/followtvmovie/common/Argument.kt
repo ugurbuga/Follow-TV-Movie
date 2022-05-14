@@ -9,4 +9,5 @@ object Argument {
     const val IMAGES = "images"
     const val POSITION = "position"
     const val MEDIA_TYPE = "media_type"
+    const val SEASON_NUMBER = "season_number"
 }

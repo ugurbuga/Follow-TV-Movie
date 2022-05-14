@@ -8,19 +8,23 @@ import com.ugurbuga.followtvmovie.data.BuildConfig
 import com.ugurbuga.followtvmovie.data.api.ApiConstants
 import com.ugurbuga.followtvmovie.data.api.interceptor.ApplicationInterceptor
 import com.ugurbuga.followtvmovie.data.api.interceptor.LanguageInterceptor
-import com.ugurbuga.followtvmovie.data.api.services.*
+import com.ugurbuga.followtvmovie.data.api.services.CommonService
+import com.ugurbuga.followtvmovie.data.api.services.MovieService
+import com.ugurbuga.followtvmovie.data.api.services.PersonService
+import com.ugurbuga.followtvmovie.data.api.services.SearchService
+import com.ugurbuga.followtvmovie.data.api.services.TvShowService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module

@@ -23,6 +23,7 @@ import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
+import com.ugurbuga.followtvmovie.domain.tvshowdetail.detail.SeasonUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
@@ -34,6 +35,7 @@ import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.cast.CastAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.genre.GenreAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.video.VideoAdapter
+import com.ugurbuga.followtvmovie.ui.seasons.SeasonAdapter
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -76,6 +78,7 @@ class TvShowDetailFragment :
     override fun onInitDataBinding() {
         with(viewBinding) {
             genreRecyclerView.adapter = GenreAdapter()
+            seasonListRecyclerView.adapter = SeasonAdapter(::onSeasonClicked)
 
             imageView.setImageUrl(getImageUrl())
 
@@ -88,7 +91,7 @@ class TvShowDetailFragment :
             }
 
             seasonsButton.setOnClickListener {
-                navigate(TvShowDetailFragmentDirections.actionTvShowDetailToSeaons())
+                viewModel.updateSeasonsState()
             }
 
             with(tvShowDetail) {
@@ -250,6 +253,15 @@ class TvShowDetailFragment :
             content = releaseDate,
             context = context,
             intent = pendingIntent
+        )
+    }
+
+    private fun onSeasonClicked(season: SeasonUIModel) {
+        navigate(
+            TvShowDetailFragmentDirections.actionTvShowDetailToSeasonDetail(
+                args.id,
+                season.seasonNumber
+            )
         )
     }
 }

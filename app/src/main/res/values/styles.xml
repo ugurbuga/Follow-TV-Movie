@@ -165,6 +165,10 @@
         <item name="android:textSize">@dimen/text_size_15</item>
     </style>
 
+    <style name="FTMText.SemiBold.15.Primary">
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
     <style name="FTMText.SemiBold.20">
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
