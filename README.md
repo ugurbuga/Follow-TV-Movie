@@ -47,9 +47,9 @@ You can follow movie/tv release date.
     * [Dark Mode](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) - ui
 
 
-| Movie Detail | Soon |
-| ------------ | ---- |
-| <img src="app/screenshots/movie_detail_part2_night.png" width="200">  | <img src="app/screenshots/soon_light.png" width="200">|
+| Movie Detail | Season Detail | Tv Show Detail | Soon |
+| ------------ | ------------- | -------------- | ---- |
+| <img src="app/screenshots/movie_detail_part2_night.png" width="200"> | <img src="app/screenshots/season_detail_light.png" width="200"> | <img src="app/screenshots/tv_show_detail_night.png" width="200">  | <img src="app/screenshots/soon_light.png" width="200">|
 
 
 
