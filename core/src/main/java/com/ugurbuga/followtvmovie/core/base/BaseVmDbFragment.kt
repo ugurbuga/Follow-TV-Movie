@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.ugurbuga.followtvmovie.core.extensions.fixUiModeIfNeeded
 
 abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> :
     BaseVmFragment<VM>() {
@@ -17,6 +18,7 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fixUiModeIfNeeded()
         viewBinding = DataBindingUtil.inflate(inflater, getResourceLayoutId(), container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
         return viewBinding.root

@@ -6,6 +6,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
+import com.ugurbuga.followtvmovie.core.extensions.fixUiModeIfNeeded
 import com.ugurbuga.followtvmovie.databinding.FragmentVideoBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,5 +43,6 @@ class VideoFragment : FTMBaseVMFragment<VideoViewModel, FragmentVideoBinding>() 
                 }
             }
         })
+        fixUiModeIfNeeded()
     }
 }

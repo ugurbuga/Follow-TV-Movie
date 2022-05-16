@@ -1,5 +1,6 @@
 package com.ugurbuga.followtvmovie.ui.webview
 
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,8 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.navArgs
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentWebViewBinding
@@ -43,6 +46,8 @@ class WebViewFragment : FTMBaseVMFragment<WebViewViewModel, FragmentWebViewBindi
     }
 
     private fun initWebView() {
+
+
         viewBinding.webView.apply {
             settings.loadWithOverviewMode = true
             settings.useWideViewPort = true
@@ -67,6 +72,13 @@ class WebViewFragment : FTMBaseVMFragment<WebViewViewModel, FragmentWebViewBindi
                     viewBinding.webProgress.visibility = View.GONE
                     super.onPageFinished(view, url)
                 }
+            }
+
+            val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES
+                && WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)
+            ) {
+                WebSettingsCompat.setForceDark(settings, WebSettingsCompat.FORCE_DARK_ON)
             }
             loadUrl(args.url)
         }

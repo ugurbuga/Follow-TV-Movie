@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.view
 import android.content.Context
 import android.util.AttributeSet
 import android.webkit.WebView
-import com.ugurbuga.followtvmovie.extensions.fixUiModeIfNeeded
+import com.ugurbuga.followtvmovie.core.extensions.fixUiModeIfNeeded
 
 open class FTMUiModeCareWebView @JvmOverloads constructor(
     context: Context,

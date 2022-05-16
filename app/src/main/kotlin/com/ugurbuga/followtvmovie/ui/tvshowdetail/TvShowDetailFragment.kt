@@ -18,6 +18,7 @@ import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Notifier
+import com.ugurbuga.followtvmovie.core.extensions.fixUiModeIfNeeded
 import com.ugurbuga.followtvmovie.databinding.FragmentTvShowDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -25,7 +26,6 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
-import com.ugurbuga.followtvmovie.extensions.fixUiModeIfNeeded
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
 import com.ugurbuga.followtvmovie.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
@@ -66,7 +66,7 @@ class TvShowDetailFragment :
 
     override fun onResume() {
         super.onResume()
-        context?.fixUiModeIfNeeded()
+        fixUiModeIfNeeded()
         activity?.window?.statusBarColor =
             ContextCompat.getColor(requireContext(), android.R.color.transparent)
     }

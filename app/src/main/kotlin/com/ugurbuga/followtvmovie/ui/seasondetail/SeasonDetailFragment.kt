@@ -1,6 +1,7 @@
 package com.ugurbuga.followtvmovie.ui.seasondetail
 
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
@@ -19,6 +20,18 @@ class SeasonDetailFragment :
     override fun viewModelClass() = SeasonDetailViewModel::class.java
 
     private val args: SeasonDetailFragmentArgs by navArgs()
+
+    override fun onResume() {
+        super.onResume()
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), android.R.color.transparent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.quaternary_color)
+    }
 
     override fun onInitDataBinding() {
         collect(viewModel.seasonDetailViewState, ::onViewState)
