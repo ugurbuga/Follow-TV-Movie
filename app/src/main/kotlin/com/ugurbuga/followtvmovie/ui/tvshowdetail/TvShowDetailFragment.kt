@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navGraphViewModels
 import androidx.transition.TransitionInflater
 import com.google.android.material.snackbar.Snackbar
 import com.ugurbuga.followtvmovie.BuildConfig
@@ -49,10 +48,6 @@ class TvShowDetailFragment :
     override fun viewModelClass() = TvShowDetailViewModel::class.java
 
     private val args: TvShowDetailFragmentArgs by navArgs()
-
-    private val sharedViewModel: SharedTvShowViewModel by navGraphViewModels(R.id.tv_show_detail_nav_graph) {
-        defaultViewModelProviderFactory
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -232,7 +227,6 @@ class TvShowDetailFragment :
 
     private fun onTvShowDetailViewState(movieDetailViewState: TvShowDetailViewState) {
         viewBinding.viewState = movieDetailViewState
-        sharedViewModel.setTvShowDetailViewState(movieDetailViewState)
     }
 
     private fun onCommonViewState(commonViewState: CommonViewState) {

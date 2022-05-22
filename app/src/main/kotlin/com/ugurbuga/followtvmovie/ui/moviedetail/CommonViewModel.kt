@@ -16,7 +16,11 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetSimilarUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetVideosUseCase
 import com.ugurbuga.followtvmovie.domain.poster.model.LoadingUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterUIModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
 
 abstract class CommonViewModel(
     private val getFavoriteUseCase: GetFavoriteUseCase,
@@ -29,10 +33,10 @@ abstract class CommonViewModel(
     savedStateHandle: SavedStateHandle,
 ) : FTMBaseViewModel() {
 
-    protected var _commonViewEvent = MutableSharedFlow<CommonViewEvent>()
+    private val _commonViewEvent = MutableSharedFlow<CommonViewEvent>()
     val commonViewEvent: SharedFlow<CommonViewEvent> = _commonViewEvent
 
-    protected val _commonViewState = MutableStateFlow(CommonViewState())
+    private val _commonViewState = MutableStateFlow(CommonViewState())
     val commonViewState: StateFlow<CommonViewState> get() = _commonViewState
 
     protected var id: String = savedStateHandle[Argument.ID] ?: CommonUtil.EMPTY_STRING
@@ -246,5 +250,9 @@ abstract class CommonViewModel(
         similar.posterList = list
         _commonViewState.value =
             commonViewState.value.copy(similar = similar)
+    }
+
+    protected fun emitCommonViewEvent(viewEvent: CommonViewEvent) {
+        _commonViewEvent.emitSuspending(viewEvent)
     }
 }

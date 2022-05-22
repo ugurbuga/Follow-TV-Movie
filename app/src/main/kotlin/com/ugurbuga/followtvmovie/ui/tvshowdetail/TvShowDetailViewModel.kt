@@ -77,14 +77,14 @@ class TvShowDetailViewModel @Inject constructor(
         if (commonViewState.value.isFavorite) {
             tvShowDetailViewState.value.tvShowDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).doOnSuccess {
-                    _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(R.string.removed_movie_list))
+                    emitCommonViewEvent(CommonViewEvent.ShowSnackbar(R.string.removed_movie_list))
                 }.launchIn(viewModelScope)
             }
         } else {
             val isReleased =
                 FTMUtil.isReleased(tvShowDetailViewState.value.tvShowDetail?.releaseDateLong)
             if (isReleased) {
-                _commonViewEvent.emitSuspending(
+                emitCommonViewEvent(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
                         tvShowDetailViewState.value.tvShowDetail?.title ?: CommonUtil.EMPTY_STRING
                     )
@@ -109,7 +109,7 @@ class TvShowDetailViewModel @Inject constructor(
                 )
             )
                 .doOnSuccess {
-                    _commonViewEvent.emit(CommonViewEvent.ShowSnackbar(message))
+                    emitCommonViewEvent(CommonViewEvent.ShowSnackbar(message))
                 }.launchIn(viewModelScope)
         }
     }

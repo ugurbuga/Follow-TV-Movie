@@ -23,9 +23,4 @@ open class FTMTextInputEditText @JvmOverloads constructor(
             }
         }
     }
-
-    fun removeFocus() {
-        isEnabled = !isEnabled
-        isEnabled = !isEnabled
-    }
 }

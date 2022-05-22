@@ -199,7 +199,7 @@
 
                 <include
                     android:id="@+id/tv_show_detail"
-                    commonViewState="@{commonViewState}"
+                    app:commonViewState="@{commonViewState}"
                     layout="@layout/view_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

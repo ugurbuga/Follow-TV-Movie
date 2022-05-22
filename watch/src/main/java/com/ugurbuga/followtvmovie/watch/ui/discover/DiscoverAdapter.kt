@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ugurbuga.followtvmovie.watch.base.BaseListAdapter
-import com.ugurbuga.followtvmovie.watch.ui.discover.DiscoverItem
 
 class DiscoverAdapter(
     private val onItemClick: ((item: DiscoverItem) -> Unit)? = null,

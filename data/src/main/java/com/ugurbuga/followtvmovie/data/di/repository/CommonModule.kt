@@ -15,6 +15,6 @@ abstract class CommonModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindApiRepository(apiDataRepositoryImpl: CommonRepositoryImpl): CommonRepository
+    abstract fun provideCommonRepository(apiDataRepositoryImpl: CommonRepositoryImpl): CommonRepository
 
 }

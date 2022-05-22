@@ -2,14 +2,12 @@ package com.ugurbuga.followtvmovie.watch.ui.discover
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.wear.widget.WearableLinearLayoutManager
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityDiscoverBinding
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesActivity
-import com.ugurbuga.followtvmovie.watch.ui.popularlist.PopularMoviesViewModel
 import com.ugurbuga.followtvmovie.watch.ui.upcoming.UpcomingMoviesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,8 +17,6 @@ class DiscoverActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityDiscoverBinding
 
     lateinit var discoverAdapter: DiscoverAdapter
-
-    private val viewModel: PopularMoviesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

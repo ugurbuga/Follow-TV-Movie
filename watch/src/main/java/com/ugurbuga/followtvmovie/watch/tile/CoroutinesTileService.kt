@@ -32,7 +32,7 @@ import kotlinx.coroutines.guava.future
 abstract class CoroutinesTileService : TileService() {
     // For coroutines, use a custom scope we can cancel when the service is destroyed
     private val serviceJob = Job()
-    protected val serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
+    private val serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
 
     final override fun onTileRequest(
         requestParams: TileRequest

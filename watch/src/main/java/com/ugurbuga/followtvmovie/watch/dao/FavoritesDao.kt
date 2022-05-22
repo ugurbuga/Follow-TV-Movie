@@ -28,13 +28,6 @@ interface FavoritesDao {
     @Update
     suspend fun update(note: PosterItemUIModel)
 
-    @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong DESC")
-    fun getFutureMovies(
-        mediaType: String = MediaType.MOVIE,
-        isWatched: Boolean = false,
-        date: Long = Calendar.getInstance().time.time
-    ): MutableList<PosterItemUIModel>
-
     @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched AND releaseDateLong > :date order by releaseDateLong ASC")
     fun getSoonMovies(
         mediaType: String = MediaType.MOVIE,

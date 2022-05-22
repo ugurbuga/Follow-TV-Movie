@@ -15,9 +15,6 @@ data class MovieDetailUIModel(
     val video: Boolean,
     val voteAverage: Double,
 ) {
-    fun getProgressValue(): Int {
-        return (voteAverage.times(10.0)).toInt()
-    }
 
     fun isReleaseInFuture(): Boolean {
         return releaseDateLong > Calendar.getInstance().time.time
