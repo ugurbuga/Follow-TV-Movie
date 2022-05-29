@@ -36,9 +36,9 @@ class ImageFragment : FTMBaseVMFragment<ImageViewModel, FragmentImageBinding>() 
             adapter = imageAdapter
             clipToPadding = false
             clipChildren = false
-            offscreenPageLimit = 3
-            currentItem = args.position
+            offscreenPageLimit = 1
             setPageTransformer(compositePageTransformer)
+            setCurrentItem(args.position, false)
         }
 
         viewBinding.toolbar.setNavigationClickListener {
