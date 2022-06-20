@@ -142,7 +142,7 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         return if (URLUtil.isValidUrl(args.imageUrl)) {
             args.imageUrl
         } else {
-           BuildConfig.API_IMAGE_URL + "/" + args.imageUrl
+            BuildConfig.API_IMAGE_URL + "/" + args.imageUrl
         }
     }
 
