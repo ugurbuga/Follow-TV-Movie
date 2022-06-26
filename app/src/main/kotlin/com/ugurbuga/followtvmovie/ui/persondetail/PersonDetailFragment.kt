@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.transition.TransitionInflater
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.navArgs
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
+import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.databinding.FragmentPersonDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
@@ -36,6 +38,11 @@ class PersonDetailFragment :
         )
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
+
+        setFragmentResultListener(Argument.POSITION) { _, bundle ->
+            val position = bundle.getInt(Argument.POSITION)
+            viewBinding.imageRecyclerView.scrollToPosition(position)
+        }
     }
 
     override fun onResume() {

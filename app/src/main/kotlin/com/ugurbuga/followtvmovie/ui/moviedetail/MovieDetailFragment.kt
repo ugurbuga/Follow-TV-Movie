@@ -7,6 +7,7 @@ import android.webkit.URLUtil
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -54,6 +55,11 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
         )
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
+
+        setFragmentResultListener(Argument.POSITION) { _, bundle ->
+            val position = bundle.getInt(Argument.POSITION)
+            viewBinding.movieDetail.imageRecyclerView.scrollToPosition(position)
+        }
     }
 
     override fun onResume() {

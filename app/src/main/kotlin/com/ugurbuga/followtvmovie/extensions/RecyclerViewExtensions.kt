@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.extensions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-fun RecyclerView.scrollEndListener(scrollValues: (() -> Unit)) {
+fun RecyclerView.scrollEndListener(onScroll: (() -> Unit)) {
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -15,7 +15,7 @@ fun RecyclerView.scrollEndListener(scrollValues: (() -> Unit)) {
             val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
             if (visibleItemCount + firstVisibleItemPosition >= totalItemCount - 3 && firstVisibleItemPosition >= 0) {
-                scrollValues.invoke()
+                onScroll.invoke()
             }
         }
     })
