@@ -2,10 +2,6 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/discover_nav_graph"
-        android:icon="@drawable/ic_search"
-        android:title="@string/discover" />
-    <item
         android:id="@+id/tv_shows_nav_graph"
         android:icon="@drawable/ic_tv"
         android:title="@string/tv_shows" />
@@ -14,6 +10,11 @@
         android:id="@+id/movies_nav_graph"
         android:icon="@drawable/ic_movie"
         android:title="@string/movies" />
+
+    <item
+        android:id="@+id/discover_nav_graph"
+        android:icon="@drawable/ic_search"
+        android:title="@string/discover" />
 
     <item
         android:id="@+id/persons_nav_graph"
