@@ -27,7 +27,7 @@ abstract class FTMBaseVMNavigationActivity<VM : FTMBaseViewModel, DB : ViewDataB
 
         bundle?.let {
             navController.setGraph(navGraph, bundle)
-        } ?: kotlin.run {
+        } ?: run {
             navController.graph = navGraph
         }
     }

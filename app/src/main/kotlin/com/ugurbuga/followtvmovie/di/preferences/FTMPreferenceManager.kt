@@ -1,6 +1,7 @@
 package com.ugurbuga.followtvmovie.di.preferences
 
 import android.content.Context
+import com.ugurbuga.followtvmovie.core.extensions.orInvalidIndex
 import com.ugurbuga.followtvmovie.extensions.get
 import com.ugurbuga.followtvmovie.extensions.set
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -20,7 +21,7 @@ class FTMPreferenceManager @Inject constructor(
     override fun getPrefName() = FTM_PREF
 
     override fun getTheme(): Int {
-        return prefs.get<Int>(KEY_THEME)?.toInt() ?: -1
+        return prefs.get<Int>(KEY_THEME).orInvalidIndex()
     }
 
     override fun setTheme(theme: Int) {

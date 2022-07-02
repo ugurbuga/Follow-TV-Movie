@@ -109,7 +109,7 @@ class MovieTileService : CoroutinesTileService() {
     ): LayoutElement = Column.Builder()
         .addContent(
             Text.Builder()
-                .setText(dummy?.get(0)?.name ?: "")
+                .setText(dummy?.get(0)?.name.orEmpty())
                 .setFontStyle(
                     FontStyles
                         .title3(deviceParameters)
@@ -123,7 +123,7 @@ class MovieTileService : CoroutinesTileService() {
         .addContent(Spacer.Builder().setHeight(SPACING_TITLE_SUBTITLE).build())
         .addContent(
             Text.Builder()
-                .setText(dummy?.get(0)?.releaseDate ?: "")
+                .setText(dummy?.get(0)?.releaseDate.orEmpty())
                 .setFontStyle(
                     FontStyles
                         .caption1(deviceParameters)
@@ -173,7 +173,7 @@ class MovieTileService : CoroutinesTileService() {
                     Clickable.Builder().setId("modifier").setOnClick(
                         ActionBuilders.LaunchAction.Builder().setAndroidActivity(
                             ActionBuilders.AndroidActivity.Builder()
-                                .setClassName(DiscoverActivity::class.qualifiedName ?: "")
+                                .setClassName(DiscoverActivity::class.qualifiedName.orEmpty())
                                 .setPackageName(this.packageName).build()
                         ).build()
                     ).build()

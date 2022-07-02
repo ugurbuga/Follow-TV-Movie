@@ -14,7 +14,7 @@ object Util {
         return if (date != null) {
             val sdf = SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
             try {
-                sdf.parse(date)?.time ?: 0
+                sdf.parse(date)?.time.orZero()
             } catch (e: java.lang.Exception) {
                 0
             }

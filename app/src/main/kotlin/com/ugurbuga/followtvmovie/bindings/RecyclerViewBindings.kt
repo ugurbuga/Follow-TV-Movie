@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.ugurbuga.followtvmovie.core.adapter.BaseListAdapter
 import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.extensions.orZero
 import com.ugurbuga.followtvmovie.ui.discover.adapter.SpaceItemDecoration
 
 @Suppress("UNCHECKED_CAST")
@@ -33,10 +34,10 @@ fun RecyclerView.setSpaceBinding(
 ) {
     addItemDecoration(
         SpaceItemDecoration(
-            spacePaddingStart?.toInt() ?: 0,
-            spacePaddingTop?.toInt() ?: 0,
-            spacePaddingEnd?.toInt() ?: 0,
-            spacePaddingBottom?.toInt() ?: 0,
+            spacePaddingStart?.toInt().orZero(),
+            spacePaddingTop?.toInt().orZero(),
+            spacePaddingEnd?.toInt().orZero(),
+            spacePaddingBottom?.toInt().orZero(),
         )
     )
 }

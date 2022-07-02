@@ -51,11 +51,11 @@ class PosterMapper @Inject constructor(
         response: PosterResponse,
         mediaType: String
     ): PosterItemUIModel {
-        val releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING
+        val releaseDate = response.releaseDate ?: response.firstAirDate.orEmpty()
 
         return PosterItemUIModel(
             id = response.id,
-            name = response.title ?: response.name ?: CommonUtil.EMPTY_STRING,
+            name = response.title ?: response.name.orEmpty(),
             posterPath = imageMapper.getPosterUrl(response.posterPath, response.backdropPath),
             mediaType = mediaType,
             releaseDate = releaseDate,
@@ -66,14 +66,14 @@ class PosterMapper @Inject constructor(
     private fun toPosterItemUIModel(response: SearchItemResponse): PosterItemUIModel {
         return PosterItemUIModel(
             id = response.id,
-            name = response.name ?: response.title ?: CommonUtil.EMPTY_STRING,
+            name = response.name ?: response.title.orEmpty(),
             posterPath = imageMapper.getPosterUrl(
                 response.posterPath,
                 response.backdropPath,
                 response.profilePath
             ),
             mediaType = response.mediaType,
-            releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING,
+            releaseDate = response.releaseDate ?: response.firstAirDate.orEmpty(),
             releaseDateLong = CommonUtil.getDateLong(response.releaseDate ?: response.firstAirDate)
         )
     }

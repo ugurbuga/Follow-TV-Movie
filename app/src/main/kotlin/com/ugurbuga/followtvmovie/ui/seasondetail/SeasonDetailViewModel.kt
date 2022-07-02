@@ -4,9 +4,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.base.FTMBaseViewModel
 import com.ugurbuga.followtvmovie.common.Argument
-import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
+import com.ugurbuga.followtvmovie.core.extensions.orInvalidIndex
 import com.ugurbuga.followtvmovie.domain.seasondetail.usecase.GetTvShowSeasonDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,10 +20,10 @@ open class SeasonDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : FTMBaseViewModel() {
 
-    private var id: String = savedStateHandle[Argument.ID] ?: CommonUtil.EMPTY_STRING
-    private var imageUrl: String = savedStateHandle[Argument.IMAGE_URL] ?: CommonUtil.EMPTY_STRING
+    private var id: String = savedStateHandle.get<String>(Argument.ID).orEmpty()
+    private var imageUrl: String = savedStateHandle.get<String>(Argument.IMAGE_URL).orEmpty()
     private var seasonNumber: Int =
-        savedStateHandle[Argument.SEASON_NUMBER] ?: CommonUtil.INVALID_INDEX
+        savedStateHandle.get<Int>(Argument.SEASON_NUMBER).orInvalidIndex()
 
     private val _seasonDetailViewState = MutableStateFlow(SeasonDetailViewState())
     val seasonDetailViewState: StateFlow<SeasonDetailViewState> get() = _seasonDetailViewState

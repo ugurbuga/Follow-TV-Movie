@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.common.FTMUtil
-import com.ugurbuga.followtvmovie.core.common.CommonUtil
 import com.ugurbuga.followtvmovie.core.extensions.doOnStatusChanged
 import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
 import com.ugurbuga.followtvmovie.domain.credit.usecase.GetCastsUseCase
@@ -86,7 +85,7 @@ class TvShowDetailViewModel @Inject constructor(
             if (isReleased) {
                 emitCommonViewEvent(
                     CommonViewEvent.ShowWatchedOrWatchLaterDialog(
-                        tvShowDetailViewState.value.tvShowDetail?.title ?: CommonUtil.EMPTY_STRING
+                        tvShowDetailViewState.value.tvShowDetail?.title.orEmpty()
                     )
                 )
 

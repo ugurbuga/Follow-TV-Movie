@@ -20,14 +20,14 @@ class CreditMapper @Inject constructor(
     private fun getCast(response: CastResponse): CastUIModel {
         return CastUIModel(
             id = response.id,
-            name = response.name ?: response.title ?: CommonUtil.EMPTY_STRING,
-            character = response.character ?: CommonUtil.EMPTY_STRING,
+            name = response.name ?: response.title.orEmpty(),
+            character = response.character.orEmpty(),
             profilePath = imageMapper.getPosterUrl(
                 response.posterPath,
                 response.backdropPath,
                 response.profilePath
             ),
-            mediaType = response.mediaType ?: CommonUtil.EMPTY_STRING
+            mediaType = response.mediaType.orEmpty()
         )
     }
 
@@ -39,21 +39,21 @@ class CreditMapper @Inject constructor(
     }
 
     private fun getReleaseDate(cast: CastResponse): Long {
-        val releaseDate = cast.releaseDate ?: cast.firstAirDate ?: CommonUtil.EMPTY_STRING
+        val releaseDate = cast.releaseDate ?: cast.firstAirDate.orEmpty()
         return CommonUtil.getDateLong(releaseDate)
     }
 
     private fun getPoster(response: CastResponse): PosterItemUIModel {
-        val releaseDate = response.releaseDate ?: response.firstAirDate ?: CommonUtil.EMPTY_STRING
+        val releaseDate = response.releaseDate ?: response.firstAirDate.orEmpty()
         return PosterItemUIModel(
             id = response.id,
-            name = response.title ?: response.name ?: CommonUtil.EMPTY_STRING,
+            name = response.title ?: response.name.orEmpty(),
             posterPath = imageMapper.getPosterUrl(
                 response.posterPath,
                 response.backdropPath,
                 response.profilePath
             ),
-            mediaType = response.mediaType ?: CommonUtil.EMPTY_STRING,
+            mediaType = response.mediaType.orEmpty(),
             releaseDate = releaseDate,
             releaseDateLong = CommonUtil.getDateLong(releaseDate)
         )

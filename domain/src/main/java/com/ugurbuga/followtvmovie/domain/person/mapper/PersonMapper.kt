@@ -16,8 +16,8 @@ class PersonMapper @Inject constructor(
             name = response.name,
             biography = response.biography,
             profilePath = imageMapper.getPosterUrl(response.profilePath),
-            birthDay = response.birthDay ?: CommonUtil.EMPTY_STRING,
-            deathDay = response.deathDay ?: CommonUtil.EMPTY_STRING,
+            birthDay = response.birthDay.orEmpty(),
+            deathDay = response.deathDay.orEmpty(),
         )
     }
 

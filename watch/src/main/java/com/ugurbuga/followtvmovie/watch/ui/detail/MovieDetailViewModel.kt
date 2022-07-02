@@ -8,12 +8,10 @@ import com.ugurbuga.followtvmovie.watch.domain.detail.DeleteFavoriteUseCase
 import com.ugurbuga.followtvmovie.watch.domain.detail.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.watch.domain.detail.GetMovieDetailUseCase
 import com.ugurbuga.followtvmovie.watch.util.Resource
-import com.ugurbuga.followtvmovie.watch.util.Util
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -28,7 +26,7 @@ class MovieDetailViewModel @Inject constructor(
     private val _movieDetailViewState = MutableStateFlow(MovieDetailViewState())
     val movieDetailViewState: StateFlow<MovieDetailViewState> get() = _movieDetailViewState
 
-    private var movieId = savedStateHandle["movieId"] ?: Util.EMPTY_STRING
+    private var movieId = savedStateHandle.get<String>("movieId").orEmpty()
 
     init {
         getMovieDetail()
