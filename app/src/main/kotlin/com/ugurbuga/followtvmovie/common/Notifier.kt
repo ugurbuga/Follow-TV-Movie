@@ -24,11 +24,11 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.core.extensions.color
 import com.ugurbuga.followtvmovie.domain.image.mapper.ImageMapper
 
 /**
@@ -63,7 +63,7 @@ object Notifier {
 
         val builder = NotificationCompat.Builder(context, channelId)
         builder.setContentTitle(title)
-            .setColor(ContextCompat.getColor(context, R.color.primary_color))
+            .setColor(context.color(R.color.primary_color))
             .setSmallIcon(R.drawable.ic_tv)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(intent)

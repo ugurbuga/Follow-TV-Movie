@@ -2,7 +2,7 @@ package com.ugurbuga.followtvmovie.core.common
 
 import android.content.Context
 import android.graphics.Typeface
-import androidx.core.content.res.ResourcesCompat
+import com.ugurbuga.followtvmovie.core.extensions.font
 import com.ugurbuga.followtvmovie.core.extensions.orZero
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -18,7 +18,7 @@ object CommonUtil {
     private const val DATE_PATTERN = "yyyy-MM-dd"
 
     fun getTypefaceFromFontRes(context: Context, font: Int): Typeface? {
-        return ResourcesCompat.getFont(context, font)
+        return context.font(font)
     }
 
     fun getDateLong(date: String?): Long {

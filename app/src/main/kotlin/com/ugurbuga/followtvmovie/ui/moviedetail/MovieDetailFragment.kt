@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.webkit.URLUtil
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavDeepLinkBuilder
@@ -21,6 +20,7 @@ import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.AppPackageName
 import com.ugurbuga.followtvmovie.common.Argument
 import com.ugurbuga.followtvmovie.common.Notifier
+import com.ugurbuga.followtvmovie.core.extensions.color
 import com.ugurbuga.followtvmovie.databinding.FragmentMovieDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
@@ -64,14 +64,12 @@ class MovieDetailFragment : FTMBaseVMFragment<MovieDetailViewModel, FragmentMovi
 
     override fun onResume() {
         super.onResume()
-        activity?.window?.statusBarColor =
-            ContextCompat.getColor(requireContext(), android.R.color.transparent)
+        activity?.window?.statusBarColor = color(android.R.color.transparent)
     }
 
     override fun onPause() {
         super.onPause()
-        activity?.window?.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.quaternary_color)
+        activity?.window?.statusBarColor = color(R.color.quaternary_color)
     }
 
     override fun onInitDataBinding() {

@@ -5,10 +5,11 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.ugurbuga.followtvmovie.R
+import com.ugurbuga.followtvmovie.core.extensions.color
+import com.ugurbuga.followtvmovie.core.extensions.drawable
+import com.ugurbuga.followtvmovie.core.extensions.font
 import com.ugurbuga.followtvmovie.extensions.showKeyboard
 
 class FTMToolbar @JvmOverloads constructor(
@@ -23,10 +24,10 @@ class FTMToolbar @JvmOverloads constructor(
             when (value) {
                 NavigationIconType.LOGO -> {
                     navigationIcon = null
-                    logo = ContextCompat.getDrawable(context, R.drawable.ic_ftm_app_logo)
+                    logo = drawable(R.drawable.ic_ftm_app_logo)
                 }
                 NavigationIconType.BACK_BUTTON -> {
-                    navigationIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_back)
+                    navigationIcon = drawable(R.drawable.ic_arrow_back)
                     logo = null
                 }
                 NavigationIconType.NONE -> {
@@ -81,11 +82,7 @@ class FTMToolbar @JvmOverloads constructor(
             val searchIcon: ImageView =
                 searchView.findViewById(androidx.appcompat.R.id.search_button)
 
-            searchIcon.setImageDrawable(
-                ContextCompat.getDrawable(
-                    context, R.drawable.ic_search
-                )
-            )
+            searchIcon.setImageDrawable(drawable(R.drawable.ic_search))
 
             val backgroundView =
                 searchView.findViewById(androidx.appcompat.R.id.search_plate) as View
@@ -94,13 +91,8 @@ class FTMToolbar @JvmOverloads constructor(
             val searchAutoComplete: SearchView.SearchAutoComplete =
                 searchView.findViewById(androidx.appcompat.R.id.search_src_text)
 
-            searchAutoComplete.setTextColor(
-                ContextCompat.getColor(
-                    context, R.color.primary_color
-                )
-            )
-            searchAutoComplete.typeface =
-                ResourcesCompat.getFont(context, R.font.league_spartan_regular)
+            searchAutoComplete.setTextColor(color(R.color.primary_color))
+            searchAutoComplete.typeface = font(R.font.league_spartan_regular)
 
             searchView.isIconified = !isExpand
 

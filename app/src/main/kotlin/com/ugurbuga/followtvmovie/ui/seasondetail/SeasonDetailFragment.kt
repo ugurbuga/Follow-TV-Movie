@@ -1,11 +1,11 @@
 package com.ugurbuga.followtvmovie.ui.seasondetail
 
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
+import com.ugurbuga.followtvmovie.core.extensions.color
 import com.ugurbuga.followtvmovie.databinding.FragmentSeasonDetailBinding
 import com.ugurbuga.followtvmovie.domain.seasondetail.model.EpisodeUIModel
 import com.ugurbuga.followtvmovie.extensions.collect
@@ -23,14 +23,12 @@ class SeasonDetailFragment :
 
     override fun onResume() {
         super.onResume()
-        activity?.window?.statusBarColor =
-            ContextCompat.getColor(requireContext(), android.R.color.transparent)
+        activity?.window?.statusBarColor = color(android.R.color.transparent)
     }
 
     override fun onPause() {
         super.onPause()
-        activity?.window?.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.quaternary_color)
+        activity?.window?.statusBarColor = color(R.color.quaternary_color)
     }
 
     override fun onInitDataBinding() {

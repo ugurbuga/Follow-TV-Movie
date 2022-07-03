@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
+import com.ugurbuga.followtvmovie.core.extensions.dimenToPx
 import com.ugurbuga.followtvmovie.databinding.ItemFavoriteBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 
@@ -22,14 +23,13 @@ class FavoriteViewHolder(
         imageHeight: Double?,
         onPosterClick: ((poster: PosterItemUIModel, imageView: AppCompatImageView) -> Unit)? = null,
     ) {
-        val context = itemView.context
 
         binding.executeAfter {
             this.item = poster
 
             val imageViewParams = ConstraintLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                imageHeight?.toInt() ?: context.resources.getDimensionPixelSize(R.dimen.height_210)
+                imageHeight?.toInt() ?: dimenToPx(R.dimen.height_210)
             )
             posterImage.layoutParams = imageViewParams
             ViewCompat.setTransitionName(posterImage, poster.name)

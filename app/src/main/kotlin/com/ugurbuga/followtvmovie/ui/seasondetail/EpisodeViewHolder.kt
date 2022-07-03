@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.bindings.executeAfter
 import com.ugurbuga.followtvmovie.core.adapter.BaseViewHolder
+import com.ugurbuga.followtvmovie.core.extensions.dimenToPx
 import com.ugurbuga.followtvmovie.databinding.ItemEpisodePosterBinding
 import com.ugurbuga.followtvmovie.domain.seasondetail.model.EpisodeUIModel
 
@@ -27,8 +28,7 @@ class EpisodeViewHolder(
 
             val imageViewParams = ConstraintLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                imageHeight?.toInt()
-                    ?: posterImage.context.resources.getDimensionPixelSize(R.dimen.height_210)
+                imageHeight?.toInt() ?: dimenToPx(R.dimen.height_210)
             )
             posterImage.layoutParams = imageViewParams
             ViewCompat.setTransitionName(posterImage, episode.name)
