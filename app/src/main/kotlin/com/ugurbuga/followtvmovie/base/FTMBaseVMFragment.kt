@@ -31,7 +31,6 @@ abstract class FTMBaseVMFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
         collect(viewModel.baseEvent, ::onViewEvent)
     }
 
