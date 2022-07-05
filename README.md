@@ -1,8 +1,7 @@
 # Follow TV Movie
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.6-blue.svg)](https://kotlinlang.org)
-[![AGP](https://img.shields.io/badge/AGP-4-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.7-brightgreen)](https://kotlinlang.org)
+[![AGP](https://img.shields.io/badge/gradle-7.2.1-brightgreen)](https://developer.android.com/studio/releases/gradle-plugin)
 
 You can search movies/tv shows/persons.
 
