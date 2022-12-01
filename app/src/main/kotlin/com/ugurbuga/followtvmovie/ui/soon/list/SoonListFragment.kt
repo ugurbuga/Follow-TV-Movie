@@ -6,7 +6,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.databinding.FragmentSoonMovieListBinding
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.ui.soon.SoonFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 

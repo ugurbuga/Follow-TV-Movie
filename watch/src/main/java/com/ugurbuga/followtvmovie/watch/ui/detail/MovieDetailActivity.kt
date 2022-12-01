@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityMovieDetailBinding
-import com.ugurbuga.followtvmovie.watch.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,5 +1,7 @@
 package com.ugurbuga.followtvmovie.domain.moviedetail.model.detail
 
+import java.util.Calendar
+
 data class MovieDetailUIModel(
     val adult: Boolean,
     val genres: List<GenreUIModel>,
@@ -14,5 +16,9 @@ data class MovieDetailUIModel(
 ) {
     fun getProgressValue(): Int {
         return (voteAverage.times(10.0)).toInt()
+    }
+
+    fun isReleaseInFuture(): Boolean {
+        return releaseDateLong > Calendar.getInstance().time.time
     }
 }

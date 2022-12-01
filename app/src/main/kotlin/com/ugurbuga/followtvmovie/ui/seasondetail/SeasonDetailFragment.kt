@@ -8,7 +8,7 @@ import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.core.extensions.color
 import com.ugurbuga.followtvmovie.databinding.FragmentSeasonDetailBinding
 import com.ugurbuga.followtvmovie.domain.seasondetail.model.EpisodeUIModel
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

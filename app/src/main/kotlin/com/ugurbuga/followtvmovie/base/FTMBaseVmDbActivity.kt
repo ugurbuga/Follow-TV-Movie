@@ -13,7 +13,7 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.core.base.BaseVmDbActivity
 import com.ugurbuga.followtvmovie.core.extensions.getString
 import com.ugurbuga.followtvmovie.di.preferences.FTMPreferenceManager
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.view.dialog.FTMDialog
 import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
 import java.util.Locale

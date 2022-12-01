@@ -6,11 +6,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.wear.widget.WearableLinearLayoutManager
+import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.watch.R
 import com.ugurbuga.followtvmovie.watch.databinding.ActivityUpcomingMoviesBinding
-import com.ugurbuga.followtvmovie.watch.domain.popularlist.MovieResponse
-import com.ugurbuga.followtvmovie.watch.extensions.collect
-import com.ugurbuga.followtvmovie.watch.extensions.scrollEndListener
+import com.ugurbuga.followtvmovie.core.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.watch.ui.detail.MovieDetailActivity
 import com.ugurbuga.followtvmovie.watch.ui.popularlist.adapter.PosterAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +48,7 @@ class UpcomingMoviesActivity : AppCompatActivity() {
 
     }
 
-    private fun onPosterClicked(movieResponse: MovieResponse) {
+    private fun onPosterClicked(movieResponse: PosterItemUIModel) {
         startActivity(Intent(this, MovieDetailActivity::class.java).apply {
             putExtra("movieId", movieResponse.id)
         })

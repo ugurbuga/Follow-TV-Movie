@@ -26,9 +26,9 @@ import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.CastUIModel
 import com.ugurbuga.followtvmovie.domain.moviedetail.model.detail.VideoUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
 import com.ugurbuga.followtvmovie.domain.tvshowdetail.model.SeasonUIModel
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.extensions.isPackageEnabled
-import com.ugurbuga.followtvmovie.extensions.scrollEndListener
+import com.ugurbuga.followtvmovie.core.extensions.scrollEndListener
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.CommonViewEvent

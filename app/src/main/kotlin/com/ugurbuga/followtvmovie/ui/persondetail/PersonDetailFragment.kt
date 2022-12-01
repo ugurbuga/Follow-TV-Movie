@@ -10,11 +10,11 @@ import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseVMFragment
 import com.ugurbuga.followtvmovie.bindings.setImageUrl
 import com.ugurbuga.followtvmovie.common.Argument
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.core.extensions.color
 import com.ugurbuga.followtvmovie.databinding.FragmentPersonDetailBinding
 import com.ugurbuga.followtvmovie.domain.image.model.ImageUIModel
 import com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel
-import com.ugurbuga.followtvmovie.extensions.collect
 import com.ugurbuga.followtvmovie.ui.discover.MediaType
 import com.ugurbuga.followtvmovie.ui.discover.adapter.PosterAdapter
 import com.ugurbuga.followtvmovie.ui.moviedetail.ImageAdapter
@@ -98,6 +98,7 @@ class PersonDetailFragment :
                 )
                 navigate(directions, extras)
             }
+
             MediaType.MOVIE -> {
                 val directions = PersonDetailFragmentDirections.actionPersonDetailToMovieDetail(
                     poster.id, poster.posterPath

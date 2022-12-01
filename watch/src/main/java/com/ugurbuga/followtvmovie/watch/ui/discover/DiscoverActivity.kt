@@ -16,7 +16,7 @@ class DiscoverActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityDiscoverBinding
 
-    lateinit var discoverAdapter: DiscoverAdapter
+    private lateinit var discoverAdapter: DiscoverAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -3,21 +3,21 @@ package com.ugurbuga.followtvmovie.watch.ui.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ugurbuga.followtvmovie.watch.domain.detail.AddFavoriteUseCase
-import com.ugurbuga.followtvmovie.watch.domain.detail.DeleteFavoriteUseCase
-import com.ugurbuga.followtvmovie.watch.domain.detail.GetFavoriteUseCase
-import com.ugurbuga.followtvmovie.watch.domain.detail.GetMovieDetailUseCase
-import com.ugurbuga.followtvmovie.watch.util.Resource
+import com.ugurbuga.followtvmovie.core.extensions.doOnSuccess
+import com.ugurbuga.followtvmovie.domain.favorite.usecase.AddFavoriteMovieUseCase
+import com.ugurbuga.followtvmovie.domain.favorite.usecase.DeleteFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
+import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val addFavoriteUseCase: AddFavoriteMovieUseCase,
     private val getFavoriteUseCase: GetFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     savedStateHandle: SavedStateHandle
@@ -33,86 +33,47 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     private fun isFavorite() {
-        viewModelScope.launch {
-            getFavoriteUseCase(
-                GetFavoriteUseCase.GetFavoriteParams(
-                    MediaType.MOVIE, movieId
-                )
-            ).collect {
-                when (it) {
-                    is Resource.Error -> {
-                    }
-                    Resource.Loading -> {
-                    }
-                    is Resource.Success -> {
-                        _movieDetailViewState.value = _movieDetailViewState.value.copy(
-                            isFavorite = it.data != null
-                        )
-                    }
-                }
-            }
-        }
+        getFavoriteUseCase(
+            GetFavoriteUseCase.GetFavoriteParams(
+                MediaType.MOVIE, movieId
+            )
+        ).doOnSuccess {
+            _movieDetailViewState.value = _movieDetailViewState.value.copy(
+                isFavorite = it != null
+            )
+        }.launchIn(viewModelScope)
+
     }
 
     private fun getMovieDetail() {
-        viewModelScope.launch {
-            getMovieDetailUseCase(
-                GetMovieDetailUseCase.MovieDetailParams(
-                    movieId
-                )
-            ).collect {
-                when (it) {
-                    is Resource.Error -> {
-                    }
-                    Resource.Loading -> {
-                    }
-                    is Resource.Success -> {
-                        _movieDetailViewState.value = _movieDetailViewState.value.copy(
-                            movieDetail = it.data, isFavorite = false
-                        )
-                        isFavorite()
-                    }
-                }
-            }
-        }
+        getMovieDetailUseCase(
+            GetMovieDetailUseCase.MovieDetailParams(
+                movieId
+            )
+        ).doOnSuccess {
+            _movieDetailViewState.value = _movieDetailViewState.value.copy(
+                movieDetail = it, isFavorite = false
+            )
+            isFavorite()
+        }.launchIn(viewModelScope)
     }
 
     fun tileClicked() {
         if (movieDetailViewState.value.isFavorite) {
             //Remove
-            viewModelScope.launch {
-                movieDetailViewState.value.movieDetail?.let {
-                    deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id)).collect { result ->
-                        when (result) {
-                            is Resource.Error -> {
-                            }
-                            Resource.Loading -> {
-                            }
-                            is Resource.Success -> {
-                            }
-                        }
-                    }
-                }
+            movieDetailViewState.value.movieDetail?.let {
+                deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
+                    .doOnSuccess {}.launchIn(viewModelScope)
             }
         } else {
-            viewModelScope.launch {
-                movieDetailViewState.value.movieDetail?.let {
-                    addFavoriteUseCase(
-                        AddFavoriteUseCase.AddFavoriteParams(
-                            it,
-                            false
-                        )
-                    ).collect { result ->
-                        when (result) {
-                            is Resource.Error -> {
-                            }
-                            Resource.Loading -> {
-                            }
-                            is Resource.Success -> {
-                            }
-                        }
-                    }
-                }
+            movieDetailViewState.value.movieDetail?.let {
+                addFavoriteUseCase(
+                    AddFavoriteMovieUseCase.AddFavoriteParams(
+                        MediaType.MOVIE,
+                        it,
+                        false
+                    )
+                ).doOnSuccess { }.launchIn(viewModelScope)
             }
         }
     }

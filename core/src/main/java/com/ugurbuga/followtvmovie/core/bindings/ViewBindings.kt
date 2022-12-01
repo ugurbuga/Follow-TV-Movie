@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.watch.extensions
+package com.ugurbuga.followtvmovie.core.bindings
 
 import android.view.View
 import androidx.core.view.isVisible

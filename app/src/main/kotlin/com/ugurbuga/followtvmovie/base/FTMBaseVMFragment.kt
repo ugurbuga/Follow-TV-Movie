@@ -12,7 +12,7 @@ import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
 
 import com.ugurbuga.followtvmovie.core.base.BaseVmDbFragment
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import com.ugurbuga.followtvmovie.view.loading.FTMLoadingDialog
 
 abstract class FTMBaseVMFragment<VM : FTMBaseViewModel, DB : ViewDataBinding> :

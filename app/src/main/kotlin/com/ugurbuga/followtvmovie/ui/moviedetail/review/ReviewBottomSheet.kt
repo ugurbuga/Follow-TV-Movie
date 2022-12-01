@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.ugurbuga.followtvmovie.R
 import com.ugurbuga.followtvmovie.base.FTMBaseBottomSheetDialogFragment
 import com.ugurbuga.followtvmovie.databinding.BottomSheetReviewBinding
-import com.ugurbuga.followtvmovie.extensions.collect
+import com.ugurbuga.followtvmovie.core.extensions.collect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

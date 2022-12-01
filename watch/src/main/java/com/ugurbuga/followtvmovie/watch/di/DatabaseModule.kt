@@ -14,6 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
+
     @Provides
     fun provideFavoritesDao(appDatabase: FTMRoomDatabase): FavoritesDao {
         return appDatabase.getFavoritesDao()

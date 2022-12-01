@@ -3,7 +3,7 @@ package com.ugurbuga.followtvmovie.watch.ui.detail
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ugurbuga.followtvmovie.watch.base.ListAdapterItem
+import com.ugurbuga.followtvmovie.core.adapter.ListAdapterItem
 
 @Entity(tableName = "favoritesTable")
 data class PosterItemUIModel(
