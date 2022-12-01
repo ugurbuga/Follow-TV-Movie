@@ -2,7 +2,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://mvnrepository.com/artifact/com.github.gundy/semver4j' }
         mavenCentral()
     }
 }
@@ -10,7 +10,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://mvnrepository.com/artifact/com.github.gundy/semver4j' }
         mavenCentral()
     }
 }
