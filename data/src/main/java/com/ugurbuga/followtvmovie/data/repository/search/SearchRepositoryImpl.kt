@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.data.repository.search
 
-import com.ugurbuga.followtvmovie.core.base.BaseRepository
+import com.ugurbuga.followtvmovie.data.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.SearchService
 import com.ugurbuga.followtvmovie.data.model.response.search.SearchResponse

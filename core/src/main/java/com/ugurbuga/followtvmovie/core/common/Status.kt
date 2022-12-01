@@ -4,7 +4,7 @@ sealed class Status {
 
     object Success : Status()
 
-    data class Error(val exception: Throwable? = null, val errorMessage: String? = null) : Status()
+    data class Error(val message: Any, val code: Int) : Status()
 
     object Loading : Status()
 

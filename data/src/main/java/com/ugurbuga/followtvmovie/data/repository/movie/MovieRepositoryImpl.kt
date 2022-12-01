@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.data.repository.movie
 
-import com.ugurbuga.followtvmovie.core.base.BaseRepository
+import com.ugurbuga.followtvmovie.data.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.api.services.MovieService
 import com.ugurbuga.followtvmovie.data.model.response.moviedetail.MovieDetailResponse

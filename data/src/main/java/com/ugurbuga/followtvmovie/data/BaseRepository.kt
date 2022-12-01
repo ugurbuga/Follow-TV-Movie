@@ -1,14 +1,14 @@
-package com.ugurbuga.followtvmovie.core.base
+package com.ugurbuga.followtvmovie.data
 
 import com.ugurbuga.followtvmovie.core.BuildConfig
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.core.di.IoDispatcher
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import javax.inject.Inject
 
 abstract class BaseRepository {
 
@@ -25,7 +25,8 @@ abstract class BaseRepository {
                 error.printStackTrace()
             }
             recordException(error)
-            emit(ApiState.Error(error))
+            val errorPackage = GeneralErrorsHandler.convertError(error)
+            emit(ApiState.Error(errorPackage.first, errorPackage.second))
         }.flowOn(dispatcher)
 
     private fun recordException(error: Throwable) {
@@ -41,7 +42,8 @@ abstract class BaseRepository {
                 error.printStackTrace()
             }
             recordException(error)
-            emit(ApiState.Error(error))
+            val errorPackage = GeneralErrorsHandler.convertError(error)
+            emit(ApiState.Error(errorPackage.first, errorPackage.second))
         }.flowOn(dispatcher)
 
     fun <T : Any?> onRoomFlowCall(call: Flow<T>): Flow<ApiState<T>> =
@@ -52,6 +54,7 @@ abstract class BaseRepository {
             }
         }.catch {
             recordException(Throwable("onRoomFlowCall"))
-            emit(ApiState.Error(it))
+            val errorPackage = GeneralErrorsHandler.convertError(it)
+            emit(ApiState.Error(errorPackage.first, errorPackage.second))
         }.flowOn(dispatcher)
 }

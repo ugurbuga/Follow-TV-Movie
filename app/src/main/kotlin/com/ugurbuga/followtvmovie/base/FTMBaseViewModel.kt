@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.viewbinding.BuildConfig
 import com.ugurbuga.followtvmovie.core.base.BaseViewModel
-import com.ugurbuga.followtvmovie.core.common.GeneralErrorsHandler
 import com.ugurbuga.followtvmovie.core.common.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -34,20 +33,18 @@ abstract class FTMBaseViewModel : BaseViewModel() {
                 }
                 showLoading(isShowLoading)
             }
+
             is Status.Error -> {
                 if (BuildConfig.DEBUG) {
-                    Log.d("STATE ->", "ERROR ${status.exception?.message}")
+                    Log.d("STATE ->", "ERROR ${status.message}")
                 }
                 dismissLoading(isShowLoading)
 
                 if (isShowErrorMessage) {
-                    GeneralErrorsHandler(
-                        { message, code ->
-                            checkError(message, code, errorId)
-                        }, status.exception!!
-                    )
+                    checkError(status.message, status.code, errorId)
                 }
             }
+
             is Status.Success -> {
                 if (BuildConfig.DEBUG) {
                     Log.d("STATE ->", "SUCCESS")
@@ -70,9 +67,7 @@ abstract class FTMBaseViewModel : BaseViewModel() {
     }
 
     private fun checkError(message: Any, code: Int, errorId: Int?) {
-        showErrorMessage(
-            message, errorId
-        )
+        showErrorMessage(message, errorId)
     }
 
     private fun showLoading() {

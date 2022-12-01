@@ -1,4 +1,4 @@
-package com.ugurbuga.followtvmovie.core.common
+package com.ugurbuga.followtvmovie.data
 
 import com.ugurbuga.followtvmovie.core.R
 import java.net.SocketException
@@ -6,30 +6,31 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import retrofit2.HttpException
 
-class GeneralErrorsHandler(
-    private var onErrorMessage: ((Any, Int) -> Unit?)? = null,
-    throwable: Throwable
-) {
+object GeneralErrorsHandler {
 
     private var errorBody: ErrorBody? = null
 
-    init {
-        if (isNetworkError(throwable)) {
-            onErrorMessage?.invoke(R.string.generic_error_message, 400)
+    fun convertError(throwable: Throwable): Pair<Any, Int> {
+        return if (isNetworkError(throwable)) {
+            Pair(R.string.generic_error_message, 400)
         } else if (throwable is HttpException) {
             errorBody = ErrorBody.parseError(throwable.response())
             if (errorBody != null) {
                 handleError(errorBody!!)
+            } else {
+                Pair(R.string.generic_error_message, 400)
             }
         } else {
             throwable.message?.let {
-                onErrorMessage?.invoke(it, 0)
+                Pair(it, 0)
+            } ?: run {
+                Pair(R.string.generic_error_message, 400)
             }
         }
     }
 
-    private fun handleError(errorBody: ErrorBody) {
-        if (errorBody.code != ErrorBody.UNKNOWN_ERROR) {
+    private fun handleError(errorBody: ErrorBody): Pair<Any, Int> {
+        return if (errorBody.code != ErrorBody.UNKNOWN_ERROR) {
             var errorMessage: String? = null
             errorBody.errors?.forEach {
                 if (errorMessage == null) {
@@ -40,8 +41,10 @@ class GeneralErrorsHandler(
             }
 
             errorMessage?.let {
-                onErrorMessage?.invoke(it, errorBody.code)
-            } ?: run { onErrorMessage?.invoke(R.string.generic_error_message, errorBody.code) }
+                Pair(it, errorBody.code)
+            } ?: run { Pair(R.string.generic_error_message, errorBody.code) }
+        } else {
+            Pair(R.string.generic_error_message, 400)
         }
     }
 

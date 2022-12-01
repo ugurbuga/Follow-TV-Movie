@@ -14,10 +14,10 @@ fun <T> Flow<ApiState<T>>.doOnSuccess(action: suspend (T) -> Unit): Flow<ApiStat
         return@transform emit(value)
     }
 
-fun <T> Flow<ApiState<T>>.doOnError(action: suspend (Throwable) -> Unit): Flow<ApiState<T>> =
+fun <T> Flow<ApiState<T>>.doOnError(action: suspend (Pair<Any, Int>) -> Unit): Flow<ApiState<T>> =
     transform { value ->
         if (value is ApiState.Error) {
-            action(value.exception)
+            action(Pair(value.message, value.code))
         }
         return@transform emit(value)
     }
@@ -26,7 +26,7 @@ fun <T> Flow<ApiState<T>>.doOnStatusChanged(action: suspend (Status) -> Unit): F
     transform { value ->
         when (value) {
             is ApiState.Success -> action(Status.Success)
-            is ApiState.Error -> action(Status.Error(value.exception))
+            is ApiState.Error -> action(Status.Error(value.message, value.code))
             ApiState.Loading -> action(Status.Loading)
         }
         return@transform emit(value)

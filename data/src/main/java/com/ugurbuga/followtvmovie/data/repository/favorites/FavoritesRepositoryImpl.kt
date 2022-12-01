@@ -1,6 +1,6 @@
 package com.ugurbuga.followtvmovie.data.repository.favorites
 
-import com.ugurbuga.followtvmovie.core.base.BaseRepository
+import com.ugurbuga.followtvmovie.data.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
 import com.ugurbuga.followtvmovie.data.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
