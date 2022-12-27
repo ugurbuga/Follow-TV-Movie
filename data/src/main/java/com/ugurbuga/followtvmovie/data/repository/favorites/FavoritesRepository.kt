@@ -15,6 +15,11 @@ interface FavoritesRepository {
         isWatched: Boolean
     ): Flow<ApiState<MutableList<PosterItemModel>>>
 
+    suspend fun getTileFavorites(
+        mediaType: String,
+        isWatched: Boolean
+    ): MutableList<PosterItemModel>
+
     fun getFavorite(mediaType: String, id: String): Flow<ApiState<PosterItemModel?>>
 
     fun getSoonMovies(mediaType: String): Flow<ApiState<MutableList<PosterItemModel>>>

@@ -21,6 +21,9 @@ interface FavoritesDao {
     @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched order by releaseDateLong DESC")
     fun getFavorites(mediaType: String, isWatched: Boolean): Flow<MutableList<PosterItemModel>>
 
+    @Query("Select * from favoritesTable where mediaType=:mediaType AND isWatched=:isWatched order by releaseDateLong DESC")
+    suspend fun getTileFavorites(mediaType: String, isWatched: Boolean): MutableList<PosterItemModel>
+
     @Query("Select * from favoritesTable where mediaType=:mediaType AND id=:id")
     fun getFavorite(mediaType: String, id: String): Flow<PosterItemModel?>
 

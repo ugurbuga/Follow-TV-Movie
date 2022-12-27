@@ -27,10 +27,9 @@ import androidx.wear.tiles.ResourceBuilders.Resources
 import androidx.wear.tiles.TileBuilders.Tile
 import androidx.wear.tiles.TimelineBuilders.Timeline
 import androidx.wear.tiles.TimelineBuilders.TimelineEntry
+import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetTileFavoritesUseCase
 import com.ugurbuga.followtvmovie.watch.R
-import com.ugurbuga.followtvmovie.watch.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.watch.ui.detail.MediaType
-import com.ugurbuga.followtvmovie.watch.ui.detail.PosterItemUIModel
 import com.ugurbuga.followtvmovie.watch.ui.discover.DiscoverActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,10 +49,16 @@ private const val ID_IC_SEARCH = "ic_search"
 class MovieTileService : CoroutinesTileService() {
 
     @Inject
-    lateinit var favoritesDao: FavoritesDao
+    lateinit var getTileFavoritesUseCase: GetTileFavoritesUseCase
 
     override suspend fun tileRequest(requestParams: TileRequest): Tile {
-        val movies = favoritesDao.getFavorites(MediaType.MOVIE, false)
+
+        val movies = getTileFavoritesUseCase.execute(
+            GetTileFavoritesUseCase.GetFavoriteParams(
+                MediaType.MOVIE,
+                false
+            )
+        )
         println("Ugur -> $movies")
         return Tile.Builder()
             .setResourcesVersion(RESOURCES_VERSION)
@@ -89,7 +94,7 @@ class MovieTileService : CoroutinesTileService() {
     }
 
     private fun layout(
-        dummy: MutableList<PosterItemUIModel>?,
+        dummy: MutableList<com.ugurbuga.followtvmovie.domain.poster.model.PosterItemUIModel>,
         deviceParameters: DeviceParameters
     ): LayoutElement = Column.Builder()
         .addContent(

@@ -10,7 +10,9 @@ import com.ugurbuga.followtvmovie.domain.favorite.usecase.GetFavoriteUseCase
 import com.ugurbuga.followtvmovie.domain.moviedetail.usecase.GetMovieDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 
@@ -25,6 +27,9 @@ class MovieDetailViewModel @Inject constructor(
 
     private val _movieDetailViewState = MutableStateFlow(MovieDetailViewState())
     val movieDetailViewState: StateFlow<MovieDetailViewState> get() = _movieDetailViewState
+
+    private val _movieDetailViewEvent = MutableSharedFlow<MovieDetailViewEvent>()
+    val movieDetailViewEvent: SharedFlow<MovieDetailViewEvent> get() = _movieDetailViewEvent
 
     private var movieId = savedStateHandle.get<String>("movieId").orEmpty()
 
@@ -63,7 +68,9 @@ class MovieDetailViewModel @Inject constructor(
             //Remove
             movieDetailViewState.value.movieDetail?.let {
                 deleteFavoriteUseCase(DeleteFavoriteUseCase.DeleteFavoriteParams(it.id))
-                    .doOnSuccess {}.launchIn(viewModelScope)
+                    .doOnSuccess {
+                        _movieDetailViewEvent.emit(MovieDetailViewEvent.RefreshTile)
+                    }.launchIn(viewModelScope)
             }
         } else {
             movieDetailViewState.value.movieDetail?.let {
@@ -73,7 +80,9 @@ class MovieDetailViewModel @Inject constructor(
                         it,
                         false
                     )
-                ).doOnSuccess { }.launchIn(viewModelScope)
+                ).doOnSuccess {
+                    _movieDetailViewEvent.emit(MovieDetailViewEvent.RefreshTile)
+                }.launchIn(viewModelScope)
             }
         }
     }

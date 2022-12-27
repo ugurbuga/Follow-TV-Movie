@@ -1,7 +1,7 @@
 package com.ugurbuga.followtvmovie.data.repository.favorites
 
-import com.ugurbuga.followtvmovie.data.BaseRepository
 import com.ugurbuga.followtvmovie.core.common.ApiState
+import com.ugurbuga.followtvmovie.data.BaseRepository
 import com.ugurbuga.followtvmovie.data.dao.FavoritesDao
 import com.ugurbuga.followtvmovie.data.model.PosterItemModel
 import javax.inject.Inject
@@ -26,6 +26,13 @@ class FavoritesRepositoryImpl @Inject constructor(
         isWatched: Boolean
     ): Flow<ApiState<MutableList<PosterItemModel>>> {
         return onRoomFlowCall(favoritesDao.getFavorites(mediaType, isWatched))
+    }
+
+    override suspend fun getTileFavorites(
+        mediaType: String,
+        isWatched: Boolean
+    ): MutableList<PosterItemModel> {
+        return favoritesDao.getTileFavorites(mediaType, isWatched)
     }
 
     override fun getFavorite(mediaType: String, id: String): Flow<ApiState<PosterItemModel?>> {
